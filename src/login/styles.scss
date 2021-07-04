@@ -1,0 +1,37 @@
+.login-page {
+  display: flex;
+  height: 100%;
+  
+  .left, .right {
+    width: 50vw;
+  }
+  .left {
+    background: #f7f7f7;
+    position: relative;
+    overflow:hidden;
+
+    .login-hero {
+      position: absolute;
+      bottom: 0;
+      width: 150%;
+      left: -25%;
+    }
+  }
+  .right {
+    background: #2b344d;
+    background: rgba(43, 52, 77, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    form {
+      width: 80%;
+      background: #fff;
+      display: flex;
+      align-self: center;
+      flex-wrap: wrap;
+      padding: 4rem;
+      max-width: 50rem;
+    }
+  }
+}

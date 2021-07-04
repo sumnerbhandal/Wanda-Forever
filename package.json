@@ -3,10 +3,11 @@
   "devDependencies": {
     "react-scripts": "latest"
   },
-  "description": "https://github.com/mui-org/material-ui/blob/master/docs/src/pages/components/tables/EnhancedTable.js",
+  "description": "",
   "dependencies": {
     "@material-ui/core": "latest",
     "@material-ui/icons": "latest",
+    "@material-ui/styles": "4.11.4",
     "@notionhq/client": "0.2.0",
     "history": "5.0.0",
     "prop-types": "latest",

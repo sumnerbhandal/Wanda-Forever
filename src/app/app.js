@@ -1,7 +1,8 @@
 import React, { useState, lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom/index";
-import "./styles.css";
+import "./styles.scss";
 const EnhancedTable = lazy(() => import("../demo"));
+const LoginPage = lazy(() => import("../login/login"));
 
 export default function App() {
   return (
@@ -13,28 +14,25 @@ export default function App() {
           </div>
         }
       >
-        <nav>Navigation</nav>
+        {/* <nav>Navigation</nav> */}
       </Suspense>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <div className="section theme">
-              <div>Example Content</div>
-              <main>
-                <Suspense
-                  fallback={
-                    <div className="loading-container">
-                      <span className="loading"></span>
-                    </div>
-                  }
-                >
-                  <div>Example Content</div>
-                </Suspense>
-              </main>
-            </div>
-          }
-        />
+        <main>
+          <Route
+            path="/"
+            element={
+              <Suspense
+                fallback={
+                  <div className="loading-container">
+                    <span className="loading"></span>
+                  </div>
+                }
+              >
+                <LoginPage />
+              </Suspense>
+            }
+          />
+        </main>
       </Routes>
     </Router>
   );

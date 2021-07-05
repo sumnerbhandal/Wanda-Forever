@@ -4,7 +4,7 @@ import Button from "../_input/button/button";
 import { Link } from "react-router-dom/index";
 import "./styles.scss";
 
-export default function LoginPage(props) {
+const LoginPage = (props) => {
   return (
     <div className="login-page">
       <div className="left">
@@ -15,7 +15,7 @@ export default function LoginPage(props) {
         />
       </div>
       <div className="right">
-        <form>
+        {/* <form>
           <div className="robin-logo">
             <img
               alt="Robin Logo"
@@ -40,8 +40,9 @@ export default function LoginPage(props) {
             </Link>
             <Button variant="text" type="button" label="Forgot Password?" />
           </div>
-        </form>
+        </form> */}
       </div>
     </div>
   );
-}
+};
+export default LoginPage;

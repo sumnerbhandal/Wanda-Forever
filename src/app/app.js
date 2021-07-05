@@ -10,7 +10,7 @@ export default function App() {
       <Router>
         <Routes>
           <Route
-            path="/"
+            path="/login"
             element={
               <Suspense
                 fallback={

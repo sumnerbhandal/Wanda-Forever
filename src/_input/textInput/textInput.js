@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.scss";
 
-export default Input = (props) => {
+const FieldInput = (props) => {
   return (
     <React.Fragment>
       <label>{props.label}</label>
@@ -13,3 +13,5 @@ export default Input = (props) => {
     </React.Fragment>
   );
 };
+
+export default FieldInput;

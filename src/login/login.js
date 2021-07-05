@@ -1,8 +1,8 @@
 import React from "react";
-import Input from "../_input/textInput/textInput";
-import Button from "../_input/button/button";
 import { Link } from "react-router-dom/index";
 import "./styles.scss";
+import FieldInput from "../_input/textInput/textInput";
+import Button from "../_input/button/button";
 
 const LoginPage = (props) => {
   return (
@@ -22,13 +22,13 @@ const LoginPage = (props) => {
               src="https://portal.robinai.co.uk/images/robin-logo.svg"
             />
           </div>
-          <Input
+          <FieldInput
             label="Username"
             type="text"
             name="email"
             placeholder="joe.bloggs@lawsociety.com"
           />
-          <Input
+          <FieldInput
             label="Password"
             type="password"
             name="password"

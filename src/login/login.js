@@ -1,5 +1,5 @@
 import React from "react";
-import TextInput from "../_input/textInput/textInput";
+import Input from "../_input/textInput/textInput";
 import Button from "../_input/button/button";
 import { Link } from "react-router-dom/index";
 import "./styles.scss";
@@ -22,13 +22,13 @@ const LoginPage = (props) => {
               src="https://portal.robinai.co.uk/images/robin-logo.svg"
             />
           </div>
-          <TextInput
+          <Input
             label="Username"
             type="text"
             name="email"
             placeholder="joe.bloggs@lawsociety.com"
           />
-          <TextInput
+          <Input
             label="Password"
             type="password"
             name="password"

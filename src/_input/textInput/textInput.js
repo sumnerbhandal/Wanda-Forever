@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.scss";
 
-export default TextInput = (props) => {
+export default Input = (props) => {
   return (
     <React.Fragment>
       <label>{props.label}</label>

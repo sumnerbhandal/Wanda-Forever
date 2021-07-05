@@ -6,18 +6,9 @@ const LoginPage = lazy(() => import("../login/login"));
 
 export default function App() {
   return (
-    <Router>
-      <Suspense
-        fallback={
-          <div className="loading-container">
-            <span className="loading"></span>
-          </div>
-        }
-      >
-        {/* <nav>Navigation</nav> */}
-      </Suspense>
-      <Routes>
-        <main>
+    <main>
+      <Router>
+        <Routes>
           <Route
             path="/"
             element={
@@ -32,8 +23,30 @@ export default function App() {
               </Suspense>
             }
           />
-        </main>
-      </Routes>
-    </Router>
+          <Route path="/contracts">
+            <Suspense
+              fallback={
+                <div className="loading-container">
+                  <span className="loading"></span>
+                </div>
+              }
+            >
+              <EnhancedTable />
+            </Suspense>
+          </Route>
+          <Route path="/*">
+            <Suspense
+              fallback={
+                <div className="loading-container">
+                  <span className="loading"></span>
+                </div>
+              }
+            >
+              <div>Page Not Found </div>
+            </Suspense>
+          </Route>
+        </Routes>
+      </Router>
+    </main>
   );
 }

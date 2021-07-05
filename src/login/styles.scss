@@ -4,21 +4,31 @@
   
   .left, .right {
     width: 50vw;
+
+    @media  (max-width: 1279px) {
+      width:100vw;
+    }
+    
   }
   .left {
-    background: #f7f7f7;
+    background-image: linear-gradient(
+      -60deg
+      , rgba(43, 52, 77, 0.1) 50%, #f7f7f7 50%);
     position: relative;
-    overflow:hidden;
+
+    @media  (max-width: 1279px) {
+      display: none;
+    }
 
     .login-hero {
       position: absolute;
-      bottom: 0;
-      width: 150%;
-      left: -25%;
+      bottom: 5%;
+      width: 100%;
+      left: 5%;
+      max-width: 82rem;
     }
   }
   .right {
-    background: #2b344d;
     background: rgba(43, 52, 77, 0.1);
     display: flex;
     align-items: center;
@@ -31,7 +41,26 @@
       align-self: center;
       flex-wrap: wrap;
       padding: 4rem;
-      max-width: 50rem;
+      max-width: 38rem;
+      z-index: 1;
+
+      @media  (max-width: 767px) {
+        padding: 4rem 2rem;
+      }
+
+      .robin-logo {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        height: 2.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .submit-reset {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
     }
   }
 }

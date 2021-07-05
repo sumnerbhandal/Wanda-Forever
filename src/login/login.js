@@ -35,7 +35,7 @@ const LoginPage = (props) => {
             placeholder="Password"
           />
           <div className="submit-reset">
-            <Link to="./contracts" tabIndex="0">
+            <Link to="/contracts" tabIndex="0">
               <Button variant="primary" type="submit" label="Login ->" />
             </Link>
             <Button variant="text" type="button" label="Forgot Password?" />

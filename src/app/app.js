@@ -9,7 +9,7 @@ export default function App() {
     <main>
       <Router>
         <Routes>
-          <Route path="/login">
+          <Route path="/">
             <Suspense
               fallback={
                 <div className="loading-container">

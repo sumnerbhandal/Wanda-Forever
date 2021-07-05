@@ -4,7 +4,7 @@ import Button from "../_input/button/button";
 import { Link } from "react-router-dom/index";
 import "./styles.scss";
 
-const LoginPage = (props) => {
+export default function LoginPage(props) {
   return (
     <div className="login-page">
       <div className="left">
@@ -44,5 +44,4 @@ const LoginPage = (props) => {
       </div>
     </div>
   );
-};
-export default LoginPage;
+}

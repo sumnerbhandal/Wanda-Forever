@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom/index";
 import "./styles.scss";
 const EnhancedTable = lazy(() => import("../demo"));
 const LoginPage = lazy(() => import("../login/login"));
+const Canvas = lazy(() => import("../canvas/canvas"));
 
 export default function App() {
   return (
@@ -28,7 +29,7 @@ export default function App() {
                 </div>
               }
             >
-              <EnhancedTable />
+              <Canvas page={<EnhancedTable />} />
             </Suspense>
           </Route>
           <Route path="/*">

@@ -1,0 +1,57 @@
+.canvas {
+  width: 100vw;
+  display: flex;
+  justify-content: flex-end;
+
+  .sidebar {
+    width: 20rem;
+    background: var(--robin-grey-background);
+    height: 100vh;
+    position: absolute;
+    left: -17rem;
+    z-index: 1;
+    max-width: calc(100vw - 3rem);
+    transition: left 0.3s ease-in-out;
+
+    &.open {
+      left:0;
+      
+      .close {
+        span {
+          transform: rotate(0);
+        }
+      }
+    }
+    @media  (min-width: 768px) {
+      width: 20rem;
+      position: relative;
+      left:0;
+    }
+    .close {
+      position: absolute;
+      right: 0;
+      width: 3rem;
+      height: 3rem;
+      border:0;
+      background: none;
+      top: 0.25rem;
+      cursor: pointer;
+
+      @media  (min-width: 768px) {
+        display: none;
+      }
+
+      span {
+        transition: all 0.3s ease;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+  .page {
+    width: calc(100% - 3rem);
+
+    @media  (min-width: 768px) {
+      width: calc(100% - 20rem);
+    }
+  }
+}

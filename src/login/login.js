@@ -5,6 +5,12 @@ import FieldInput from "../_input/textInput/textInput";
 import Button from "../_input/button/button";
 
 const LoginPage = (props) => {
+  const forwardArrow = (
+    <>
+      Login <span className="material-icons">arrow_forward</span>
+    </>
+  );
+
   return (
     <div className="login-page">
       <div className="left">
@@ -35,8 +41,8 @@ const LoginPage = (props) => {
             placeholder="Password"
           />
           <div className="submit-reset">
-            <Link to="/contracts" tabIndex="0">
-              <Button variant="primary" type="submit" label="Login ->" />
+            <Link to="/contracts" tabIndex="-1">
+              <Button variant="primary" type="submit" label={forwardArrow} />
             </Link>
             <Button variant="text" type="button" label="Forgot Password?" />
           </div>

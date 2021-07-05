@@ -22,7 +22,6 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "encrypt": "npx staticrypt public/index.html P@55W0RD -o public/index.html"
+    "eject": "react-scripts eject"
   }
 }

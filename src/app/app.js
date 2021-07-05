@@ -9,20 +9,17 @@ export default function App() {
     <main>
       <Router>
         <Routes>
-          <Route
-            path="/login"
-            element={
-              <Suspense
-                fallback={
-                  <div className="loading-container">
-                    <span className="loading"></span>
-                  </div>
-                }
-              >
-                <LoginPage />
-              </Suspense>
-            }
-          />
+          <Route path="/login">
+            <Suspense
+              fallback={
+                <div className="loading-container">
+                  <span className="loading"></span>
+                </div>
+              }
+            >
+              <LoginPage />
+            </Suspense>
+          </Route>
           <Route path="/contracts">
             <Suspense
               fallback={

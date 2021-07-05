@@ -1,8 +1,6 @@
 import React from "react";
 import TextInput from "../_input/textInput/textInput";
 import Button from "../_input/button/button";
-// import loginImage from "./img/login.svg";
-// import robinLogo from "./img/robin-logo.svg";
 import { Link } from "react-router-dom/index";
 import "./styles.scss";
 
@@ -43,5 +41,4 @@ const LoginPage = (props) => {
     </div>
   );
 };
-
 export default LoginPage;

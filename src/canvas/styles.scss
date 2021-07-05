@@ -5,7 +5,7 @@
 
   .sidebar {
     width: 20rem;
-    background: var(--robin-grey-background);
+    background: var(--robin-blue);
     height: 100vh;
     position: absolute;
     left: -17rem;
@@ -44,6 +44,7 @@
       span {
         transition: all 0.3s ease;
         transform: rotate(-45deg);
+        color: #fff;
       }
     }
   }

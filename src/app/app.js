@@ -17,7 +17,8 @@ export default function App() {
                 </div>
               }
             >
-              <LoginPage />
+              {/* <LoginPage /> */}
+              <EnhancedTable />
             </Suspense>
           </Route>
           <Route path="/contracts">

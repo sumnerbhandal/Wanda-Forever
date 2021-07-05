@@ -9,6 +9,7 @@ const LoginPage = (props) => {
     <div className="login-page">
       <div className="left">
         <img
+          alt="Pubic Demo"
           className="login-hero"
           src="https://uploads-ssl.webflow.com/5dc98e8b04adb0e7091d2920/5dc98e8b04adb0146c1d2ad1_Asset%2012.svg"
         />
@@ -16,7 +17,10 @@ const LoginPage = (props) => {
       <div className="right">
         <form>
           <div className="robin-logo">
-            <img src="https://portal.robinai.co.uk/images/robin-logo.svg" />
+            <img
+              alt="Robin Logo"
+              src="https://portal.robinai.co.uk/images/robin-logo.svg"
+            />
           </div>
           <TextInput
             label="Username"

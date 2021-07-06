@@ -9,6 +9,7 @@ const FieldInput = (props) => {
         type={props.type}
         name={props.name}
         placeholder={props.placeholder}
+        required
       />
     </React.Fragment>
   );

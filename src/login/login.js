@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom/index";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom/index";
 import "./styles.scss";
 import FieldInput from "../_input/textInput/textInput";
 import Button from "../_input/button/button";
@@ -10,6 +10,21 @@ const LoginPage = (props) => {
       Login <span className="material-icons">arrow_forward</span>
     </>
   );
+  const [incorrectLogin, setIncorrectLogin] = useState(false);
+  const navigate = useNavigate();
+  function Login(e) {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+
+    if (
+      formData.get("email") === "robin" &&
+      formData.get("password") === "batman"
+    ) {
+      props.authoriseLogin(true);
+      localStorage.setItem("LoggedIn", true);
+      navigate("/contracts");
+    }
+  }
 
   return (
     <div className="login-page">
@@ -21,7 +36,7 @@ const LoginPage = (props) => {
         />
       </div>
       <div className="right">
-        <form>
+        <form onSubmit={Login}>
           <div className="robin-logo">
             <img
               alt="Robin Logo"
@@ -41,9 +56,7 @@ const LoginPage = (props) => {
             placeholder="Password"
           />
           <div className="submit-reset">
-            <Link to="/contracts" tabIndex="-1">
-              <Button variant="primary" type="submit" label={forwardArrow} />
-            </Link>
+            <Button variant="primary" type="submit" label={forwardArrow} />
             <Button variant="text" type="button" label="Forgot Password?" />
           </div>
         </form>

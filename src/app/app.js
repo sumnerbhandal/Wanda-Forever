@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom/index";
 import "./styles.scss";
 const EnhancedTable = lazy(() => import("../demo"));
@@ -6,6 +6,18 @@ const LoginPage = lazy(() => import("../login/login"));
 const Canvas = lazy(() => import("../canvas/canvas"));
 
 export default function App() {
+  const [authenticated, setAuthenticate] = useState(false);
+
+  useEffect(() => {
+    setAuthenticate(false);
+    const CookieSet = localStorage.getItem("LoggedIn");
+    CookieSet ? setAuthenticate(true) : setAuthenticate(false);
+  }, []);
+
+  function authoriseLogin(newValue) {
+    setAuthenticate(newValue);
+  }
+
   return (
     <main>
       <Router>
@@ -18,20 +30,27 @@ export default function App() {
                 </div>
               }
             >
-              <LoginPage />
+              <LoginPage
+                authenticated={authenticated}
+                authoriseLogin={authoriseLogin}
+              />
             </Suspense>
           </Route>
-          <Route path="/contracts">
-            <Suspense
-              fallback={
-                <div className="loading-container">
-                  <span className="loading"></span>
-                </div>
-              }
-            >
-              <Canvas page={<EnhancedTable />} />
-            </Suspense>
-          </Route>
+          {authenticated ? (
+            <Route path="/contracts">
+              <Suspense
+                fallback={
+                  <div className="loading-container">
+                    <span className="loading"></span>
+                  </div>
+                }
+              >
+                <Canvas page={<EnhancedTable />} />
+              </Suspense>
+            </Route>
+          ) : (
+            <div>Not Logged In</div>
+          )}
           <Route path="/*">
             <Suspense
               fallback={

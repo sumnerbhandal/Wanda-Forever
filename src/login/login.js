@@ -24,14 +24,9 @@ const LoginPage = (props) => {
       props.authoriseLogin(true);
       // local storage with expiry references
       const timeDate = new Date().getTime();
-      console.log(timeDate);
-      // var object = { value: "value", timestamp: new Date().getTime() };
-      // localStorage.setItem("stupidValidation", JSON.stringify(object));
       localStorage.setItem("validationTime", timeDate);
       // push to next page
       navigate("/contracts");
-    } else {
-      navigate("/");
     }
   }
 

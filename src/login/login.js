@@ -21,7 +21,8 @@ const LoginPage = (props) => {
       formData.get("password") === "batman"
     ) {
       props.authoriseLogin(true);
-      localStorage.setItem("LoggedIn", true);
+      var object = { value: "value", timestamp: new Date().getTime() };
+      localStorage.setItem("key", JSON.stringify(object));
       navigate("/contracts");
     }
   }

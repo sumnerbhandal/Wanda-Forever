@@ -9,9 +9,15 @@ export default function App() {
   const [authenticated, setAuthenticate] = useState(false);
 
   useEffect(() => {
+    var authenticatedTime = JSON.parse(localStorage.getItem("key")),
+      dateStored = authenticatedTime.timestamp,
+      now = new Date().getTime().toString();
+    const day = 86400000;
+    const fiveMins = 300000;
     setAuthenticate(false);
-    const CookieSet = localStorage.getItem("LoggedIn");
-    CookieSet ? setAuthenticate(true) : setAuthenticate(false);
+    const ValidToken = now - dateStored < fiveMins;
+    console.log(ValidToken);
+    ValidToken ? setAuthenticate(true) : setAuthenticate(false);
   }, []);
 
   function authoriseLogin(newValue) {

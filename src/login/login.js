@@ -30,6 +30,8 @@ const LoginPage = (props) => {
       localStorage.setItem("validationTime", timeDate);
       // push to next page
       navigate("/contracts");
+    } else {
+      navigate("/");
     }
   }
 

@@ -1,7 +1,8 @@
-import React, { lazy, Suspense, useState, useEffect } from "react";
+import React, { lazy, Suspense, useState, useEffect, useNavigate } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom/index";
 import "./styles.scss";
 import RedirectHome from "./redirect";
+import PrivateRoute from "./private-route";
 const EnhancedTable = lazy(() => import("../demo"));
 const LoginPage = lazy(() => import("../login/login"));
 const Canvas = lazy(() => import("../canvas/canvas"));
@@ -20,7 +21,7 @@ export default function App() {
 
     validKey ? (keyToken = false) : (keyToken = true);
     keyToken ? (timestamp = getKey) : (timestamp = 0);
-    const day = 86400000;
+    const day = 300000;
     const now = new Date().getTime().toString();
 
     const validToken = now - timestamp < day;
@@ -33,8 +34,6 @@ export default function App() {
   function authoriseLogin(newValue) {
     setAuthenticate(newValue);
   }
-
-  const Landing = <Canvas page={<EnhancedTable />} />;
 
   return (
     <main>
@@ -54,26 +53,25 @@ export default function App() {
               />
             </Suspense>
           </Route>
-          {/* <PrivateRoute
-            path="/contracts"
-            authenticated={authenticated}
-            component={Landing}
-          /> */}
-          <Route path="/contracts">
-            <Suspense
-              fallback={
-                <div className="loading-container">
-                  <span className="loading"></span>
-                </div>
-              }
-            >
-              {authenticated ? (
+
+          {authenticated ? (
+            <Route path="/contracts">
+              <Suspense
+                fallback={
+                  <div className="loading-container">
+                    <span className="loading"></span>
+                  </div>
+                }
+              >
                 <Canvas page={<EnhancedTable />} />
-              ) : (
-                <RedirectHome />
-              )}
-            </Suspense>
-          </Route>
+              </Suspense>
+            </Route>
+          ) : (
+            // <Route path="/">
+            //   <div>Not Logged In</div>
+            // </Route>
+            <RedirectHome />
+          )}
           <Route path="/*">
             <Suspense
               fallback={

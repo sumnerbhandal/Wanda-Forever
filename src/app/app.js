@@ -15,8 +15,7 @@ export default function App() {
     const day = 86400000;
     const fiveMins = 300000;
     setAuthenticate(false);
-    const dateStored = authenticatedTime.timestamp;
-    const invalidDate = dateStored === null;
+    const invalidDate = authenticatedTime.timestamp === null;
     // console.log(now - dateStored);
     // console.log("Is the date invalid " + invalidDate);
     // console.log(

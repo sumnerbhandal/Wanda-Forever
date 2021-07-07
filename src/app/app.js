@@ -10,31 +10,34 @@ export default function App() {
   const [authenticated, setAuthenticate] = useState(false);
 
   useEffect(() => {
-    let keyToken = false;
-    let timestamp = 0;
+    // let keyToken = false;
+    // let timestamp = 0;
 
-    setAuthenticate(false);
+    // const getKey = localStorage.getItem("validationTime");
+    // const validKey = getKey === null;
 
-    const getKey = localStorage.getItem("validationTime");
-    const validKey = getKey === null;
+    // validKey ? (keyToken = false) : (keyToken = true);
+    // keyToken ? (timestamp = getKey) : (timestamp = 0);
+    // const day = 86400000;
+    // const now = new Date().getTime().toString();
 
-    validKey ? (keyToken = false) : (keyToken = true);
-    keyToken ? (timestamp = getKey) : (timestamp = 0);
+    // const validToken = now - timestamp < day;
+    // validToken ? setAuthenticate(true) : setAuthenticate(false);
+
     const day = 86400000;
     const now = new Date().getTime().toString();
+    const getKey = localStorage.getItem("validationTime");
 
-    const validToken = now - timestamp < day;
-
-    validToken
-      ? setAuthenticate(true)
-      : setAuthenticate(false) + localStorage.removeItem("validationTime");
+    console.log(now);
+    console.log(getKey);
+    console.log(now - getKey < day);
+    const validToken = now - getKey < day;
+    validToken ? setAuthenticate(true) : setAuthenticate(false);
   }, []);
 
   function authoriseLogin(newValue) {
     setAuthenticate(newValue);
   }
-
-  const Landing = <Canvas page={<EnhancedTable />} />;
 
   return (
     <main>
@@ -67,6 +70,7 @@ export default function App() {
                 </div>
               }
             >
+              {console.log(authenticated)}
               {authenticated ? (
                 <Canvas page={<EnhancedTable />} />
               ) : (

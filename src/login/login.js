@@ -20,9 +20,12 @@ const LoginPage = (props) => {
       formData.get("email") === "robin" &&
       formData.get("password") === "batman"
     ) {
+      // with authenticated credentials allow access to other pages
       props.authoriseLogin(true);
+      // local storage with expiry references
       var object = { value: "value", timestamp: new Date().getTime() };
       localStorage.setItem("key", JSON.stringify(object));
+      // push to next page
       navigate("/contracts");
     }
   }

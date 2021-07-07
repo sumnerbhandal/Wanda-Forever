@@ -11,11 +11,11 @@ export default function App() {
 
   useEffect(() => {
     var authenticatedTime = JSON.parse(localStorage.getItem("key")),
-      dateStored = authenticatedTime.timestamp,
       now = new Date().getTime().toString();
     const day = 86400000;
     const fiveMins = 300000;
     setAuthenticate(false);
+    const dateStored = authenticatedTime.timestamp;
     const invalidDate = dateStored === null;
     // console.log(now - dateStored);
     // console.log("Is the date invalid " + invalidDate);

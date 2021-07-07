@@ -7,23 +7,23 @@ const Canvas = lazy(() => import("../canvas/canvas"));
 
 export default function App() {
   const [authenticated, setAuthenticate] = useState(false);
-  const [keyToken, setKeyToken] = useState(false);
-  const [timestamp, setTimestamp] = useState();
 
   useEffect(() => {
-    const getKey = localStorage.getItem("key");
-    // console.log(getKey);
-    const validKey = getKey === null;
-    // console.log(validKey);
-    validKey ? setKeyToken(false) : setKeyToken(true);
-    keyToken ? setTimestamp(JSON.parse(getKey).timestamp) : setTimestamp(0);
-    const fiveMins = 300000;
-    const now = new Date().getTime().toString();
+    let keyToken = false;
+    let timestamp = 0;
+
     setAuthenticate(false);
-    // console.log(now);
-    // console.log(timestamp);
-    // console.log(now - timestamp < fiveMins);
-    const validToken = now - timestamp < fiveMins;
+
+    const getKey = localStorage.getItem("validationTime");
+    const validKey = getKey === null;
+
+    validKey ? (keyToken = false) : (keyToken = true);
+    keyToken ? (timestamp = getKey) : (timestamp = 0);
+    const day = 300000;
+    const now = new Date().getTime().toString();
+
+    const validToken = now - timestamp < day;
+
     validToken ? setAuthenticate(true) : setAuthenticate(false);
   }, []);
 

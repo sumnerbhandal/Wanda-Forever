@@ -23,8 +23,11 @@ const LoginPage = (props) => {
       // with authenticated credentials allow access to other pages
       props.authoriseLogin(true);
       // local storage with expiry references
-      var object = { value: "value", timestamp: new Date().getTime() };
-      localStorage.setItem("key", JSON.stringify(object));
+      const timeDate = new Date().getTime();
+      console.log(timeDate);
+      // var object = { value: "value", timestamp: new Date().getTime() };
+      // localStorage.setItem("stupidValidation", JSON.stringify(object));
+      localStorage.setItem("validationTime", timeDate);
       // push to next page
       navigate("/contracts");
     }

@@ -7,27 +7,24 @@ const Canvas = lazy(() => import("../canvas/canvas"));
 
 export default function App() {
   const [authenticated, setAuthenticate] = useState(false);
-  const [validToken, setValidToken] = useState(false);
+  const [keyToken, setKeyToken] = useState(false);
+  const [timestamp, setTimestamp] = useState();
 
   useEffect(() => {
     const getKey = localStorage.getItem("key");
-    console.log(getKey);
-    // var authenticatedTime = JSON.parse(localStorage.getItem("key")),
-    //   now = new Date().getTime().toString();
-    // const day = 86400000;
-    // const fiveMins = 300000;
-    // setAuthenticate(false);
-    // const invalidDate = authenticatedTime.timestamp === null;
-    // // console.log(now - dateStored);
-    // // console.log("Is the date invalid " + invalidDate);
-    // // console.log(
-    // //   "Is it authenticated for longer than 5 mins " + now - dateStored <
-    // //     fiveMins
-    // // );
-    // invalidDate
-    //   ? setValidToken(false)
-    //   : setValidToken(now - dateStored < fiveMins);
-    // validToken ? setAuthenticate(true) : setAuthenticate(false);
+    // console.log(getKey);
+    const validKey = getKey === null;
+    // console.log(validKey);
+    validKey ? setKeyToken(false) : setKeyToken(true);
+    keyToken ? setTimestamp(JSON.parse(getKey).timestamp) : setTimestamp(0);
+    const fiveMins = 300000;
+    const now = new Date().getTime().toString();
+    setAuthenticate(false);
+    // console.log(now);
+    // console.log(timestamp);
+    // console.log(now - timestamp < fiveMins);
+    const validToken = now - timestamp < fiveMins;
+    validToken ? setAuthenticate(true) : setAuthenticate(false);
   }, []);
 
   function authoriseLogin(newValue) {

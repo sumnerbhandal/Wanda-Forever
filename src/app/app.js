@@ -7,37 +7,17 @@ const LoginPage = lazy(() => import("../login/login"));
 const Canvas = lazy(() => import("../canvas/canvas"));
 
 export default function App() {
-  const [authenticated, setAuthenticate] = useState(false);
-
+  const [authenticated, setAuthenticated] = useState(false);
+  function authoriseLogin(newValue) {
+    setAuthenticated(newValue);
+  }
   useEffect(() => {
-    // let keyToken = false;
-    // let timestamp = 0;
-
-    // const getKey = localStorage.getItem("validationTime");
-    // const validKey = getKey === null;
-
-    // validKey ? (keyToken = false) : (keyToken = true);
-    // keyToken ? (timestamp = getKey) : (timestamp = 0);
-    // const day = 86400000;
-    // const now = new Date().getTime().toString();
-
-    // const validToken = now - timestamp < day;
-    // validToken ? setAuthenticate(true) : setAuthenticate(false);
-
     const day = 86400000;
     const now = new Date().getTime().toString();
     const getKey = localStorage.getItem("validationTime");
-
-    console.log(now);
-    console.log(getKey);
-    console.log(now - getKey < day);
     const validToken = now - getKey < day;
-    validToken ? setAuthenticate(true) : setAuthenticate(false);
+    validToken ? authoriseLogin(true) : authoriseLogin(false);
   }, []);
-
-  function authoriseLogin(newValue) {
-    setAuthenticate(newValue);
-  }
 
   return (
     <main>
@@ -57,11 +37,6 @@ export default function App() {
               />
             </Suspense>
           </Route>
-          {/* <PrivateRoute
-            path="/contracts"
-            authenticated={authenticated}
-            component={Landing}
-          /> */}
           <Route path="/contracts">
             <Suspense
               fallback={

@@ -5,10 +5,5 @@ import App from "./app/app";
 const rootElement = document.getElementById("root");
 
 if (rootElement) {
-  ReactDOM.render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>,
-    rootElement
-  );
+  ReactDOM.render(<App />, rootElement);
 }

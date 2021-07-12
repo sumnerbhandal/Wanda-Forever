@@ -10,8 +10,8 @@ const LoginPage = (props) => {
       Login <span className="material-icons">arrow_forward</span>
     </>
   );
-  const [incorrectLogin, setIncorrectLogin] = useState(false);
   const navigate = useNavigate();
+
   function Login(e) {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -26,7 +26,10 @@ const LoginPage = (props) => {
       const timeDate = new Date().getTime();
       localStorage.setItem("validationTime", timeDate);
       // push to next page
+      props.loginAlert(false);
       navigate("/contracts");
+    } else {
+      props.loginAlert("Invalid Login Details");
     }
   }
 

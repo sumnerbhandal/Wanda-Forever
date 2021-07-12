@@ -3,7 +3,7 @@ import "./styles.scss";
 
 const Button = (props) => {
   return (
-    <button className={props.variant} type={props.type}>
+    <button className={`cta ${props.variant}`} type={props.type}>
       {props.label}
     </button>
   );

@@ -5,6 +5,7 @@ const RedirectHome = (props) => {
   const navigate = useNavigate();
   useEffect(() => {
     navigate("/");
+    props.loginAlert("Please Log In");
   }, [props]);
   return <div>Returned to HP </div>;
 };

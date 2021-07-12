@@ -73,7 +73,7 @@
         display: flex;
         justify-content: center;
         height: 2.5rem;
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
       }
       .form-container {
         display: flex;
@@ -101,7 +101,8 @@
             ul {
               list-style-type: circle;
               line-height: 1.75;
-              margin-bottom: 2rem;
+              margin-bottom: 1.5rem;
+              padding-inline-start: 1.25rem;
             }
 
           }
@@ -115,6 +116,7 @@
             display: flex;
             justify-content: space-between;
             width: 100%;
+            flex-wrap: wrap;
           }
         }
       }

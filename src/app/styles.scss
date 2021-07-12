@@ -1,8 +1,10 @@
 :root {
-  font-size: 16px;;
+  font-size: 16px;
   --robin-blue: #2a344f;
   --robin-grey-background: rgba(43, 52, 77, 0.1);
-  // --robin-grey-background: #D2D4D7;
+  --error: #FFB62E;
+  --success: #B0E2B2;
+  --information: #A5D1E4;
 }
 
 *, html, body {

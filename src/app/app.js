@@ -13,7 +13,6 @@ export default function App() {
   function authoriseLogin(newValue) {
     setAuthenticated(newValue);
   }
-
   function loginAlert(newValue) {
     setAlertMessage(newValue);
   }

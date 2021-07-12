@@ -5,7 +5,11 @@ const RedirectHome = (props) => {
   const navigate = useNavigate();
   useEffect(() => {
     navigate("/");
-    props.loginAlert("Please Log In");
+    props.loginAlert({
+      message: "Your session has expired. Please log in.",
+      color: "var(--robin-blue)",
+      background: "var(--information)"
+    });
   }, [props]);
   return <div>Returned to HP </div>;
 };

@@ -2,14 +2,19 @@ import React from "react";
 import "./alert.scss";
 
 const Alert = (props) => {
-  function dismiss(e) {
-    e.target.parentNode.classList.add("close");
+  function dismiss() {
+    var alertMessage = document.getElementById("authentication-state-alert");
+    alertMessage.classList.add("close");
     setTimeout(function () {
       props.setAlertMessage(false);
     }, 500);
   }
+  setTimeout(function () {
+    dismiss();
+  }, 5000);
   return (
     <div
+      id="authentication-state-alert"
       style={{
         color: props.message.color,
         background: props.message.background

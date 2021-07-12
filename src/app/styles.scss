@@ -48,23 +48,27 @@ margin: 0;
 }
 
 @keyframes fadeUp {
-  from {
+  0% {
     transform: translateY(0.5rem);
     opacity: 0;
   }
-  to {
+  80% {
     transform: translateY(0rem);
+  }
+  100% {
     opacity: 1;
   }
 }
 
 @keyframes fadeDown {
-  from {
+  0% {
     transform: translateY(-0.5rem);
     opacity: 0;
   }
-  to {
+  80% {
     transform: translateY(0rem);
+  }
+  100% {
     opacity: 1;
   }
 }

@@ -26,7 +26,7 @@
       width: 100%;
       left: 5%;
       max-width: 82rem;
-      animation: fadeUp 0.8s forwards ease;
+      animation: fadeUp 1s forwards ease;
     }
   }
   .right {
@@ -44,7 +44,7 @@
       padding: 4rem;
       max-width: 38rem;
       z-index: 1;
-      animation: fadeDown 0.8s forwards ease;
+      animation: fadeDown 1s forwards ease;
 
       @media  (max-width: 767px) {
         padding: 4rem 2rem;

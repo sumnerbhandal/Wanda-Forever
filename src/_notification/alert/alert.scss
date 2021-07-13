@@ -10,6 +10,9 @@ div.alert-bar {
   transition: all 0.5s ease;
   animation: slideIn 0.5s forwards ease;
   left: 50%;
+  min-width: 18rem;
+  text-align: center;
+  justify-content: center;
 
 
   &.close {

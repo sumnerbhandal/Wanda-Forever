@@ -64,7 +64,7 @@ const LoginPage = (props) => {
     props.loginAlert(false);
     navigate("/contracts");
     props.loginAlert({
-      message: greeting + " Robin",
+      message: greeting + " Robin.",
       color: "var(--robin-blue)",
       background: "var(--success)"
     });

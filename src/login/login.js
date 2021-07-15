@@ -6,12 +6,18 @@ import Button from "../_input/button/button";
 
 const forwardArrow = (
   <>
-    Login <span className="material-icons">arrow_forward</span>
+    Login{" "}
+    <span aria-hidden="true" className="material-icons">
+      arrow_forward
+    </span>
   </>
 );
 const submitArrow = (
   <>
-    Submit <span className="material-icons">arrow_forward</span>
+    Submit{" "}
+    <span aria-hidden="true" className="material-icons">
+      arrow_forward
+    </span>
   </>
 );
 
@@ -35,6 +41,10 @@ const LoginPage = (props) => {
         background: "var(--error)"
       });
     }
+    setTimeout(function () {
+      const dismissButton = document.getElementById("alert-dismiss");
+      dismissButton.click();
+    }, 5000);
   }
 
   function stepBack(e) {
@@ -89,16 +99,18 @@ const LoginPage = (props) => {
           <div className="form-container">
             <form id="login-step-one" className="step-one" onSubmit={stepOne}>
               <FieldInput
+                id="login-username"
                 label="Username"
                 type="text"
                 name="email"
-                placeholder="joe.bloggs@lawsociety.com"
+                placeholder="example@email.co.uk"
               />
               <FieldInput
+                id="login-password"
                 label="Password"
                 type="password"
                 name="password"
-                placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"
+                placeholder="Password"
               />
               <div className="submit-reset">
                 <Button variant="primary" type="submit" label={forwardArrow} />

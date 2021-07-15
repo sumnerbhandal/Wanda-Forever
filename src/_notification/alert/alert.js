@@ -19,6 +19,7 @@ const Alert = (props) => {
     >
       {props.message.message}
       <button
+        id="alert-dismiss"
         style={{
           color: props.message.color
         }}

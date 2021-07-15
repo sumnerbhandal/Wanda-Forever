@@ -131,10 +131,11 @@ const LoginPage = (props) => {
                 <li>Step 3. Enter authentication code below.</li>
               </ul>
               <FieldInput
+                id="login-2fa"
                 label="Two-Factor Authentication (2FA) Code"
                 type="password"
                 name="password"
-                placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"
+                placeholder="123456"
               />
               <div className="submit-reset">
                 <Button variant="primary" type="submit" label={submitArrow} />

@@ -41,9 +41,11 @@ const LoginPage = (props) => {
         background: "var(--error)"
       });
     }
+    const dismissButton = document.getElementById("alert-dismiss");
     setTimeout(function () {
-      const dismissButton = document.getElementById("alert-dismiss");
-      dismissButton.click();
+      if (dismissButton != null) {
+        dismissButton.click();
+      } else return;
     }, 5000);
   }
 

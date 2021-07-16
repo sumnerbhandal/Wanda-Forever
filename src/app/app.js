@@ -4,6 +4,7 @@ import "./styles.scss";
 import Alert from "../_notification/alert/alert";
 import RedirectHome from "./redirect";
 const EnhancedTable = lazy(() => import("../demo"));
+const DocumentEditor = lazy(() => import("../document-editor/document-editor"));
 const LoginPage = lazy(() => import("../login/login"));
 const Canvas = lazy(() => import("../canvas/canvas"));
 
@@ -62,6 +63,17 @@ export default function App() {
                 // <RedirectHome onLoad={loginAlert("Logged Out")} />
                 <RedirectHome loginAlert={loginAlert} />
               )}
+            </Suspense>
+          </Route>
+          <Route path="/editor">
+            <Suspense
+              fallback={
+                <div className="loading-container">
+                  <span className="loading"></span>
+                </div>
+              }
+            >
+              {<Canvas page={<DocumentEditor />} />}
             </Suspense>
           </Route>
           <Route path="/*">

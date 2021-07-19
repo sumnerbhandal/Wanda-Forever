@@ -1,23 +1,36 @@
 
 .contract {
-  max-width: 70rem;
+  max-width: 68rem;
   margin: 2rem auto;
   padding: 0 6rem;
 
-  .block {
-    margin: 0.25rem 0;
-    padding: 0.5rem;
-    // background: #fafafa;
-    border-radius: 0.25rem;
-    line-height: 1.5;
+  > div {
+    > div {
 
-    &:focus {
-      background: #f7f7f7;
+      &:hover {
+        background: #e6e6e6;
+      }
+      padding: 0 0.125rem 0 2rem;
+
+      .block {
+        padding: 0.5rem;
+        // background: #fafafa;
+        border-radius: 0.25rem;
+        line-height: 1.5;
+        margin-block-start: 0;
+        margin-block-end: 0;
+    
+        &:focus {
+          background: #f7f7f7;
+        }
+      }
+      h1 {
+        font-size: 1.75rem;
+      }
     }
   }
-  h1 {
-    font-size: 1.75rem;
-  }
+
+  
 }
 
 

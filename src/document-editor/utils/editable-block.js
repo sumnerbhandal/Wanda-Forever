@@ -133,7 +133,7 @@ class EditableBlock extends React.Component {
           />
         )}
         <ContentEditable
-          className="Block"
+          className="block"
           innerRef={this.contentEditable}
           html={this.state.html}
           tagName={this.state.tag}

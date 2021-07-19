@@ -6,11 +6,26 @@
 
   > div {
     > div {
+      position: relative;
 
       &:hover {
         background: #e6e6e6;
+
+        &:before {
+          content: "";
+          position: absolute;
+          left: 0.5rem;
+          top: 0.5rem;
+          height: 1.5rem;
+          width: 1.5rem;
+          background-image: url(https://image.flaticon.com/icons/png/512/3793/3793594.png);
+          background-size: 80%;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
       }
-      padding: 0 0.125rem 0 2rem;
+      padding: 0 0.125rem 0 2.5rem;
+      border-radius: 0.25rem;
 
       .block {
         padding: 0.5rem;
@@ -19,9 +34,25 @@
         line-height: 1.5;
         margin-block-start: 0;
         margin-block-end: 0;
-    
+        cursor: text;
+        position: relative;
+        
+
         &:focus {
-          background: #f7f7f7;
+          background: #e6e6e6;
+
+          &:after {
+            content: "";
+            position: absolute;
+            right: -2.5rem;
+            top: 0.5rem;
+            height: 1.5rem;
+            width: 1.5rem;
+            background-image: url(https://image.flaticon.com/icons/png/512/1828/1828911.png);
+            background-size: 80%;
+            background-repeat: no-repeat;
+            background-position: center;
+          }
         }
       }
       h1 {

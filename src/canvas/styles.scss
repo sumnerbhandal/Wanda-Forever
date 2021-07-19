@@ -7,7 +7,7 @@
     width: 20rem;
     background: var(--robin-blue);
     height: 100vh;
-    position: absolute;
+    position: fixed;
     left: -17rem;
     z-index: 1;
     max-width: calc(100vw - 3rem);
@@ -24,7 +24,6 @@
     }
     @media  (min-width: 768px) {
       width: 20rem;
-      position: relative;
       left:0;
     }
     .close {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, createRef, useEffect } from "react";
 import ContentEditable from "react-contenteditable";
 
 import "../styles.scss";

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import EditablePage from "./utils/editable-page";
+
 import "./styles.scss";
 
 const DocumentEditor = (props) => {
@@ -7,7 +8,6 @@ const DocumentEditor = (props) => {
 
   return (
     <div className="framework">
-      {" "}
       <EditablePage />
     </div>
   );

@@ -1,4 +1,26 @@
 
+.contract {
+  max-width: 70rem;
+  margin: 2rem auto;
+  padding: 0 6rem;
+
+  .block {
+    margin: 0.25rem 0;
+    padding: 0.5rem;
+    // background: #fafafa;
+    border-radius: 0.25rem;
+    line-height: 1.5;
+
+    &:focus {
+      background: #f7f7f7;
+    }
+  }
+  h1 {
+    font-size: 1.75rem;
+  }
+}
+
+
 .Logo {
   margin: 2rem 0;
   width: 100%;
@@ -27,10 +49,7 @@
 /* EDITABLE BLOCK*/
 
 .Block {
-  margin: 0.25rem 0;
-  padding: 0.5rem;
-  background: #fafafa;
-  border-radius: 0.25rem;
+
 }
 .Block:hover {
   background: #f8f8f8;

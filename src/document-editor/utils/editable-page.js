@@ -1,12 +1,9 @@
 import React, { Component, useEffect, useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-
 import "../styles.scss";
 import EditableBlock from "./editable-block";
-
 import uid from "./uid";
 import { setCaretToEnd } from "./caret-helpers";
-
 import GenericNda from "../../_api/nda/nda.json";
 
 const initialBlock = { id: uid(), html: "example", tag: "p" };

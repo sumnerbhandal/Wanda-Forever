@@ -3,6 +3,7 @@ export const getCaretCoordinates = () => {
   const isSupported = typeof window.getSelection !== "undefined";
   if (isSupported) {
     const selection = window.getSelection();
+    console.log(selection);
     // Check if there is a selection (i.e. cursor in place)
     if (selection.rangeCount !== 0) {
       // Clone the range
@@ -11,6 +12,7 @@ export const getCaretCoordinates = () => {
       range.collapse(false);
       // getCientRects returns all the positioning information we need
       const rect = range.getClientRects()[0];
+      console.log(rect);
       if (rect) {
         x = rect.left;
         y = rect.top;

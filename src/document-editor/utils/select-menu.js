@@ -22,6 +22,11 @@ const allowedTags = [
     id: "paragraph",
     tag: "p",
     label: "Paragraph"
+  },
+  {
+    id: "list",
+    tag: "li",
+    label: "Bullet"
   }
 ];
 

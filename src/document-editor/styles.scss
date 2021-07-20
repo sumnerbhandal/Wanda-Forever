@@ -106,7 +106,7 @@
 /* SELECT MENU */
 
 .SelectMenu {
-  position: absolute;
+  position: fixed;
   width: 6.875rem;
   height: 9rem;
   z-index: 11;
@@ -135,7 +135,7 @@
 }
 .SelectMenu .Items div[role="button"]:hover,
 .SelectMenu .Items div[role="button"]:focus {
-  background: #f5f6fb;
+  background: #e6e6e6;
   cursor: pointer;
 }
 .SelectMenu .Items div[role="button"]:first-of-type:hover,

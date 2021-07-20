@@ -39,12 +39,33 @@
       @media  (min-width: 768px) {
         display: none;
       }
-
       span {
         transition: all 0.3s ease;
         transform: rotate(-45deg);
         color: #fff;
       }
+    }
+
+    .section {
+      border-bottom: 0.125rem solid #21283E;
+      padding: 0.5rem 2rem;
+
+      &:first-of-type {
+        margin-top: 1.5rem;
+      }
+      &.options {
+        padding-top: 1rem;
+      }
+
+      p, strong, a, label {
+        color: #fff;
+        &.end-of-chunk {
+          margin-bottom: 2.25rem;
+          
+        }
+      }
+
+
     }
   }
   .page {

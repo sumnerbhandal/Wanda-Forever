@@ -25,22 +25,21 @@ export default function App() {
     validToken ? authoriseLogin(true) : authoriseLogin(false);
   }, []);
 
+  const loader = (
+    <div className="loading-container">
+      <span className="loading"></span>
+    </div>
+  );
+
   return (
     <main>
       <Router>
         {!alertMessage ? null : (
           <Alert message={alertMessage} setAlertMessage={setAlertMessage} />
         )}
-
         <Routes>
           <Route path="/">
-            <Suspense
-              fallback={
-                <div className="loading-container">
-                  <span className="loading"></span>
-                </div>
-              }
-            >
+            <Suspense fallback={loader}>
               <LoginPage
                 authenticated={authenticated}
                 authoriseLogin={authoriseLogin}
@@ -49,41 +48,21 @@ export default function App() {
             </Suspense>
           </Route>
           <Route path="/contracts">
-            <Suspense
-              fallback={
-                <div className="loading-container">
-                  <span className="loading"></span>
-                </div>
-              }
-            >
-              {console.log(authenticated)}
+            <Suspense fallback={loader}>
               {authenticated ? (
                 <Canvas page={<EnhancedTable />} />
               ) : (
-                // <RedirectHome onLoad={loginAlert("Logged Out")} />
                 <RedirectHome loginAlert={loginAlert} />
               )}
             </Suspense>
           </Route>
           <Route path="/editor">
-            <Suspense
-              fallback={
-                <div className="loading-container">
-                  <span className="loading"></span>
-                </div>
-              }
-            >
-              {<Canvas page={<DocumentEditor />} />}
+            <Suspense fallback={loader}>
+              <DocumentEditor />
             </Suspense>
           </Route>
           <Route path="/*">
-            <Suspense
-              fallback={
-                <div className="loading-container">
-                  <span className="loading"></span>
-                </div>
-              }
-            >
+            <Suspense fallback={loader}>
               <div>Page Not Found </div>
             </Suspense>
           </Route>

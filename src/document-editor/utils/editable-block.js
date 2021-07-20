@@ -132,15 +132,33 @@ class EditableBlock extends React.Component {
             close={this.closeSelectMenuHandler}
           />
         )}
-        <ContentEditable
-          className="block"
-          innerRef={this.contentEditable}
-          html={this.state.html}
-          tagName={this.state.tag}
-          onChange={this.onChangeHandler}
-          onKeyDown={this.onKeyDownHandler}
-          onKeyUp={this.onKeyUpHandler}
-        />
+        {this.state.tag === "ol" ? (
+          <ol>
+            {this.state.html.map((block, key) => (
+              <ContentEditable
+                className="block"
+                innerRef={this.contentEditable[key]}
+                html={this.state.html[key]}
+                tagName={"li"}
+                onChange={this.onChangeHandler}
+                onKeyDown={this.onKeyDownHandler}
+                onKeyUp={this.onKeyUpHandler}
+                role={this.props.role}
+              />
+            ))}
+          </ol>
+        ) : (
+          <ContentEditable
+            className="block"
+            innerRef={this.contentEditable}
+            html={this.state.html}
+            tagName={this.state.tag}
+            onChange={this.onChangeHandler}
+            onKeyDown={this.onKeyDownHandler}
+            onKeyUp={this.onKeyUpHandler}
+            role={this.props.role}
+          />
+        )}
       </>
     );
   }

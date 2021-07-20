@@ -4,9 +4,11 @@ import "../styles.scss";
 import EditableBlock from "./editable-block";
 import uid from "./uid";
 import { setCaretToEnd } from "./caret-helpers";
-import GenericNda from "../../_api/nda/nda.json";
 
-const initialBlock = { id: uid(), html: "example", tag: "p" };
+const initialBlock = [
+  { id: uid(), html: "example", tag: "p" },
+  { id: uid(), html: "example", tag: "p" }
+];
 
 // a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
@@ -28,10 +30,11 @@ const getItemStyle = (isDragging, draggableStyle) => ({
 });
 
 const EditablePage = (props) => {
-  const [blocks, setBlocks] = useState([initialBlock]);
+  const [blocks, setBlocks] = useState(initialBlock);
 
   useEffect(() => {
-    setBlocks(GenericNda.NDA);
+    console.log(blocks);
+    setBlocks(props.contract);
   }, []);
 
   function updatePageHandler(updatedBlock) {
@@ -55,7 +58,11 @@ const EditablePage = (props) => {
     const currentNode = e.ref;
 
     setTimeout(function () {
-      currentNode.parentNode.nextElementSibling.firstChild.focus();
+      if (currentNode === null) {
+        document.activeElement.parentNode.parentNode.nextElementSibling.firstChild.focus();
+      } else {
+        currentNode.parentNode.nextElementSibling.firstChild.focus();
+      }
     }, 0);
   }
 

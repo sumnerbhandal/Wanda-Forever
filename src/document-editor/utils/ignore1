@@ -1,0 +1,122 @@
+import React, { useState, useRef, useEffect } from "react";
+import { matchSorter } from "match-sorter";
+
+const MENU_HEIGHT = 150;
+const allowedTags = [
+  {
+    id: "page-title",
+    tag: "h1",
+    label: "Page Title"
+  },
+  {
+    id: "heading",
+    tag: "h2",
+    label: "Heading"
+  },
+  {
+    id: "subheading",
+    tag: "h3",
+    label: "Subheading"
+  },
+  {
+    id: "paragraph",
+    tag: "p",
+    label: "Paragraph"
+  },
+  {
+    id: "list",
+    tag: "li",
+    label: "Bullet"
+  }
+];
+
+const SelectMenu = (props) => {
+  // constructor(props) {
+  //   super(props);
+  //   this.keyDownHandler = this.keyDownHandler.bind(this);
+  //   this.state = {
+  //     command: "",
+  //     items: allowedTags,
+  //     selectedItem: 0
+  //   };
+  // }
+  const [command, setCommand] = useState("");
+
+  const [items, setItems] = useState(allowedTags);
+  const [selectedItem, setSelectedItem] = useState(0);
+  const didMountRef = useRef(false);
+
+  useEffect((prevProps, prevState) => {
+    document.addEventListener("keydown", keyDownHandler);
+    if (didMountRef.current) {
+      // componentDidUpdate();
+    } else didMountRef.current = true;
+  });
+
+  // Whenever the command changes, look for matching tags in the list
+  // function componentDidUpdate(prevProps, prevState) {
+  //   if (prevState.command !== command) {
+  //     const items = matchSorter(allowedTags, command, { keys: ["tag"] });
+  //     setItems(items);
+  //   }
+  // }
+
+  function keyDownHandler(e) {
+    // const items = this.state.items;
+    // const selected = this.state.selectedItem;
+    // const command = this.state.command;
+
+    console.log(selectedItem);
+    const selectedKey = selectedItem;
+    setSelectedItem(null);
+    // console.log(command);
+
+    if (e.key === "Enter") {
+      e.preventDefault();
+      props.onSelect(items[selectedItem].tag);
+    } else if (e.key === "Backspace") {
+      if (!command) props.close();
+      setCommand(command.substring(0, command.length - 1));
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      const prevSelected =
+        selectedKey === 0 ? items.length - 1 : selectedItem - 1;
+      setSelectedItem(prevSelected);
+    } else if (e.key === "ArrowDown" || e.key === "Tab") {
+      e.preventDefault();
+      const nextSelected =
+        selectedKey === items.length - 1 ? 0 : selectedItem + 1;
+      setSelectedItem(nextSelected);
+    } else {
+      setCommand(command + e.key);
+    }
+  }
+
+  // Define the absolute position before rendering
+  const x = props.position.x;
+  const y = props.position.y - MENU_HEIGHT;
+  const positionAttributes = { top: y, left: x };
+
+  return (
+    <div className="SelectMenu" style={positionAttributes}>
+      <div className="Items">
+        {items.map((item, key) => {
+          const isSelected = items.indexOf(item) === selectedItem;
+          return (
+            <div
+              className={isSelected ? "Selected" : null}
+              key={key}
+              role="button"
+              tabIndex="0"
+              onClick={() => props.onSelect(item.tag)}
+            >
+              {item.label}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+export default SelectMenu;

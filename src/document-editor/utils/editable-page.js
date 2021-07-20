@@ -75,22 +75,28 @@ const EditablePage = (props) => {
     const index = blocks.map((b) => b.id).indexOf(e.id);
     const updatedBlocks = [...blocks];
     updatedBlocks.splice(index + 1, 0, newBlock);
+
     setBlocks(updatedBlocks);
-    console.log(e.ref.parentNode.nextElementSibling.firstChild);
-    e.ref.parentNode.nextElementSibling.firstChild.focus();
+    const currentNode = e.ref;
+
+    setTimeout(function () {
+      currentNode.parentNode.nextElementSibling.firstChild.focus();
+    }, 0);
   }
 
   function deleteBlockHandler(e) {
     // Only delete the block, if there is a preceding one
     const previousBlock = e.ref.parentNode.previousElementSibling.firstChild;
+    console.log(previousBlock.parentNode);
     if (previousBlock) {
       const index = blocks.map((b) => b.id).indexOf(e.id);
       const updatedBlocks = [...blocks];
       updatedBlocks.splice(index, 1);
-      setBlocks(updatedBlocks, () => {
-        setCaretToEnd(previousBlock);
+      setBlocks(updatedBlocks);
+      setCaretToEnd(previousBlock);
+      setTimeout(function () {
         previousBlock.focus();
-      });
+      }, 0);
     }
   }
 

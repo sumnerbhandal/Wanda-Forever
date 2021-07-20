@@ -11,19 +11,11 @@ import GenericNda from "../../_api/nda/nda.json";
 
 const initialBlock = { id: uid(), html: "example", tag: "p" };
 
-// fake data generator
-const getItems = (count) =>
-  Array.from({ length: count }, (v, k) => k).map((k) => ({
-    id: `item-${k}`,
-    content: `item ${k}`
-  }));
-
 // a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list);
   const [removed] = result.splice(startIndex, 1);
   result.splice(endIndex, 0, removed);
-
   return result;
 };
 
@@ -38,26 +30,12 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   ...draggableStyle
 });
 
-// const getListStyle = (isDraggingOver) => ({
-//   background: isDraggingOver ? "lightblue" : "lightgrey"
-// });
-
 const EditablePage = (props) => {
   const [blocks, setBlocks] = useState([initialBlock]);
 
   useEffect(() => {
     setBlocks(GenericNda.NDA);
   }, []);
-
-  // componentDidMount() {
-  //   this.setState({ blocks: GenericNda.NDA });
-  //   console.log();
-  // }
-
-  // componentDidUpdate() {
-  //   const length = this.state.blocks.length;
-  //   // this.setState({ items: getItems(length) });
-  // }
 
   function updatePageHandler(updatedBlock) {
     const index = blocks.map((b) => b.id).indexOf(updatedBlock.id);
@@ -111,10 +89,7 @@ const EditablePage = (props) => {
       result.source.index,
       result.destination.index
     );
-
-    this.setState({
-      items
-    });
+    setBlocks(items);
   }
 
   return (
@@ -122,11 +97,7 @@ const EditablePage = (props) => {
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="droppable">
           {(provided, snapshot) => (
-            <div
-              {...provided.droppableProps}
-              ref={provided.innerRef}
-              // style={getListStyle(snapshot.isDraggingOver)}
-            >
+            <div {...provided.droppableProps} ref={provided.innerRef}>
               {blocks.map((block, key) => (
                 <Draggable
                   className="list-reorder"

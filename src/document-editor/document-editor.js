@@ -3,13 +3,26 @@ import EditablePage from "./utils/editable-page";
 import GenericNda from "../_api/nda/nda.json";
 import GenericNda2 from "../_api/nda/nda-2.json";
 import DropDown from "../_input/dropDown/dropDown";
+import Button from "../_input/button/button";
 
 import Canvas from "../canvas/canvas";
 
 import "./styles.scss";
 
-const clientOptions = ["Example", "Example", "Example", "Example", "Example"];
-const playbookOptions = ["Example", "Example", "Example", "Example", "Example"];
+const clientOptions = [
+  "Client 1",
+  "Client 2",
+  "Client 3",
+  "Client 4",
+  "Client 5"
+];
+const playbookOptions = [
+  "Playbook 1",
+  "Playbook 2",
+  "Playbook 3",
+  "Playbook 4",
+  "Playbook 5"
+];
 
 const ContractDetails = (props) => {
   return (
@@ -33,7 +46,7 @@ const ContractDetails = (props) => {
       <div className="section options">
         <DropDown
           id="contract-client"
-          label="Username"
+          label="Client"
           name="contract-client"
           option={clientOptions}
         />
@@ -43,6 +56,7 @@ const ContractDetails = (props) => {
           name="ontract-client-playbook"
           option={playbookOptions}
         />
+        <Button variant="primary" type="submit" label="Run Boilerplate" />
       </div>
     </>
   );
@@ -53,7 +67,7 @@ const DocumentEditor = (props) => {
 
   return (
     <Canvas
-      username="Username"
+      username="Namey Name"
       page={<EditablePage contract={GenericNda.NDA} />}
       sidebar={<ContractDetails />}
     />

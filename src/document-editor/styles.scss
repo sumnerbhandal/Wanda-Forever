@@ -1,12 +1,14 @@
 
 .contract {
-  max-width: 64rem;
-  margin: 2rem auto;
+  max-width: 58rem;
+  margin: 8rem auto;
   padding: 0 2rem;
 
   > div {
     > div {
       position: relative;
+      padding: 0 0.125rem 0 2.5rem;
+      border-radius: 0.25rem;
 
       &:hover {
         background: #e6e6e6;
@@ -24,8 +26,64 @@
           background-position: center;
         }
       }
-      padding: 0 0.125rem 0 2.5rem;
-      border-radius: 0.25rem;
+
+      .SelectMenu {
+        position: fixed;
+        width: 16rem;
+        height: 9rem;
+        z-index: 11;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+
+        .Items {
+          background: #fafafa;
+          border: 0.0625rem solid var(--robin-blue);
+          border-radius: 0.25rem;
+          box-shadow: rgba(15, 15, 15, 0.05) 0px 0px 0px 1px,
+            rgba(15, 15, 15, 0.1) 0px 3px 6px, rgba(15, 15, 15, 0.2) 0px 9px 24px;
+
+            .section {
+              border-bottom: 0.0625rem solid var(--robin-blue);
+
+              &:last-of-type {
+                border-bottom: none;
+                cursor: default;
+              }
+
+                div[role="button"] {
+                  padding: 0.75rem 1rem;
+                  border-bottom: 1px solid #f5f6fb;
+                  cursor: pointer;
+
+                  &:first-of-type {
+                    &:hover, &:focus {
+                      border-top-right-radius: 0.25rem;
+                      border-top-left-radius: 0.25rem;
+                    }
+                  }
+
+                  &:hover, &:focus {
+                    background: #e6e6e6;
+                  }
+
+                  &:last-of-type {
+                    border-bottom: none;
+                  }
+              }
+
+              p {
+                padding: 0 1rem;
+                cursor: default;
+              }
+          }
+        }
+      }
+
+      strong {
+        display: block;
+      }
+
 
       .block {
         padding: 0.5rem;
@@ -36,9 +94,8 @@
         margin-block-end: 0;
         cursor: text;
         position: relative;
-        display: block;
+  
         
-
         &:focus {
           background: #e6e6e6;
 
@@ -93,38 +150,9 @@
 
 /* SELECT MENU */
 
-.SelectMenu {
-  position: fixed;
-  width: 6.875rem;
-  height: 9rem;
-  z-index: 11;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-.SelectMenu .Items {
-  background: #fafafa;
-  box-shadow: rgba(15, 15, 15, 0.05) 0px 0px 0px 1px,
-    rgba(15, 15, 15, 0.1) 0px 3px 6px, rgba(15, 15, 15, 0.2) 0px 9px 24px;
-}
-.SelectMenu .Items div[role="button"] {
-  font-size: 0.875rem;
-  font-weight: 400;
-  padding: 0.5rem 1rem;
-  border-bottom: 1px solid #f5f6fb;
-}
-.SelectMenu .Items div[role="button"]:hover {
-  background: #e6e6e6;
-  cursor: pointer;
-}
-.SelectMenu .Items div[role="button"]:last-of-type {
-  border-bottom: none;
-}
-.SelectMenu .Items div[role="button"]:hover,
-.SelectMenu .Items div[role="button"]:focus {
-  background: #e6e6e6;
-  cursor: pointer;
-}
+
+
+
 // .SelectMenu .Items div[role="button"]:first-of-type:hover,
 // .SelectMenu .Items div[role="button"]:first-of-type:focus {
 //   border-top-right-radius: 0.5rem;

@@ -1,32 +1,27 @@
 import React from "react";
 import { matchSorter } from "match-sorter";
 
-const MENU_HEIGHT = 150;
+const MENU_HEIGHT = 108;
 const allowedTags = [
   {
     id: "page-title",
     tag: "h1",
-    label: "Page Title"
+    label: "Make Page Title"
   },
   {
     id: "heading",
     tag: "h2",
-    label: "Heading"
-  },
-  {
-    id: "subheading",
-    tag: "h3",
-    label: "Subheading"
+    label: "Make Heading"
   },
   {
     id: "paragraph",
     tag: "p",
-    label: "Paragraph"
+    label: "Make Paragraph"
   },
   {
     id: "list",
     tag: "li",
-    label: "Bullet"
+    label: "Make Bullet Point"
   }
 ];
 
@@ -93,27 +88,34 @@ class SelectMenu extends React.Component {
   render() {
     // Define the absolute position before rendering
     const x = this.props.position.x;
-    const y = this.props.position.y - MENU_HEIGHT;
+    const y = this.props.position.y + MENU_HEIGHT;
     const positionAttributes = { top: y, left: x };
 
     return (
       <div className="SelectMenu" style={positionAttributes}>
         <div className="Items">
-          {this.state.items.map((item, key) => {
-            const selectedItem = this.state.selectedItem;
-            const isSelected = this.state.items.indexOf(item) === selectedItem;
-            return (
-              <div
-                className={isSelected ? "Selected" : null}
-                key={key}
-                role="button"
-                tabIndex="0"
-                onClick={() => this.props.onSelect(item.tag)}
-              >
-                {item.label}
-              </div>
-            );
-          })}
+          <div className="section">
+            {this.state.items.map((item, key) => {
+              const selectedItem = this.state.selectedItem;
+              const isSelected =
+                this.state.items.indexOf(item) === selectedItem;
+              return (
+                <div
+                  className={isSelected ? "Selected" : null}
+                  key={key}
+                  role="button"
+                  tabIndex="0"
+                  onClick={() => this.props.onSelect(item.tag)}
+                >
+                  {item.label}
+                </div>
+              );
+            })}
+          </div>
+          <div className="section">
+            <p>Last Edited by Namey Name</p>
+            <p>Today at 9:23</p>
+          </div>
         </div>
       </div>
     );

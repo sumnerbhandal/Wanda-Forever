@@ -3,13 +3,14 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom/index";
 import "./styles.scss";
 import Alert from "../_notification/alert/alert";
 import RedirectHome from "./redirect";
-const EnhancedTable = lazy(() => import("../demo"));
+const EnhancedTable = lazy(() => import("../contract-hub/contract-hub"));
 const DocumentEditor = lazy(() => import("../document-editor/document-editor"));
 const LoginPage = lazy(() => import("../login/login"));
 const Canvas = lazy(() => import("../canvas/canvas"));
 
 export default function App() {
   const [authenticated, setAuthenticated] = useState(false);
+  // const authenticated = true;
   const [alertMessage, setAlertMessage] = useState(false);
   function authoriseLogin(newValue) {
     setAuthenticated(newValue);

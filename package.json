@@ -5,9 +5,13 @@
   },
   "description": "",
   "dependencies": {
+    "@emotion/react": "11.4.1",
+    "@emotion/styled": "11.3.0",
     "@material-ui/core": "latest",
     "@material-ui/icons": "latest",
     "@material-ui/styles": "4.11.4",
+    "@mui/icons-material": "5.0.4",
+    "@mui/material": "5.0.4",
     "history": "5.0.0",
     "match-sorter": "6.3.0",
     "prop-types": "latest",

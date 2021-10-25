@@ -4,7 +4,7 @@
 
   .contract-hub {
     width: 50rem;
-    margin-top: 5rem;
+    margin-top: 3.75rem;
 
     table {
       &.MuiTable-root {
@@ -14,50 +14,129 @@
             th {
               border-bottom: 0.0625rem solid #000;
               padding: 0.5rem 0;
+
+              &:nth-child(1) {
+                width: 2rem;
+                padding-left: 0.25rem;
+              }
             }
           }
         }
       
         tbody {
           tr {
+            transition: background 0.3s ease;
+  
+
+            td {
+              border-bottom: 0;
+            }
 
 
             &.default-row {
             height: 3.5rem;
-        
-            td {
-              padding: 0.25rem 0;
-        
-              &:nth-child(1) {
-                width: 2rem;
+            border-radius: 0.25rem;
+            border-bottom: 0.0625rem solid #fff;
+
+              &:hover {
+
+                td {
+                  background: var(--hover-highlight);
+                }
               }
-        
-              &:nth-child(2) {
-                width: 20rem;
+
+              &.closed {
+                border-bottom: 0.0625rem solid #E6E6E6;
               }
-              &:nth-child(3) {
-                width: 11.25rem;
-              }
-              &:nth-child(4) {
-                width: 6.5rem;
-              }
-              &:nth-child(5) {
-                width: 1.5rem;
-              }
-        
-        
-              .nda-seed {
-                background: #CCD3E4;
-                padding: 0.25rem 0.5rem;
-                width: fit-content;
-                border-radius: 1rem;
-                height: 2rem;
-                display: flex;
-                align-items: center;
+          
+              td {
+                padding: 0.25rem 0;
+          
+                &:nth-child(1) {
+                  width: 2rem;
+                  padding-left: 0.25rem;
+                }
+          
+                &:nth-child(2) {
+                  width: 20rem;
+                }
+                &:nth-child(3) {
+                  width: 11.25rem;
+                }
+                &:nth-child(4) {
+                  width: 6.5rem;
+                }
+                &:nth-child(5) {
+                  width: 1.5rem;
+
+                  path {
+                    color: var(--electric-blue);
+                  }
+                }
+          
+                .nda-seed {
+                  background: #CCD3E4;
+                  padding: 0.25rem 0.5rem;
+                  width: fit-content;
+                  border-radius: 1rem;
+                  height: 2rem;
+                  display: flex;
+                  align-items: center;
+                }
+
+                .name-container {
+                  display: flex;
+                  align-items: center;
+
+                  .name-seed {
+                    height: 2rem;
+                    width: 2rem;
+                    display: flex;
+                    align-items: center;
+                    background: #E6E9F1;
+                    border-radius: 1rem;
+                    justify-content: center;
+                    margin-right: 0.5rem;
+                    // font-size: 0.75rem;
+                  }
+                }
               }
             }
-          }
-        
+
+            &.settings {
+              &.expanded {
+                border-bottom: 0.0625rem solid #E6E6E6;
+              }
+
+              h2 {
+                margin-bottom: 1.5rem;
+              }
+    
+              .input-row {
+                display: flex;
+                align-items: center;
+                margin-bottom: 1rem;
+    
+                label {
+                  margin-right: 1rem;
+                }
+                select {
+                  margin: 0;
+                }
+              }
+              .button-row {
+                display: flex;
+                align-items: center;
+                width: 26rem;
+                justify-content: space-between;
+                margin-bottom: 2rem;
+
+                p {
+                  color: var(--subtext)
+                }
+              }
+
+            }        
           }
         }
         

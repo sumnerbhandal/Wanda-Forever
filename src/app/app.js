@@ -7,6 +7,7 @@ const EnhancedTable = lazy(() => import("../contract-hub/contract-hub"));
 const DocumentEditor = lazy(() => import("../document-editor/document-editor"));
 const LoginPage = lazy(() => import("../login/login"));
 const Canvas = lazy(() => import("../canvas/canvas"));
+const HubHeader = lazy(() => import("../_header/hub-header"));
 
 export default function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -51,7 +52,10 @@ export default function App() {
           <Route path="/contracts">
             <Suspense fallback={loader}>
               {authenticated ? (
-                <Canvas page={<EnhancedTable />} />
+                <>
+                  <HubHeader />
+                  <Canvas page={<EnhancedTable />} />
+                </>
               ) : (
                 <RedirectHome loginAlert={loginAlert} />
               )}

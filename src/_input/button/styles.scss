@@ -2,22 +2,25 @@ button {
   &.cta {
     border-radius: 2rem;
     border: 0;
-    height: 3rem;
-    padding: 0 2rem;
+    height: 2.5rem;
+    padding: 0 1rem;
     margin-top: 0.375rem;
     cursor: pointer;
     display: flex;
     align-items: center;
-    font-size: 1.0625rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.125px;
+    transition: background 0.3s ease;
   }
 
-  &:hover, &:focus {
-    span {
-      &.material-icons {
-        transform: translate(0.5rem, 0.0625rem);
-      }
-    }
-  }
+  // &:hover, &:focus {
+  //   span {
+  //     &.material-icons {
+  //       transform: translate(0.25rem, 0.0625rem);
+  //     }
+  //   }
+  // }
 
     span {
     &.material-icons {
@@ -30,16 +33,32 @@ button {
   }
 
   &.primary {
-    background: var(--robin-blue);
+    background: var(--electric-blue);
     color: #fff;
+
+    &:hover {
+      background: #0A39A7;
+    }
+    &:active {
+      background: #002B90;
+    }
   }
   &.secondary {
     background: #fff;
     border: 0.0625rem solid var(--robin-blue);
+    color: var(--robin-blue);
+
+    &:hover {
+      background: #E6E9F1;
+    }
+    &:active {
+      background: #CCD3E4;
+    }
   }
   &.text {
     background: #fff;
     padding: 0;
+    color: var(--electric-blue);
   }
 
 }

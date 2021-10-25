@@ -12,34 +12,14 @@ import TableSortLabel from "@mui/material/TableSortLabel";
 import { visuallyHidden } from "@mui/utils";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import UnfoldLessIcon from "@mui/icons-material/UnfoldLess";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 import "./styles.scss";
 import rows from "./data";
-
-//generates random id;
-let guid = () => {
-  let s4 = () => {
-    return Math.floor((1 + Math.random()) * 0x10000)
-      .toString(16)
-      .substring(1);
-  };
-  //return id of format 'aaaaaaaa'-'aaaa'-'aaaa'-'aaaa'-'aaaaaaaaaaaa'
-  return (
-    s4() +
-    s4() +
-    "-" +
-    s4() +
-    "-" +
-    s4() +
-    "-" +
-    s4() +
-    "-" +
-    s4() +
-    s4() +
-    s4()
-  );
-};
+import guid from "../utils/guid";
+import DropDown from "../_input/dropDown/dropDown";
+import FieldInput from "../_input/textInput/textInput";
+import Button from "../_input/button/button";
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -138,58 +118,123 @@ EnhancedTableHead.propTypes = {
 function Row(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
+  const rowId = guid();
+  const typeOptions = ["NDA", "Another One"];
+  const groupOptions = ["Example Group 1", "Example Group 2"];
+  const playbookOptions = ["Playbook 1", "Playbook 2"];
+  const [contractName, setContractName] = React.useState(row.name);
+  const [lastEdited, setLastEdited] = React.useState(row.lastEdited);
+  const [contractMessage, setContractMessage] = React.useState(null);
+  const [contractNameState, setContractNameState] = React.useState(null);
+
+  function getDate() {
+    let today = new Date();
+    let strDate = "Y/m/d"
+      .replace("Y", today.getFullYear())
+      .replace("m", today.getMonth() + 1)
+      .replace("d", today.getDate());
+    setLastEdited(strDate);
+  }
+
+  function getFirstLetters(str) {
+    const firstLetters = str
+      .split(" ")
+      .map((word) => word[0])
+      .join("");
+
+    return firstLetters;
+  }
+
+  function updateName(e) {
+    const event = e.target;
+    setContractName(event.value);
+    getDate();
+    if (contractName.length < 4) {
+      setContractMessage("Contract name must be more than 3 characters");
+      setContractNameState("error");
+    } else {
+      setContractMessage(null);
+      setContractNameState(null);
+    }
+  }
 
   return (
     <React.Fragment>
       <TableRow
-        className="default-row"
+        className={open ? "default-row" : "default-row closed"}
         tabIndex={-1}
-        key={guid()}
+        key={rowId}
         sx={{ "& > *": { borderBottom: "unset" } }}
       >
         <TableCell>
           <div className="nda-seed">{row.type}</div>
         </TableCell>
-        <TableCell>{row.name}</TableCell>
-        <TableCell>{row.lastEditedBy}</TableCell>
-        <TableCell>{row.lastEdited}</TableCell>
+        <TableCell>
+          <a href="#">{contractName}</a>
+        </TableCell>
+        <TableCell>
+          <div className="name-container">
+            <div className="name-seed">{getFirstLetters(row.lastEditedBy)}</div>
+            {row.lastEditedBy}
+          </div>
+        </TableCell>
+        <TableCell>{lastEdited}</TableCell>
         <TableCell>
           <IconButton
             aria-label="expand row"
             size="small"
             onClick={() => setOpen(!open)}
           >
-            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+            {open ? <UnfoldLessIcon /> : <MoreVertIcon />}
           </IconButton>
         </TableCell>
       </TableRow>
 
-      <TableRow>
+      <TableRow className={open ? "settings expanded" : "settings closed"}>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
-            <Box sx={{ margin: 1 }}>
-              <h6>History</h6>
-              <Table size="small" aria-label="purchases">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Date</TableCell>
-                    <TableCell>Customer</TableCell>
-                    <TableCell align="right">Amount</TableCell>
-                    <TableCell align="right">Total price ($)</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  <TableRow>
-                    <TableCell component="th" scope="row">
-                      Hello
-                    </TableCell>
-                    <TableCell>Hell0 2</TableCell>
-                    <TableCell align="right">Hello 7</TableCell>
-                    <TableCell align="right">Hello 9</TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </Box>
+            <h2>Configure Contract</h2>
+
+            <FieldInput
+              id={`${rowId}-name`}
+              label="Name"
+              type="text"
+              name="name"
+              placeholder="Contract Name"
+              value={contractName}
+              message={contractMessage}
+              state={contractNameState}
+              onChange={updateName}
+            />
+            <DropDown
+              name="Type"
+              label="Type"
+              id={`${rowId}-type`}
+              option={typeOptions}
+            />
+
+            <DropDown
+              name="Group"
+              label="Group"
+              id={`${rowId}-group`}
+              option={groupOptions}
+            />
+
+            <DropDown
+              name="Playbook"
+              label="Playbook"
+              id={`${rowId}-playbook`}
+              option={playbookOptions}
+            />
+
+            <div className="button-row">
+              <p>Changes are saved automatically</p>
+              <Button
+                variant="secondary"
+                type="submit"
+                label="Open In Editor"
+              />
+            </div>
           </Collapse>
         </TableCell>
       </TableRow>
@@ -224,6 +269,7 @@ export default function EnhancedTable() {
 
   return (
     <div className="contract-hub">
+      <h1>Group Name 1</h1>
       <TableContainer>
         <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
           <EnhancedTableHead

@@ -4,9 +4,11 @@
   --subtext: #525252;
   --robin-grey-background: rgba(43, 52, 77, 0.1);
   --robin-grey-background-solid: #EAEBED;
-  --error: #FFB62E;
+  --error: #FFB3B3;
   --success: #B0E2B2;
   --information: #A5D1E4;
+  --hover-highlight: #F3F3F3;
+  --electric-blue: #005AD4;
 }
 
 *, html, body {
@@ -14,13 +16,35 @@
   box-sizing: border-box;
   color: var(--robin-blue);
   font-size: 0.875rem;
+  line-height: 1.5;
 }
 
 body {
-margin: 0;
+  margin: 0;
+
+  h1 {
+    font-size: 1.5rem;
+    &.xl {
+      font-size: 1.75rem;
+    }
+    &.xxl {
+      font-size: 2rem;
+    }
+  }
+  h2 {
+    font-size: 1.25rem;
+  }
+  h3 {
+    font-size: 1.125rem;
+  }
+  a {
+    color: var(--electric-blue);
+  }
+
   main {
     height: 100vh;
     width: 100vw;
+    overflow-x: hidden;
 
     .loading-container {
       height: 100vh;

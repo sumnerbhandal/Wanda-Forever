@@ -6,7 +6,7 @@ import Button from "../_input/button/button";
 
 const forwardArrow = (
   <>
-    Login{" "}
+    Sign In{" "}
     <span aria-hidden="true" className="material-icons">
       arrow_forward
     </span>

@@ -20,6 +20,8 @@ import guid from "../utils/guid";
 import DropDown from "../_input/dropDown/dropDown";
 import FieldInput from "../_input/textInput/textInput";
 import Button from "../_input/button/button";
+import decorativeAngle from "./_assets/Decoration.svg";
+import SearchBar from "material-ui-search-bar";
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -194,7 +196,6 @@ function Row(props) {
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <h2>Configure Contract</h2>
-
             <FieldInput
               id={`${rowId}-name`}
               label="Name"
@@ -305,6 +306,7 @@ export default function EnhancedTable() {
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
+      <img className="decorative-angle" src={decorativeAngle} />
     </div>
   );
 }

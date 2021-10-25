@@ -11,6 +11,25 @@ header {
   align-items: center;
   background: #fff;
 
+  .left {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    p {
+      font-size: 1.125rem;
+      font-weight: 700;
+      border-left: 0.0625rem solid #e6e6e6;
+      height: 100%;
+      margin-block-start: 0;
+      margin-block-end: 0;
+      display: flex;
+      align-items: center;
+      margin-left: 1.25rem;
+      padding-left: 1.25rem;
+    }
+  }
+
   .right {
     display: flex;
     align-items: center;
@@ -19,6 +38,23 @@ header {
       &:nth-child(1) {
         margin-right: 0.75rem;
       }
+      
+      img {
+        margin-left: 0.5rem;
+      }
     }
+
+    .user-icon {
+      height: 2.5rem;
+      width: 2.5rem;
+      justify-content: center;
+      display: flex;
+      align-items: center;
+      font-weight: 700;
+      background: #E6E9F1;
+      margin-left: 1rem;
+      border-radius: 50%;
+    }
+
   }
 }

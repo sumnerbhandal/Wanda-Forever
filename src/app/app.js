@@ -10,11 +10,11 @@ const Canvas = lazy(() => import("../canvas/canvas"));
 const HubHeader = lazy(() => import("../_header/hub-header"));
 
 export default function App() {
-  const [authenticated, setAuthenticated] = useState(false);
-  // const authenticated = true;
+  // const [authenticated, setAuthenticated] = useState(false);
+  const authenticated = true;
   const [alertMessage, setAlertMessage] = useState(false);
   function authoriseLogin(newValue) {
-    setAuthenticated(newValue);
+    // setAuthenticated(newValue);
   }
   function loginAlert(newValue) {
     setAlertMessage(newValue);

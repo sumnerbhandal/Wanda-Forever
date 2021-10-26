@@ -20,7 +20,9 @@ export default function HubHeader() {
   return (
     <header>
       <div className="left">
-        <img src={Robin} />
+        <a href="/contracts">
+          <img src={Robin} />
+        </a>
         <p>Wanda Contract Hub</p>
       </div>
       <div className="right">

@@ -18,6 +18,10 @@
       text-justify: inter-word;
       margin: 0 auto;
 
+      // @media only screen and (min-width: 1600px) {
+      //   width: 52.5rem;
+      // }
+
       &:focus-visible {
         outline: 0;
         // background: var(--hover-highlight);
@@ -82,18 +86,22 @@
     aside {
       width: 23rem;
       border-left: 0.0625rem solid var(--robin-blue);
-      transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out, height 0s;
       opacity: 0;
-      margin-right: -23rem;
       padding: 0.75rem;
+      position: fixed;
+      overflow-y: scroll;
+      height: calc(100vh - 4rem);
+      right: -23rem;
+      background: #fff;
 
       &.open {
         opacity: 1;
-        margin-right: 0.5rem;
+        right: 0.75rem;
       }
 
 
-      .playbook-settings-container {
+      .playbook-container {
         display: flex;
         width: 100%;
         padding: 0 0.75rem;
@@ -130,6 +138,130 @@
 
         input {
           width: 100%;
+          border: 0;
+          border-bottom: 0.0625rem solid var(--robin-blue);
+          height: 2.5rem;
+        }
+
+        .playbook-accordions {
+          margin-top: 1rem;
+
+          .MuiAccordion-root {
+            box-shadow: none;
+            color: var(--robin-blue);
+            margin-bottom: 0.25rem;
+
+            &:before {
+              background: none;
+            }
+
+            &.Mui-expanded {
+              margin: 0;
+            }
+
+            .MuiAccordionSummary-root {
+              min-height: 2.5rem;
+              background: rgba(230, 233, 241, 0.4);
+              border-radius: 2rem;
+              padding-left: 0.625rem;
+
+              &.Mui-expanded {
+                margin: 0;
+                background: #D6DEEF;
+              }
+
+              .MuiAccordionSummary-content {
+                margin: 0;
+                display: flex;
+                align-items: center;
+
+                .count {
+                  width: 2rem;
+                  height: 1.5rem;
+                  background: white;
+                  font-weight: 700;
+                  margin-right: 0.875rem;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  border-radius: 1rem;
+                }
+
+                p {
+                  margin-block-start: 0;
+                  margin-block-end: 0;
+                  font-weight: 700;
+                }
+
+
+              }
+            }
+
+            .MuiCollapse-root {
+
+              .MuiAccordionDetails-root {
+                padding: 0;
+
+                .recommendation, .issue {
+                  padding: 0.75rem 1rem;
+                  background: rgba(230, 233, 241, 0.4);
+                  border-radius: 0.5rem;
+                  margin-top: 0.5rem;
+
+                  p {
+                    margin-block-start: 0;
+                    margin-block-end: 0;
+
+                    &.title {
+                      margin-bottom: 0.25rem;
+                      font-weight: 700;
+                    }
+                  }
+                }
+
+                .issue {
+                  background: #fff;
+                }
+
+                .advisory {
+                  display: flex;
+                  align-items: center;
+                  padding: 0.25rem 1rem;
+                  margin-bottom: 1.25rem;
+
+                  .advisory-circle {
+                    width: 1.25rem;
+                    height: 1.25rem;
+                    border-radius: 50%;
+                    border: 0.125rem solid var(--robin-blue);
+                    margin-right: 0.625rem;
+
+                    &.Green {
+                      background: var(--success)
+                    }
+
+                    &.Amber {
+                      background: var(--warning)
+                    }
+
+                    &.Red {
+                      background: var(--error)
+                    }
+                  }
+                  p {
+                    font-weight: 700;
+                    margin-block-start: 0;
+                    margin-block-end: 0;
+                  }
+                }
+
+
+              }
+
+            }
+
+          }
+
         }
 
       }

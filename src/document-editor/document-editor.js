@@ -1,21 +1,7 @@
 import React, { useState } from "react";
 import EditorHeader from "../_header/editor-header";
-import Button from "../_input/button/button";
 import "./styles.scss";
-import CPU from "./_assets/CPU.svg";
-import Settings from "./_assets/Settings.svg";
-
-const RunAutoEdit = (
-  <>
-    Run Auto Edit <img src={CPU} />
-  </>
-);
-
-const PlaybookSettings = (
-  <>
-    <img src={Settings} />
-  </>
-);
+import PlaybookContent from "./playbook";
 
 const DocumentEditor = (props) => {
   const [drawerState, setDrawerState] = useState(false);
@@ -225,16 +211,7 @@ const DocumentEditor = (props) => {
           </ol>
         </article>
         <aside className={drawerState ? "open" : null}>
-          <div className="playbook-settings-container">
-            <div className="playbook-settings">
-              <h2>Playbook 1</h2>
-              <div className="button-container">
-                <Button variant="tertiary" label={RunAutoEdit} />
-                <Button variant="text" label={PlaybookSettings} />
-              </div>
-            </div>
-            <input />
-          </div>
+          <PlaybookContent />
         </aside>
       </div>
     </>

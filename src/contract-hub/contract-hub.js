@@ -21,7 +21,6 @@ import DropDown from "../_input/dropDown/dropDown";
 import FieldInput from "../_input/textInput/textInput";
 import Button from "../_input/button/button";
 import decorativeAngle from "./_assets/Decoration.svg";
-import SearchBar from "material-ui-search-bar";
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {

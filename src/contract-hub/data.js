@@ -1,3 +1,5 @@
+import * as React from "react";
+
 function createData(type, name, lastEditedBy, lastEdited) {
   return {
     type,
@@ -7,7 +9,7 @@ function createData(type, name, lastEditedBy, lastEdited) {
   };
 }
 
-export default rows = [
+const rows = [
   createData("NDA", "A Cut Below", "Fred Fox", "2021/10/01"),
   createData("NDA", "Love Birds", "Bernard Nixon", "2021/09/19"),
   createData("NDA", "Mouth-watering", "Dianna Allen", "2021/08/14"),
@@ -27,3 +29,5 @@ export default rows = [
   createData("NDA", "A Lot on One’s Plate", "Bernard Nixon", "2021/10/11"),
   createData("NDA", "Down For The Count", "Mitchell Wall", "2021/10/12")
 ];
+
+export default rows;

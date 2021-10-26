@@ -14,14 +14,6 @@ button {
     transition: background 0.3s ease;
   }
 
-  // &:hover, &:focus {
-  //   span {
-  //     &.material-icons {
-  //       transform: translate(0.25rem, 0.0625rem);
-  //     }
-  //   }
-  // }
-
     span {
     &.material-icons {
       font-size: 1.25rem;
@@ -53,6 +45,17 @@ button {
     }
     &:active {
       background: #CCD3E4;
+    }
+  }
+  &.tertiary {
+    background: rgba(230, 233, 241, 0.4);
+    color: var(--robin-blue);
+
+    &:hover {
+      background: #E6E9F1;
+    }
+    &:active {
+      background: #D6DEEF;
     }
   }
   &.text {

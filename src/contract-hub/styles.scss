@@ -33,6 +33,14 @@
 
             td {
               border-bottom: 0;
+
+              a {
+                max-width: 19rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: block;
+              }
             }
 
 

@@ -1,169 +1,139 @@
+.page {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
 
-.contract {
-  max-width: 58rem;
-  margin: 8rem auto;
-  padding: 0 2rem;
+  .editor {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 
-  > div {
-    > div {
-      position: relative;
-      padding: 0 0.125rem 0 2.5rem;
-      border-radius: 0.25rem;
 
-      &:hover {
-        background: #e6e6e6;
+    article {
+      width: 47.5rem;
+      padding: 3.75rem;
+      display: flex;
+      flex-wrap: wrap;
+      text-align: justify;
+      text-justify: inter-word;
+      margin: 0 auto;
 
-        &:before {
-          content: "";
-          position: absolute;
-          left: 0.5rem;
-          top: 0.5rem;
-          height: 1.5rem;
-          width: 1.5rem;
-          background-image: url(https://image.flaticon.com/icons/png/512/3793/3793594.png);
-          background-size: 80%;
-          background-repeat: no-repeat;
-          background-position: center;
-        }
-      }
-
-      .SelectMenu {
-        position: fixed;
-        width: 16rem;
-        height: 9rem;
-        z-index: 11;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-
-        .Items {
-          background: #fafafa;
-          border: 0.0625rem solid var(--robin-blue);
-          border-radius: 0.25rem;
-          box-shadow: rgba(15, 15, 15, 0.05) 0px 0px 0px 1px,
-            rgba(15, 15, 15, 0.1) 0px 3px 6px, rgba(15, 15, 15, 0.2) 0px 9px 24px;
-
-            .section {
-              border-bottom: 0.0625rem solid var(--robin-blue);
-
-              &:last-of-type {
-                border-bottom: none;
-                cursor: default;
-              }
-
-                div[role="button"] {
-                  padding: 0.75rem 1rem;
-                  border-bottom: 1px solid #f5f6fb;
-                  cursor: pointer;
-
-                  &:first-of-type {
-                    &:hover, &:focus {
-                      border-top-right-radius: 0.25rem;
-                      border-top-left-radius: 0.25rem;
-                    }
-                  }
-
-                  &:hover, &:focus {
-                    background: #e6e6e6;
-                  }
-
-                  &:last-of-type {
-                    border-bottom: none;
-                  }
-              }
-
-              p {
-                padding: 0 1rem;
-                cursor: default;
-              }
-          }
-        }
-      }
-
-      strong {
-        display: block;
+      &:focus-visible {
+        outline: 0;
+        // background: var(--hover-highlight);
       }
 
 
-      .block {
-        padding: 0.5rem;
-        // background: #fafafa;
-        border-radius: 0.25rem;
-        line-height: 1.5;
-        margin-block-start: 0;
-        margin-block-end: 0;
-        cursor: text;
-        position: relative;
-  
-        
-        &:focus {
-          background: #e6e6e6;
-
-          &:after {
-            content: "";
-            position: absolute;
-            right: -2.5rem;
-            top: 0.5rem;
-            height: 1.5rem;
-            width: 1.5rem;
-            background-image: url(https://image.flaticon.com/icons/png/512/1828/1828911.png);
-            background-size: 80%;
-            background-repeat: no-repeat;
-            background-position: center;
-          }
-        }
-      }
       h1 {
-        font-size: 1.75rem;
+        width: 100%;
+        text-align: left;
+      }
+
+      span.placeholder {
+        background: #E6E9F1;
+      }
+
+      h1, h2, h3, p {
+        // &:focus-visible {
+        //   outline: 0;
+        //   // background: var(--hover-highlight);
+        // }
+      }
+      ol {
+
+          counter-reset: item;
+          margin-bottom: 1.5rem;
+
+          li {
+            display: block;
+            margin-bottom: 0.625rem;
+            margin-top: 0.625rem;
+            position: relative;
+
+            &:before {
+              content: counters(item, ".") "";
+              counter-increment: item;
+              left: -1.25rem;
+              position: absolute;
+            }
+
+            li {
+              &:before {
+                left: -2rem;
+              }
+            }
+        }  
+        &[type=a] {
+
+          counter-reset: list;
+          li {
+  
+
+            &:before {
+              counter-increment: list;
+              content: "(" counter(list, lower-alpha) ")";
+              left: -1.75rem;
+              padding-right: 1rem;
+            }
+          }
+        }
       }
     }
-  }
+    aside {
+      width: 23rem;
+      border-left: 0.0625rem solid var(--robin-blue);
+      transition: all 0.3s ease-in-out;
+      opacity: 0;
+      margin-right: -23rem;
+      padding: 0.75rem;
 
+      &.open {
+        opacity: 1;
+        margin-right: 0.5rem;
+      }
+
+
+      .playbook-settings-container {
+        display: flex;
+        width: 100%;
+        padding: 0 0.75rem;
+        flex-wrap: wrap;
+        
+        .playbook-settings {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          align-items: center;
+
+          .button-container {
+            display: flex;
+            align-items: center;
+
+            button {
+              margin: 0;
   
-}
+              img {
+                margin-left: 0.5rem;
+              }
+  
+              &.text {
+                margin-left: 1rem;
+  
+                img {
+                  margin-left: 0;
+                }
+              }
+            }
 
+          }
+        }
 
-.Logo {
-  margin: 2rem 0;
-  width: 100%;
-  color: #0f2e53;
-  font-size: 1.8rem;
-  font-weight: 700;
-}
+        input {
+          width: 100%;
+        }
 
-.Intro {
-  padding: 0.25rem 1rem 0.25rem 0.5rem;
-  margin: 2rem 0;
-  border-left: 0.25rem solid #0f2e53;
-}
+      }
 
-.Code {
-  background: #f2f2f2;
-  padding: 0.125rem;
-  border-radius: 0.125rem;
-  font-family: monospace;
-}
-
-.Emoji {
-  padding-right: 0.5rem;
-}
-
-/* SELECT MENU */
-
-
-
-
-// .SelectMenu .Items div[role="button"]:first-of-type:hover,
-// .SelectMenu .Items div[role="button"]:first-of-type:focus {
-//   border-top-right-radius: 0.5rem;
-//   border-top-left-radius: 0.5rem;
-// }
-// .SelectMenu .Items div[role="button"]:last-of-type:hover,
-// .SelectMenu .Items div[role="button"]:last-of-type:focus {
-//   border-bottom-right-radius: 0.5rem;
-//   border-bottom-left-radius: 0.5rem;
-// }
-.Selected {
-  background: #e6e6e6;
-  // border-radius: 0.5rem;
+    }
+  }
 }

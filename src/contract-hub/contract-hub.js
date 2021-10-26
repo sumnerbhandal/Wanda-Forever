@@ -171,7 +171,7 @@ function Row(props) {
           <div className="nda-seed">{row.type}</div>
         </TableCell>
         <TableCell>
-          <a href="#">{contractName}</a>
+          <a href="/editor">{contractName}</a>
         </TableCell>
         <TableCell>
           <div className="name-container">

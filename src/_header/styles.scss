@@ -27,6 +27,14 @@ header {
       align-items: center;
       margin-left: 1.25rem;
       padding-left: 1.25rem;
+
+      &.last-edited {
+        border-left: 0;
+        font-size: 0.875rem;
+        color: var(--subtext);
+        margin-left: 0;
+        font-weight: 500;
+      }
     }
   }
 

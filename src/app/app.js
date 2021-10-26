@@ -63,7 +63,10 @@ export default function App() {
           </Route>
           <Route path="/editor">
             <Suspense fallback={loader}>
-              <DocumentEditor />
+              <>
+                {/* <HubHeader /> */}
+                <Canvas page={<DocumentEditor />} />
+              </>
             </Suspense>
           </Route>
           <Route path="/*">

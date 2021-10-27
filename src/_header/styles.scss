@@ -16,6 +16,12 @@ header {
     align-items: center;
     height: 100%;
 
+    a {
+      img {
+        width: 3rem;
+      }
+    }
+
     p {
       font-size: 1.125rem;
       font-weight: 700;

@@ -48,6 +48,34 @@
                 border-radius: 0.5rem;
                 margin-top: 0.5rem;
                 margin-bottom: 0;
+
+                h2 {
+                  margin-bottom: 1.5rem;
+                }
+      
+                .input-row {
+                  display: flex;
+                  align-items: center;
+                  margin-bottom: 1rem;
+      
+                  label {
+                    margin-right: 1rem;
+                  }
+                  select {
+                    margin: 0;
+                  }
+                }
+                .button-row {
+                  display: flex;
+                  align-items: center;
+                  width: 31rem;
+                  justify-content: space-between;
+                  margin-bottom: 1.25rem;
+  
+                  p {
+                    color: var(--subtext)
+                  }
+                }
               }
 
               
@@ -132,6 +160,7 @@
                   margin-bottom: 1.5rem;
                 }
               }
+
             }        
           }
         }

@@ -41,6 +41,16 @@
                 text-overflow: ellipsis;
                 display: block;
               }
+
+              .MuiCollapse-root {
+                background: rgba(230,233,241,.4);
+                padding: 0 1.25rem;
+                border-radius: 0.5rem;
+                margin-top: 0.5rem;
+                margin-bottom: 0;
+              }
+
+              
             }
 
 
@@ -117,36 +127,11 @@
             &.settings {
               &.expanded {
                 border-bottom: 0.0625rem solid #E6E6E6;
-              }
 
-              h2 {
-                margin-bottom: 1.5rem;
-              }
-    
-              .input-row {
-                display: flex;
-                align-items: center;
-                margin-bottom: 1rem;
-    
-                label {
-                  margin-right: 1rem;
-                }
-                select {
-                  margin: 0;
+                .MuiCollapse-root {
+                  margin-bottom: 1.5rem;
                 }
               }
-              .button-row {
-                display: flex;
-                align-items: center;
-                width: 31rem;
-                justify-content: space-between;
-                margin-bottom: 3rem;
-
-                p {
-                  color: var(--subtext)
-                }
-              }
-
             }        
           }
         }

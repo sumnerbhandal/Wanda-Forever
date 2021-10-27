@@ -15,12 +15,21 @@
         thead {
           tr {
             th {
-              border-bottom: 0.0625rem solid #000;
+              border-bottom: 0.0625rem solid var(--robin-blue);
               padding: 0.5rem 0;
 
               &:nth-child(1) {
                 width: 2rem;
                 padding-left: 0.25rem;
+              }
+
+              span {
+                font-weight: 500;
+
+                &.Mui-active {
+                  color: var(--robin-blue);
+                  font-weight: 700;
+                }
               }
             }
           }

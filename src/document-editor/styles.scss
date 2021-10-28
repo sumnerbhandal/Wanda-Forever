@@ -163,7 +163,7 @@
               min-height: 2.5rem;
               background: rgba(230, 233, 241, 0.4);
               border-radius: 2rem;
-              padding-left: 0.625rem;
+              padding: 0.5rem 0.625rem;
 
               &.Mui-expanded {
                 margin: 0;
@@ -208,9 +208,23 @@
                   border-radius: 0.5rem;
                   margin-top: 0.5rem;
 
+                  ul {
+                    padding-inline-start: 1.125rem;
+                    margin-block-start: 0.5rem;
+                    margin-block-end: 0;
+
+                    li {
+                      margin-bottom: 0.5rem;
+                    }
+                  }
+
                   p {
                     margin-block-start: 0;
                     margin-block-end: 0;
+
+                    &:nth-child(n+3) {
+                      margin-top: 0.5rem;
+                    }
 
                     &.title {
                       margin-bottom: 0.25rem;
@@ -221,12 +235,18 @@
 
                 .issue {
                   background: #fff;
+                  margin-top: 0;
+                  margin-bottom: 0.25rem;
                 }
+
+                // .recommendation {
+                //   margin-bottom: 0.75rem;
+                // }
 
                 .advisory {
                   display: flex;
                   align-items: center;
-                  padding: 0.25rem 1rem;
+                  padding: 0 1rem;
                   margin-bottom: 1.25rem;
 
                   .advisory-circle {

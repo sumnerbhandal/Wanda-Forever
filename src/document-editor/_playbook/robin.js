@@ -1,0 +1,190 @@
+const Playbook = [
+  {
+    count: 0,
+    provision: "Arbitration clause",
+    issue: "Selection of arbitration institution",
+    recommendation: ["Accept any of the ICC, LCIA, SCC or HKIAC."],
+    recommendationLabelPresent:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+    advisory: "Green"
+  },
+  {
+    count: 1,
+    provision: "Confidential information",
+    issue: "Definition must contain typical exceptions",
+    recommendation: [
+      "Ensure confidential information definition is limited to information provided by the Provider and does not include (i) information in the public domain (other than as a result of breach by the Client) and (ii) information independently received or already held by the Client, where the Client is not aware that such information is subject to a confidentiality obligation.",
+      "Reject inclusion of information provided prior to execution of NDA."
+    ],
+    recommendationLabelPresent:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+    advisory: "Red"
+  },
+  {
+    count: 0,
+    provision: "Contract (Rights of Third Parties)",
+    issue: "Extending application of the contract to non-parties.",
+    recommendation: ["Reject in all circumstances."],
+    recommendationLabelPresent:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+    advisory: "Amber"
+  },
+  {
+    count: 0,
+    provision: "Damages",
+    issue:
+      "Requires Client to confirm monetary damages will not be sufficient in the event of breach.",
+    recommendation: [
+      "Accept damages alone may (rather than “would”) be an adequate remedy.",
+      "Accept specific performance/equitable relief may (rather than “can” or “shall”) be sought."
+    ],
+    recommendationLabelPresent:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+    advisory: "Amber"
+  },
+  {
+    count: 0,
+    provision: "Disclosure required by law",
+    issue:
+      "Important to ensure Client can disclose information where required by law.",
+    recommendation: [
+      "If a Provider seeks to impose an obligation to inform/consult with them if such a disclosure is required, this must only be required to the extent permitted by law."
+    ],
+    recommendationLabelPresent:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+    advisory: "Amber"
+  },
+  {
+    count: 0,
+    provision: "Exclusivity",
+    issue:
+      "Restricts ability of Client to discuss the planned or similar projects with other parties.",
+    recommendation: ["This should always be deleted."],
+    recommendationLabelPresent:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+    advisory: "Amber"
+  },
+  {
+    count: 0,
+    provision: "Expiry",
+    issue: "Obligation to return or destroy information.",
+    recommendation: [
+      "Ensure notification request is made in writing.",
+      "Client should always retain the option to destroy Confidential Information rather than simply return it.",
+      "Ensure permitted to retain copies (i) to the extent required by law/regulation, (ii) on computer backup systems where not technically practicable to fully destroy, and (iii) for bona fide internal compliance purposes.",
+      "Reject requirement to notify counterparty if Client decides to no longer be involved in transaction.",
+      "Change timing obligation of “immediately” to “promptly” and accept minimum of 10 business days or 14 calendar days."
+    ],
+    recommendationLabelPresent:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+    advisory: "Red"
+  },
+  {
+    count: 1,
+    provision: "Governing law and jurisdiction",
+    issue:
+      "Law that governs the contract and jurisdiction where disputes will be heard.",
+    recommendation: [
+      "Preference for English law to govern the contract, but accept all Western European or US laws.",
+      "Preference for the English Courts to settle any disputes, but accept all Western European or US Courts."
+    ],
+    recommendationLabelPresent:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+    advisory: "Amber"
+  },
+  {
+    count: 0,
+    provision: "Indemnities",
+    issue:
+      "Requires Client to indemnify Provider for breaches by it of the NDA.",
+    recommendation: [
+      "Accept provided it is not unduly onerous (i.e. not qualified by reasonableness)."
+    ],
+    recommendationLabelPresent:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+    advisory: "Green"
+  },
+  {
+    count: 0,
+    provision: "Non-solicitation of employees",
+    issue: "Restricts ability of Client to solicit employees of Provider.",
+    recommendation: ["Reject in all circumstances."],
+    recommendationLabelPresent:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+    advisory: "Green"
+  },
+  {
+    count: 1,
+    provision: "Purpose",
+    issue:
+      "Provides that Confidential Information can only be used in connection with the specified project.",
+    recommendation: [
+      "Ensure the definition of the Purpose is specific enough to ensure that the obligations under the NDA apply only to the transaction being considered. Delete unclear phrases such as ‘or a similar transaction’.",
+      "Reject any undertaking that the information may not be used in any way that is detrimental to the Provider."
+    ],
+    recommendationLabelPresent:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+    advisory: "Green"
+  },
+  {
+    count: 0,
+    provision: "Permitted recipients",
+    issue:
+      "Important to ensure Client can freely disclose information to appropriate persons.",
+    recommendation: [
+      "Include an ability to disclose to the Client’s (i) group companies/affiliates, (ii) partners, members, employees and directors and (iii) professional advisers, consultants and agents.",
+      "Resist obligations to (i) provide Provider with details of all permitted recipients to whom confidential information is provided or (ii) to put in place back-to-back confidentiality arrangements.",
+      "Accept obligation to (i) inform permitted recipients of the confidential nature of the information and (ii) be responsible for any breach by the permitted recipients of the terms of the NDA."
+    ],
+    recommendationLabelPresent:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+    advisory: "Green"
+  },
+  {
+    count: 0,
+    provision: "Restrictions on copying information",
+    issue: "Restricts Client from copying Confidential Information.",
+    recommendation: ["Reject in all circumstances."],
+    recommendationLabelPresent:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+    advisory: "Green"
+  },
+  {
+    count: 1,
+    provision: "Permitted recipients",
+    issue:
+      "Important to ensure Client can freely disclose information to appropriate persons.",
+    recommendation: [
+      "Include an ability to disclose to the Client’s (i) group companies/affiliates, (ii) partners, members, employees and directors and (iii) professional advisers, consultants and agents.",
+      "Resist obligations to (i) provide Provider with details of all permitted recipients to whom confidential information is provided or (ii) to put in place back-to-back confidentiality arrangements.",
+      "Accept obligation to (i) inform permitted recipients of the confidential nature of the information and (ii) be responsible for any breach by the permitted recipients of the terms of the NDA."
+    ],
+    recommendationLabelPresent:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+    advisory: "Green"
+  },
+  {
+    count: 0,
+    provision: "Standstill",
+    issue:
+      "Restricts ability of Client dealing in the Provider’s securities. Generally only an issue where the Provider’s securities are listed.",
+    recommendation: ["This should always be deleted."],
+    recommendationLabelPresent:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+    advisory: "Green"
+  },
+  {
+    count: 1,
+    provision: "Term",
+    issue:
+      "Important to ensure that Client’s obligations fall away at defined period.",
+    recommendation: [
+      "Delete any term which exceeds 4 years and revise to not more than 24 months."
+    ],
+    recommendationLabelPresent:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+    advisory: "Green"
+  }
+];
+
+export default Playbook;

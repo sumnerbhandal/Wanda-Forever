@@ -1,7 +1,6 @@
 import CPU from "./_assets/CPU.svg";
 import Settings from "./_assets/Settings.svg";
 import Button from "../_input/button/button";
-
 import * as React from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -27,6 +26,27 @@ function SimpleAccordion() {
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
+    const panelName = document.getElementById(`${panel}header`);
+    const closestP = panelName.childNodes[0].childNodes[1].innerHTML;
+    const closestP2 = closestP.toLowerCase().replace(/ /g, "_");
+    const spanID = document.getElementById(closestP2 + "_span");
+
+    if (spanID != null && expanded === false) {
+      var headerOffset = 120;
+      var elementPosition = spanID.getBoundingClientRect().top;
+      var offsetPosition = elementPosition - headerOffset;
+      const articleContainer = document.getElementById("article-container");
+      spanID.style.backgroundColor = "#CCD3E4";
+      articleContainer.scrollBy({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    } else {
+      const spanConfidential = document.getElementById(
+        "confidential_information_span"
+      );
+      spanConfidential.style.backgroundColor = "inherit";
+    }
   };
 
   return (
@@ -36,6 +56,7 @@ function SimpleAccordion() {
           key={index}
           expanded={expanded === `panel${index}`}
           onChange={handleChange(`panel${index}`)}
+          id={listItem.provision.toLowerCase().replace(/ /g, "_")}
         >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}

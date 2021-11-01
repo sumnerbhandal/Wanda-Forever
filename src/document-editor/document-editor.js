@@ -36,6 +36,7 @@ const DocumentEditor = (props) => {
       />
       <div className="editor">
         <div
+          id="article-container"
           className={
             drawerState
               ? "article-container playbook-open"

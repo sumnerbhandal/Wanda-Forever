@@ -24,12 +24,27 @@ const LabelPreview = (props) => {
     const element = e.target.closest("span.labelled");
     element.style.backgroundColor = "inherit";
   }
+
+  function test() {
+    props.setPreviewOpen(!props.previewOpen);
+
+    const selectedAccordion = document.getElementById(
+      "confidential_information"
+    ).childNodes[0];
+    console.log(selectedAccordion);
+    selectedAccordion.click();
+
+    // setTimeout(function () {
+
+    // }, 500);
+  }
   return (
     <div className="preview-label-menu">
       <div
         className="label-button-group"
         onMouseOver={(e) => highlightLabel(e)}
         onMouseLeave={(e) => highlightLabelEnd(e)}
+        onClick={() => test()}
       >
         <Button
           contentEditable="false"
@@ -55,19 +70,6 @@ const LabelPreview = (props) => {
 
 const DefaultContract = (props) => {
   const [previewOpen, setPreviewOpen] = useState(false);
-  const [targetLabel, setTargetLabel] = useState("");
-
-  function getCoords(e) {
-    var element = e.target;
-    var position = element.getBoundingClientRect();
-    var x = position.left;
-    var y = position.top;
-    console.log(x, y);
-  }
-
-  function labelHighlight(e) {
-    console.log(e);
-  }
 
   return (
     <article
@@ -105,7 +107,7 @@ const DefaultContract = (props) => {
       </p>
 
       <p>
-        <span className="labelled">
+        <span id="confidential_information_span" className="labelled">
           <Button
             contentEditable="false"
             variant="tertiary label"

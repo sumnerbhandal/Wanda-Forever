@@ -6,78 +6,87 @@
   .editor {
     width: 100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
+    height: calc(100vh - 4rem);
 
-
-    article {
-      width: 47.5rem;
-      padding: 3.75rem;
+    .article-container {
       display: flex;
-      flex-wrap: wrap;
-      text-align: justify;
-      text-justify: inter-word;
-      margin: 0 auto;
+      width: calc(100%);
+      transition: all 0.3s ease-in-out;
+      overflow-y: scroll;
+      justify-content: center;
 
-      // @media only screen and (min-width: 1600px) {
-      //   width: 52.5rem;
-      // }
-
-      &:focus-visible {
-        outline: 0;
-        // background: var(--hover-highlight);
+      &.playbook-open {
+        width: calc(100% - 23rem);
       }
 
 
-      h1 {
-        width: 100%;
-        text-align: left;
-      }
 
-      span.placeholder {
-        background: #E6E9F1;
-      }
+      article {
+        width: 47.5rem;
+        padding: 3.75rem;
+        display: flex;
+        flex-wrap: wrap;
+        text-align: justify;
+        text-justify: inter-word;
 
-      h1, h2, h3, p {
-        // &:focus-visible {
-        //   outline: 0;
-        //   // background: var(--hover-highlight);
-        // }
-      }
-      ol {
+        &:focus-visible {
+          outline: 0;
+          // background: var(--hover-highlight);
+        }
 
-          counter-reset: item;
-          margin-bottom: 1.5rem;
 
-          li {
-            display: block;
-            margin-bottom: 0.625rem;
-            margin-top: 0.625rem;
-            position: relative;
+        h1 {
+          width: 100%;
+          text-align: left;
+        }
 
-            &:before {
-              content: counters(item, ".") "";
-              counter-increment: item;
-              left: -1.25rem;
-              position: absolute;
-            }
+        span.placeholder {
+          background: #E6E9F1;
+        }
+
+        h1, h2, h3, p {
+          // &:focus-visible {
+          //   outline: 0;
+          //   // background: var(--hover-highlight);
+          // }
+        }
+        ol {
+
+            counter-reset: item;
+            margin-bottom: 1.5rem;
 
             li {
+              display: block;
+              margin-bottom: 0.625rem;
+              margin-top: 0.625rem;
+              position: relative;
+
               &:before {
-                left: -2rem;
+                content: counters(item, ".") "";
+                counter-increment: item;
+                left: -1.25rem;
+                position: absolute;
               }
-            }
-        }  
-        &[type=a] {
 
-          counter-reset: list;
-          li {
-  
+              li {
+                &:before {
+                  left: -2rem;
+                }
+              }
+          }  
+          &[type=a] {
 
-            &:before {
-              counter-increment: list;
-              content: "(" counter(list, lower-alpha) ")";
-              left: -1.75rem;
-              padding-right: 1rem;
+            counter-reset: list;
+            li {
+    
+
+              &:before {
+                counter-increment: list;
+                content: "(" counter(list, lower-alpha) ")";
+                left: -1.75rem;
+                padding-right: 1rem;
+              }
             }
           }
         }
@@ -97,8 +106,9 @@
 
       &.open {
         opacity: 1;
-        right: 0.75rem;
+        right: 0;
       }
+
 
 
       .playbook-container {

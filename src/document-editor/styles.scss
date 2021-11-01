@@ -8,6 +8,7 @@
     display: flex;
     justify-content: flex-start;
     height: calc(100vh - 4rem);
+    
 
     .article-container {
       display: flex;
@@ -18,6 +19,14 @@
 
       &.playbook-open {
         width: calc(100% - 23rem);
+      }
+
+      .article-selector-button {
+        position: absolute;
+        left: 4rem;
+        height: auto;
+        background: black;
+        width: 5rem;
       }
 
 
@@ -43,6 +52,68 @@
 
         span.placeholder {
           background: #E6E9F1;
+        }
+
+        span.labelled {
+          position: relative;
+          transition: 0.3s ease;
+          
+          button.label {
+            position: absolute;
+            left: -3rem;
+            height: 2.5rem;
+            width: 2.5rem;
+            bottom: 0.75rem;
+            justify-content: center;
+
+            img {
+              width: 1.5rem;
+              height: 1.5rem;
+              pointer-events: none;
+            }
+          
+          }
+
+          .preview-label-menu {
+            position: absolute;
+            bottom: 3.5rem;
+            left: -3rem;
+
+            button {
+              filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.4));
+              transition: 0.4s ease;
+              animation: loadIn 0.4s ease;
+
+            }
+
+            .label-button-group {
+              display: flex;
+              margin-bottom: 0.75rem;
+              filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.4));
+
+              button {
+                flex-shrink: 0;
+                filter: none;
+
+                &:nth-child(1) {
+                  border-top-right-radius: 0;
+                  border-bottom-right-radius: 0;
+                  border-right: 0.0625rem solid #fff;
+                }
+                &:nth-child(2) {
+                  border-top-left-radius: 0;
+                  border-bottom-left-radius: 0;
+                }
+
+
+
+                img {
+                  margin-right: 0.625rem;
+                }
+              }
+            }
+
+          }
         }
 
         h1, h2, h3, p {
@@ -299,5 +370,16 @@
       }
 
     }
+  }
+}
+
+@keyframes loadIn {
+  from {
+    transform: translateY(0.75rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0rem);
+    opacity: 1;
   }
 }

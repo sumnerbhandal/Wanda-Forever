@@ -33,6 +33,7 @@ function SimpleAccordion() {
     <div className="playbook-accordions">
       {Playbook.map((listItem, index) => (
         <Accordion
+          key={index}
           expanded={expanded === `panel${index}`}
           onChange={handleChange(`panel${index}`)}
         >
@@ -50,7 +51,7 @@ function SimpleAccordion() {
               <ul>
                 {listItem.recommendation.length > 1 ? (
                   listItem.recommendation.map((Recommendation, index) => (
-                    <li>{Recommendation}</li>
+                    <li key={index}>{Recommendation}</li>
                   ))
                 ) : (
                   <li>{listItem.recommendation}</li>

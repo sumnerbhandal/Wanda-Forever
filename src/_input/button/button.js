@@ -8,6 +8,7 @@ const Button = (props) => {
       className={`cta ${props.variant}`}
       type={props.type}
       onClick={props.onClick}
+      contentEditable={props.contentEditable}
     >
       {props.label}
     </button>

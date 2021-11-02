@@ -28,15 +28,13 @@ const LabelPreview = (props) => {
   function test() {
     props.setPreviewOpen(!props.previewOpen);
 
-    const selectedAccordion = document.getElementById(
-      "confidential_information"
-    ).childNodes[0];
-    console.log(selectedAccordion);
-    selectedAccordion.click();
-
-    // setTimeout(function () {
-
-    // }, 500);
+    setTimeout(function () {
+      const selectedAccordion = document.getElementById(
+        "confidential_information"
+      ).childNodes[0];
+      console.log(selectedAccordion);
+      selectedAccordion.click();
+    }, 400);
   }
   return (
     <div className="preview-label-menu">

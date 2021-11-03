@@ -57,6 +57,10 @@
         span.labelled {
           position: relative;
           transition: 0.3s ease;
+
+          &.active {
+            background: #CCD3E4;
+          }
           
           button.label {
             position: absolute;
@@ -306,6 +310,12 @@
                     background: none;
                     text-align: left;
                     padding: 0;
+                    cursor: pointer;
+
+                    // &:hover {
+                    //   background: #E6E9F1;
+                    //   border-radius: 0.25rem;
+                    // }
 
                     .redline {
                       color: #BA0000;
@@ -334,10 +344,6 @@
                   margin-top: 0;
                   margin-bottom: 0.25rem;
                 }
-
-                // .recommendation {
-                //   margin-bottom: 0.75rem;
-                // }
 
                 .advisory {
                   display: flex;

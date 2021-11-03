@@ -21,31 +21,28 @@ const PlaybookSettings = (
   </>
 );
 
-function SimpleAccordion() {
+function SimpleAccordion(props) {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
-    const panelName = document.getElementById(`${panel}header`);
-    const closestP = panelName.childNodes[0].childNodes[1].innerHTML;
-    const closestP2 = closestP.toLowerCase().replace(/ /g, "_");
-    const spanID = document.getElementById(closestP2 + "_span");
+    // const panelName = document.getElementById(`${panel}header`);
+    // const closestP = panelName.childNodes[0].childNodes[1].innerHTML;
+    // const closestP2 = closestP.toLowerCase().replace(/ /g, "_");
+    const spanID = document.getElementById("confidential_information_span");
 
     if (spanID != null && expanded === false) {
       var headerOffset = 120;
       var elementPosition = spanID.getBoundingClientRect().top;
       var offsetPosition = elementPosition - headerOffset;
       const articleContainer = document.getElementById("article-container");
-      spanID.style.backgroundColor = "#CCD3E4";
+      props.setActiveHover(true);
       articleContainer.scrollBy({
         top: offsetPosition,
         behavior: "smooth"
       });
     } else {
-      const spanConfidential = document.getElementById(
-        "confidential_information_span"
-      );
-      spanConfidential.style.backgroundColor = "inherit";
+      props.setActiveHover(false);
     }
   };
 
@@ -116,7 +113,7 @@ const PlaybookContent = (props) => {
         </div>
       </div>
       <input placeholder="Search" />
-      <SimpleAccordion />
+      <SimpleAccordion setActiveHover={props.setActiveHover} />
     </div>
   );
 };

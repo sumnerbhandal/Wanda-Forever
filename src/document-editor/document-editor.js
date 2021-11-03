@@ -24,7 +24,7 @@ const LabelPreview = (props) => {
 
 const DocumentEditor = (props) => {
   const [drawerState, setDrawerState] = useState(false);
-  // function showHighlightedText =
+  const [activeHover, setActiveHover] = useState(false);
 
   return (
     <>
@@ -46,10 +46,14 @@ const DocumentEditor = (props) => {
           {/* <div className="article-selector-button">
             <button contentEditable="false">Default</button>
           </div> */}
-          <DefaultContract toggleDrawer={() => setDrawerState(true)} />
+          <DefaultContract
+            toggleDrawer={() => setDrawerState(true)}
+            setActiveHover={setActiveHover}
+            activeHover={activeHover}
+          />
         </div>
         <aside className={drawerState ? "open" : null}>
-          <PlaybookContent />
+          <PlaybookContent setActiveHover={setActiveHover} />
         </aside>
       </div>
     </>

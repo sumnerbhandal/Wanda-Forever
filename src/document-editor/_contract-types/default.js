@@ -16,15 +16,6 @@ const ViewPlaybookSuggestion = (
 );
 
 const LabelPreview = (props) => {
-  function highlightLabel(e) {
-    const element = e.target.closest("span.labelled");
-    element.style.backgroundColor = "#CCD3E4";
-  }
-  function highlightLabelEnd(e) {
-    const element = e.target.closest("span.labelled");
-    element.style.backgroundColor = "inherit";
-  }
-
   function test() {
     props.setPreviewOpen(!props.previewOpen);
 
@@ -40,8 +31,8 @@ const LabelPreview = (props) => {
     <div className="preview-label-menu">
       <div
         className="label-button-group"
-        onMouseOver={(e) => highlightLabel(e)}
-        onMouseLeave={(e) => highlightLabelEnd(e)}
+        onMouseOver={() => props.setActiveHover(true)}
+        onMouseLeave={() => props.setActiveHover(false)}
         onClick={() => test()}
       >
         <Button
@@ -70,11 +61,7 @@ const DefaultContract = (props) => {
   const [previewOpen, setPreviewOpen] = useState(false);
 
   return (
-    <article
-      className="contract"
-      contentEditable="true"
-      // onKeyDown={handleKeyPress}
-    >
+    <article className="contract" contentEditable="true">
       <h1 className="xl">NON-DISCLOSURE AND CONFIDENTIALITY AGREEMENT</h1>
 
       <p>
@@ -105,12 +92,14 @@ const DefaultContract = (props) => {
       </p>
 
       <p>
-        <span id="confidential_information_span" className="labelled">
+        <span
+          id="confidential_information_span"
+          className={props.activeHover ? "labelled active" : "labelled"}
+        >
           <Button
             contentEditable="false"
             variant="tertiary label"
             label={<img src={ML} />}
-            // onClick={(e) => getCoords(e)}
             onClick={() => setPreviewOpen(!previewOpen)}
           />
           {previewOpen ? (
@@ -118,6 +107,7 @@ const DefaultContract = (props) => {
               setPreviewOpen={setPreviewOpen}
               previewOpen={previewOpen}
               toggleDrawer={props.toggleDrawer}
+              setActiveHover={props.setActiveHover}
             />
           ) : null}
           WHEREAS, the Recipient desires that{" "}

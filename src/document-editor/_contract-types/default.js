@@ -6,7 +6,7 @@ import PlaybookWhite from "../_assets/playbook-white.svg";
 
 const ProvisionExample = (
   <>
-    <img src={MLWhite} /> Provision Example
+    <img src={MLWhite} /> Confidential information
   </>
 );
 const ViewPlaybookSuggestion = (

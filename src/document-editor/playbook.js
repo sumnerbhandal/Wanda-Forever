@@ -69,15 +69,24 @@ function SimpleAccordion() {
           <AccordionDetails>
             <div className="recommendation">
               <p className="title">Recommendation</p>
-              <ul>
-                {listItem.recommendation.length > 1 ? (
-                  listItem.recommendation.map((Recommendation, index) => (
-                    <li key={index}>{Recommendation}</li>
-                  ))
-                ) : (
-                  <li>{listItem.recommendation}</li>
-                )}
-              </ul>
+              {listItem.tag === "ul" ? (
+                <ul>
+                  {listItem.recommendation.length > 1 ? (
+                    listItem.recommendation.map((Recommendation, index) => (
+                      <li key={index}>{Recommendation}</li>
+                    ))
+                  ) : (
+                    <li>{listItem.recommendation}</li>
+                  )}
+                </ul>
+              ) : (
+                <button className="live-suggestion">
+                  {listItem.recommendation.regular}
+                  <span className="redline">
+                    {listItem.recommendation.redline}
+                  </span>
+                </button>
+              )}
             </div>
             <div className="issue">
               <p className="title">Issue</p>

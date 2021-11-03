@@ -301,6 +301,19 @@
                     }
                   }
 
+                  button.live-suggestion {
+                    border: 0;
+                    background: none;
+                    text-align: left;
+                    padding: 0;
+
+                    .redline {
+                      color: #BA0000;
+                      text-decoration: line-through;
+                      cursor: pointer;
+                    }
+                  }
+
                   p {
                     margin-block-start: 0;
                     margin-block-end: 0;

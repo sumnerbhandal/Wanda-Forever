@@ -25,6 +25,17 @@ const UploadContract = (
 );
 
 export default function EditorHeader(props) {
+  const [lastEdited, setLastEdited] = React.useState("");
+
+  function getDate() {
+    let today = new Date();
+    let strDate = "Y/m/d"
+      .replace("Y", today.getFullYear())
+      .replace("m", today.getMonth() + 1)
+      .replace("d", today.getDate());
+    setLastEdited(strDate);
+  }
+  React.useEffect(() => getDate());
   return (
     <header>
       <div className="left">
@@ -32,7 +43,7 @@ export default function EditorHeader(props) {
           <img src={Robin} />
         </a>
         <p>{props.documentName}</p>
-        <p className="last-edited">{props.lastEdited}</p>
+        <p className="last-edited">{lastEdited}</p>
       </div>
       <div className="right">
         <label for="clean-switch" className="clean-version-switch-container">

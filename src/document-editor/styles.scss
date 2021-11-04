@@ -64,15 +64,15 @@
           
           button.label {
             position: absolute;
-            left: -3rem;
-            height: 2.5rem;
-            width: 2.5rem;
+            left: -2.875rem;
+            height: 2.25rem;
+            width: 2.25rem;
             bottom: 0.75rem;
             justify-content: center;
 
             img {
-              width: 1.5rem;
-              height: 1.5rem;
+              width: 1.25rem;
+              height: 1.25rem;
               pointer-events: none;
             }
             
@@ -345,6 +345,14 @@
                   background: rgba(230, 233, 241, 0.4);
                   border-radius: 0.5rem;
                   margin-top: 0.5rem;
+                  transition: all 0.3s ease;
+
+                  &.button {
+                    cursor: pointer;
+                    &:hover {
+                      background: #E6E9F1;
+                    }
+                  }
 
                   ul {
                     padding-inline-start: 1.125rem;

@@ -67,9 +67,9 @@ function SimpleAccordion(props) {
             <p className="accordion-label">{listItem.provision}</p>
           </AccordionSummary>
           <AccordionDetails>
-            <div className="recommendation">
-              <p className="title">Recommendation</p>
-              {listItem.tag === "ul" ? (
+            {listItem.tag === "ul" ? (
+              <div className="recommendation">
+                <p className="title">Recommendation</p>
                 <ul>
                   {listItem.recommendation.length > 1 ? (
                     listItem.recommendation.map((Recommendation, index) => (
@@ -79,14 +79,17 @@ function SimpleAccordion(props) {
                     <li>{listItem.recommendation}</li>
                   )}
                 </ul>
-              ) : (
-                <button
-                  className="live-suggestion"
-                  onClick={() => {
-                    props.setSuggestedEdit(props.suggestedEditAfter);
-                    setMatchesContent(true);
-                  }}
-                >
+              </div>
+            ) : (
+              <div
+                className="recommendation button"
+                onClick={() => {
+                  props.setSuggestedEdit(props.suggestedEditAfter);
+                  setMatchesContent(true);
+                }}
+              >
+                <p className="title">Recommendation</p>
+                <button className="live-suggestion">
                   {!matchesContent ? (
                     <>
                       {listItem.recommendation.regular}
@@ -98,8 +101,9 @@ function SimpleAccordion(props) {
                     "Text matches suggestion"
                   )}
                 </button>
-              )}
-            </div>
+              </div>
+            )}
+
             <div className="issue">
               <p className="title">Issue</p>
               <p>{listItem.issue}</p>

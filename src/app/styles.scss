@@ -42,6 +42,10 @@ body {
   a {
     color: var(--electric-blue);
   }
+  .redline {
+    color: #BA0000;
+    text-decoration: line-through;
+  }
 
   main {
     height: 100vh;

@@ -14,6 +14,12 @@ const ViewPlaybookSuggestion = (
     <img src={PlaybookWhite} /> View Playbook Suggestion
   </>
 );
+const LabelPreviewExample = (
+  <>
+    <img src={ML} />
+    <div className="tooltip">Click to preview or edit your labels</div>
+  </>
+);
 
 const LabelPreview = (props) => {
   function test() {
@@ -99,7 +105,7 @@ const DefaultContract = (props) => {
           <Button
             contentEditable="false"
             variant="tertiary label"
-            label={<img src={ML} />}
+            label={LabelPreviewExample}
             onClick={() => setPreviewOpen(!previewOpen)}
           />
           {previewOpen ? (
@@ -110,10 +116,7 @@ const DefaultContract = (props) => {
               setActiveHover={props.setActiveHover}
             />
           ) : null}
-          WHEREAS, the Recipient desires that{" "}
-          <span className="placeholder">[X]</span> (“Disclosing Party”) shares
-          certain information that is non-public, confidential or proprietary in
-          nature,
+          {props.suggestedEdit}
         </span>{" "}
         in connection with a potential financing transaction, either in equity
         or debt format, for the acquisition and subsequent promotion of a site

@@ -23,13 +23,14 @@ const PlaybookSettings = (
 
 function SimpleAccordion(props) {
   const [expanded, setExpanded] = React.useState(false);
+  const [matchesContent, setMatchesContent] = React.useState(false);
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
-    // const panelName = document.getElementById(`${panel}header`);
-    // const closestP = panelName.childNodes[0].childNodes[1].innerHTML;
-    // const closestP2 = closestP.toLowerCase().replace(/ /g, "_");
-    const spanID = document.getElementById("confidential_information_span");
+    const panelName = document.getElementById(`${panel}header`);
+    const closestP = panelName.childNodes[0].childNodes[1].innerHTML;
+    const closestP2 = closestP.toLowerCase().replace(/ /g, "_");
+    const spanID = document.getElementById(`${closestP2}_span`);
 
     if (spanID != null && expanded === false) {
       var headerOffset = 120;
@@ -45,6 +46,8 @@ function SimpleAccordion(props) {
       props.setActiveHover(false);
     }
   };
+
+  const suggestedChangeUpdate = () => {};
 
   return (
     <div className="playbook-accordions">
@@ -77,11 +80,23 @@ function SimpleAccordion(props) {
                   )}
                 </ul>
               ) : (
-                <button className="live-suggestion">
-                  {listItem.recommendation.regular}
-                  <span className="redline">
-                    {listItem.recommendation.redline}
-                  </span>
+                <button
+                  className="live-suggestion"
+                  onClick={() => {
+                    props.setSuggestedEdit(props.suggestedEditAfter);
+                    setMatchesContent(true);
+                  }}
+                >
+                  {!matchesContent ? (
+                    <>
+                      {listItem.recommendation.regular}
+                      <span className="redline">
+                        {listItem.recommendation.redline}
+                      </span>
+                    </>
+                  ) : (
+                    "Text matches suggestion"
+                  )}
                 </button>
               )}
             </div>
@@ -113,7 +128,11 @@ const PlaybookContent = (props) => {
         </div>
       </div>
       <input placeholder="Search" />
-      <SimpleAccordion setActiveHover={props.setActiveHover} />
+      <SimpleAccordion
+        setActiveHover={props.setActiveHover}
+        suggestedEditAfter={props.suggestedEditAfter}
+        setSuggestedEdit={props.setSuggestedEdit}
+      />
     </div>
   );
 };

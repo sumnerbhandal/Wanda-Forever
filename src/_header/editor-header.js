@@ -35,6 +35,17 @@ export default function EditorHeader(props) {
         <p className="last-edited">{props.lastEdited}</p>
       </div>
       <div className="right">
+        <label for="clean-switch" className="clean-version-switch-container">
+          Show Clean Version
+          <div className="switch">
+            <input
+              id="clean-switch"
+              type="checkbox"
+              onClick={props.toggleCleanView}
+            />
+            <span className="slider round"></span>
+          </div>
+        </label>
         <Button
           variant="secondary"
           type="submit"

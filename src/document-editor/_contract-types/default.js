@@ -84,11 +84,12 @@ const DefaultContract = (props) => {
         <span className="placeholder">[ ]</span>, as its{" "}
         <span className="placeholder">[ ]</span>; and on the other{" "}
         <span className="placeholder">[X]</span>
-        (“<span className="placeholder">[X]</span>”), a{" "}
-        <span className="placeholder">[•]</span> temporary union of companies
-        having its registered office at <span className="placeholder">[•]</span>
-        , and with Tax Identification Number{" "}
-        <span className="placeholder">[•]</span>; represented by{" "}
+        (“
+        <span className="placeholder">[X]</span>
+        ”), a <span className="placeholder">[•]</span> temporary union of
+        companies having its registered office at{" "}
+        <span className="placeholder">[•]</span>, and with Tax Identification
+        Number <span className="placeholder">[•]</span>; represented by{" "}
         <span className="placeholder">[•]</span>.
       </p>
 
@@ -104,7 +105,9 @@ const DefaultContract = (props) => {
         >
           <Button
             contentEditable="false"
-            variant="tertiary label"
+            variant={
+              props.cleanVersion ? "tertiary label hidden" : "tertiary label"
+            }
             label={LabelPreviewExample}
             onClick={() => setPreviewOpen(!previewOpen)}
           />

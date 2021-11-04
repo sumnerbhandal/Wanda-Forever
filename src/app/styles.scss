@@ -45,6 +45,10 @@ body {
   .redline {
     color: #BA0000;
     text-decoration: line-through;
+
+    &.hidden {
+      display: none;
+    }
   }
 
   main {

@@ -9,6 +9,8 @@ const Button = (props) => {
       type={props.type}
       onClick={props.onClick}
       contentEditable={props.contentEditable}
+      onMouseOver={props.onMouseOver}
+      onMouseLeave={props.onMouseLeave}
     >
       {props.label}
     </button>

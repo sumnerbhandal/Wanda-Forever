@@ -43,8 +43,9 @@ const DocumentEditor = (props) => {
     </>
   );
 
-  const [drawerState, setDrawerState] = useState(false);
+  const [drawerState, setDrawerState] = useState(true);
   const [activeHover, setActiveHover] = useState(false);
+  const [showProvision, setShowProvision] = useState(false);
 
   const [suggestedEdit, setSuggestedEdit] = useState(suggestedEditBefore);
 
@@ -57,6 +58,8 @@ const DocumentEditor = (props) => {
     if (!cleanVersion) {
       setDrawerState(false);
       setActiveHover(false);
+    } else {
+      setDrawerState(true);
     }
     setCleanVersion(!cleanVersion);
 
@@ -102,10 +105,16 @@ const DocumentEditor = (props) => {
           </div> */}
           <DefaultContract
             toggleDrawer={() => setDrawerState(true)}
+            toggleDrawerHighlight={() => {
+              setDrawerState(true);
+              setActiveHover(true);
+            }}
             setActiveHover={setActiveHover}
             activeHover={activeHover}
             suggestedEdit={suggestedEdit}
             cleanVersion={cleanVersion}
+            showProvision={showProvision}
+            setShowProvision={setShowProvision}
           />
         </div>
         <aside className={drawerState ? "open" : null}>
@@ -113,6 +122,7 @@ const DocumentEditor = (props) => {
             setActiveHover={setActiveHover}
             suggestedEditAfter={suggestedEditAfter}
             setSuggestedEdit={setSuggestedEdit}
+            setShowProvision={setShowProvision}
           />
         </aside>
       </div>

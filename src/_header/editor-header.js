@@ -5,6 +5,7 @@ import Robin from "./_assets/Robin-Logo-Bird.svg";
 import PlaybookClose from "./_assets/Playbook-Close.svg";
 import PlaybookOpen from "./_assets/Playbook-Open.svg";
 import Download from "./_assets/Download.svg";
+import CPU from "./_assets/CPU.svg";
 
 const OpenPlaybook = (
   <>
@@ -21,6 +22,11 @@ const ClosePlaybook = (
 const UploadContract = (
   <>
     Download as .docx <img src={Download} />
+  </>
+);
+const RunAutoEdit = (
+  <>
+    Run Auto Edit <img src={CPU} />
   </>
 );
 
@@ -57,11 +63,17 @@ export default function EditorHeader(props) {
             <span className="slider round"></span>
           </div>
         </label>
-        <Button
+        {/* <Button
           variant="secondary"
           type="submit"
           label={props.drawerState ? ClosePlaybook : OpenPlaybook}
           onClick={props.toggleDrawer}
+        /> */}
+        <Button
+          variant="secondary"
+          type="submit"
+          label={RunAutoEdit}
+          // onClick={props.toggleDrawer}
         />
         <Button variant="primary" type="submit" label={UploadContract} />
         <div className="user-icon">SB</div>

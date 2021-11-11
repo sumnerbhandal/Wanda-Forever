@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import ML from "../_assets/ml.svg";
 import Button from "../../_input/button/button";
-import MLWhite from "../_assets/ml-white.svg";
 import PlaybookWhite from "../_assets/playbook-white.svg";
+import { debounce } from "lodash";
+import SettingsWhite from "../_assets/Settings-White.svg";
 
 const ProvisionExample = (
   <>
-    <img src={MLWhite} /> Confidential information
+    <img src={SettingsWhite} /> Confidential information
   </>
 );
 const ViewPlaybookSuggestion = (
@@ -14,33 +15,22 @@ const ViewPlaybookSuggestion = (
     <img src={PlaybookWhite} /> View Playbook Suggestion
   </>
 );
-const LabelPreviewExample = (
-  <>
-    <img src={ML} />
-    <div className="tooltip">Click to preview or edit your labels</div>
-  </>
-);
 
 const LabelPreview = (props) => {
   function test() {
-    props.setPreviewOpen(!props.previewOpen);
+    props.setPreviewOpen(true);
 
     setTimeout(function () {
       const selectedAccordion = document.getElementById(
         "confidential_information"
       ).childNodes[0];
-      console.log(selectedAccordion);
       selectedAccordion.click();
     }, 400);
   }
+
   return (
     <div className="preview-label-menu">
-      <div
-        className="label-button-group"
-        onMouseOver={() => props.setActiveHover(true)}
-        onMouseLeave={() => props.setActiveHover(false)}
-        onClick={() => test()}
-      >
+      <div className="label-button-group">
         <Button
           contentEditable="false"
           variant="primary"
@@ -50,15 +40,9 @@ const LabelPreview = (props) => {
           contentEditable="false"
           variant="primary"
           label={ViewPlaybookSuggestion}
-          onClick={props.toggleDrawer}
+          onClick={() => test()}
         />
       </div>
-      <Button
-        contentEditable="false"
-        variant="secondary"
-        label="Close Preview"
-        onClick={() => props.setPreviewOpen(!props.previewOpen)}
-      />
     </div>
   );
 };
@@ -66,8 +50,35 @@ const LabelPreview = (props) => {
 const DefaultContract = (props) => {
   const [previewOpen, setPreviewOpen] = useState(false);
 
+  function ClosePreviewHighlight() {
+    if (props.showProvision === false) {
+      props.setActiveHover(false);
+      setPreviewOpen(false);
+    } else {
+      setPreviewOpen(false);
+    }
+  }
+  const debouncedHandleMouseLeave = debounce(
+    () => ClosePreviewHighlight(),
+    800
+  );
+  const handlOnMouseEnter = () => {
+    debouncedHandleMouseLeave.cancel();
+    setPreviewOpen(true);
+    props.setActiveHover(true);
+  };
+
+  // React.useEffect(() => {
+  //   const contenteditableHtmlElement = document.getElementById(
+  //     "article-container"
+  //   );
+  //   contenteditableHtmlElement.addEventListener("input", function () {
+  //     console.log("contenteditable element changed");
+  //   });
+  // });
+
   return (
-    <article className="contract" contentEditable="true">
+    <article id="contract" className="contract" contentEditable="true">
       <h1 className="xl">NON-DISCLOSURE AND CONFIDENTIALITY AGREEMENT</h1>
 
       <p>
@@ -103,22 +114,25 @@ const DefaultContract = (props) => {
           id="confidential_information_span"
           className={props.activeHover ? "labelled active" : "labelled"}
         >
-          <Button
-            contentEditable="false"
-            variant={
-              props.cleanVersion ? "tertiary label hidden" : "tertiary label"
-            }
-            label={LabelPreviewExample}
-            onClick={() => setPreviewOpen(!previewOpen)}
-          />
-          {previewOpen ? (
-            <LabelPreview
-              setPreviewOpen={setPreviewOpen}
-              previewOpen={previewOpen}
-              toggleDrawer={props.toggleDrawer}
-              setActiveHover={props.setActiveHover}
+          <div
+            onMouseOver={() => handlOnMouseEnter()}
+            onMouseLeave={() => debouncedHandleMouseLeave()}
+            onClick={() => props.setShowProvision(true)}
+          >
+            <Button
+              contentEditable="false"
+              variant={
+                props.cleanVersion ? "tertiary label hidden" : "tertiary label"
+              }
+              label={<img src={ML} />}
             />
-          ) : null}
+            {previewOpen ? (
+              <LabelPreview
+                setPreviewOpen={setPreviewOpen}
+                previewOpen={previewOpen}
+              />
+            ) : null}
+          </div>
           {props.suggestedEdit}
         </span>{" "}
         in connection with a potential financing transaction, either in equity

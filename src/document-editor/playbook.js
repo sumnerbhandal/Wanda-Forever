@@ -1,4 +1,3 @@
-import CPU from "./_assets/CPU.svg";
 import Settings from "./_assets/Settings.svg";
 import Button from "../_input/button/button";
 import * as React from "react";
@@ -11,13 +10,7 @@ import Playbook from "./_playbook/robin";
 
 const RunAutoEdit = (
   <>
-    Run Auto Edit <img src={CPU} />
-  </>
-);
-
-const PlaybookSettings = (
-  <>
-    <img src={Settings} />
+    Configure <img src={Settings} />
   </>
 );
 
@@ -33,7 +26,7 @@ function SimpleAccordion(props) {
     const spanID = document.getElementById(`${closestP2}_span`);
 
     if (spanID != null && expanded === false) {
-      var headerOffset = 120;
+      var headerOffset = 180;
       var elementPosition = spanID.getBoundingClientRect().top;
       var offsetPosition = elementPosition - headerOffset;
       const articleContainer = document.getElementById("article-container");
@@ -44,10 +37,9 @@ function SimpleAccordion(props) {
       });
     } else {
       props.setActiveHover(false);
+      props.setShowProvision(false);
     }
   };
-
-  const suggestedChangeUpdate = () => {};
 
   return (
     <div className="playbook-accordions">
@@ -128,7 +120,6 @@ const PlaybookContent = (props) => {
         <h2>Playbook 1</h2>
         <div className="button-container">
           <Button variant="tertiary" label={RunAutoEdit} />
-          <Button variant="text" label={PlaybookSettings} />
         </div>
       </div>
       <input placeholder="Search" />
@@ -136,6 +127,7 @@ const PlaybookContent = (props) => {
         setActiveHover={props.setActiveHover}
         suggestedEditAfter={props.suggestedEditAfter}
         setSuggestedEdit={props.setSuggestedEdit}
+        setShowProvision={props.setShowProvision}
       />
     </div>
   );

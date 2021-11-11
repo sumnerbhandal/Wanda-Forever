@@ -25,7 +25,7 @@ function SimpleAccordion(props) {
     const closestP2 = closestP.toLowerCase().replace(/ /g, "_");
     const spanID = document.getElementById(`${closestP2}_span`);
 
-    if (spanID != null && expanded === false) {
+    if (spanID != null) {
       var headerOffset = 180;
       var elementPosition = spanID.getBoundingClientRect().top;
       var offsetPosition = elementPosition - headerOffset;

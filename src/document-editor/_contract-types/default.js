@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ML from "../_assets/ml.svg";
 import Button from "../../_input/button/button";
 import PlaybookWhite from "../_assets/playbook-white.svg";
@@ -68,24 +68,73 @@ const DefaultContract = (props) => {
     props.setActiveHover(true);
   };
 
-  // React.useEffect(() => {
-  //   const contenteditableHtmlElement = document.getElementById(
-  //     "article-container"
-  //   );
-  //   contenteditableHtmlElement.addEventListener("input", function () {
-  //     console.log("contenteditable element changed");
-  //   });
+  // useEffect(() => {
+  //   // const contenteditableHtmlElement = document.getElementById(
+  //   //   "article-container"
+  //   // );
+
+  //   // contenteditableHtmlElement.addEventListener("input", function (evt) {
+  //   //   console.log("contenteditable element changed");
+  //   //   const t = evt.target;
+  //   //   if (evt.keyCode === 8) {
+  //   //     // for backspace key
+  //   //     console.log(t.value[t.selectionStart - 1]);
+  //   //   } else if (evt.keyCode === 46) {
+  //   //     // for delete key
+  //   //     console.log(t.value[t.selectionStart]);
+  //   //   }
+  //   // });
+
+  //   document.getElementById("contract").onkeydown = function (evt) {
+  //     console.log(evt.target);
+  //     const t = evt.target;
+  //     if (evt.keyCode === 8) {
+  //       // for backspace key
+  //       console.log(t.value[t.selectionStart - 1]);
+  //     } else if (evt.keyCode === 46) {
+  //       // for delete key
+  //       console.log(t.value[t.selectionStart]);
+  //     }
+  //   };
   // });
 
+  function trackDelete(e) {
+    const eventRef = e;
+    const t = eventRef.target;
+    if (eventRef.keyCode === 8) {
+      // for backspace key
+      console.log(t.value[t.selectionStart - 1]);
+    } else if (eventRef.keyCode === 46) {
+      // for delete key
+      console.log(t.value[t.selectionStart]);
+    }
+  }
+
   return (
-    <article id="contract" className="contract" contentEditable="true">
-      <h1 className="xl">NON-DISCLOSURE AND CONFIDENTIALITY AGREEMENT</h1>
+    <article
+      id="contract"
+      className="contract"
+
+      // onKeyDown={() => trackDelete()}
+    >
+      <h1 className="xl" contentEditable="true">
+        NON-DISCLOSURE AND CONFIDENTIALITY AGREEMENT
+      </h1>
 
       <p>
         This Non-Disclosure Agreement (the “Agreement”), is made effective as of{" "}
-        <span className="placeholder">[Day]</span>{" "}
-        <span className="placeholder">[Month]</span> 2020 (the “Effective
-        Date”), by and between, on the one hand,{" "}
+        <span
+          className="placeholder"
+          contentEditable="true"
+          onKeyPress={(e) => trackDelete(e)}
+          // onChange={() => trackDelete()}
+        >
+          [Day]
+        </span>{" "}
+        <span className="placeholder" contentEditable="true">
+          [Month]
+        </span>{" "}
+        2020 (the “Effective Date”), by and between, on the one hand,{" "}
         <span className="placeholder">[Investor/Funder]</span> (“Recipient”),
         incorporated by virtue of notarial deed executed on{" "}
         <span className="placeholder">[ ]</span> before the Notary of [ ] with

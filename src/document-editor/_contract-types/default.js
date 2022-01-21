@@ -68,65 +68,46 @@ const DefaultContract = (props) => {
     props.setActiveHover(true);
   };
 
-  // useEffect(() => {
-  //   // const contenteditableHtmlElement = document.getElementById(
-  //   //   "article-container"
-  //   // );
+  useEffect(() => {
+    const contents = document.querySelectorAll("[contenteditable]");
 
-  //   // contenteditableHtmlElement.addEventListener("input", function (evt) {
-  //   //   console.log("contenteditable element changed");
-  //   //   const t = evt.target;
-  //   //   if (evt.keyCode === 8) {
-  //   //     // for backspace key
-  //   //     console.log(t.value[t.selectionStart - 1]);
-  //   //   } else if (evt.keyCode === 46) {
-  //   //     // for delete key
-  //   //     console.log(t.value[t.selectionStart]);
-  //   //   }
-  //   // });
-
-  //   document.getElementById("contract").onkeydown = function (evt) {
-  //     console.log(evt.target);
-  //     const t = evt.target;
-  //     if (evt.keyCode === 8) {
-  //       // for backspace key
-  //       console.log(t.value[t.selectionStart - 1]);
-  //     } else if (evt.keyCode === 46) {
-  //       // for delete key
-  //       console.log(t.value[t.selectionStart]);
-  //     }
-  //   };
-  // });
+    for (let content of contents) {
+      content.addEventListener("input", function () {
+        console.log("input changed to: " + content.innerHTML);
+      });
+    }
+  });
 
   function trackDelete(e) {
-    const eventRef = e;
-    const t = eventRef.target;
-    if (eventRef.keyCode === 8) {
-      // for backspace key
-      console.log(t.value[t.selectionStart - 1]);
-    } else if (eventRef.keyCode === 46) {
-      // for delete key
-      console.log(t.value[t.selectionStart]);
-    }
+    // console.log(e.charCode);
+    console.log(e.keyCode);
+    // const eventRef = e;
+    // const t = eventRef.target;
+    // if (eventRef.keyCode === 8) {
+    //   // for backspace key
+    //   console.log(t.value[t.selectionStart - 1]);
+    // } else if (eventRef.keyCode === 46) {
+    //   // for delete key
+    //   console.log(tvalue[t.selectionStart]);
+    // }
   }
 
   return (
     <article
       id="contract"
       className="contract"
+      contentEditable="true"
 
       // onKeyDown={() => trackDelete()}
     >
-      <h1 className="xl" contentEditable="true">
-        NON-DISCLOSURE AND CONFIDENTIALITY AGREEMENT
-      </h1>
+      <h1 className="xl">NON-DISCLOSURE AND CONFIDENTIALITY AGREEMENT</h1>
 
       <p>
         This Non-Disclosure Agreement (the “Agreement”), is made effective as of{" "}
         <span
           className="placeholder"
           contentEditable="true"
-          onKeyPress={(e) => trackDelete(e)}
+          onKeyDown={(e) => trackDelete(e)}
           // onChange={() => trackDelete()}
         >
           [Day]

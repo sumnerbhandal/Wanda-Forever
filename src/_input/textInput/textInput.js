@@ -13,6 +13,8 @@ const FieldInput = (props) => {
           placeholder={props.placeholder}
           required
           value={props.value}
+          onClick={props.onClick}
+          onBlur={props.onBlur}
           onChange={props.onChange}
           className={props.state}
         />

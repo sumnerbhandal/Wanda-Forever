@@ -5,6 +5,7 @@ import Alert from "../_notification/alert/alert";
 import RedirectHome from "./redirect";
 const EnhancedTable = lazy(() => import("../contract-hub/contract-hub"));
 const DocumentEditor = lazy(() => import("../document-editor/document-editor"));
+const Drafting = lazy(() => import("../drafting/drafting-editor"));
 const LoginPage = lazy(() => import("../login/login"));
 const Canvas = lazy(() => import("../canvas/canvas"));
 const HubHeader = lazy(() => import("../_header/hub-header"));
@@ -19,13 +20,13 @@ export default function App() {
   function loginAlert(newValue) {
     setAlertMessage(newValue);
   }
-  useEffect(() => {
-    const day = 86400000;
-    const now = new Date().getTime().toString();
-    const getKey = localStorage.getItem("validationTime");
-    const validToken = now - getKey < day;
-    validToken ? authoriseLogin(true) : authoriseLogin(false);
-  }, []);
+  // useEffect(() => {
+  //   const day = 86400000;
+  //   const now = new Date().getTime().toString();
+  //   const getKey = localStorage.getItem("validationTime");
+  //   const validToken = now - getKey < day;
+  //   validToken ? authoriseLogin(true) : authoriseLogin(false);
+  // }, []);
 
   const loader = (
     <div className="loading-container">
@@ -66,6 +67,14 @@ export default function App() {
               <>
                 {/* <HubHeader /> */}
                 <Canvas page={<DocumentEditor />} />
+              </>
+            </Suspense>
+          </Route>
+          <Route path="/drafting">
+            <Suspense fallback={loader}>
+              <>
+                {/* <HubHeader /> */}
+                <Canvas page={<Drafting />} />
               </>
             </Suspense>
           </Route>

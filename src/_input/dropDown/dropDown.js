@@ -12,6 +12,9 @@ const DropDown = (props) => {
           name={props.name}
           placeholder={props.placeholder}
           className={props.state}
+          onClick={props.onClick}
+          onBlur={props.onBlur}
+          onChange={props.onChange}
         >
           {props.option.map((option, key) => (
             <option key={key} value={option}>

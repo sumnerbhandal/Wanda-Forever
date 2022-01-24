@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const DefaultContract = (props) => {
   return (
-    <article id="contract" className="contract" contentEditable="true">
+    <article id="contract" className="contract">
       <h1 className="xl">Employment Contract</h1>
 
       <p>

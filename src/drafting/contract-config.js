@@ -49,7 +49,10 @@ function Config(props) {
 
   return (
     <>
-      <Toggle label="Would you like a header?" onClick={props.setShowHeader} />
+      <Toggle
+        label="Would you like to use a header?"
+        onClick={props.setShowHeader}
+      />
       {console.log(props.showHeader)}
       <div
         className={props.showHeader ? "header-fields" : "header-fields hidden"}

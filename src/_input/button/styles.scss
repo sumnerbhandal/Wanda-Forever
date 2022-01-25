@@ -11,6 +11,7 @@ button {
     font-weight: 600;
     letter-spacing: 0.125px;
     transition: background 0.3s ease;
+    flex-shrink: 0;
   }
 
   img {

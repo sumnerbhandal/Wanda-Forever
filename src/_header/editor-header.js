@@ -6,6 +6,7 @@ import PlaybookClose from "./_assets/Playbook-Close.svg";
 import PlaybookOpen from "./_assets/Playbook-Open.svg";
 import Download from "./_assets/Download.svg";
 import CPU from "./_assets/CPU.svg";
+import Toggle from "../_input/toggle/toggle";
 
 const OpenPlaybook = (
   <>
@@ -52,17 +53,13 @@ export default function EditorHeader(props) {
         <p className="last-edited">{lastEdited}</p>
       </div>
       <div className="right">
-        <label for="clean-switch" className="clean-version-switch-container">
-          Show Clean Version
-          <div className="switch">
-            <input
-              id="clean-switch"
-              type="checkbox"
-              onClick={props.toggleCleanView}
-            />
-            <span className="slider round"></span>
-          </div>
-        </label>
+        <Toggle
+          label="Show Clean Version"
+          id="clean-switch"
+          labelClass="clean-version-switch-container"
+          onClick={props.toggleCleanView}
+        />
+
         {/* <Button
           variant="secondary"
           type="submit"

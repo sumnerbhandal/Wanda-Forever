@@ -5,7 +5,7 @@ const Toggle = (props) => {
   return (
     <div className="error-container">
       <div className="flex-row">
-        <label for={props.id} className="toggle">
+        <label for={props.id} className={`toggle ${props.labelClass}`}>
           {props.label}
           <div className="switch">
             <input

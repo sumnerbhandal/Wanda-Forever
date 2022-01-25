@@ -3,6 +3,7 @@ import "./styles.scss";
 import Button from "../_input/button/button";
 import Robin from "./_assets/Robin-Logo-Bird.svg";
 import Download from "./_assets/Download.svg";
+import Toggle from "../_input/toggle/toggle";
 
 const UploadContract = (
   <>
@@ -32,17 +33,12 @@ export default function DraftingHeader(props) {
         <p className="last-edited">{lastEdited}</p>
       </div>
       <div className="right">
-        <label for="clean-switch" className="clean-version-switch-container">
-          Show Clean Version
-          <div className="switch">
-            <input
-              id="clean-switch"
-              type="checkbox"
-              onClick={props.toggleCleanView}
-            />
-            <span className="slider round"></span>
-          </div>
-        </label>
+        <Toggle
+          label="Show Clean Version"
+          id="clean-switch"
+          labelClass="clean-version-switch-container"
+          onClick={props.toggleCleanView}
+        />
         <Button variant="primary" type="submit" label={UploadContract} />
         <div className="user-icon">SB</div>
       </div>

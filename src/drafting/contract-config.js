@@ -26,7 +26,6 @@ function Config(props) {
     const newValue = e.target.value;
     const index = id.replace("config-", "");
     let updatedList = props.configFields.map((field) => {
-      console.log(index);
       if (field.id === index) {
         return { ...field, html: newValue, active: true }; //gets everything that was already in item, and updates "done"
       }
@@ -53,7 +52,6 @@ function Config(props) {
         label="Would you like to use a header?"
         onClick={props.setShowHeader}
       />
-      {console.log(props.showHeader)}
       <div
         className={props.showHeader ? "header-fields" : "header-fields hidden"}
       >

@@ -75,19 +75,11 @@ header {
             background-color: rgba(0, 90, 212, 1);
           }
 
-          // &:focus + .slider {
-          //   box-shadow: 0 0 1px rgba(0, 90, 212, 1);
-          // }
-
           &:checked + .slider:after {
             -webkit-transform: translateX(1.125rem);
             -ms-transform: translateX(1.125rem);
             transform: translateX(1.125rem);
           }
-
-          // &:checked + .slider:before {
-          //   content: "Hide Clean Version";
-          // }
         }
 
         .slider {
@@ -110,15 +102,6 @@ header {
             }
           }
 
-          // &:before {
-          //   content: "Show Clean Version";
-          //   position: absolute;
-          //   height: 1rem;
-          //   width: auto;
-          //   z-index: 29;
-          //   left: -8.5rem;
-          // }
-
           &:after {
               position: absolute;
               content: "";
@@ -139,10 +122,8 @@ header {
 
 
     button {
-      &:nth-child(2) {
-        margin-right: 0.75rem;
-      }
-      
+      margin-right: 0.75rem;
+
       img {
         margin-left: 0.5rem;
       }
@@ -156,8 +137,8 @@ header {
       align-items: center;
       font-weight: 700;
       background: #E6E9F1;
-      margin-left: 1rem;
       border-radius: 50%;
+      flex-shrink: 0;
     }
 
   }

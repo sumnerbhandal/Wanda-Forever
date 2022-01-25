@@ -41,7 +41,43 @@
 
         &:focus-visible {
           outline: 0;
-          // background: var(--hover-highlight);
+        }
+        .header {
+          display: flex;
+          flex-wrap: wrap;
+          width: 100%;
+          transition: all 0.4s ease ;
+          max-height: 10rem;
+
+          &.hide {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+          }
+          .column-left, .column-right {
+            width: 50%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            align-content: flex-end;
+
+            span {
+              width: 100%;
+              margin-bottom: 1rem;
+            }
+
+            img {
+              height: 8rem;
+              margin-left: auto;
+            }
+          }
+
+          hr {
+            border: 0;
+            border-bottom: 1px solid var(--robin-blue);
+            width: 100%;
+            margin-top: 1rem;
+          }
         }
 
 
@@ -293,6 +329,17 @@
                 }
               }
             }
+
+          }
+        }
+
+        .header-fields {
+          max-height: 18rem;
+          transition: all 0.4s ease;
+          &.hidden {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
 
           }
         }

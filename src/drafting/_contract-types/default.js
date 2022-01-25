@@ -3,49 +3,85 @@ import React, { useState, useEffect } from "react";
 const DefaultContract = (props) => {
   return (
     <article id="contract" className="contract">
+      <div className={props.showHeader ? "header" : "header  hide"}>
+        <div className="column-left">
+          <span
+            className={
+              props.configFields[0].active
+                ? "placeholder focused"
+                : "placeholder"
+            }
+          >
+            {props.configFields[0].html}
+          </span>{" "}
+          <span
+            className={
+              props.configFields[1].active
+                ? "placeholder focused"
+                : "placeholder"
+            }
+          >
+            {props.configFields[1].html}
+          </span>{" "}
+          <span
+            className={
+              props.configFields[2].active
+                ? "placeholder focused"
+                : "placeholder"
+            }
+          >
+            {props.configFields[2].html}
+          </span>{" "}
+        </div>
+        <div className="column-right">
+          <img src="https://cdn.dribbble.com/users/2293185/screenshots/10294743/media/5996ff97d8ba0c693f930328c64646e4.png?compress=1&resize=1200x900&vertical=top" />
+        </div>
+        <hr />
+      </div>
+
       <h1 className="xl">Employment Contract</h1>
 
       <p>
         This contract, dated on the{" "}
         <span
           className={
-            props.configFields[0].active ? "placeholder focused" : "placeholder"
-          }
-        >
-          {props.configFields[0].html}
-        </span>{" "}
-        is made between{" "}
-        <span
-          className={
-            props.configFields[1].active ? "placeholder focused" : "placeholder"
-          }
-        >
-          {props.configFields[1].html}
-        </span>{" "}
-        and{" "}
-        <span
-          className={
-            props.configFields[2].active ? "placeholder focused" : "placeholder"
-          }
-        >
-          {props.configFields[2].html}
-        </span>{" "}
-        of{" "}
-        <span
-          className={
             props.configFields[3].active ? "placeholder focused" : "placeholder"
           }
         >
           {props.configFields[3].html}
-        </span>
-        . This document constitutes an employment agreement between these two
-        parties and is governed by the laws of{" "}
+        </span>{" "}
+        is made between{" "}
         <span
           className={
             props.configFields[4].active ? "placeholder focused" : "placeholder"
           }
         >
           {props.configFields[4].html}
+        </span>{" "}
+        and{" "}
+        <span
+          className={
+            props.configFields[5].active ? "placeholder focused" : "placeholder"
+          }
+        >
+          {props.configFields[5].html}
+        </span>{" "}
+        of{" "}
+        <span
+          className={
+            props.configFields[6].active ? "placeholder focused" : "placeholder"
+          }
+        >
+          {props.configFields[6].html}
+        </span>
+        . This document constitutes an employment agreement between these two
+        parties and is governed by the laws of{" "}
+        <span
+          className={
+            props.configFields[7].active ? "placeholder focused" : "placeholder"
+          }
+        >
+          {props.configFields[7].html}
         </span>
         . WHEREAS the Employer desires to retain the services of the Employee,
         and the Employee desires to render such services, these terms and

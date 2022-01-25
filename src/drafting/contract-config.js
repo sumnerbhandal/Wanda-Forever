@@ -2,11 +2,12 @@
 import Button from "../_input/button/button";
 import DropDown from "../_input/dropDown/dropDown";
 import FieldInput from "../_input/textInput/textInput";
+import Toggle from "../_input/toggle/toggle";
 import React, { useEffect, useState } from "react";
 
 function Config(props) {
   useEffect(() => {
-    document.getElementById("config-0").valueAsDate = new Date();
+    document.getElementById("config-3").valueAsDate = new Date();
   }, []);
   function updateState(e) {
     const id = e.target.id;
@@ -48,11 +49,43 @@ function Config(props) {
 
   return (
     <>
+      <Toggle label="Would you like a header?" onClick={props.setShowHeader} />
+      {console.log(props.showHeader)}
+      <div
+        className={props.showHeader ? "header-fields" : "header-fields hidden"}
+      >
+        <FieldInput
+          label="What is the company name?*"
+          id="config-0"
+          value={props.configFields[0].html}
+          onChange={updateState}
+          onClick={highlightField}
+          onBlur={deactivateHighlight}
+        />
+        <FieldInput
+          label="What is the company address?*"
+          id="config-1"
+          value={props.configFields[1].html}
+          onChange={updateState}
+          onClick={highlightField}
+          onBlur={deactivateHighlight}
+        />
+        <FieldInput
+          label="What is the company phone number?*"
+          id="config-2"
+          value={props.configFields[2].html}
+          onChange={updateState}
+          onClick={highlightField}
+          onBlur={deactivateHighlight}
+        />
+      </div>
+
+      <hr />
       <FieldInput
         label="When would you like the contract to start?*"
         type="date"
-        id="config-0"
-        value={props.configFields[0].html}
+        id="config-3"
+        value={props.configFields[3].html}
         onChange={updateState}
         onClick={highlightField}
         onBlur={deactivateHighlight}
@@ -60,8 +93,8 @@ function Config(props) {
 
       <DropDown
         label="What’s the name of the company*"
-        id="config-1"
-        value={props.configFields[1].html}
+        id="config-4"
+        value={props.configFields[4].html}
         onChange={updateState}
         onClick={highlightField}
         onBlur={deactivateHighlight}
@@ -69,24 +102,24 @@ function Config(props) {
       />
       <FieldInput
         label="What’s the employee’s full name?*"
-        id="config-2"
-        value={props.configFields[2].html}
+        id="config-5"
+        value={props.configFields[5].html}
         onChange={updateState}
         onClick={highlightField}
         onBlur={deactivateHighlight}
       />
       <FieldInput
         label="What’s is the employee's address?*"
-        id="config-3"
-        value={props.configFields[3].html}
+        id="config-6"
+        value={props.configFields[6].html}
         onChange={updateState}
         onClick={highlightField}
         onBlur={deactivateHighlight}
       />
       <DropDown
         label="Where are the laws governed?*"
-        id="config-4"
-        value={props.configFields[4].html}
+        id="config-7"
+        value={props.configFields[7].html}
         onChange={updateState}
         onClick={highlightField}
         onBlur={deactivateHighlight}
@@ -106,6 +139,8 @@ const ContractConfig = (props) => {
       <Config
         configFields={props.configFields}
         setConfigFields={props.setConfigFields}
+        showHeader={props.showHeader}
+        setShowHeader={props.setShowHeader}
       />
     </div>
   );

@@ -3,34 +3,50 @@ import DraftingHeader from "../_header/drafting-header";
 import "./styles.scss";
 import ContractConfig from "./contract-config";
 import DefaultContract from "./_contract-types/default";
-import Button from "../_input/button/button";
+import useToggle from "../utils/useToggle";
 
 const DocumentEditor = (props) => {
   const [cleanVersion, setCleanVersion] = useState(false);
+  const [showHeader, setShowHeader] = useToggle();
 
   const [configFields, setConfigFields] = useState([
     {
       id: "0",
-      html: "[Date]",
-      active: false
-    },
-    {
-      id: "1",
       html: "[Company Name]",
       active: false
     },
     {
+      id: "1",
+      html: "[Company Address]",
+      active: false
+    },
+    {
       id: "2",
-      html: "[Employee Name]",
+      html: "[Company Phone Number]",
       active: false
     },
     {
       id: "3",
-      html: "[Employee Address]",
+      html: "[Date]",
       active: false
     },
     {
       id: "4",
+      html: "[Company Name]",
+      active: false
+    },
+    {
+      id: "5",
+      html: "[Employee Name]",
+      active: false
+    },
+    {
+      id: "6",
+      html: "[Employee Address]",
+      active: false
+    },
+    {
+      id: "7",
       html: "[Place]",
       active: false
     }
@@ -38,7 +54,6 @@ const DocumentEditor = (props) => {
 
   const [drawerState, setDrawerState] = useState(true);
   const [activeHover, setActiveHover] = useState(false);
-  const [showProvision, setShowProvision] = useState(false);
 
   function drawerClose() {
     setDrawerState(!drawerState);
@@ -91,9 +106,6 @@ const DocumentEditor = (props) => {
               : "article-container"
           }
         >
-          {/* <div className="article-selector-button">
-            <button contentEditable="false">Default</button>
-          </div> */}
           <DefaultContract
             toggleDrawer={() => setDrawerState(true)}
             toggleDrawerHighlight={() => {
@@ -105,12 +117,15 @@ const DocumentEditor = (props) => {
             cleanVersion={cleanVersion}
             configFields={configFields}
             setConfigFields={setConfigFields}
+            showHeader={showHeader}
           />
         </div>
         <aside className={drawerState ? "open" : null}>
           <ContractConfig
             configFields={configFields}
             setConfigFields={setConfigFields}
+            showHeader={showHeader}
+            setShowHeader={setShowHeader}
           />
         </aside>
       </div>

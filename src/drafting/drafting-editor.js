@@ -8,11 +8,12 @@ import useToggle from "../utils/useToggle";
 const DocumentEditor = (props) => {
   const [cleanVersion, setCleanVersion] = useState(false);
   const [showHeader, setShowHeader] = useToggle();
+  const [showConditionalText, setShowConditionalText] = useToggle();
 
   const [configFields, setConfigFields] = useState([
     {
       id: "0",
-      html: "[Company Name]",
+      html: "[Company Name Header]",
       active: false
     },
     {
@@ -118,6 +119,7 @@ const DocumentEditor = (props) => {
             configFields={configFields}
             setConfigFields={setConfigFields}
             showHeader={showHeader}
+            showConditionalText={showConditionalText}
           />
         </div>
         <aside className={drawerState ? "open" : null}>
@@ -126,6 +128,8 @@ const DocumentEditor = (props) => {
             setConfigFields={setConfigFields}
             showHeader={showHeader}
             setShowHeader={setShowHeader}
+            showConditionalText={showConditionalText}
+            setShowConditionalText={setShowConditionalText}
           />
         </aside>
       </div>

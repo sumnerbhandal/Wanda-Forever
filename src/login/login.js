@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom/index";
 import "./styles.scss";
-import FieldInput from "../_input/textInput/textInput";
+import Input from "../_input/text/input";
 import Button from "../_input/button/button";
 
 const forwardArrow = (
@@ -100,14 +100,14 @@ const LoginPage = (props) => {
           </div>
           <div className="form-container">
             <form id="login-step-one" className="step-one" onSubmit={stepOne}>
-              <FieldInput
+              <Input
                 id="login-username"
                 label="Username"
                 type="text"
                 name="email"
                 placeholder="example@email.co.uk"
               />
-              <FieldInput
+              <Input
                 id="login-password"
                 label="Password"
                 type="password"
@@ -135,7 +135,7 @@ const LoginPage = (props) => {
                 <li>Step 2. Locate Robin AI in your list.</li>
                 <li>Step 3. Enter authentication code below.</li>
               </ul>
-              <FieldInput
+              <Input
                 id="login-2fa"
                 label="Two-Factor Authentication (2FA) Code"
                 type="password"

@@ -1,9 +1,8 @@
-// import Settings from "./_assets/Settings.svg";
-import Button from "../_input/button/button";
 import DropDown from "../_input/dropDown/dropDown";
-import FieldInput from "../_input/textInput/textInput";
+import Input from "../_input/text/input";
 import Toggle from "../_input/toggle/toggle";
-import React, { useEffect, useState } from "react";
+import TextArea from "../_input/text/textArea";
+import React, { useEffect } from "react";
 
 function Config(props) {
   useEffect(() => {
@@ -55,7 +54,7 @@ function Config(props) {
       <div
         className={props.showHeader ? "header-fields" : "header-fields hidden"}
       >
-        <FieldInput
+        <Input
           label="What is the company name?*"
           id="config-0"
           value={props.configFields[0].html}
@@ -63,7 +62,7 @@ function Config(props) {
           onClick={highlightField}
           onBlur={deactivateHighlight}
         />
-        <FieldInput
+        <Input
           label="What is the company address?*"
           id="config-1"
           value={props.configFields[1].html}
@@ -71,7 +70,7 @@ function Config(props) {
           onClick={highlightField}
           onBlur={deactivateHighlight}
         />
-        <FieldInput
+        <Input
           label="What is the company phone number?*"
           id="config-2"
           value={props.configFields[2].html}
@@ -82,7 +81,7 @@ function Config(props) {
       </div>
 
       <hr />
-      <FieldInput
+      <Input
         label="When would you like the contract to start?*"
         type="date"
         id="config-3"
@@ -101,7 +100,7 @@ function Config(props) {
         onBlur={deactivateHighlight}
         option={["[Company Name]", "Example Company Name"]}
       />
-      <FieldInput
+      <Input
         label="What’s the employee’s full name?*"
         id="config-5"
         value={props.configFields[5].html}
@@ -109,7 +108,7 @@ function Config(props) {
         onClick={highlightField}
         onBlur={deactivateHighlight}
       />
-      <FieldInput
+      <Input
         label="What’s is the employee's address?*"
         id="config-6"
         value={props.configFields[6].html}
@@ -126,6 +125,12 @@ function Config(props) {
         onBlur={deactivateHighlight}
         option={["[Place]", "United Kingdom", "USA"]}
       />
+      <hr />
+      <Toggle
+        label="Show definition of confidential information?"
+        onClick={props.setShowConditionalText}
+      />
+      <hr />
     </>
   );
 }
@@ -142,6 +147,8 @@ const ContractConfig = (props) => {
         setConfigFields={props.setConfigFields}
         showHeader={props.showHeader}
         setShowHeader={props.setShowHeader}
+        showConditionalText={props.showConditionalText}
+        setShowConditionalText={props.setShowConditionalText}
       />
     </div>
   );

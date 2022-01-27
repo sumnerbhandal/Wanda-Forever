@@ -110,17 +110,29 @@ const DefaultContract = (props) => {
         <li>
           Confidential Information
           <ol>
-            <li>
-              Confidential Information. As used in this Agreement, “Confidential
-              Information” means all information whether of a real estate,
-              technical, business or other nature that is or may be disclosed or
-              imparted by [X] to the Recipient. In particular, Confidential
-              Information includes includes all information concerning the
-              transaction given to the Recipient in any format, including (i)
-              written information such as written documentation or email
-              transmission via electronic media, (ii) visual information and
-              (iii) oral information
-            </li>
+            {props.showConditionalText ? (
+              <li>
+                Confidential Information. As used in this Agreement,
+                “Confidential Information” means all information whether of a
+                real estate, technical, business or other nature that is or may
+                be disclosed or imparted by{" "}
+                <span
+                  className={
+                    props.configFields[4].active
+                      ? "placeholder focused"
+                      : "placeholder"
+                  }
+                >
+                  {props.configFields[4].html}{" "}
+                </span>
+                to the Recipient. In particular, Confidential Information
+                includes includes all information concerning the transaction
+                given to the Recipient in any format, including (i) written
+                information such as written documentation or email transmission
+                via electronic media, (ii) visual information and (iii) oral
+                information`
+              </li>
+            ) : null}
             <li>
               Definitions. In addition to other terms defined herein, as used in
               this Agreement:

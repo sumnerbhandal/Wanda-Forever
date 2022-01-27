@@ -18,7 +18,7 @@ import "./styles.scss";
 import rows from "./data";
 import guid from "../utils/guid";
 import DropDown from "../_input/dropDown/dropDown";
-import FieldInput from "../_input/textInput/textInput";
+import Input from "../_input/text/input";
 import Button from "../_input/button/button";
 import decorativeAngle from "./_assets/Decoration.svg";
 
@@ -195,7 +195,7 @@ function Row(props) {
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <h2>Configure Contract</h2>
-            <FieldInput
+            <Input
               id={`${rowId}-name`}
               label="Name"
               type="text"

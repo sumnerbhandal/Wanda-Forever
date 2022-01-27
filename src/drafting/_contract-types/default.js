@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 const DefaultContract = (props) => {
   return (
@@ -34,7 +34,10 @@ const DefaultContract = (props) => {
           </span>{" "}
         </div>
         <div className="column-right">
-          <img src="https://cdn.dribbble.com/users/2293185/screenshots/10294743/media/5996ff97d8ba0c693f930328c64646e4.png?compress=1&resize=1200x900&vertical=top" />
+          <img
+            alt="company logo"
+            src="https://cdn.dribbble.com/users/2293185/screenshots/10294743/media/5996ff97d8ba0c693f930328c64646e4.png?compress=1&resize=1200x900&vertical=top"
+          />
         </div>
         <hr />
       </div>

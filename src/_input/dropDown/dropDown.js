@@ -5,7 +5,7 @@ const DropDown = (props) => {
   return (
     <div className="error-container">
       <div className="flex-row">
-        <label for={props.id}>{props.label}</label>
+        <label htmlFor={props.id}>{props.label}</label>
         <select
           type={props.type}
           id={props.id}

@@ -1,7 +1,6 @@
 import DropDown from "../_input/dropDown/dropDown";
 import Input from "../_input/text/input";
 import Toggle from "../_input/toggle/toggle";
-import TextArea from "../_input/text/textArea";
 import React, { useEffect } from "react";
 
 function Config(props) {

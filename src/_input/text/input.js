@@ -5,7 +5,7 @@ const Input = (props) => {
   return (
     <div className="error-container">
       <div className="flex-row">
-        <label for={props.id}>{props.label}</label>
+        <label htmlFor={props.id}>{props.label}</label>
         <input
           type={props.type}
           id={props.id}

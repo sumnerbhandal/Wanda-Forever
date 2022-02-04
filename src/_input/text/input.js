@@ -4,7 +4,7 @@ import "./styles.scss";
 const Input = (props) => {
   return (
     <div className="error-container">
-      <div className="flex-row">
+      <div className={`flex-row ${props.orientation}`}>
         <label htmlFor={props.id}>{props.label}</label>
         <input
           type={props.type}

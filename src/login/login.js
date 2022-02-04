@@ -14,7 +14,7 @@ const forwardArrow = (
 );
 const submitArrow = (
   <>
-    Submit{" "}
+    Sign In{" "}
     <span aria-hidden="true" className="material-icons">
       arrow_forward
     </span>
@@ -22,133 +22,133 @@ const submitArrow = (
 );
 
 const LoginPage = (props) => {
-  const navigate = useNavigate();
-
-  function stepOne(e) {
-    e.preventDefault();
-    props.loginAlert(false);
-    const formData = new FormData(e.currentTarget);
-    if (
-      formData.get("email") === "robin" &&
-      formData.get("password") === "batman"
-    ) {
-      e.target.classList.add("step-one-validated");
-      e.target.nextElementSibling.classList.add("step-two-starting");
-    } else {
-      props.loginAlert({
-        message: "The username or password you entered is incorrect.",
-        color: "var(--robin-blue)",
-        background: "var(--error)"
-      });
-    }
-    const dismissButton = document.getElementById("alert-dismiss");
-    setTimeout(function () {
-      if (dismissButton != null) {
-        dismissButton.click();
-      } else return;
-    }, 5000);
-  }
-
-  function stepBack(e) {
-    const stepOne = document.getElementById("login-step-one");
-    stepOne.classList.remove("step-one-validated");
-    stepOne.nextElementSibling.classList.remove("step-two-starting");
-  }
-
-  function Login(e) {
-    e.preventDefault();
-    //time of day greeting
-    var time = new Date().getHours();
-    let greeting;
-    if (time < 12) {
-      greeting = "Good morning";
-    } else if (time > 12 && time < 17) {
-      greeting = "Good afternoon";
-    } else {
-      greeting = "Good evening";
-    }
-    // with authenticated credentials allow access to other pages
-    props.authoriseLogin(true);
-    // local storage with expiry references
-    const timeDate = new Date().getTime();
-    localStorage.setItem("validationTime", timeDate);
-    // push to next page
-    props.loginAlert(false);
-    navigate("/contracts");
-    props.loginAlert({
-      message: greeting + " Robin.",
-      color: "var(--robin-blue)",
-      background: "var(--success)"
-    });
-  }
   return (
     <div className="login-page">
-      <div className="left">
-        <img
-          alt="Pubic Demo"
-          className="login-hero"
-          src="https://uploads-ssl.webflow.com/5dc98e8b04adb0e7091d2920/5dc98e8b04adb0146c1d2ad1_Asset%2012.svg"
-        />
-      </div>
-      <div className="right">
-        <div className="login-container">
-          <div className="robin-logo">
-            <img
-              alt="Robin Logo"
-              src="https://portal.robinai.co.uk/images/robin-logo.svg"
-            />
-          </div>
-          <div className="form-container">
-            <form id="login-step-one" className="step-one" onSubmit={stepOne}>
-              <Input
-                id="login-username"
-                label="Username"
-                type="text"
-                name="email"
-                placeholder="example@email.co.uk"
+      <aside className="gradient">
+        <div className="statement">
+          <p>
+            We make
+            <br />
+            contracts
+            <br />
+            simple.
+          </p>
+        </div>
+        <div className="bird-ledge">
+          <svg
+            width="81"
+            height="41"
+            viewBox="0 0 81 41"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g clip-path="url(#clip0_376_4586)">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M66.2065 0.71257C60.8053 0.589006 55.7782 6.06699 55.7782 6.06699L24.2026 19.2058C24.2026 19.2058 33.7169 25.3429 44.2697 25.0546C54.8226 24.8075 65.3755 18.1762 65.3755 18.1762C63.6306 19.7414 61.7193 21.1417 59.7251 22.3774C56.4014 24.4367 51.4988 27.2375 45.3084 27.6082C40.4474 27.9789 35.5864 27.2375 31.0579 25.4252C27.9834 24.3956 26.9447 24.8075 26.9447 24.8075C26.9447 24.8075 1.68428 36.793 0.645609 37.2874C-0.39306 37.7816 -0.143779 39.7174 1.14417 39.0584C2.47367 38.4406 16.2257 32.7155 18.8016 31.8094C21.3775 30.9032 25.2413 30.7796 31.9304 33.5804C36.9159 35.4339 42.1508 36.5872 47.4688 37.0402L49.9201 40.5H52.2467C52.2467 40.5 51.6235 39.7175 50.7094 38.7289C49.7954 37.6992 50.9588 36.4224 50.9588 36.4224C50.9588 36.4224 66.248 31.9741 71.5244 26.6197C76.8009 21.2653 75.0144 14.7576 74.8481 11.9568C74.5989 8.90893 80 7.09668 80 7.09668L74.9728 4.79016C72.7292 2.2777 69.5717 0.836133 66.2065 0.71257ZM70.735 7.7145C69.6964 7.75569 68.8239 6.93192 68.8239 5.94342C68.8239 4.87254 69.6964 4.04878 70.735 4.04878C71.7737 4.04878 72.6461 4.91373 72.6461 5.94342C72.6046 6.97311 71.7737 7.75569 70.735 7.7145Z"
+                fill="white"
               />
-              <Input
-                id="login-password"
-                label="Password"
-                type="password"
-                name="password"
-                placeholder="Password"
-              />
-              <div className="submit-reset">
-                <Button variant="primary" type="submit" label={forwardArrow} />
-                <Button variant="text" type="button" label="Forgot Password?" />
+            </g>
+            <defs>
+              <clipPath id="clip0_376_4586">
+                <rect
+                  width="81"
+                  height="39.7895"
+                  fill="white"
+                  transform="translate(0 0.71051)"
+                />
+              </clipPath>
+            </defs>
+          </svg>
+          <hr />
+        </div>
+      </aside>
+      <main>
+        <div className="login">
+          <div className="dummy-content">
+            <div className="w-[540px] p-16">
+              <h1>Log in to Project Wanda</h1>
+              <p className="intro">
+                Welcome! Please log in with the information that you entered
+                during registration.
+              </p>
+              <p>
+                If this is your first time here, please contact your account
+                manager to get set up.
+              </p>
+              <div className="form-container">
+                <form action="#">
+                  <Input
+                    id="login-username"
+                    label="Email Address"
+                    type="text"
+                    name="email"
+                    placeholder="example@email.co.uk"
+                    orientation="vertical"
+                  />
+                  <Input
+                    id="login-password"
+                    label="Password"
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    orientation="vertical"
+                  />
+                  <div className="remember-submit">
+                    <div className="flex-1">
+                      <label className="checkbox">
+                        <input
+                          name="rememberMe"
+                          type="checkbox"
+                          value="false"
+                        />
+                        <span className="a block">Remember me</span>
+                      </label>
+                    </div>
+                    <div className="flex-1 text-right">
+                      <a className="inline" href="/forgot-password">
+                        Forgotten password
+                      </a>
+                    </div>
+                  </div>
+
+                  <Button variant="primary" type="submit" label={submitArrow} />
+                </form>
               </div>
-            </form>
-            <form className="step-two" onSubmit={Login}>
-              <div className="back-to-step-one-button">
-                <button
-                  onClick={stepBack}
-                  aria-hidden="true"
-                  className="material-icons"
-                  aria-label="Back to first login step"
-                >
-                  arrow_backward
-                </button>
-              </div>
-              <ul tabIndex="0">
-                <li>Step 1. Open your two-factor authentication (2FA) app.</li>
-                <li>Step 2. Locate Robin AI in your list.</li>
-                <li>Step 3. Enter authentication code below.</li>
-              </ul>
-              <Input
-                id="login-2fa"
-                label="Two-Factor Authentication (2FA) Code"
-                type="password"
-                name="password"
-                placeholder="Enter code generated by 2FA app"
-              />
-              <div className="submit-reset">
-                <Button variant="primary" type="submit" label={submitArrow} />
-              </div>
-            </form>
+            </div>
           </div>
         </div>
-      </div>
+        <div className="bird-ledge">
+          <svg
+            width="81"
+            height="41"
+            viewBox="0 0 81 41"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g clip-path="url(#clip0_376_4586)">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M66.2065 0.71257C60.8053 0.589006 55.7782 6.06699 55.7782 6.06699L24.2026 19.2058C24.2026 19.2058 33.7169 25.3429 44.2697 25.0546C54.8226 24.8075 65.3755 18.1762 65.3755 18.1762C63.6306 19.7414 61.7193 21.1417 59.7251 22.3774C56.4014 24.4367 51.4988 27.2375 45.3084 27.6082C40.4474 27.9789 35.5864 27.2375 31.0579 25.4252C27.9834 24.3956 26.9447 24.8075 26.9447 24.8075C26.9447 24.8075 1.68428 36.793 0.645609 37.2874C-0.39306 37.7816 -0.143779 39.7174 1.14417 39.0584C2.47367 38.4406 16.2257 32.7155 18.8016 31.8094C21.3775 30.9032 25.2413 30.7796 31.9304 33.5804C36.9159 35.4339 42.1508 36.5872 47.4688 37.0402L49.9201 40.5H52.2467C52.2467 40.5 51.6235 39.7175 50.7094 38.7289C49.7954 37.6992 50.9588 36.4224 50.9588 36.4224C50.9588 36.4224 66.248 31.9741 71.5244 26.6197C76.8009 21.2653 75.0144 14.7576 74.8481 11.9568C74.5989 8.90893 80 7.09668 80 7.09668L74.9728 4.79016C72.7292 2.2777 69.5717 0.836133 66.2065 0.71257ZM70.735 7.7145C69.6964 7.75569 68.8239 6.93192 68.8239 5.94342C68.8239 4.87254 69.6964 4.04878 70.735 4.04878C71.7737 4.04878 72.6461 4.91373 72.6461 5.94342C72.6046 6.97311 71.7737 7.75569 70.735 7.7145Z"
+                fill="rgb(42, 52, 79)"
+              />
+            </g>
+            <defs>
+              <clipPath id="clip0_376_4586">
+                <rect
+                  width="81"
+                  height="39.7895"
+                  fill="rgb(42, 52, 79)"
+                  transform="translate(0 0.71051)"
+                />
+              </clipPath>
+            </defs>
+          </svg>
+          <hr />
+        </div>
+      </main>
     </div>
   );
 };

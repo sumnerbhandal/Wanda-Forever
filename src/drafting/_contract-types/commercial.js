@@ -1,6 +1,6 @@
 import React from "react";
 
-const DefaultContract = (props) => {
+const CommercialContract = (props) => {
   return (
     <article id="contract" className="contract">
       <div className={props.showHeader ? "header" : "header  hide"}>
@@ -42,7 +42,7 @@ const DefaultContract = (props) => {
         <hr />
       </div>
 
-      <h1 className="xl">Employment Contract</h1>
+      <h1 className="xl">An Example of a Commercial Contract</h1>
 
       <p>
         This contract, dated on the{" "}
@@ -228,4 +228,4 @@ const DefaultContract = (props) => {
   );
 };
 
-export default DefaultContract;
+export default CommercialContract;

@@ -2,32 +2,20 @@ import * as React from "react";
 import "./styles.scss";
 import Button from "../_input/button/button";
 import Robin from "./_assets/Robin-Logo-Bird.svg";
-import PlaybookClose from "./_assets/Playbook-Close.svg";
-import PlaybookOpen from "./_assets/Playbook-Open.svg";
 import Download from "./_assets/Download.svg";
 import CPU from "./_assets/CPU.svg";
 import Toggle from "../_input/toggle/toggle";
-
-const OpenPlaybook = (
-  <>
-    Open Playbook <img src={PlaybookOpen} />
-  </>
-);
-
-const ClosePlaybook = (
-  <>
-    Close Playbook <img src={PlaybookClose} />
-  </>
-);
+import PlatformButton from "./platformButton";
+import { Link } from "react-router-dom/index";
 
 const UploadContract = (
   <>
-    Download as .docx <img src={Download} />
+    Download as <img alt="Download Icon" src={Download} />
   </>
 );
 const RunAutoEdit = (
   <>
-    Run Auto Edit <img src={CPU} />
+    Run Auto Edit <img alt="Machine Learning Icon" src={CPU} />
   </>
 );
 
@@ -46,9 +34,10 @@ export default function EditorHeader(props) {
   return (
     <header>
       <div className="left">
-        <a href="/contracts">
-          <img src={Robin} />
-        </a>
+        <Link to={{ pathname: "/review" }}>
+          <img alt="logo" src={Robin} />
+        </Link>
+        <PlatformButton platform="Review Contracts" />
         <p>{props.documentName}</p>
         <p className="last-edited">{lastEdited}</p>
       </div>
@@ -59,20 +48,8 @@ export default function EditorHeader(props) {
           labelClass="clean-version-switch-container"
           onClick={props.toggleCleanView}
         />
-
-        {/* <Button
-          variant="secondary"
-          type="submit"
-          label={props.drawerState ? ClosePlaybook : OpenPlaybook}
-          onClick={props.toggleDrawer}
-        /> */}
-        <Button
-          variant="secondary"
-          type="submit"
-          label={RunAutoEdit}
-          // onClick={props.toggleDrawer}
-        />
-        <Button variant="primary" type="submit" label={UploadContract} />
+        <Button variant="primary" type="submit" label={RunAutoEdit} />
+        <Button variant="secondary" type="submit" label={UploadContract} />
         <div className="user-icon">SB</div>
       </div>
     </header>

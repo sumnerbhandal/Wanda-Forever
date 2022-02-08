@@ -2,13 +2,14 @@ import * as React from "react";
 import "./styles.scss";
 import Button from "../_input/button/button";
 import Robin from "./_assets/Robin-Logo-Bird.svg";
-import Download from "./_assets/Download.svg";
+import DownloadWhite from "./_assets/Download-White.svg";
 import Toggle from "../_input/toggle/toggle";
 import PlatformButton from "./platformButton";
+import { Link } from "react-router-dom/index";
 
 const UploadContract = (
   <>
-    Download as .docx <img src={Download} />
+    Download as .docx <img alt="download icon" src={DownloadWhite} />
   </>
 );
 
@@ -27,10 +28,10 @@ export default function DraftingHeader(props) {
   return (
     <header>
       <div className="left">
-        <a href="/contracts">
-          <img alt="Robin Logo" src={Robin} />
-        </a>
-        <PlatformButton />
+        <Link to={{ pathname: "/draft" }}>
+          <img alt="logo" src={Robin} />
+        </Link>
+        <PlatformButton platform="Draft Contracts" />
         <p>{props.documentName}</p>
         <p className="last-edited">{lastEdited}</p>
       </div>

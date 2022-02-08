@@ -22,6 +22,7 @@ const submitArrow = (
 );
 
 const LoginPage = (props) => {
+  let navigate = useNavigate();
   return (
     <div className="login-page">
       <aside className="gradient">
@@ -78,7 +79,7 @@ const LoginPage = (props) => {
                 manager to get set up.
               </p>
               <div className="form-container">
-                <form action="#">
+                <form onSubmit={() => navigate("/draft")}>
                   <Input
                     id="login-username"
                     label="Email Address"

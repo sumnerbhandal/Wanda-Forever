@@ -2,15 +2,25 @@ import React, { useState } from "react";
 import DraftingHeader from "../_header/drafting-header";
 import "./styles.scss";
 import ContractConfig from "./contract-config";
-import DefaultContract from "./_contract-types/default";
+import EmploymentContract from "./_contract-types/employment";
+import CommercialContract from "./_contract-types/commercial";
+import SupplierContract from "./_contract-types/supplier";
 import useToggle from "../utils/useToggle";
+import { useLocation } from "react-router-dom";
+
+const capitalize = (s) => {
+  if (typeof s !== "string") return "";
+  return s.charAt(0).toUpperCase() + s.slice(1);
+};
 
 const DocumentEditor = (props) => {
   const [cleanVersion, setCleanVersion] = useState(false);
   const [showHeader, setShowHeader] = useToggle();
   const [showConditionalText, setShowConditionalText] = useToggle();
+  const location = useLocation();
+  const ContractType = location.pathname.split("_")[1];
 
-  const [configFields, setConfigFields] = useState([
+  const [employment, setEmployment] = useState([
     {
       id: "0",
       html: "[Company Name Header]",
@@ -53,6 +63,95 @@ const DocumentEditor = (props) => {
     }
   ]);
 
+  const [commercial, setCommercial] = useState([
+    {
+      id: "0",
+      html: "[Company Name Header]",
+      active: false
+    },
+    {
+      id: "1",
+      html: "[Company Address]",
+      active: false
+    },
+    {
+      id: "2",
+      html: "[Company Phone Number]",
+      active: false
+    },
+    {
+      id: "3",
+      html: "[Date]",
+      active: false
+    },
+    {
+      id: "4",
+      html: "[Company Name]",
+      active: false
+    },
+    {
+      id: "5",
+      html: "[Employee Name]",
+      active: false
+    },
+    {
+      id: "6",
+      html: "[Employee Address]",
+      active: false
+    },
+    {
+      id: "7",
+      html: "[Place]",
+      active: false
+    }
+  ]);
+
+  const [supplier, setSupplier] = useState([
+    {
+      id: "0",
+      html: "[Company Name Header]",
+      active: false
+    },
+    {
+      id: "1",
+      html: "[Company Address]",
+      active: false
+    },
+    {
+      id: "2",
+      html: "[Company Phone Number]",
+      active: false
+    },
+    {
+      id: "3",
+      html: "[Date]",
+      active: false
+    },
+    {
+      id: "4",
+      html: "[Company Name]",
+      active: false
+    },
+    {
+      id: "5",
+      html: "[Employee Name]",
+      active: false
+    },
+    {
+      id: "6",
+      html: "[Employee Address]",
+      active: false
+    },
+    {
+      id: "7",
+      html: "[Place]",
+      active: false
+    }
+  ]);
+
+  const ChosenContractType = eval(ContractType);
+  const setChosenContractType = eval("set" + capitalize(ContractType));
+
   const [drawerState, setDrawerState] = useState(true);
   const [activeHover, setActiveHover] = useState(false);
 
@@ -89,10 +188,15 @@ const DocumentEditor = (props) => {
       }
     }
   }
+
+  const ContractName = location.pathname
+    .split("_")[0]
+    .split("editor/")[1]
+    .replace(/-/g, " ");
   return (
     <>
       <DraftingHeader
-        documentName="Document File Name"
+        documentName={ContractName}
         lastEdited="Last Edited 2021/10/26"
         toggleDrawer={() => drawerClose()}
         drawerState={drawerState}
@@ -107,25 +211,57 @@ const DocumentEditor = (props) => {
               : "article-container"
           }
         >
-          <DefaultContract
-            toggleDrawer={() => setDrawerState(true)}
-            toggleDrawerHighlight={() => {
-              setDrawerState(true);
-              setActiveHover(true);
-            }}
-            setActiveHover={setActiveHover}
-            activeHover={activeHover}
-            cleanVersion={cleanVersion}
-            configFields={configFields}
-            setConfigFields={setConfigFields}
-            showHeader={showHeader}
-            showConditionalText={showConditionalText}
-          />
+          {ContractType === "employment" ? (
+            <EmploymentContract
+              toggleDrawer={() => setDrawerState(true)}
+              toggleDrawerHighlight={() => {
+                setDrawerState(true);
+                setActiveHover(true);
+              }}
+              setActiveHover={setActiveHover}
+              activeHover={activeHover}
+              cleanVersion={cleanVersion}
+              configFields={ChosenContractType}
+              setConfigFields={setChosenContractType}
+              showHeader={showHeader}
+              showConditionalText={showConditionalText}
+            />
+          ) : ContractType === "commercial" ? (
+            <CommercialContract
+              toggleDrawer={() => setDrawerState(true)}
+              toggleDrawerHighlight={() => {
+                setDrawerState(true);
+                setActiveHover(true);
+              }}
+              setActiveHover={setActiveHover}
+              activeHover={activeHover}
+              cleanVersion={cleanVersion}
+              configFields={ChosenContractType}
+              setConfigFields={setChosenContractType}
+              showHeader={showHeader}
+              showConditionalText={showConditionalText}
+            />
+          ) : (
+            <SupplierContract
+              toggleDrawer={() => setDrawerState(true)}
+              toggleDrawerHighlight={() => {
+                setDrawerState(true);
+                setActiveHover(true);
+              }}
+              setActiveHover={setActiveHover}
+              activeHover={activeHover}
+              cleanVersion={cleanVersion}
+              configFields={ChosenContractType}
+              setConfigFields={setChosenContractType}
+              showHeader={showHeader}
+              showConditionalText={showConditionalText}
+            />
+          )}
         </div>
         <aside className={drawerState ? "open" : null}>
           <ContractConfig
-            configFields={configFields}
-            setConfigFields={setConfigFields}
+            configFields={ChosenContractType}
+            setConfigFields={setChosenContractType}
             showHeader={showHeader}
             setShowHeader={setShowHeader}
             showConditionalText={showConditionalText}

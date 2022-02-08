@@ -16,6 +16,7 @@ import UnfoldLessIcon from "@mui/icons-material/UnfoldLess";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import "./styles.scss";
 import review from "./_feed/review";
+import draft from "./_feed/draft";
 import guid from "../utils/guid";
 import DropDown from "../_input/dropDown/dropDown";
 import Input from "../_input/text/input";
@@ -172,7 +173,14 @@ function Row(props) {
           <div className="nda-seed">{row.type}</div>
         </TableCell>
         <TableCell>
-          <Link to={`./editor/${contractName.replace(/\s/g, "_")}`}>
+          <Link
+            to={{
+              pathname: `./editor/${contractName
+                .replace(/\s/g, "-")
+                .toLowerCase()}_${row.contractRef}`,
+              state: { fileName: true }
+            }}
+          >
             {contractName}
           </Link>
         </TableCell>

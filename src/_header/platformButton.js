@@ -2,6 +2,9 @@ import * as React from "react";
 import Button from "../_input/button/button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import { useNavigate } from "react-router-dom/index";
+import Draft from "./_assets/Draft.svg";
+import Review from "./_assets/Review.svg";
 
 export default function PositionedMenu(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -12,12 +15,21 @@ export default function PositionedMenu(props) {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const openDraft = () => {
+    navigate("/draft");
+    handleClose();
+  };
+  const openReview = () => {
+    navigate("/review");
+    handleClose();
+  };
+  let navigate = useNavigate();
 
   return (
     <div>
       <Button
-        id="demo-positioned-button"
-        aria-controls={open ? "demo-positioned-menu" : undefined}
+        id="platform-switch-button"
+        aria-controls={open ? "platform-switch-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
@@ -25,8 +37,8 @@ export default function PositionedMenu(props) {
         variant="tertiary"
       />
       <Menu
-        id="demo-positioned-menu"
-        aria-labelledby="demo-positioned-button"
+        id="platform-switch-menu"
+        aria-labelledby="platform-switch-button"
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
@@ -39,9 +51,15 @@ export default function PositionedMenu(props) {
           horizontal: "left"
         }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem onClick={openDraft}>
+          <img alt="download icon" src={Draft} />
+          Draft Contracts
+        </MenuItem>
+        <MenuItem onClick={openReview}>
+          <img alt="download icon" src={Review} />
+          Review Contracts
+        </MenuItem>
+        {/* <MenuItem onClick={() => navigate("/query")}>Queryable Contracts (QC)</MenuItem> */}
       </Menu>
     </div>
   );

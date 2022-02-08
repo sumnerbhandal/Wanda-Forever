@@ -116,7 +116,7 @@
           
                 &:nth-child(1) {
                   width: 2rem;
-                  padding-left: 0.25rem;
+                  padding-right: 0.5rem;
                 }
           
                 &:nth-child(2) {
@@ -137,13 +137,17 @@
                 }
           
                 .nda-seed {
-                  background: #CCD3E4;
+                  letter-spacing: 0;
+                  background: #F5F6F9;
                   padding: 0.25rem 0.5rem;
-                  width: fit-content;
+                  width: 5.75rem;
                   border-radius: 1rem;
                   height: 2rem;
                   display: flex;
                   align-items: center;
+                  justify-content: center;
+                  font-weight: 700;
+                  font-size: 0.75rem;
                 }
 
                 .name-container {

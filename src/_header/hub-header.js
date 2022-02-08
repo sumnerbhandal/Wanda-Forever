@@ -22,11 +22,11 @@ export default function HubHeader(props) {
   return (
     <header>
       <div className="left">
-        <Link to={props.homepage}>
+        <Link to={{ pathname: props.homepage }}>
           <img alt="logo" src={Robin} />
         </Link>
         <PlatformButton platform={props.platform} />
-        <p>Contract Hub</p>
+        <p>{props.hubType} Contract Hub</p>
       </div>
       <div className="right">
         <Button variant="secondary" type="submit" label={SeeAllGroups} />

@@ -40,8 +40,12 @@ export default function App() {
           <Route path="draft">
             <Suspense fallback={loader}>
               <>
-                <HubHeader platform="Draft Contracts" />
-                <Canvas page={<EnhancedTable feed="review" />} />
+                <HubHeader
+                  platform="Draft Contracts"
+                  homepage="/draft"
+                  hubType="Drafting"
+                />
+                <Canvas page={<EnhancedTable feed="draft" />} />
               </>
             </Suspense>
             <Route path="editor">
@@ -57,7 +61,11 @@ export default function App() {
           <Route path="review">
             <Suspense fallback={loader}>
               <>
-                <HubHeader platform="Review Contracts" />
+                <HubHeader
+                  platform="Review Contracts"
+                  homepage="/review"
+                  hubType="Reviewing"
+                />
                 <Canvas page={<EnhancedTable feed="review" />} />
               </>
             </Suspense>

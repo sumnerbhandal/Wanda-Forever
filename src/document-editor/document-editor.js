@@ -100,9 +100,6 @@ const DocumentEditor = (props) => {
               : "article-container"
           }
         >
-          {/* <div className="article-selector-button">
-            <button contentEditable="false">Default</button>
-          </div> */}
           <DefaultContract
             toggleDrawer={() => setDrawerState(true)}
             toggleDrawerHighlight={() => {

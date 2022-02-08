@@ -15,12 +15,13 @@ import IconButton from "@mui/material/IconButton";
 import UnfoldLessIcon from "@mui/icons-material/UnfoldLess";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import "./styles.scss";
-import rows from "./data";
+import review from "./_feed/review";
 import guid from "../utils/guid";
 import DropDown from "../_input/dropDown/dropDown";
 import Input from "../_input/text/input";
 import Button from "../_input/button/button";
 import decorativeAngle from "./_assets/Decoration.svg";
+import { Link } from "react-router-dom/index";
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -171,7 +172,9 @@ function Row(props) {
           <div className="nda-seed">{row.type}</div>
         </TableCell>
         <TableCell>
-          <a href="/editor">{contractName}</a>
+          <Link to={`./editor/${contractName.replace(/\s/g, "_")}`}>
+            {contractName}
+          </Link>
         </TableCell>
         <TableCell>
           <div className="name-container">
@@ -242,7 +245,7 @@ function Row(props) {
   );
 }
 
-export default function EnhancedTable() {
+export default function EnhancedTable(props) {
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("name");
   const [page, setPage] = React.useState(0);
@@ -264,8 +267,11 @@ export default function EnhancedTable() {
   };
 
   // Avoid a layout jump when reaching the last page with empty rows.
+
+  const feed =
+    props.feed === "review" ? review : props.feed === "draft" ? draft : null;
   const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - feed.length) : 0;
 
   return (
     <div className="contract-hub">
@@ -276,10 +282,10 @@ export default function EnhancedTable() {
             order={order}
             orderBy={orderBy}
             onRequestSort={handleRequestSort}
-            rowCount={rows.length}
+            rowCount={feed.length}
           />
           <TableBody>
-            {stableSort(rows, getComparator(order, orderBy))
+            {stableSort(feed, getComparator(order, orderBy))
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row, index) => {
                 return <Row key={row.name} row={row} />;
@@ -299,13 +305,17 @@ export default function EnhancedTable() {
       <TablePagination
         rowsPerPageOptions={[10, 25, 50]}
         component="div"
-        count={rows.length}
+        count={feed.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
-      <img className="decorative-angle" src={decorativeAngle} />
+      <img
+        alt="background-accent"
+        className="decorative-angle"
+        src={decorativeAngle}
+      />
     </div>
   );
 }

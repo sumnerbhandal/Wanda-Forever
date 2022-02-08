@@ -3,7 +3,7 @@ import "./styles.scss";
 
 const DropDown = (props) => {
   return (
-    <div className="error-container">
+    <div className={`${props.class} error-container`}>
       <div className="flex-row">
         <label htmlFor={props.id}>{props.label}</label>
         <select

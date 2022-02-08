@@ -22,6 +22,10 @@ header {
       }
     }
 
+    button {
+      margin-left: 1.25rem;
+    }
+
     p {
       font-size: 1.125rem;
       font-weight: 700;
@@ -33,6 +37,7 @@ header {
       align-items: center;
       margin-left: 1.25rem;
       padding-left: 1.25rem;
+      flex-shrink: 0;
 
       &.last-edited {
         border-left: 0;

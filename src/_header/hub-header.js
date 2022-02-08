@@ -4,6 +4,7 @@ import Button from "../_input/button/button";
 import Robin from "./_assets/Robin-Logo-Bird.svg";
 import Folder from "./_assets/Folder.svg";
 import Upload from "./_assets/Upload.svg";
+import PlatformButton from "./platformButton";
 
 const SeeAllGroups = (
   <>
@@ -16,14 +17,15 @@ const UploadContract = (
   </>
 );
 
-export default function HubHeader() {
+export default function HubHeader(props) {
   return (
     <header>
       <div className="left">
         <a href="/contracts">
-          <img src={Robin} />
+          <img alt="logo" src={Robin} />
         </a>
-        <p>Wanda Contract Hub</p>
+        <PlatformButton platform={props.platform} />
+        <p>Contract Hub</p>
       </div>
       <div className="right">
         <Button variant="secondary" type="submit" label={SeeAllGroups} />

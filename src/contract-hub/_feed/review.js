@@ -9,7 +9,7 @@ function createData(type, name, lastEditedBy, lastEdited) {
   };
 }
 
-const rows = [
+const review = [
   createData("NDA", "A Cut Below", "Fred Fox", "2021/10/01"),
   createData("NDA", "Love Birds", "Bernard Nixon", "2021/09/19"),
   createData("NDA", "Mouth-watering", "Dianna Allen", "2021/08/14"),
@@ -30,4 +30,4 @@ const rows = [
   createData("NDA", "Down For The Count", "Mitchell Wall", "2021/10/12")
 ];
 
-export default rows;
+export default review;

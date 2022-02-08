@@ -11,22 +11,12 @@ const Canvas = lazy(() => import("../canvas/canvas"));
 const HubHeader = lazy(() => import("../_header/hub-header"));
 
 export default function App() {
-  // const [authenticated, setAuthenticated] = useState(false);
   const authenticated = true;
   const [alertMessage, setAlertMessage] = useState(false);
-  function authoriseLogin(newValue) {
-    // setAuthenticated(newValue);
-  }
+  function authoriseLogin(newValue) {}
   function loginAlert(newValue) {
     setAlertMessage(newValue);
   }
-  // useEffect(() => {
-  //   const day = 86400000;
-  //   const now = new Date().getTime().toString();
-  //   const getKey = localStorage.getItem("validationTime");
-  //   const validToken = now - getKey < day;
-  //   validToken ? authoriseLogin(true) : authoriseLogin(false);
-  // }, []);
 
   const loader = (
     <div className="loading-container">
@@ -50,7 +40,26 @@ export default function App() {
               />
             </Suspense>
           </Route>
-          <Route path="/contracts">
+          <Route path="/draft">
+            <Suspense fallback={loader}>
+              {authenticated ? (
+                <>
+                  <HubHeader platform="Draft Contracts" />
+                  <Canvas page={<EnhancedTable feed="review" />} />
+                </>
+              ) : (
+                <RedirectHome loginAlert={loginAlert} />
+              )}
+            </Suspense>
+          </Route>
+          <Route path="/draft/editor/*">
+            <Suspense fallback={loader}>
+              <>
+                <Canvas page={<Drafting />} />
+              </>
+            </Suspense>
+          </Route>
+          {/* <Route path="/contracts">
             <Suspense fallback={loader}>
               {authenticated ? (
                 <>
@@ -61,23 +70,27 @@ export default function App() {
                 <RedirectHome loginAlert={loginAlert} />
               )}
             </Suspense>
+          </Route> */}
+          <Route path="/review">
+            <Suspense fallback={loader}>
+              {authenticated ? (
+                <>
+                  <HubHeader platform="Review Contracts" />
+                  <Canvas page={<EnhancedTable feed="review" />} />
+                </>
+              ) : (
+                <RedirectHome loginAlert={loginAlert} />
+              )}
+            </Suspense>
           </Route>
-          <Route path="/editor">
+          <Route path="/review/editor/*">
             <Suspense fallback={loader}>
               <>
-                {/* <HubHeader /> */}
                 <Canvas page={<DocumentEditor />} />
               </>
             </Suspense>
           </Route>
-          <Route path="/drafting">
-            <Suspense fallback={loader}>
-              <>
-                {/* <HubHeader /> */}
-                <Canvas page={<Drafting />} />
-              </>
-            </Suspense>
-          </Route>
+
           <Route path="/*">
             <Suspense fallback={loader}>
               <div>Page Not Found </div>

@@ -27,9 +27,6 @@ export default function App() {
   return (
     <main>
       <Router>
-        {!alertMessage ? null : (
-          <Alert message={alertMessage} setAlertMessage={setAlertMessage} />
-        )}
         <Routes>
           <Route path="/">
             <Suspense fallback={loader}>
@@ -40,62 +37,46 @@ export default function App() {
               />
             </Suspense>
           </Route>
-          <Route path="/draft">
-            <Suspense fallback={loader}>
-              {authenticated ? (
-                <>
-                  <HubHeader platform="Draft Contracts" />
-                  <Canvas page={<EnhancedTable feed="review" />} />
-                </>
-              ) : (
-                <RedirectHome loginAlert={loginAlert} />
-              )}
-            </Suspense>
-          </Route>
-          <Route path="/draft/editor/*">
+          <Route path="draft">
             <Suspense fallback={loader}>
               <>
-                <Canvas page={<Drafting />} />
+                <HubHeader platform="Draft Contracts" />
+                <Canvas page={<EnhancedTable feed="review" />} />
               </>
             </Suspense>
+            <Route path="editor">
+              <Route path=":documentId">
+                <Suspense fallback={loader}>
+                  <>
+                    <Canvas page={<Drafting />} />
+                  </>
+                </Suspense>
+              </Route>
+            </Route>
           </Route>
-          {/* <Route path="/contracts">
-            <Suspense fallback={loader}>
-              {authenticated ? (
-                <>
-                  <HubHeader />
-                  <Canvas page={<EnhancedTable />} />
-                </>
-              ) : (
-                <RedirectHome loginAlert={loginAlert} />
-              )}
-            </Suspense>
-          </Route> */}
-          <Route path="/review">
-            <Suspense fallback={loader}>
-              {authenticated ? (
-                <>
-                  <HubHeader platform="Review Contracts" />
-                  <Canvas page={<EnhancedTable feed="review" />} />
-                </>
-              ) : (
-                <RedirectHome loginAlert={loginAlert} />
-              )}
-            </Suspense>
-          </Route>
-          <Route path="/review/editor/*">
+          <Route path="review">
             <Suspense fallback={loader}>
               <>
-                <Canvas page={<DocumentEditor />} />
+                <HubHeader platform="Review Contracts" />
+                <Canvas page={<EnhancedTable feed="review" />} />
               </>
             </Suspense>
+            <Route path="editor">
+              <Route path=":documentId">
+                <Suspense fallback={loader}>
+                  <>
+                    <Canvas page={<DocumentEditor />} />
+                  </>
+                </Suspense>
+              </Route>
+            </Route>
           </Route>
 
-          <Route path="/*">
+          {/* <Route path="/*">
             <Suspense fallback={loader}>
               <div>Page Not Found </div>
             </Suspense>
-          </Route>
+          </Route> */}
         </Routes>
       </Router>
     </main>

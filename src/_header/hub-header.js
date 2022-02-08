@@ -5,6 +5,7 @@ import Robin from "./_assets/Robin-Logo-Bird.svg";
 import Folder from "./_assets/Folder.svg";
 import Upload from "./_assets/Upload.svg";
 import PlatformButton from "./platformButton";
+import { Link } from "react-router-dom/index";
 
 const SeeAllGroups = (
   <>
@@ -21,9 +22,9 @@ export default function HubHeader(props) {
   return (
     <header>
       <div className="left">
-        <a href="/contracts">
+        <Link to={props.homepage}>
           <img alt="logo" src={Robin} />
-        </a>
+        </Link>
         <PlatformButton platform={props.platform} />
         <p>Contract Hub</p>
       </div>

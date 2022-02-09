@@ -80,10 +80,76 @@
           }
         }
 
+        .title-page {
+          display: flex;
+          flex-wrap: wrap;
+          width: 100%;
+          justify-content: center;
+          height: calc(100vh - 7.75rem);
+          align-content: center;
+
+          &.employment {
+            padding-bottom: 6rem;
+          }
+      
+
+          p {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            
+            strong {
+              font-weight: 700;
+            }
+          }
+          hr {
+            border: 0;
+            border-bottom: 1px solid var(--robin-blue);
+            width: 75%;
+            margin-top: 1rem;
+          }
+        }
+
 
         h1 {
           width: 100%;
           text-align: left;
+        }
+
+        strong {
+          font-weight: 700;
+        }
+
+        .full-width {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
+
+        .table {
+          display: flex;
+          width: 100%;
+          flex-wrap: wrap;
+          margin-top: 1rem;
+
+          .row {
+            width: 100%;
+            display: flex;
+
+            .cell {
+              padding: 0.75rem 0.75rem 0.75rem 0;
+              text-align: left;
+              &.third {
+                  width: calc(100% / 3);
+
+              }
+              &.two-thirds {
+                width: calc((100% / 3) * 2);
+
+                
+            }
+            }
+          }
         }
 
         span.placeholder {

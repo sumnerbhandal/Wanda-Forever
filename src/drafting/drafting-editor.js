@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import DraftingHeader from "../_header/drafting-header";
 import "./styles.scss";
 import ContractConfig from "./contract-config";
-import EmploymentContract from "./_contract-types/employment";
-import CommercialContract from "./_contract-types/commercial";
-import SupplierContract from "./_contract-types/supplier";
+import EmploymentContract from "./_contract-types/employment/employment";
+import EmploymentContractConfig from "./_contract-types/employment/employment-config";
+import CommercialContract from "./_contract-types/commercial/commercial";
+import CommercialContractConfig from "./_contract-types/commercial/commercial-config";
+import SupplierContract from "./_contract-types/supplier/supplier";
+import SupplierContractConfig from "./_contract-types/supplier/supplier-config";
 import useToggle from "../utils/useToggle";
 import { useLocation } from "react-router-dom";
 
@@ -23,42 +26,73 @@ const DocumentEditor = (props) => {
   const [employment, setEmployment] = useState([
     {
       id: "0",
-      html: "[Company Name Header]",
-      active: false
-    },
-    {
-      id: "1",
-      html: "[Company Address]",
-      active: false
-    },
-    {
-      id: "2",
-      html: "[Company Phone Number]",
-      active: false
-    },
-    {
-      id: "3",
-      html: "[Date]",
-      active: false
-    },
-    {
-      id: "4",
-      html: "[Company Name]",
-      active: false
-    },
-    {
-      id: "5",
       html: "[Employee Name]",
       active: false
     },
     {
+      id: "1",
+      html: "[Date of Contract]",
+      active: false
+    },
+    {
+      id: "2",
+      html: "[Employee Start Date]",
+      active: false
+    },
+    {
+      id: "3",
+      html: "[Candidate Address]",
+      active: false
+    },
+    {
+      id: "4",
+      html: "[Candidate Email Address]",
+      active: false
+    },
+    {
+      id: "5",
+      html: "[Candidate Phone Number]",
+      active: false
+    },
+    {
       id: "6",
-      html: "[Employee Address]",
+      html: "[Candidate Job Title]",
       active: false
     },
     {
       id: "7",
-      html: "[Place]",
+      html: "[Candidate Annual Salary]",
+      active: false
+    },
+    {
+      id: "8",
+      html: "[You will receive X share options]",
+      active: false
+    },
+    {
+      id: "9",
+      html:
+        "[Your share options will be X% of the Company at the date of this Employment Agreement]",
+      active: false
+    },
+    {
+      id: "10",
+      html: "[X months]",
+      active: false
+    },
+    {
+      id: "11",
+      html: "[Candidates Line Manager]",
+      active: false
+    },
+    {
+      id: "12",
+      html: "[X months]",
+      active: false
+    },
+    {
+      id: "13",
+      html: "[Amendments to terms and conditions]",
       active: false
     }
   ]);
@@ -259,7 +293,7 @@ const DocumentEditor = (props) => {
           )}
         </div>
         <aside className={drawerState ? "open" : null}>
-          <ContractConfig
+          <EmploymentContractConfig
             configFields={ChosenContractType}
             setConfigFields={setChosenContractType}
             showHeader={showHeader}

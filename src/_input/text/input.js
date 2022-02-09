@@ -6,6 +6,9 @@ const Input = (props) => {
     <div className="error-container">
       <div className={`flex-row ${props.orientation}`}>
         <label htmlFor={props.id}>{props.label}</label>
+        {props.labelExplainer != undefined ? (
+          <p className="label-explainer">{props.labelExplainer}</p>
+        ) : null}
         <input
           type={props.type}
           id={props.id}

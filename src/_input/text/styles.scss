@@ -16,12 +16,20 @@
         margin-top: 1.125rem;
         width: 100%;
       }
+
     }
 
     label {
       width: 5rem;
       margin-right: 1rem;
       font-weight: 700;
+    }
+
+    .label-explainer {
+      color: var(--subtext);
+      margin-left: 0;
+      margin-block-start: 0;
+      margin-block-end: 0.75rem;
     }
 
     input {

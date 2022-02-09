@@ -195,7 +195,7 @@ function Row(props) {
           <IconButton
             aria-label="expand row"
             size="small"
-            onClick={() => setOpen(!open)}
+            // onClick={() => (props.configureContract ? setOpen(!open) : null)}
           >
             {open ? <UnfoldLessIcon /> : <MoreVertIcon />}
           </IconButton>
@@ -296,7 +296,13 @@ export default function EnhancedTable(props) {
             {stableSort(feed, getComparator(order, orderBy))
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row, index) => {
-                return <Row key={row.name} row={row} />;
+                return (
+                  <Row
+                    key={row.name}
+                    row={row}
+                    configureContract={props.configureContract}
+                  />
+                );
               })}
             {emptyRows > 0 && (
               <TableRow

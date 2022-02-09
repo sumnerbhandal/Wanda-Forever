@@ -45,7 +45,11 @@ export default function App() {
                   homepage="/draft"
                   hubType="Drafting"
                 />
-                <Canvas page={<EnhancedTable feed="draft" />} />
+                <Canvas
+                  page={
+                    <EnhancedTable feed="draft" configureContract="false" />
+                  }
+                />
               </>
             </Suspense>
             <Route path="editor">
@@ -66,7 +70,11 @@ export default function App() {
                   homepage="/review"
                   hubType="Reviewing"
                 />
-                <Canvas page={<EnhancedTable feed="review" />} />
+                <Canvas
+                  page={
+                    <EnhancedTable feed="review" configureContract="true" />
+                  }
+                />
               </>
             </Suspense>
             <Route path="editor">

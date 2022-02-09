@@ -21,10 +21,11 @@
   
   .switch {
     position: relative;
-    display: inline-block;
     width: 2.75rem;
     height: 1.5rem;
     margin-left: 0.75rem;
+    display: flex;
+    flex-shrink: 0;
   
     input { 
       opacity: 0;

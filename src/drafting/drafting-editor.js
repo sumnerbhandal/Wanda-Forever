@@ -100,42 +100,73 @@ const DocumentEditor = (props) => {
   const [commercial, setCommercial] = useState([
     {
       id: "0",
-      html: "[Company Name Header]",
-      active: false
-    },
-    {
-      id: "1",
-      html: "[Company Address]",
-      active: false
-    },
-    {
-      id: "2",
-      html: "[Company Phone Number]",
-      active: false
-    },
-    {
-      id: "3",
-      html: "[Date]",
-      active: false
-    },
-    {
-      id: "4",
-      html: "[Company Name]",
-      active: false
-    },
-    {
-      id: "5",
       html: "[Employee Name]",
       active: false
     },
     {
+      id: "1",
+      html: "[Date of Contract]",
+      active: false
+    },
+    {
+      id: "2",
+      html: "[Employee Start Date]",
+      active: false
+    },
+    {
+      id: "3",
+      html: "[Candidate Address]",
+      active: false
+    },
+    {
+      id: "4",
+      html: "[Candidate Email Address]",
+      active: false
+    },
+    {
+      id: "5",
+      html: "[Candidate Phone Number]",
+      active: false
+    },
+    {
       id: "6",
-      html: "[Employee Address]",
+      html: "[Candidate Job Title]",
       active: false
     },
     {
       id: "7",
-      html: "[Place]",
+      html: "[Candidate Annual Salary]",
+      active: false
+    },
+    {
+      id: "8",
+      html: "[You will receive X share options]",
+      active: false
+    },
+    {
+      id: "9",
+      html:
+        "[Your share options will be X% of the Company at the date of this Employment Agreement]",
+      active: false
+    },
+    {
+      id: "10",
+      html: "[X months]",
+      active: false
+    },
+    {
+      id: "11",
+      html: "[Candidates Line Manager]",
+      active: false
+    },
+    {
+      id: "12",
+      html: "[X months]",
+      active: false
+    },
+    {
+      id: "13",
+      html: "[Amendments to terms and conditions]",
       active: false
     }
   ]);
@@ -143,42 +174,73 @@ const DocumentEditor = (props) => {
   const [supplier, setSupplier] = useState([
     {
       id: "0",
-      html: "[Company Name Header]",
-      active: false
-    },
-    {
-      id: "1",
-      html: "[Company Address]",
-      active: false
-    },
-    {
-      id: "2",
-      html: "[Company Phone Number]",
-      active: false
-    },
-    {
-      id: "3",
-      html: "[Date]",
-      active: false
-    },
-    {
-      id: "4",
-      html: "[Company Name]",
-      active: false
-    },
-    {
-      id: "5",
       html: "[Employee Name]",
       active: false
     },
     {
+      id: "1",
+      html: "[Date of Contract]",
+      active: false
+    },
+    {
+      id: "2",
+      html: "[Employee Start Date]",
+      active: false
+    },
+    {
+      id: "3",
+      html: "[Candidate Address]",
+      active: false
+    },
+    {
+      id: "4",
+      html: "[Candidate Email Address]",
+      active: false
+    },
+    {
+      id: "5",
+      html: "[Candidate Phone Number]",
+      active: false
+    },
+    {
       id: "6",
-      html: "[Employee Address]",
+      html: "[Candidate Job Title]",
       active: false
     },
     {
       id: "7",
-      html: "[Place]",
+      html: "[Candidate Annual Salary]",
+      active: false
+    },
+    {
+      id: "8",
+      html: "[You will receive X share options]",
+      active: false
+    },
+    {
+      id: "9",
+      html:
+        "[Your share options will be X% of the Company at the date of this Employment Agreement]",
+      active: false
+    },
+    {
+      id: "10",
+      html: "[X months]",
+      active: false
+    },
+    {
+      id: "11",
+      html: "[Candidates Line Manager]",
+      active: false
+    },
+    {
+      id: "12",
+      html: "[X months]",
+      active: false
+    },
+    {
+      id: "13",
+      html: "[Amendments to terms and conditions]",
       active: false
     }
   ]);

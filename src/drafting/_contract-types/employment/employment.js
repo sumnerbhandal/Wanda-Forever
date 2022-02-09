@@ -279,6 +279,7 @@ const EmploymentContract = (props) => {
           </div>
         </div>
       </div>
+      <div className="spacer" />
     </article>
   );
 };

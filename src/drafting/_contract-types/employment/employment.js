@@ -240,12 +240,12 @@ const EmploymentContract = (props) => {
             Your notice period will be{" "}
             <span
               className={
-                props.configFields[11].active
+                props.configFields[12].active
                   ? "placeholder focused"
                   : "placeholder"
               }
             >
-              {props.configFields[11].html}
+              {props.configFields[12].html}
             </span>
             , with a discretionary three-month extension
           </div>
@@ -269,13 +269,53 @@ const EmploymentContract = (props) => {
           <div className="cell two-thirds">
             <span
               className={
-                props.configFields[12].active
+                props.configFields[13].active
                   ? "placeholder focused"
                   : "placeholder"
               }
             >
-              {props.configFields[12].html}
+              {props.configFields[13].html}
             </span>
+          </div>
+        </div>
+        <div className="row">
+          <div className="cell half">
+            <strong>Executed by:</strong>
+            <div className="signature">
+              <p className="name">
+                <strong>ROBIN AI LIMITED</strong>
+              </p>
+              <p>
+                Signed:
+                <hr />
+              </p>
+              <p>Date:</p>
+              <p>Name:</p>
+            </div>
+          </div>
+          <div className="cell half">
+            <br />
+            <div className="signature">
+              <p className="name">
+                <strong>
+                  <span
+                    className={
+                      props.configFields[0].active
+                        ? "placeholder focused"
+                        : "placeholder"
+                    }
+                  >
+                    {props.configFields[0].html}
+                  </span>
+                </strong>
+              </p>
+              <p>
+                Signed:
+                <hr />
+              </p>
+              <p>Date:</p>
+              <p>Name:</p>
+            </div>
           </div>
         </div>
       </div>

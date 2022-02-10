@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import DraftingHeader from "../_header/drafting-header";
 import "./styles.scss";
-import ContractConfig from "./contract-config";
 import EmploymentContract from "./_contract-types/employment/employment";
 import EmploymentContractConfig from "./_contract-types/employment/employment-config";
 import CommercialContract from "./_contract-types/commercial/commercial";

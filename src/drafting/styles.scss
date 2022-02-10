@@ -144,10 +144,31 @@
 
               }
               &.two-thirds {
-                width: calc((100% / 3) * 2);
+                width: calc((100% / 3) * 2);                
+              }
+              &.half {
+                width: calc(100% / 2);
+              }
 
-                
-            }
+              .signature {
+
+                display: flex;
+                flex-wrap: wrap;
+                * {
+                  width: 100%;
+                  display: flex;
+                }
+
+                hr {
+                  border: 0;
+                  border-bottom: 1px dotted var(--robin-blue);
+                  margin-block-end: 0;
+                }
+
+                .placeholder {
+                  width: auto;
+                }
+              }
             }
           }
         }

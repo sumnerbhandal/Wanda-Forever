@@ -9,19 +9,8 @@ const Span = (props) => {
     const targetFieldDom = document.getElementById(targetField);
 
     targetFieldDom.closest(".error-container").classList.add("focused");
-
-    const playbookAside = document.getElementsByTagName("aside")[0];
-
-    let headerOffset = 220;
-    let elementPosition = targetFieldDom.getBoundingClientRect().top;
-    let offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
     targetFieldDom.focus();
-
-    playbookAside.scrollTo({
-      top: offsetPosition,
-      behavior: "smooth"
-    });
+    targetFieldDom.scrollTo();
   };
   return (
     <span

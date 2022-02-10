@@ -31,6 +31,13 @@ function Config(props) {
       return field; // else return unmodified item
     });
     props.setConfigFields(updatedList);
+    const scrollId = id.replace("config-", "data-");
+
+    const correspondingSpan = document.querySelectorAll(
+      "[data-id=`${scrollId}`]"
+    );
+    console.log(correspondingSpan);
+    correspondingSpan.scrollTo();
   }
   function deactivateHighlight(e) {
     const id = e.target.id;

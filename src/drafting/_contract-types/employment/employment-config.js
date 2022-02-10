@@ -1,5 +1,6 @@
 import DropDown from "../../../_input/dropDown/dropDown";
 import Input from "../../../_input/text/input";
+import TextArea from "../../../_input/text/textArea";
 import Toggle from "../../../_input/toggle/toggle";
 import React, { useEffect } from "react";
 
@@ -163,7 +164,8 @@ function Config(props) {
         onClick={props.setShowConditionalText}
       />
       <hr />
-      <Input
+      <TextArea
+        rows="5"
         label="Are there any amendments to the Standard Terms and Conditions of Employment?"
         labelExplainer="If no, please insert “Not applicable”. If yes, please detail below."
         id="config-13"

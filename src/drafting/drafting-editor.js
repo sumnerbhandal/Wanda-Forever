@@ -91,7 +91,7 @@ const DocumentEditor = (props) => {
     },
     {
       id: "13",
-      html: "[Amendments to terms and conditions]",
+      html: "",
       active: false
     }
   ]);

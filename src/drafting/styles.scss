@@ -176,6 +176,7 @@
         span.placeholder {
           background: #E6E9F1;
           transition: all 0.3s ease;
+          cursor: pointer;
 
           &.hidden {
             background: #fff;
@@ -400,6 +401,7 @@
         
         .error-container {
           margin-bottom: 1.25rem;
+
           .flex-row {
             flex-wrap: wrap;
 

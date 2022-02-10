@@ -1,5 +1,43 @@
 import React from "react";
 
+const Span = (props) => {
+  const focusOnField = (e) => {
+    const target = e.target;
+    const targetField = target
+      .getAttribute("data-id")
+      .replace("text", "config");
+    const targetFieldDom = document.getElementById(targetField);
+
+    targetFieldDom.closest(".error-container").classList.add("focused");
+
+    const playbookAside = document.getElementsByTagName("aside")[0];
+
+    let headerOffset = 220;
+    let elementPosition = targetFieldDom.getBoundingClientRect().top;
+    let offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+    targetFieldDom.focus();
+
+    playbookAside.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth"
+    });
+  };
+  return (
+    <span
+      data-id={`text-${props.id}`}
+      className={
+        props.configFields[props.id].active
+          ? "placeholder focused"
+          : "placeholder"
+      }
+      onClick={focusOnField}
+    >
+      {props.configFields[props.id].html}
+    </span>
+  );
+};
+
 const EmploymentContract = (props) => {
   return (
     <article id="contract" className="contract">
@@ -11,15 +49,7 @@ const EmploymentContract = (props) => {
         <p>AND</p>
         <br />
         <p>
-          <span
-            className={
-              props.configFields[0].active
-                ? "placeholder focused"
-                : "placeholder"
-            }
-          >
-            {props.configFields[0].html}
-          </span>
+          <Span id="0" configFields={props.configFields} />
         </p>
         <hr />
         <p>EMPLOYMENT AGREEMENT</p>
@@ -36,15 +66,7 @@ const EmploymentContract = (props) => {
           </div>
           <div className="cell two-thirds">
             This agreement is dated{" "}
-            <span
-              className={
-                props.configFields[1].active
-                  ? "placeholder focused"
-                  : "placeholder"
-              }
-            >
-              {props.configFields[1].html}
-            </span>
+            <Span id="1" configFields={props.configFields} />
           </div>
         </div>
         <div className="row">
@@ -52,17 +74,8 @@ const EmploymentContract = (props) => {
             <strong>Commencement Date:</strong>
           </div>
           <div className="cell two-thirds">
-            This agreement commences on
-            <span
-              className={
-                props.configFields[2].active
-                  ? "placeholder focused"
-                  : "placeholder"
-              }
-            >
-              {" "}
-              {props.configFields[2].html}
-            </span>
+            This agreement commences on{" "}
+            <Span id="2" configFields={props.configFields} />
           </div>
         </div>
         <div className="row">
@@ -82,26 +95,9 @@ const EmploymentContract = (props) => {
             <strong>Candidate:</strong>
           </div>
           <div className="cell two-thirds">
-            <span
-              className={
-                props.configFields[0].active
-                  ? "placeholder focused"
-                  : "placeholder"
-              }
-            >
-              {props.configFields[0].html}
-            </span>{" "}
-            of{" "}
-            <span
-              className={
-                props.configFields[3].active
-                  ? "placeholder focused"
-                  : "placeholder"
-              }
-            >
-              {props.configFields[3].html}
-            </span>{" "}
-            (hereinafter referred to as “<strong>you</strong>”)
+            <Span id="0" configFields={props.configFields} /> of{" "}
+            <Span id="3" configFields={props.configFields} /> (hereinafter
+            referred to as “<strong>you</strong>”)
           </div>
         </div>
         <div className="row">
@@ -109,27 +105,9 @@ const EmploymentContract = (props) => {
             <strong>Candidate Contact:</strong>
           </div>
           <div className="cell two-thirds">
-            Email:{" "}
-            <span
-              className={
-                props.configFields[4].active
-                  ? "placeholder focused"
-                  : "placeholder"
-              }
-            >
-              {props.configFields[4].html}
-            </span>
+            Email: <Span id="4" configFields={props.configFields} />
             <br />
-            Contract number:{" "}
-            <span
-              className={
-                props.configFields[5].active
-                  ? "placeholder focused"
-                  : "placeholder"
-              }
-            >
-              {props.configFields[5].html}
-            </span>
+            Contract number: <Span id="5" configFields={props.configFields} />
           </div>
         </div>
         <div className="row">
@@ -138,15 +116,7 @@ const EmploymentContract = (props) => {
           </div>
           <div className="cell two-thirds">
             Your job title will be{" "}
-            <span
-              className={
-                props.configFields[6].active
-                  ? "placeholder focused"
-                  : "placeholder"
-              }
-            >
-              {props.configFields[6].html}
-            </span>
+            <Span id="6" configFields={props.configFields} />
           </div>
         </div>
         <div className="row">
@@ -155,16 +125,8 @@ const EmploymentContract = (props) => {
           </div>
           <div className="cell two-thirds">
             Your annual salary is{" "}
-            <span
-              className={
-                props.configFields[7].active
-                  ? "placeholder focused"
-                  : "placeholder"
-              }
-            >
-              {props.configFields[7].html}
-            </span>
-            , which will be payable in arrears on the 1st of each month
+            <Span id="7" configFields={props.configFields} />, which will be
+            payable in arrears on the 1st of each month
           </div>
         </div>
 
@@ -174,26 +136,9 @@ const EmploymentContract = (props) => {
           </div>
           <div className="cell two-thirds">
             You will receive share options of{" "}
-            <span
-              className={
-                props.configFields[8].active
-                  ? "placeholder focused"
-                  : "placeholder"
-              }
-            >
-              {props.configFields[8].html}
-            </span>{" "}
-            Your share options will be{" "}
-            <span
-              className={
-                props.configFields[9].active
-                  ? "placeholder focused"
-                  : "placeholder"
-              }
-            >
-              {props.configFields[9].html}
-            </span>{" "}
-            of the Company at the date of this Employment Agreement
+            <Span id="8" configFields={props.configFields} /> Your share options
+            will be <Span id="9" configFields={props.configFields} /> of the
+            Company at the date of this Employment Agreement
           </div>
         </div>
         <div className="row">
@@ -202,16 +147,8 @@ const EmploymentContract = (props) => {
           </div>
           <div className="cell two-thirds">
             You will have a probationary period of{" "}
-            <span
-              className={
-                props.configFields[10].active
-                  ? "placeholder focused"
-                  : "placeholder"
-              }
-            >
-              {props.configFields[10].html}
-            </span>
-            , with a discretionary three-month extension
+            <Span id="10" configFields={props.configFields} />, with a
+            discretionary three-month extension
           </div>
         </div>
         <div className="row">
@@ -220,16 +157,8 @@ const EmploymentContract = (props) => {
           </div>
           <div className="cell two-thirds">
             Your line manager will be{" "}
-            <span
-              className={
-                props.configFields[11].active
-                  ? "placeholder focused"
-                  : "placeholder"
-              }
-            >
-              {props.configFields[11].html}
-            </span>
-            , with a discretionary three-month extension
+            <Span id="11" configFields={props.configFields} />, with a
+            discretionary three-month extension
           </div>
         </div>
         <div className="row">
@@ -238,16 +167,8 @@ const EmploymentContract = (props) => {
           </div>
           <div className="cell two-thirds">
             Your notice period will be{" "}
-            <span
-              className={
-                props.configFields[12].active
-                  ? "placeholder focused"
-                  : "placeholder"
-              }
-            >
-              {props.configFields[12].html}
-            </span>
-            , with a discretionary three-month extension
+            <Span id="12" configFields={props.configFields} />, with a
+            discretionary three-month extension
           </div>
         </div>
         {props.showConditionalText ? (
@@ -267,15 +188,7 @@ const EmploymentContract = (props) => {
             </strong>
           </div>
           <div className="cell two-thirds">
-            <span
-              className={
-                props.configFields[13].active
-                  ? "placeholder focused"
-                  : "placeholder"
-              }
-            >
-              {props.configFields[13].html}
-            </span>
+            <Span id="13" configFields={props.configFields} />
           </div>
         </div>
         <div className="row">
@@ -298,15 +211,7 @@ const EmploymentContract = (props) => {
             <div className="signature">
               <p className="name">
                 <strong>
-                  <span
-                    className={
-                      props.configFields[0].active
-                        ? "placeholder focused"
-                        : "placeholder"
-                    }
-                  >
-                    {props.configFields[0].html}
-                  </span>
+                  <Span id="0" configFields={props.configFields} />
                 </strong>
               </p>
               <p>

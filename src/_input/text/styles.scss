@@ -46,6 +46,13 @@
       &.error {
         outline: 0.125rem solid var(--error);
       }
+
+      &:focus-within {
+        outline: 4px solid #B8E5F9;
+      }
+    }
+    textarea {
+      width: 100%;
     }  
   }
   p {

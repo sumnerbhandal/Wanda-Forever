@@ -1,13 +1,9 @@
-import DropDown from "../../../_input/dropDown/dropDown";
 import Input from "../../../_input/text/input";
 import TextArea from "../../../_input/text/textArea";
 import Toggle from "../../../_input/toggle/toggle";
-import React, { useEffect } from "react";
+import React from "react";
 
 function Config(props) {
-  // useEffect(() => {
-  //   document.getElementById("config-3").valueAsDate = new Date();
-  // }, []);
   function updateState(e) {
     const id = e.target.id;
     const newValue = e.target.value;
@@ -31,11 +27,10 @@ function Config(props) {
       return field; // else return unmodified item
     });
     props.setConfigFields(updatedList);
-    const scrollId = id.replace("config-", "data-");
+    // const scrollId = id.replace("config-", "data-");
 
-    const correspondingSpan = document.querySelectorAll('[data-id="text-0"]');
-    console.log(correspondingSpan);
-    correspondingSpan.scrollTo();
+    // const correspondingSpan = document.querySelectorAll('[data-id="text-0"]');
+    // console.log(correspondingSpan);
   }
   function deactivateHighlight(e) {
     const id = e.target.id;

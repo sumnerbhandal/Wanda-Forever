@@ -6,7 +6,7 @@ const TextArea = (props) => {
     <div className="error-container">
       <div className="flex-row">
         <label htmlFor={props.id}>{props.label}</label>
-        <TextArea
+        <textarea
           type={props.type}
           id={props.id}
           name={props.name}

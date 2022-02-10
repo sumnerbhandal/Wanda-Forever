@@ -33,9 +33,7 @@ function Config(props) {
     props.setConfigFields(updatedList);
     const scrollId = id.replace("config-", "data-");
 
-    const correspondingSpan = document.querySelectorAll(
-      "[data-id=`${scrollId}`]"
-    );
+    const correspondingSpan = document.querySelectorAll('[data-id="text-0"]');
     console.log(correspondingSpan);
     correspondingSpan.scrollTo();
   }

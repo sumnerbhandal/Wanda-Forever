@@ -23,10 +23,12 @@ const Canvas = lazy(() => import("../canvas/canvas"));
 const HubHeader = lazy(() => import("../_header/hub-header"));
 
 const PrivateRoute = (props) => {
+  const history = useNavigate();
+  console.log(props.authenticated);
   if (props.authenticated) {
-    return <Route path={props.path} element={props.element} />;
-  } else {
-    return <Navigate to="/" />;
+    return <Route path={props.path}>{props.children}</Route>;
+  } else if (!props.authenticated) {
+    history("/");
   }
 };
 
@@ -54,30 +56,36 @@ export default function App() {
               />
             </Suspense>
           </Route>
-          <Route path="draft">
-            (authenticated ?
-            <Suspense fallback={loader}>
-              <HubHeader
-                platform="Draft Contracts"
-                homepage="/draft"
-                hubType="Drafting"
-                setAuthenticated={setAuthenticated}
-              />
-              <Canvas
-                page={<EnhancedTable feed="draft" configureContract="false" />}
-              />
-            </Suspense>
-            <Route path="editor">
-              <Route path=":documentId">
+          <PrivateRoute
+            path="draft"
+            authenticated={authenticated}
+            children={
+              <>
                 <Suspense fallback={loader}>
-                  <>
-                    <Canvas page={<Drafting />} />
-                  </>
+                  <HubHeader
+                    platform="Draft Contracts"
+                    homepage="/draft"
+                    hubType="Drafting"
+                    setAuthenticated={setAuthenticated}
+                  />
+                  <Canvas
+                    page={
+                      <EnhancedTable feed="draft" configureContract="false" />
+                    }
+                  />
                 </Suspense>
-              </Route>
-            </Route>
-            : <Navigate to="/" />
-          </Route>
+                <Route path="editor">
+                  <Route path=":documentId">
+                    <Suspense fallback={loader}>
+                      <>
+                        <Canvas page={<Drafting />} />
+                      </>
+                    </Suspense>
+                  </Route>
+                </Route>
+              </>
+            }
+          />
 
           <Route path="review">
             (authenticated ?

@@ -19,6 +19,9 @@ const UploadContract = (
 );
 
 export default function HubHeader(props) {
+  function logOut() {
+    props.setAuthenticated(false);
+  }
   return (
     <header>
       <div className="left">
@@ -31,7 +34,9 @@ export default function HubHeader(props) {
       <div className="right">
         <Button variant="secondary" type="submit" label={SeeAllGroups} />
         <Button variant="primary" type="submit" label={UploadContract} />
-        <div className="user-icon">SB</div>
+        <div className="user-icon" onClick={() => logOut()}>
+          SB
+        </div>
       </div>
     </header>
   );

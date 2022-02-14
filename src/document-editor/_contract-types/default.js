@@ -5,6 +5,15 @@ import PlaybookWhite from "../_assets/playbook-white.svg";
 import { debounce } from "lodash";
 import SettingsWhite from "../_assets/Settings-White.svg";
 
+function cursor_position() {
+  var sel = document.getSelection();
+  sel.modify("extend", "backward", "paragraphboundary");
+  var pos = sel.toString().length;
+  if (sel.anchorNode != undefined) sel.collapseToEnd();
+
+  return pos;
+}
+
 const ProvisionExample = (
   <>
     <img src={SettingsWhite} /> Confidential information
@@ -49,6 +58,8 @@ const LabelPreview = (props) => {
 
 const DefaultContract = (props) => {
   const [previewOpen, setPreviewOpen] = useState(false);
+  const [existingText, setExistingText] = useState("");
+  const [newText, setNewText] = useState("");
 
   function ClosePreviewHighlight() {
     if (props.showProvision === false) {
@@ -69,40 +80,60 @@ const DefaultContract = (props) => {
   };
 
   useEffect(() => {
-    const contents = document.querySelectorAll("[contenteditable]");
+    // const contents = document.querySelectorAll("[contenteditable]");
 
-    for (let content of contents) {
-      content.addEventListener("input", function () {
-        console.log("input changed to: " + content.innerHTML);
-      });
+    // for (let content of contents) {
+    //   content.addEventListener("keydown", function () {
+    //     setExistingText(content.innerHTML);
+    //   });
+    // }
+
+    var elm = document.querySelector("[contenteditable]");
+    // elm.addEventListener("click", printCaretPosition);
+    elm.addEventListener("keydown", printCaretPosition);
+
+    function printCaretPosition(e) {
+      const target = e.target;
+      const placeBeforeText = e.target.innerHTML.slice(0, cursor_position());
+      const placeAfterText = e.target.innerHTML.slice(cursor_position());
+
+      // console.log(placeBeforeText);
+
+      // target.innerHTML =
+      //   placeBeforeText +
+      //   '<span className="placeholder">Heya</span>' +
+      //   placeAfterText;
+
+      console.log(cursor_position(), "length:", this.textContent.trim().length);
+    }
+
+    function trackDelete(e) {
+      // console.log(e.charCode);
+      console.log(e.keyCode);
+      // const eventRef = e;
+      // const t = eventRef.target;
+      // if (eventRef.keyCode === 8) {
+      //   // for backspace key
+      //   console.log(t.value[t.selectionStart - 1]);
+      // } else if (eventRef.keyCode === 46) {
+      //   // for delete key
+      //   console.log(tvalue[t.selectionStart]);
+      // }
     }
   });
-
-  function trackDelete(e) {
-    // console.log(e.charCode);
-    console.log(e.keyCode);
-    // const eventRef = e;
-    // const t = eventRef.target;
-    // if (eventRef.keyCode === 8) {
-    //   // for backspace key
-    //   console.log(t.value[t.selectionStart - 1]);
-    // } else if (eventRef.keyCode === 46) {
-    //   // for delete key
-    //   console.log(tvalue[t.selectionStart]);
-    // }
-  }
 
   return (
     <article
       id="contract"
       className="contract"
-      contentEditable="true"
 
       // onKeyDown={() => trackDelete()}
     >
-      <h1 className="xl">NON-DISCLOSURE AND CONFIDENTIALITY AGREEMENT</h1>
+      <h1 data-id="text-1" className="xl" contentEditable="true">
+        NON-DISCLOSURE AND CONFIDENTIALITY AGREEMENT
+      </h1>
 
-      <p>
+      <p contentEditable="true">
         This Non-Disclosure Agreement (the “Agreement”), is made effective as of{" "}
         <span
           className="placeholder"

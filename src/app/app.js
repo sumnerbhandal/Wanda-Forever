@@ -1,8 +1,20 @@
-import React, { lazy, Suspense, useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom/index";
+import React, {
+  lazy,
+  Suspense,
+  useState,
+  useEffect,
+  useContext,
+  useHistory
+} from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Routes,
+  Navigate,
+  useNavigate
+} from "react-router-dom/index";
 import "./styles.scss";
-import Alert from "../_notification/alert/alert";
-import RedirectHome from "./redirect";
 const EnhancedTable = lazy(() => import("../contract-hub/contract-hub"));
 const DocumentEditor = lazy(() => import("../document-editor/document-editor"));
 const Drafting = lazy(() => import("../drafting/drafting-editor"));
@@ -10,13 +22,19 @@ const LoginPage = lazy(() => import("../login/login"));
 const Canvas = lazy(() => import("../canvas/canvas"));
 const HubHeader = lazy(() => import("../_header/hub-header"));
 
-export default function App() {
-  const authenticated = true;
-  const [alertMessage, setAlertMessage] = useState(false);
-  function authoriseLogin(newValue) {}
-  function loginAlert(newValue) {
-    setAlertMessage(newValue);
+const PrivateRoute = (props) => {
+  if (props.authenticated) {
+    return <Route path={props.path} element={props.element} />;
+  } else {
+    return <Navigate to="/" />;
   }
+};
+
+export default function App() {
+  const [authenticated, setAuthenticated] = useState(
+    localStorage.getItem("authenticated")
+  );
+  console.log(authenticated);
 
   const loader = (
     <div className="loading-container">
@@ -32,36 +50,41 @@ export default function App() {
             <Suspense fallback={loader}>
               <LoginPage
                 authenticated={authenticated}
-                authoriseLogin={authoriseLogin}
-                loginAlert={loginAlert}
+                setAuthenticated={setAuthenticated}
               />
             </Suspense>
           </Route>
-          <Route path="draft">
-            <Suspense fallback={loader}>
+          <PrivateRoute
+            authenticated={authenticated}
+            path="draft"
+            element={
               <>
-                <HubHeader
-                  platform="Draft Contracts"
-                  homepage="/draft"
-                  hubType="Drafting"
-                />
-                <Canvas
-                  page={
-                    <EnhancedTable feed="draft" configureContract="false" />
-                  }
-                />
-              </>
-            </Suspense>
-            <Route path="editor">
-              <Route path=":documentId">
                 <Suspense fallback={loader}>
-                  <>
-                    <Canvas page={<Drafting />} />
-                  </>
+                  <HubHeader
+                    platform="Draft Contracts"
+                    homepage="/draft"
+                    hubType="Drafting"
+                    setAuthenticated={setAuthenticated}
+                  />
+                  <Canvas
+                    page={
+                      <EnhancedTable feed="draft" configureContract="false" />
+                    }
+                  />
                 </Suspense>
-              </Route>
-            </Route>
-          </Route>
+                <Route path="editor">
+                  <Route path=":documentId">
+                    <Suspense fallback={loader}>
+                      <>
+                        <Canvas page={<Drafting />} />
+                      </>
+                    </Suspense>
+                  </Route>
+                </Route>
+              </>
+            }
+          />
+
           <Route path="review">
             <Suspense fallback={loader}>
               <>
@@ -89,10 +112,10 @@ export default function App() {
           </Route>
 
           {/* <Route path="/*">
-            <Suspense fallback={loader}>
-              <div>Page Not Found </div>
-            </Suspense>
-          </Route> */}
+          <Suspense fallback={loader}>
+            <div>Page Not Found </div>
+          </Suspense>
+        </Route> */}
         </Routes>
       </Router>
     </main>

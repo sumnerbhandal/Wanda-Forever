@@ -6,6 +6,7 @@ import Folder from "./_assets/Folder.svg";
 import Upload from "./_assets/Upload.svg";
 import PlatformButton from "./platformButton";
 import { Link } from "react-router-dom/index";
+import { useNavigate } from "react-router-dom/index";
 
 const SeeAllGroups = (
   <>
@@ -19,8 +20,10 @@ const UploadContract = (
 );
 
 export default function HubHeader(props) {
+  const history = useNavigate();
   function logOut() {
-    props.setAuthenticated(false);
+    localStorage.setItem("authenticated", false);
+    history("/");
   }
   return (
     <header>

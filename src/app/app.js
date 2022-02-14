@@ -54,37 +54,30 @@ export default function App() {
               />
             </Suspense>
           </Route>
-          <PrivateRoute
-            authenticated={authenticated}
-            path="draft"
-            element={
-              <>
+          (authenticated ?
+          <Route path="draft">
+            <Suspense fallback={loader}>
+              <HubHeader
+                platform="Draft Contracts"
+                homepage="/draft"
+                hubType="Drafting"
+                setAuthenticated={setAuthenticated}
+              />
+              <Canvas
+                page={<EnhancedTable feed="draft" configureContract="false" />}
+              />
+            </Suspense>
+            <Route path="editor">
+              <Route path=":documentId">
                 <Suspense fallback={loader}>
-                  <HubHeader
-                    platform="Draft Contracts"
-                    homepage="/draft"
-                    hubType="Drafting"
-                    setAuthenticated={setAuthenticated}
-                  />
-                  <Canvas
-                    page={
-                      <EnhancedTable feed="draft" configureContract="false" />
-                    }
-                  />
+                  <>
+                    <Canvas page={<Drafting />} />
+                  </>
                 </Suspense>
-                <Route path="editor">
-                  <Route path=":documentId">
-                    <Suspense fallback={loader}>
-                      <>
-                        <Canvas page={<Drafting />} />
-                      </>
-                    </Suspense>
-                  </Route>
-                </Route>
-              </>
-            }
-          />
-
+              </Route>
+            </Route>
+          </Route>
+          (authenticated ?
           <Route path="review">
             <Suspense fallback={loader}>
               <>
@@ -92,6 +85,7 @@ export default function App() {
                   platform="Review Contracts"
                   homepage="/review"
                   hubType="Reviewing"
+                  setAuthenticated={setAuthenticated}
                 />
                 <Canvas
                   page={
@@ -110,7 +104,7 @@ export default function App() {
               </Route>
             </Route>
           </Route>
-
+          : <Navigate to="/" /> }
           {/* <Route path="/*">
           <Suspense fallback={loader}>
             <div>Page Not Found </div>

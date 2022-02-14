@@ -1,11 +1,4 @@
-import React, {
-  lazy,
-  Suspense,
-  useState,
-  useEffect,
-  useContext,
-  useHistory
-} from "react";
+import React, { lazy, Suspense, useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -24,11 +17,10 @@ const HubHeader = lazy(() => import("../_header/hub-header"));
 
 const PrivateRoute = (props) => {
   const history = useNavigate();
-  console.log(props.authenticated);
   if (props.authenticated) {
     return <Route path={props.path}>{props.children}</Route>;
-  } else if (!props.authenticated) {
-    history("/");
+  } else {
+    return <Navigate to="/" />;
   }
 };
 
@@ -77,9 +69,7 @@ export default function App() {
                 <Route path="editor">
                   <Route path=":documentId">
                     <Suspense fallback={loader}>
-                      <>
-                        <Canvas page={<Drafting />} />
-                      </>
+                      <Canvas page={<Drafting />} />
                     </Suspense>
                   </Route>
                 </Route>
@@ -87,34 +77,38 @@ export default function App() {
             }
           />
 
-          <Route path="review">
-            (authenticated ?
-            <Suspense fallback={loader}>
+          <PrivateRoute
+            path="review"
+            authenticated={authenticated}
+            children={
               <>
-                <HubHeader
-                  platform="Review Contracts"
-                  homepage="/review"
-                  hubType="Reviewing"
-                  setAuthenticated={setAuthenticated}
-                />
-                <Canvas
-                  page={
-                    <EnhancedTable feed="review" configureContract="true" />
-                  }
-                />
-              </>
-            </Suspense>
-            <Route path="editor">
-              <Route path=":documentId">
                 <Suspense fallback={loader}>
                   <>
-                    <Canvas page={<DocumentEditor />} />
+                    <HubHeader
+                      platform="Review Contracts"
+                      homepage="/review"
+                      hubType="Reviewing"
+                      setAuthenticated={setAuthenticated}
+                    />
+                    <Canvas
+                      page={
+                        <EnhancedTable feed="review" configureContract="true" />
+                      }
+                    />
                   </>
                 </Suspense>
-              </Route>
-            </Route>
-            : <Navigate to="/" />
-          </Route>
+                <Route path="editor">
+                  <Route path=":documentId">
+                    <Suspense fallback={loader}>
+                      <>
+                        <Canvas page={<DocumentEditor />} />
+                      </>
+                    </Suspense>
+                  </Route>
+                </Route>
+              </>
+            }
+          />
 
           {/* <Route path="/*">
           <Suspense fallback={loader}>

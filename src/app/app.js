@@ -54,8 +54,8 @@ export default function App() {
               />
             </Suspense>
           </Route>
-          (authenticated ?
           <Route path="draft">
+            (authenticated ?
             <Suspense fallback={loader}>
               <HubHeader
                 platform="Draft Contracts"
@@ -76,9 +76,11 @@ export default function App() {
                 </Suspense>
               </Route>
             </Route>
+            : <Navigate to="/" />
           </Route>
-          (authenticated ?
+
           <Route path="review">
+            (authenticated ?
             <Suspense fallback={loader}>
               <>
                 <HubHeader
@@ -103,8 +105,9 @@ export default function App() {
                 </Suspense>
               </Route>
             </Route>
+            : <Navigate to="/" />
           </Route>
-          : <Navigate to="/" /> }
+
           {/* <Route path="/*">
           <Suspense fallback={loader}>
             <div>Page Not Found </div>

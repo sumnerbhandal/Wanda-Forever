@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useState, useEffect } from "react";
+import React, { lazy, Suspense } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -10,6 +10,7 @@ const EnhancedTable = lazy(() => import("../contract-hub/contract-hub"));
 const DocumentEditor = lazy(() => import("../document-editor/document-editor"));
 const Drafting = lazy(() => import("../drafting/drafting-editor"));
 const LoginPage = lazy(() => import("../login/login"));
+const NoMatch = lazy(() => import("./no-match"));
 const Canvas = lazy(() => import("../canvas/canvas"));
 const HubHeader = lazy(() => import("../_header/hub-header"));
 
@@ -47,12 +48,12 @@ export default function App() {
     <main>
       <Router>
         <Routes>
-          <Route path="/">
+          <Route exact path="/">
             <Suspense fallback={loader}>
               <LoginPage />
             </Suspense>
           </Route>
-          <PrivateRoute path="draft" isAuthenticated={isAuthenticated}>
+          <PrivateRoute exact path="draft" isAuthenticated={isAuthenticated}>
             <>
               <Suspense fallback={loader}>
                 <HubHeader
@@ -75,7 +76,7 @@ export default function App() {
               </Route>
             </>
           </PrivateRoute>
-          <PrivateRoute path="review" isAuthenticated={isAuthenticated}>
+          <PrivateRoute exact path="review" isAuthenticated={isAuthenticated}>
             <>
               <Suspense fallback={loader}>
                 <>
@@ -103,11 +104,13 @@ export default function App() {
             </>
           </PrivateRoute>
 
-          {/* <Route path="/*">
-          <Suspense fallback={loader}>
-            <div>Page Not Found </div>
-          </Suspense>
-        </Route> */}
+          <Route path="*">
+            {console.log("404")}
+
+            <Suspense fallback={loader}>
+              <NoMatch />
+            </Suspense>
+          </Route>
         </Routes>
       </Router>
     </main>

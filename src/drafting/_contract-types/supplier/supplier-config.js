@@ -1,12 +1,13 @@
-import DropDown from "../../../_input/dropDown/dropDown";
 import Input from "../../../_input/text/input";
+import TextArea from "../../../_input/text/textArea";
 import Toggle from "../../../_input/toggle/toggle";
 import React, { useEffect } from "react";
 
 function Config(props) {
-  useEffect(() => {
-    document.getElementById("config-3").valueAsDate = new Date();
-  }, []);
+  // useEffect(() => {
+  //   document.getElementById("config-1").valueAsDate = new Date();
+  //   document.getElementById("config-2").valueAsDate = new Date();
+  // }, []);
   function updateState(e) {
     const id = e.target.id;
     const newValue = e.target.value;
@@ -30,6 +31,12 @@ function Config(props) {
       return field; // else return unmodified item
     });
     props.setConfigFields(updatedList);
+    const scrollId = id.replace("config-", "text-");
+    const scrollIdRef = "[data-id=" + scrollId + "]";
+
+    const correspondingSpan = document.querySelectorAll(scrollIdRef)[0];
+    console.log(correspondingSpan);
+    correspondingSpan.scrollIntoView({ behavior: "instant", block: "center" });
   }
   function deactivateHighlight(e) {
     const id = e.target.id;
@@ -46,99 +53,69 @@ function Config(props) {
 
   return (
     <>
+      <Input
+        label="What is the service agreement for?*"
+        id="config-0"
+        value={props.configFields[0].html}
+        onChange={updateState}
+        onClick={highlightField}
+        onBlur={deactivateHighlight}
+      />
+      <Input
+        label="Who is the service provider*"
+        id="config-1"
+        value={props.configFields[1].html}
+        onChange={updateState}
+        onClick={highlightField}
+        onBlur={deactivateHighlight}
+      />
+      <hr />
       <Toggle
-        label="Would you like to use a header?"
-        onClick={props.setShowHeader}
+        label="Does the service provider go by another name?"
+        onClick={props.setSupplierAlternateNames}
       />
       <div
-        className={props.showHeader ? "header-fields" : "header-fields hidden"}
+        className={
+          props.supplierAlternateNames
+            ? "header-fields"
+            : "header-fields hidden"
+        }
       >
         <Input
-          label="What is the company name?*"
-          id="config-0"
-          value={props.configFields[0].html}
-          onChange={updateState}
-          onClick={highlightField}
-          onBlur={deactivateHighlight}
-        />
-        <Input
-          label="What is the company address?*"
-          id="config-1"
-          value={props.configFields[1].html}
-          onChange={updateState}
-          onClick={highlightField}
-          onBlur={deactivateHighlight}
-        />
-        <Input
-          label="What is the company phone number?*"
-          id="config-2"
+          label="What other names does the service provider go by?*"
+          id="config-3"
           value={props.configFields[2].html}
           onChange={updateState}
           onClick={highlightField}
           onBlur={deactivateHighlight}
         />
       </div>
-
       <hr />
       <Input
-        label="When would you like the contract to start?*"
-        type="date"
+        label="What is the name of the client?*"
         id="config-3"
         value={props.configFields[3].html}
         onChange={updateState}
         onClick={highlightField}
         onBlur={deactivateHighlight}
       />
-
-      <DropDown
-        label="What’s the name of the company*"
+      <Input
+        label="What is the registered name of the service provider*"
         id="config-4"
         value={props.configFields[4].html}
         onChange={updateState}
         onClick={highlightField}
         onBlur={deactivateHighlight}
-        option={["[Company Name]", "Example Company Name"]}
       />
-      <Input
-        label="What’s the employee’s full name?*"
-        id="config-5"
-        value={props.configFields[5].html}
-        onChange={updateState}
-        onClick={highlightField}
-        onBlur={deactivateHighlight}
-      />
-      <Input
-        label="What’s is the employee's address?*"
-        id="config-6"
-        value={props.configFields[6].html}
-        onChange={updateState}
-        onClick={highlightField}
-        onBlur={deactivateHighlight}
-      />
-      <DropDown
-        label="Where are the laws governed?*"
-        id="config-7"
-        value={props.configFields[7].html}
-        onChange={updateState}
-        onClick={highlightField}
-        onBlur={deactivateHighlight}
-        option={["[Place]", "United Kingdom", "USA"]}
-      />
-      <hr />
-      <Toggle
-        label="Show definition of confidential information?"
-        onClick={props.setShowConditionalText}
-      />
-      <hr />
     </>
   );
 }
 
-const SupplierContractConfig = (props) => {
+const EmploymentContractConfig = (props) => {
   return (
     <div className="playbook-container">
       <div className="playbook-settings">
-        <h2>Configure Employment Contract</h2>
+        <h2>Configure Supplier Agreement</h2>
       </div>
       <hr />
       <Config
@@ -146,11 +123,11 @@ const SupplierContractConfig = (props) => {
         setConfigFields={props.setConfigFields}
         showHeader={props.showHeader}
         setShowHeader={props.setShowHeader}
-        showConditionalText={props.showConditionalText}
-        setShowConditionalText={props.setShowConditionalText}
+        supplierAlternateNames={props.supplierAlternateNames}
+        setSupplierAlternateNames={props.setSupplierAlternateNames}
       />
     </div>
   );
 };
 
-export default SupplierContractConfig;
+export default EmploymentContractConfig;

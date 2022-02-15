@@ -114,6 +114,10 @@
         h1 {
           width: 100%;
           text-align: left;
+
+          span {
+            font-size: inherit;
+          }
         }
 
         strong {
@@ -314,6 +318,20 @@
               &:before {
                 counter-increment: list;
                 content: "(" counter(list, lower-alpha) ")";
+                left: -1.75rem;
+                padding-right: 1rem;
+              }
+            }
+          }
+          &[type=a-dot] {
+
+            counter-reset: list;
+            li {
+    
+
+              &:before {
+                counter-increment: list;
+                content: "" counter(list, lower-alpha) ".";
                 left: -1.75rem;
                 padding-right: 1rem;
               }

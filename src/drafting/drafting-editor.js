@@ -19,6 +19,7 @@ const DocumentEditor = (props) => {
   const [cleanVersion, setCleanVersion] = useState(false);
   const [showHeader, setShowHeader] = useToggle();
   const [showConditionalText, setShowConditionalText] = useToggle();
+  const [supplierAlternateNames, setSupplierAlternateNames] = useToggle();
   const location = useLocation();
   const ContractType = location.pathname.split("_")[1];
 
@@ -173,27 +174,27 @@ const DocumentEditor = (props) => {
   const [supplier, setSupplier] = useState([
     {
       id: "0",
-      html: "[Employee Name]",
+      html: "[SERVICE CONTRACT TYPE]",
       active: false
     },
     {
       id: "1",
-      html: "[Date of Contract]",
+      html: "[SERVICE PROVIDER]",
       active: false
     },
     {
       id: "2",
-      html: "[Employee Start Date]",
+      html: "[ALTERNATE NAMES]",
       active: false
     },
     {
       id: "3",
-      html: "[Candidate Address]",
+      html: "[CLIENT NAME]",
       active: false
     },
     {
       id: "4",
-      html: "[Candidate Email Address]",
+      html: "[PROVIDER REGISTERED NAME]",
       active: false
     },
     {
@@ -349,19 +350,40 @@ const DocumentEditor = (props) => {
               configFields={ChosenContractType}
               setConfigFields={setChosenContractType}
               showHeader={showHeader}
-              showConditionalText={showConditionalText}
+              supplierAlternateNames={supplierAlternateNames}
+              setSupplierAlternateNames={setSupplierAlternateNames}
             />
           )}
         </div>
         <aside className={drawerState ? "open" : null}>
-          <EmploymentContractConfig
-            configFields={ChosenContractType}
-            setConfigFields={setChosenContractType}
-            showHeader={showHeader}
-            setShowHeader={setShowHeader}
-            showConditionalText={showConditionalText}
-            setShowConditionalText={setShowConditionalText}
-          />
+          {ContractType === "employment" ? (
+            <EmploymentContractConfig
+              configFields={ChosenContractType}
+              setConfigFields={setChosenContractType}
+              showHeader={showHeader}
+              setShowHeader={setShowHeader}
+              showConditionalText={showConditionalText}
+              setShowConditionalText={setShowConditionalText}
+            />
+          ) : ContractType === "commercial" ? (
+            <CommercialContractConfig
+              configFields={ChosenContractType}
+              setConfigFields={setChosenContractType}
+              showHeader={showHeader}
+              setShowHeader={setShowHeader}
+              showConditionalText={showConditionalText}
+              setShowConditionalText={setShowConditionalText}
+            />
+          ) : (
+            <SupplierContractConfig
+              configFields={ChosenContractType}
+              setConfigFields={setChosenContractType}
+              showHeader={showHeader}
+              setShowHeader={setShowHeader}
+              supplierAlternateNames={supplierAlternateNames}
+              setSupplierAlternateNames={setSupplierAlternateNames}
+            />
+          )}
         </aside>
       </div>
     </>

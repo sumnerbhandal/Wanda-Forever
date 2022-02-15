@@ -100,73 +100,32 @@ const DocumentEditor = (props) => {
   const [commercial, setCommercial] = useState([
     {
       id: "0",
-      html: "[Employee Name]",
+      html: "[DATE]",
       active: false
     },
     {
       id: "1",
-      html: "[Date of Contract]",
+      html: "[CONTACT]",
       active: false
     },
     {
       id: "2",
-      html: "[Employee Start Date]",
+      html: "[RECIPIENT]",
       active: false
     },
     {
       id: "3",
-      html: "[Candidate Address]",
+      html: "[ADDRESS 1]",
       active: false
     },
     {
       id: "4",
-      html: "[Candidate Email Address]",
+      html: "[COUNTERPARTY NAME]",
       active: false
     },
     {
       id: "5",
-      html: "[Candidate Phone Number]",
-      active: false
-    },
-    {
-      id: "6",
-      html: "[Candidate Job Title]",
-      active: false
-    },
-    {
-      id: "7",
-      html: "[Candidate Annual Salary]",
-      active: false
-    },
-    {
-      id: "8",
-      html: "[You will receive X share options]",
-      active: false
-    },
-    {
-      id: "9",
-      html:
-        "[Your share options will be X% of the Company at the date of this Employment Agreement]",
-      active: false
-    },
-    {
-      id: "10",
-      html: "[X months]",
-      active: false
-    },
-    {
-      id: "11",
-      html: "[Candidates Line Manager]",
-      active: false
-    },
-    {
-      id: "12",
-      html: "[X months]",
-      active: false
-    },
-    {
-      id: "13",
-      html: "[Amendments to terms and conditions]",
+      html: "[COUNTERPARTY ADDRESS]",
       active: false
     }
   ]);
@@ -195,52 +154,6 @@ const DocumentEditor = (props) => {
     {
       id: "4",
       html: "[PROVIDER REGISTERED NAME]",
-      active: false
-    },
-    {
-      id: "5",
-      html: "[Candidate Phone Number]",
-      active: false
-    },
-    {
-      id: "6",
-      html: "[Candidate Job Title]",
-      active: false
-    },
-    {
-      id: "7",
-      html: "[Candidate Annual Salary]",
-      active: false
-    },
-    {
-      id: "8",
-      html: "[You will receive X share options]",
-      active: false
-    },
-    {
-      id: "9",
-      html:
-        "[Your share options will be X% of the Company at the date of this Employment Agreement]",
-      active: false
-    },
-    {
-      id: "10",
-      html: "[X months]",
-      active: false
-    },
-    {
-      id: "11",
-      html: "[Candidates Line Manager]",
-      active: false
-    },
-    {
-      id: "12",
-      html: "[X months]",
-      active: false
-    },
-    {
-      id: "13",
-      html: "[Amendments to terms and conditions]",
       active: false
     }
   ]);

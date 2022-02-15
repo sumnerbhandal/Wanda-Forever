@@ -152,12 +152,23 @@
               }
               &.half {
                 width: calc(100% / 2);
+                display: flex;
+                flex-wrap: wrap;
+                align-items: flex-start;
+                align-content: flex-start;
+
+                .flex-100 {
+                  flex-basis: 100%;
+                }
+
               }
 
               .signature {
 
                 display: flex;
                 flex-wrap: wrap;
+                width: 80%;
+                margin-top: 1rem;
                 * {
                   width: 100%;
                   display: flex;

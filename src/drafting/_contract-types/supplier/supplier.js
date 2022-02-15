@@ -481,13 +481,13 @@ const SupplierContract = (props) => {
       </ol>
 
       <div className="table">
+        <div className="row">This Services Agreement is agreed to by:</div>
         <div className="row">
           <div className="cell half">
-            This Services Agreement is agreed to by:
+            <div className="flex-100">
+              <strong>For and on behalf of Client:</strong>
+            </div>
             <div className="signature">
-              <p className="name">
-                <strong>For and on behalf of Client:</strong>
-              </p>
               <p>
                 Signed:
                 <hr />
@@ -499,13 +499,14 @@ const SupplierContract = (props) => {
           </div>
           <div className="cell half">
             <br />
+            <div className="flex-100">
+              <strong>
+                For and on behalf of{" "}
+                <Span id="1" configFields={props.configFields} />
+              </strong>
+            </div>
+
             <div className="signature">
-              <p className="name">
-                <strong>
-                  For and on behalf of{" "}
-                  <Span id="1" configFields={props.configFields} />
-                </strong>
-              </p>
               <p>
                 Signed:
                 <hr />

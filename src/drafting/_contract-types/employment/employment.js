@@ -182,11 +182,14 @@ const EmploymentContract = (props) => {
         </div>
         <div className="row">
           <div className="cell half">
-            <strong>Executed by:</strong>
+            <div className="flex-100">
+              <p>Executed by:</p>
+            </div>
+            <div className="flex-100">
+              <strong>ROBIN AI LIMITED</strong>
+            </div>
+            <strong></strong>
             <div className="signature">
-              <p className="name">
-                <strong>ROBIN AI LIMITED</strong>
-              </p>
               <p>
                 Signed:
                 <hr />
@@ -196,13 +199,18 @@ const EmploymentContract = (props) => {
             </div>
           </div>
           <div className="cell half">
-            <br />
-            <div className="signature">
-              <p className="name">
-                <strong>
-                  <Span id="0" configFields={props.configFields} />
-                </strong>
+            <div className="flex-100">
+              <p>
+                <strong>&nbsp;</strong>
               </p>
+            </div>
+            <div className="flex-100">
+              <strong>
+                <Span id="0" configFields={props.configFields} />
+              </strong>
+            </div>
+
+            <div className="signature">
               <p>
                 Signed:
                 <hr />

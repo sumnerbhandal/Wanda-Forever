@@ -15,7 +15,6 @@ const Canvas = lazy(() => import("../canvas/canvas"));
 const HubHeader = lazy(() => import("../_header/hub-header"));
 
 function PrivateRoute({ children, isAuthenticated, ...rest }) {
-  console.log(isAuthenticated);
   return (
     <Route
       {...rest}
@@ -37,7 +36,6 @@ function PrivateRoute({ children, isAuthenticated, ...rest }) {
 
 export default function App() {
   const isAuthenticated = localStorage.getItem("authenticated");
-  console.log(isAuthenticated);
   const loader = (
     <div className="loading-container">
       <span className="loading"></span>
@@ -105,8 +103,6 @@ export default function App() {
           </PrivateRoute>
 
           <Route path="*">
-            {console.log("404")}
-
             <Suspense fallback={loader}>
               <NoMatch />
             </Suspense>

@@ -35,7 +35,6 @@ function Config(props) {
     const scrollIdRef = "[data-id=" + scrollId + "]";
 
     const correspondingSpan = document.querySelectorAll(scrollIdRef)[0];
-    console.log(correspondingSpan);
     correspondingSpan.scrollIntoView({ behavior: "instant", block: "center" });
   }
   function deactivateHighlight(e) {

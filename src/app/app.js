@@ -2,11 +2,8 @@ import React, { lazy, Suspense, useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
-  Redirect,
   Routes,
-  Navigate,
-  useNavigate,
-  Outlet
+  Navigate
 } from "react-router-dom/index";
 import "./styles.scss";
 const EnhancedTable = lazy(() => import("../contract-hub/contract-hub"));
@@ -16,26 +13,22 @@ const LoginPage = lazy(() => import("../login/login"));
 const Canvas = lazy(() => import("../canvas/canvas"));
 const HubHeader = lazy(() => import("../_header/hub-header"));
 
-const routes = [
-  {
-    path: "home",
-    component: lazy(() => import("components/Home")),
-    exact: true
-  },
-  {
-    path: "users",
-    component: lazy(() => import("components/Users")),
-    exact: true
-  }
-];
-
 function PrivateRoute({ children, isAuthenticated, ...rest }) {
   console.log(isAuthenticated);
   return (
     <Route
       {...rest}
       render={({ location }) =>
-        isAuthenticated ? children : <Navigate to="/" />
+        isAuthenticated ? (
+          children
+        ) : (
+          <Navigate
+            to={{
+              pathname: "/",
+              state: { from: location }
+            }}
+          />
+        )
       }
     />
   );

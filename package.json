@@ -15,6 +15,7 @@
     "axios": "0.26.0",
     "history": "5.0.0",
     "html-react-parser": "1.4.8",
+    "jwt-decode": "3.1.2",
     "lodash": "4.17.5",
     "match-sorter": "6.3.0",
     "material-ui-search-bar": "1.0.0",

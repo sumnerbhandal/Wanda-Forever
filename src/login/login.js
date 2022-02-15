@@ -35,11 +35,9 @@ const LoginPage = (props) => {
 
     if (userName === "robin@robinai.co.uk" && password === "batman") {
       console.log("correct details");
-      props.setAuthenticated(true);
       localStorage.setItem("authenticated", true);
       navigate("/draft");
     } else {
-      props.setAuthenticated(false);
       localStorage.setItem("authenticated", false);
       email.classList.add("error");
       pass.classList.add("error");

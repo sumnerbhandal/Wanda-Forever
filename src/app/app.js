@@ -35,16 +35,7 @@ function PrivateRoute({ children, isAuthenticated, ...rest }) {
     <Route
       {...rest}
       render={({ location }) =>
-        isAuthenticated ? (
-          children
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/",
-              state: { from: location }
-            }}
-          />
-        )
+        isAuthenticated ? children : <Navigate to="/" />
       }
     />
   );

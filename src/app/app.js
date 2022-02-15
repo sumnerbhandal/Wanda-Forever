@@ -7,6 +7,7 @@ import {
 } from "react-router-dom/index";
 import "./styles.scss";
 const EnhancedTable = lazy(() => import("../contract-hub/contract-hub"));
+const TemplateSelect = lazy(() => import("../contract-hub/template"));
 const DocumentEditor = lazy(() => import("../document-editor/document-editor"));
 const Drafting = lazy(() => import("../drafting/drafting-editor"));
 const LoginPage = lazy(() => import("../login/login"));
@@ -58,10 +59,14 @@ export default function App() {
                   platform="Draft Contracts"
                   homepage="/draft"
                   hubType="Drafting"
+                  primaryCTA="BrowseTemplates"
                 />
                 <Canvas
                   page={
-                    <EnhancedTable feed="draft" configureContract="false" />
+                    <>
+                      <TemplateSelect />
+                      <EnhancedTable feed="draft" configureContract="false" />
+                    </>
                   }
                 />
               </Suspense>
@@ -82,6 +87,7 @@ export default function App() {
                     platform="Review Contracts"
                     homepage="/review"
                     hubType="Reviewing"
+                    primaryCTA="UploadContract"
                   />
                   <Canvas
                     page={

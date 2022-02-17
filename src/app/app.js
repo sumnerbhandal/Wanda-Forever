@@ -14,6 +14,8 @@ const LoginPage = lazy(() => import("../login/login"));
 const NoMatch = lazy(() => import("./no-match"));
 const Canvas = lazy(() => import("../canvas/canvas"));
 const HubHeader = lazy(() => import("../_header/hub-header"));
+// const FeedbackForm = lazy(() => import("../_forms/feedback-form"));
+import FeedbackForm from "../_forms/feedback-form";
 
 function PrivateRoute({ children, isAuthenticated, ...rest }) {
   return (
@@ -45,6 +47,7 @@ export default function App() {
 
   return (
     <main>
+      <FeedbackForm />
       <Router>
         <Routes>
           <Route exact path="/">

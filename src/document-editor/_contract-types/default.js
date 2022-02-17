@@ -126,10 +126,11 @@ const DefaultContract = (props) => {
     <article
       id="contract"
       className="contract"
+      contentEditable="true"
 
       // onKeyDown={() => trackDelete()}
     >
-      <h1 data-id="text-1" className="xl" contentEditable="true">
+      <h1 data-id="text-1" className="xl">
         NON-DISCLOSURE AND CONFIDENTIALITY AGREEMENT
       </h1>
 
@@ -137,8 +138,7 @@ const DefaultContract = (props) => {
         This Non-Disclosure Agreement (the “Agreement”), is made effective as of{" "}
         <span
           className="placeholder"
-          contentEditable="true"
-          onKeyDown={(e) => trackDelete(e)}
+          // onKeyDown={(e) => trackDelete(e)}
           // onChange={() => trackDelete()}
         >
           [Day]

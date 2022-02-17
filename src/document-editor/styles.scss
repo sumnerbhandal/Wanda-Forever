@@ -134,7 +134,7 @@
             position: relative;
             &:after {
               position: absolute;
-              right: -27rem;
+              right: calc(100% - 640px);
               background: #BA0000;
               width: 0.125rem;
               height: 100%;
@@ -233,6 +233,7 @@
       height: calc(100vh - 4rem);
       right: -23rem;
       background: #fff;
+      padding-bottom: 4rem;
 
       &.open {
         opacity: 1;

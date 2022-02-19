@@ -51,6 +51,16 @@ button {
     &:active {
       background: #CCD3E4;
     }
+
+    &.bold, &.italic, &.underline {
+
+      border: 0;
+      height: 2.5rem;
+      width: 2.5rem;
+      border-radius: 0.25rem;
+      justify-content: center;
+
+    }
   }
   &.tertiary {
     background: rgba(230, 233, 241, 0.4);

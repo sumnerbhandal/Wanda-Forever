@@ -4,6 +4,9 @@ import "./styles.scss";
 import PlaybookContent from "./playbook";
 import DefaultContract from "./_contract-types/default";
 import Button from "../_input/button/button";
+import HeaderSection from "./_toolbar/headerSection";
+import FooterSection from "./_toolbar/footerSection";
+import EditorToolbar from "./_toolbar/editorToolbar";
 
 const LabelPreview = (props) => {
   return (
@@ -24,6 +27,8 @@ const LabelPreview = (props) => {
 
 const DocumentEditor = (props) => {
   const [cleanVersion, setCleanVersion] = useState(false);
+  const [headerSection, setHeaderSection] = useState(false);
+  const [footerSection, setFooterSection] = useState(false);
 
   let suggestedEditBefore = (
     <>
@@ -100,6 +105,14 @@ const DocumentEditor = (props) => {
               : "article-container"
           }
         >
+          <EditorToolbar
+            headerSection={headerSection}
+            setHeaderSection={setHeaderSection}
+            footerSection={footerSection}
+            setFooterSection={setFooterSection}
+          />
+          <HeaderSection headerSection={headerSection} />
+          <FooterSection footerSection={footerSection} />
           <DefaultContract
             toggleDrawer={() => setDrawerState(true)}
             toggleDrawerHighlight={() => {

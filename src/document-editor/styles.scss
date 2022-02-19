@@ -16,6 +16,8 @@
       transition: all 0.3s ease-in-out;
       overflow-y: scroll;
       justify-content: center;
+      flex-wrap: wrap;
+      padding-bottom: 5rem;
 
       &.playbook-open {
         width: calc(100% - 23rem);
@@ -27,6 +29,109 @@
         height: auto;
         background: black;
         width: 5rem;
+      }
+
+      .document-toolbar {
+        width: 47.5rem;
+        padding: 3.75rem;
+        flex-wrap: wrap;
+        text-align: justify;
+        padding-bottom: 0;
+        position: sticky;
+        top: 4rem;
+        background: #fff;
+        z-index: 1;
+        transition: 0.3s ease;
+
+        .action-container {
+          border-bottom: 0.0625rem solid var(--robin-blue);
+          display: flex;
+          justify-content: space-between;
+
+          button {
+            &.secondary {
+              border: 0;
+              border-radius: 0.25rem;
+              padding: 0 0.5rem;
+  
+              img {
+                margin-right: 0.5rem;
+              }
+            }
+          }
+        }
+
+        .footer-header-button-container {
+          display: flex;
+          gap: 0.5rem;
+        }
+
+        .modify-toolbar {
+          display: flex;
+          gap: 0.5rem;
+
+          .format-container {
+            display: flex;
+            border-right: 0.0625rem solid var(--robin-blue);
+            padding-right: 0.5rem;
+          }
+        }
+
+      }
+
+      .toolbar-format-panel {
+        display: flex;
+        position: absolute;
+        top: -1rem;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+        border-radius: 5rem;
+
+
+
+        .format-container {
+          display: flex;
+          border: 0.0625rem solid var(--robin-blue);
+          border-radius: 5rem;
+          padding: 0.1875rem 0.75rem;
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+          border-right: 0;
+          padding-right: 0.5rem;
+        }
+
+        button {
+          &.secondary {
+
+            &.insert {
+              border-top-left-radius: 0;
+              border-bottom-left-radius: 0;
+              padding-left: 0.75rem;
+            }
+          }
+        }
+      }
+
+      .header-section {
+        animation: headerIn 1s ease;
+        transition: 0.3s ease;
+        height: auto;
+        width: 47.5rem;
+        padding: 2rem 3.75rem;
+        flex-wrap: wrap;
+        text-align: justify;
+        position: fixed;
+        top: 10.3125rem;
+        background: #fff;
+        z-index: 1;
+
+        &.footer {
+          top: unset;
+          bottom: 0;
+          position: fixed;
+          transform: translateX(-1rem);
+          padding-left: 4.75rem;
+          padding-bottom: 5rem;
+        }
       }
 
 
@@ -456,3 +561,17 @@
     opacity: 1;
   }
 }
+
+@keyframes headerIn {
+  0% {
+    opacity: 0;
+    background: var(--robin-grey-background);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    background: #fff;
+  }
+}
+

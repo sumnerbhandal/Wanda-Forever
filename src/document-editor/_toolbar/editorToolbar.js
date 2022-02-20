@@ -1,30 +1,18 @@
-import React from "react";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
+import React, { useState, useEffect } from "react";
 import Button from "../../_input/button/button";
-import HeaderIcon from "../_assets/Header.svg";
-import FooterIcon from "../_assets/Footer.svg";
-import InsertIcon from "../_assets/Insert.svg";
 import HeaderButtonFeature from "./_buttons/headerButton";
 import FooterButtonFeature from "./_buttons/footerButton";
 import InsertButtonFeature from "./_buttons/insertButton";
-
-const InsertElement = (
-  <>
-    <img alt="Header icon" src={InsertIcon} /> {"  "}Insert
-  </>
-);
+import PageButtonFeature from "./_buttons/pageNumber";
 
 const EditorToolbar = (props) => {
-  // const insertFooter = () => {
-  //   handleClose();
-  //   props.setFooterSection(true);
-  // };
+  const [modTools, setModTools] = useState(props.headerFocused);
 
-  // const removeFooter = () => {
-  //   handleClose();
-  //   props.setFooterSection(false);
-  // };
+  useEffect(() => {
+    props.headerFocused || props.footerFocused
+      ? setModTools(true)
+      : setModTools(false);
+  });
 
   const makeBold = (e) => {
     e.preventDefault();
@@ -54,7 +42,7 @@ const EditorToolbar = (props) => {
               setFooterSection={props.setFooterSection}
             />
           </div>
-          <div className="modify-toolbar">
+          <div className={`modify-toolbar ${modTools ? "" : "disabled"}`}>
             <div className="format-container">
               <Button
                 contentEditable="false"
@@ -76,11 +64,22 @@ const EditorToolbar = (props) => {
               />
             </div>
             <hr />
-            <InsertButtonFeature
-              setHeaderPageNumber={props.setHeaderPageNumber}
-              setFooterPageNumber={props.setFooterPageNumber}
-              focusedSection={props.focusedSection}
-            />
+
+            {!modTools ? (
+              <InsertButtonFeature
+                setHeaderPageNumber={props.setHeaderPageNumber}
+                setFooterPageNumber={props.setFooterPageNumber}
+                focusedSection={props.focusedSection}
+              />
+            ) : (
+              <PageButtonFeature
+                setHeaderPageNumber={props.setHeaderPageNumber}
+                setFooterPageNumber={props.setFooterPageNumber}
+                focusedSection={props.focusedSection}
+                headerPageNumber={props.headerPageNumber}
+                footerPageNumber={props.footerPageNumber}
+              />
+            )}
           </div>
         </div>
       </div>

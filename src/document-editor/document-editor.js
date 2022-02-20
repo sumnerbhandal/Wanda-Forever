@@ -117,10 +117,14 @@ const DocumentEditor = (props) => {
             setHeaderSection={setHeaderSection}
             footerSection={footerSection}
             setFooterSection={setFooterSection}
+            headerPageNumber={headerPageNumber}
             setHeaderPageNumber={setHeaderPageNumber}
+            footerPageNumber={footerPageNumber}
             setFooterPageNumber={setFooterPageNumber}
             setFocusedSection={setFocusedSection}
             focusedSection={focusedSection}
+            headerFocused={headerFocused}
+            footerFocused={footerFocused}
           />
           <HeaderSection
             headerSection={headerSection}

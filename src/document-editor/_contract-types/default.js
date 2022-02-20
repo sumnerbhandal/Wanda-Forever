@@ -127,6 +127,7 @@ const DefaultContract = (props) => {
       id="contract"
       className="contract"
       contentEditable="true"
+      onClick={() => props.setContractFocused(true)}
 
       // onKeyDown={() => trackDelete()}
     >

@@ -26,42 +26,44 @@ const EditorToolbar = (props) => {
   // };
 
   return (
-    <div className="document-toolbar">
-      <div className="action-container">
-        <div className="footer-header-button-container">
-          <HeaderButtonFeature
-            headerSection={props.headerSection}
-            setHeaderSection={props.setHeaderSection}
-          />
-          <FooterButtonFeature
-            footerSection={props.footerSection}
-            setFooterSection={props.setFooterSection}
-          />
-        </div>
-        <div className="modify-toolbar">
-          <div className="format-container">
-            <Button
-              contentEditable="false"
-              variant="secondary bold"
-              label="B"
+    <div className="document-toolbar-container">
+      <div className="document-toolbar">
+        <div className="action-container">
+          <div className="footer-header-button-container">
+            <HeaderButtonFeature
+              headerSection={props.headerSection}
+              setHeaderSection={props.setHeaderSection}
             />
-            <Button
-              contentEditable="false"
-              variant="secondary italic"
-              label="i"
-            />
-            <Button
-              contentEditable="false"
-              variant="secondary underline"
-              label="U"
+            <FooterButtonFeature
+              footerSection={props.footerSection}
+              setFooterSection={props.setFooterSection}
             />
           </div>
-          <Button
-            contentEditable="false"
-            variant="secondary"
-            label={InsertElement}
-            // onClick={handleClick}
-          />
+          <div className="modify-toolbar">
+            <div className="format-container">
+              <Button
+                contentEditable="false"
+                variant="secondary bold"
+                label="B"
+              />
+              <Button
+                contentEditable="false"
+                variant="secondary italic"
+                label="i"
+              />
+              <Button
+                contentEditable="false"
+                variant="secondary underline"
+                label="U"
+              />
+            </div>
+            <Button
+              contentEditable="false"
+              variant="secondary"
+              label={InsertElement}
+              // onClick={handleClick}
+            />
+          </div>
         </div>
       </div>
     </div>

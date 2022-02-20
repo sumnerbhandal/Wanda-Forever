@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import EditorHeader from "../_header/editor-header";
 import "./styles.scss";
 import PlaybookContent from "./playbook";
@@ -29,6 +29,7 @@ const DocumentEditor = (props) => {
   const [cleanVersion, setCleanVersion] = useState(false);
   const [headerSection, setHeaderSection] = useState(false);
   const [footerSection, setFooterSection] = useState(false);
+  const [contractFocused, setContractFocused] = useState(true);
 
   let suggestedEditBefore = (
     <>
@@ -87,6 +88,7 @@ const DocumentEditor = (props) => {
       }
     }
   }
+
   return (
     <>
       <EditorHeader
@@ -111,7 +113,11 @@ const DocumentEditor = (props) => {
             footerSection={footerSection}
             setFooterSection={setFooterSection}
           />
-          <HeaderSection headerSection={headerSection} />
+          <HeaderSection
+            headerSection={headerSection}
+            contractFocused={contractFocused}
+            setContractFocused={setContractFocused}
+          />
           <FooterSection footerSection={footerSection} />
           <DefaultContract
             toggleDrawer={() => setDrawerState(true)}
@@ -125,6 +131,8 @@ const DocumentEditor = (props) => {
             cleanVersion={cleanVersion}
             showProvision={showProvision}
             setShowProvision={setShowProvision}
+            contractFocused={contractFocused}
+            setContractFocused={setContractFocused}
           />
         </div>
         <aside className={drawerState ? "open" : null}>

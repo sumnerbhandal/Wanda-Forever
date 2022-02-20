@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import useToggle from "../../utils/useToggle";
+
 const HeaderSection = (props) => {
+  console.log(props.contractFocused);
   return props.headerSection ? (
     <>
-      <div className="header-section">
-        <div className="header-contents">Header Section</div>
+      <div
+        onClick={() => props.setContractFocused(false)}
+        className="header-section-container"
+        contentEditable="true"
+      >
+        <div
+          className={`header-section ${
+            props.contractFocused ? "scrolled" : ""
+          }`}
+        >
+          <div className="header-contents">Header Section</div>
+        </div>
       </div>
     </>
   ) : null;

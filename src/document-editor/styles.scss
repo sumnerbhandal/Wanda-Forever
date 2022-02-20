@@ -48,6 +48,11 @@
           text-align: justify;
           padding-bottom: 0;
 
+          hr {
+            border: 0;
+            border-right: 0.0625rem solid var(--robin-blue);
+          }
+
 
           .action-container {
             border-bottom: 0.0625rem solid var(--robin-blue);
@@ -78,8 +83,6 @@
 
             .format-container {
               display: flex;
-              border-right: 0.0625rem solid var(--robin-blue);
-              padding-right: 0.5rem;
             }
           }
 

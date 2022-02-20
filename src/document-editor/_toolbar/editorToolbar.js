@@ -75,6 +75,7 @@ const EditorToolbar = (props) => {
                 onClick={makeUnderlined}
               />
             </div>
+            <hr />
             <InsertButtonFeature
               setHeaderPageNumber={props.setHeaderPageNumber}
               setFooterPageNumber={props.setFooterPageNumber}

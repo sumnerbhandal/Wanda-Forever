@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import useToggle from "../../utils/useToggle";
+import React from "react";
 
 const HeaderSection = (props) => {
   console.log(props.contractFocused);

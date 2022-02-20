@@ -118,7 +118,11 @@ const DocumentEditor = (props) => {
             contractFocused={contractFocused}
             setContractFocused={setContractFocused}
           />
-          <FooterSection footerSection={footerSection} />
+          <FooterSection
+            footerSection={footerSection}
+            contractFocused={contractFocused}
+            setContractFocused={setContractFocused}
+          />
           <DefaultContract
             toggleDrawer={() => setDrawerState(true)}
             toggleDrawerHighlight={() => {

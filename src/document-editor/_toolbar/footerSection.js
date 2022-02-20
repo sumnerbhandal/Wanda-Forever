@@ -3,8 +3,16 @@ import React from "react";
 const FooterSection = (props) => {
   return props.footerSection ? (
     <>
-      <div className="header-section-container">
-        <div className="header-section footer" contentEditable="true">
+      <div
+        onClick={() => props.setContractFocused(false)}
+        className="header-section-container"
+        contentEditable="true"
+      >
+        <div
+          className={`header-section footer ${
+            props.contractFocused ? "scrolled" : ""
+          }`}
+        >
           <div className="header-contents">Footer Section</div>
         </div>
       </div>

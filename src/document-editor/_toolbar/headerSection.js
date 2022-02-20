@@ -1,20 +1,31 @@
 import React from "react";
 
 const HeaderSection = (props) => {
-  console.log(props.contractFocused);
+  const withinHeader = (e) => {
+    props.setHeaderFocused(true);
+    if (e.target.closest(".header-section-container").id === "header-section") {
+      props.setFocusedSection("header");
+    } else return;
+  };
   return props.headerSection ? (
     <>
       <div
-        onClick={() => props.setContractFocused(false)}
+        id="header-section"
+        onClick={withinHeader}
         className="header-section-container"
-        contentEditable="true"
       >
         <div
-          className={`header-section ${
-            props.contractFocused ? "scrolled" : ""
-          }`}
+          className={`header-section ${props.headerFocused ? "" : "scrolled"}`}
+          contentEditable="true"
         >
-          <div className="header-contents">Header Section</div>
+          <div className="header-contents">
+            Header Section{" "}
+            {props.headerPageNumber ? (
+              <span contentEditable="false" className="placeholder">
+                # Page Number
+              </span>
+            ) : null}
+          </div>
         </div>
       </div>
     </>

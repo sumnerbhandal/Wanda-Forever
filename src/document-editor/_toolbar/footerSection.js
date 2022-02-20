@@ -1,19 +1,33 @@
 import React from "react";
 
 const FooterSection = (props) => {
+  const withinFooter = (e) => {
+    props.setFooterFocused(true);
+    if (e.target.closest(".header-section-container").id === "footer-section") {
+      props.setFocusedSection("footer");
+    } else return;
+  };
   return props.footerSection ? (
     <>
       <div
-        onClick={() => props.setContractFocused(false)}
-        className="header-section-container"
-        contentEditable="true"
+        onClick={withinFooter}
+        className="header-section-container footer"
+        id="footer-section"
       >
         <div
           className={`header-section footer ${
-            props.contractFocused ? "scrolled" : ""
+            props.footerFocused ? "" : "scrolled"
           }`}
+          contentEditable="true"
         >
-          <div className="header-contents">Footer Section</div>
+          <div className="header-contents">
+            Footer Section{" "}
+            {props.footerPageNumber ? (
+              <span contentEditable="false" className="placeholder">
+                # Page Number
+              </span>
+            ) : null}
+          </div>
         </div>
       </div>
     </>

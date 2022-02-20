@@ -59,7 +59,16 @@ button {
       width: 2.5rem;
       border-radius: 0.25rem;
       justify-content: center;
+    }
 
+    &.italic {
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    &.underline {
+      text-decoration: underline;
+      font-weight: 400;
     }
   }
   &.tertiary {

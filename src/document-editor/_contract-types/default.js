@@ -122,12 +122,17 @@ const DefaultContract = (props) => {
     }
   });
 
+  const setContractFocused = () => {
+    props.setHeaderFocused(false);
+    props.setFooterFocused(false);
+  };
+
   return (
     <article
       id="contract"
       className="contract"
       contentEditable="true"
-      onClick={() => props.setContractFocused(true)}
+      onClick={setContractFocused}
 
       // onKeyDown={() => trackDelete()}
     >

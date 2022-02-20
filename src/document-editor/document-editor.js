@@ -29,7 +29,14 @@ const DocumentEditor = (props) => {
   const [cleanVersion, setCleanVersion] = useState(false);
   const [headerSection, setHeaderSection] = useState(false);
   const [footerSection, setFooterSection] = useState(false);
-  const [contractFocused, setContractFocused] = useState(true);
+  const [drawerState, setDrawerState] = useState(true);
+  const [activeHover, setActiveHover] = useState(false);
+  const [showProvision, setShowProvision] = useState(false);
+  const [headerFocused, setHeaderFocused] = useState(false);
+  const [footerFocused, setFooterFocused] = useState(false);
+  const [headerPageNumber, setHeaderPageNumber] = useState(false);
+  const [footerPageNumber, setFooterPageNumber] = useState(false);
+  const [focusedSection, setFocusedSection] = useState();
 
   let suggestedEditBefore = (
     <>
@@ -49,10 +56,6 @@ const DocumentEditor = (props) => {
     </>
   );
 
-  const [drawerState, setDrawerState] = useState(true);
-  const [activeHover, setActiveHover] = useState(false);
-  const [showProvision, setShowProvision] = useState(false);
-
   const [suggestedEdit, setSuggestedEdit] = useState(suggestedEditBefore);
 
   function drawerClose() {
@@ -68,6 +71,8 @@ const DocumentEditor = (props) => {
       setDrawerState(true);
     }
     setCleanVersion(!cleanVersion);
+    setFooterFocused(true);
+    setHeaderFocused(true);
 
     let placeholders = document.getElementsByClassName("placeholder");
     for (var i = 0; i < placeholders.length; i++) {
@@ -112,16 +117,26 @@ const DocumentEditor = (props) => {
             setHeaderSection={setHeaderSection}
             footerSection={footerSection}
             setFooterSection={setFooterSection}
+            setHeaderPageNumber={setHeaderPageNumber}
+            setFooterPageNumber={setFooterPageNumber}
+            setFocusedSection={setFocusedSection}
+            focusedSection={focusedSection}
           />
           <HeaderSection
             headerSection={headerSection}
-            contractFocused={contractFocused}
-            setContractFocused={setContractFocused}
+            headerFocused={headerFocused}
+            setHeaderFocused={setHeaderFocused}
+            headerPageNumber={headerPageNumber}
+            setHeaderPageNumber={setHeaderPageNumber}
+            setFocusedSection={setFocusedSection}
           />
           <FooterSection
             footerSection={footerSection}
-            contractFocused={contractFocused}
-            setContractFocused={setContractFocused}
+            footerFocused={footerFocused}
+            setFooterFocused={setFooterFocused}
+            footerPageNumber={footerPageNumber}
+            setFooterPageNumber={setFooterPageNumber}
+            setFocusedSection={setFocusedSection}
           />
           <DefaultContract
             toggleDrawer={() => setDrawerState(true)}
@@ -135,8 +150,10 @@ const DocumentEditor = (props) => {
             cleanVersion={cleanVersion}
             showProvision={showProvision}
             setShowProvision={setShowProvision}
-            contractFocused={contractFocused}
-            setContractFocused={setContractFocused}
+            footerFocused={footerFocused}
+            setFooterFocused={setFooterFocused}
+            headerFocused={headerFocused}
+            setHeaderFocused={setHeaderFocused}
           />
         </div>
         <aside className={drawerState ? "open" : null}>

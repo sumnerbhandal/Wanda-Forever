@@ -7,11 +7,14 @@ import PageButtonFeature from "./_buttons/pageNumber";
 
 const EditorToolbar = (props) => {
   const [modTools, setModTools] = useState(props.headerFocused);
+  const [regularTools, setRegularTools] = useState(props.contractFocused);
 
   useEffect(() => {
     props.headerFocused || props.footerFocused
       ? setModTools(true)
       : setModTools(false);
+
+    props.contractFocused ? setRegularTools(true) : setRegularTools(false);
   });
 
   const makeBold = (e) => {
@@ -42,7 +45,11 @@ const EditorToolbar = (props) => {
               setFooterSection={props.setFooterSection}
             />
           </div>
-          <div className={`modify-toolbar ${modTools ? "" : "disabled"}`}>
+          <div
+            className={`modify-toolbar ${
+              modTools || regularTools ? "" : "disabled"
+            }`}
+          >
             <div className="format-container">
               <Button
                 contentEditable="false"

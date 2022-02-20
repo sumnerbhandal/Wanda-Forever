@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Button from "../../../_input/button/button";
-import InsertIcon from "../../_assets/Insert.svg";
+import NumberIcon from "../../_assets/Number.svg";
 
 const PageButton = (
   <>
-    <img alt="Header icon" src={InsertIcon} /> {"  "}Page Number
+    <img alt="Header icon" src={NumberIcon} /> {"  "}Page Number
   </>
 );
 

@@ -18,14 +18,12 @@ const HeaderSection = (props) => {
           className={`header-section ${props.headerFocused ? "" : "scrolled"}`}
           contentEditable="true"
         >
-          <div className="header-contents">
-            Header Section{" "}
-            {props.headerPageNumber ? (
-              <span contentEditable="false" className="placeholder">
-                # Page Number
-              </span>
-            ) : null}
-          </div>
+          {props.headerPageNumber ? (
+            <span contentEditable="false" className="placeholder">
+              Page#
+            </span>
+          ) : null}
+          <div className="header-contents">Header Section </div>
         </div>
       </div>
     </>

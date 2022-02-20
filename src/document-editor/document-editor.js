@@ -34,6 +34,7 @@ const DocumentEditor = (props) => {
   const [showProvision, setShowProvision] = useState(false);
   const [headerFocused, setHeaderFocused] = useState(false);
   const [footerFocused, setFooterFocused] = useState(false);
+  const [contractFocused, setContractFocused] = useState(false);
   const [headerPageNumber, setHeaderPageNumber] = useState(false);
   const [footerPageNumber, setFooterPageNumber] = useState(false);
   const [focusedSection, setFocusedSection] = useState();
@@ -125,6 +126,7 @@ const DocumentEditor = (props) => {
             focusedSection={focusedSection}
             headerFocused={headerFocused}
             footerFocused={footerFocused}
+            contractFocused={contractFocused}
           />
           <HeaderSection
             headerSection={headerSection}
@@ -158,6 +160,7 @@ const DocumentEditor = (props) => {
             setFooterFocused={setFooterFocused}
             headerFocused={headerFocused}
             setHeaderFocused={setHeaderFocused}
+            setContractFocused={setContractFocused}
           />
         </div>
         <aside className={drawerState ? "open" : null}>

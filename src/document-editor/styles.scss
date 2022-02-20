@@ -21,6 +21,10 @@
 
       &.playbook-open {
         width: calc(100% - 23rem);
+
+        @media (max-width: 1280px) {
+          width: 100%;
+        }
       }
 
       .article-selector-button {
@@ -143,7 +147,7 @@
         top: 6.3125rem;
         background: #fff;
         z-index: 1;
-        padding: 0 24.5rem;
+
         
         &:focus-visible {
           outline: 0;
@@ -160,7 +164,7 @@
 
         .header-section {
           animation: headerIn 1s ease;
-          width: 47.5rem;
+          width: 40rem;
           padding: 1rem 0;
           flex-wrap: wrap;
           text-align: justify;
@@ -169,6 +173,7 @@
           border-bottom: 0.0625rem dotted var(--robin-blue);
           overflow-y: auto;
           background: white;
+          position: relative;
 
           &:focus-visible {
             outline: 0;
@@ -199,18 +204,19 @@
             }
           }
 
+          .placeholder {
+            padding: 0 0.25rem;
+            position: absolute;
+            right: 0;
+            text-align: right;
+            top: 1rem;
+            border: 0.0625rem dotted;
+            border-radius: 0.25rem;
+          }
+
           .header-contents {
             position: relative;
             width: 80%;
-
-            .placeholder {
-              background: var(--information);
-              padding: 0 0.125rem;
-              position: absolute;
-              right: -25%;
-              text-align: right;
-              top: 0;
-            }
           }
 
         }
@@ -426,7 +432,13 @@
       &.open {
         opacity: 1;
         right: 0;
+
+        @media (max-width: 1280px) {
+          right: -23rem;
+          opacity: 0;
+        }
       }
+
 
 
 

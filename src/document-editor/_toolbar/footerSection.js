@@ -20,14 +20,12 @@ const FooterSection = (props) => {
           }`}
           contentEditable="true"
         >
-          <div className="header-contents">
-            Footer Section{" "}
-            {props.footerPageNumber ? (
-              <span contentEditable="false" className="placeholder">
-                # Page Number
-              </span>
-            ) : null}
-          </div>
+          {props.footerPageNumber ? (
+            <span contentEditable="false" className="placeholder">
+              Page#
+            </span>
+          ) : null}
+          <div className="header-contents">Footer Section </div>
         </div>
       </div>
     </>

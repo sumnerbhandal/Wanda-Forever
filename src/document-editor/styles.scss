@@ -14,7 +14,7 @@
       display: flex;
       width: calc(100%);
       transition: all 0.3s ease-in-out;
-      overflow-y: scroll;
+      overflow: auto;
       justify-content: center;
       flex-wrap: wrap;
       padding-bottom: 5rem;
@@ -212,6 +212,7 @@
             top: 1rem;
             border: 0.0625rem dotted;
             border-radius: 0.25rem;
+            background: #E6E9F1;
           }
 
           .header-contents {

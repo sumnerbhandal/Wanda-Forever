@@ -1,4 +1,5 @@
 import React from "react";
+import ToolTip from "../../_notification/tooltip/tooltip";
 
 const FooterSection = (props) => {
   const withinFooter = (e) => {
@@ -22,11 +23,17 @@ const FooterSection = (props) => {
         >
           {props.footerPageNumber ? (
             <span contentEditable="false" className="placeholder">
-              Page#
+              Page #
             </span>
           ) : null}
-          <div className="header-contents">Footer Section </div>
+          <div className="header-contents">
+            This is a footer, click here to start editing
+          </div>
         </div>
+        <ToolTip
+          className="footer"
+          message="When downloaded this will appear as a footer on each page"
+        />
       </div>
     </>
   ) : null;

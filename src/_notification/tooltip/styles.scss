@@ -1,0 +1,53 @@
+.tooltip {
+  box-shadow: 0px 2px 4px rgb(0 0 0 / 40%);
+  background: #2A344F;
+  border-radius: 4px;
+  position: absolute;
+  padding: 0.75rem;
+  color: #fff;
+  max-width: 10rem;
+  text-align: center;
+  right: calc((50% + 22rem));
+  z-index: 3;
+  animation: tooltipFadeIn 0.4s ease;
+  transition: 0.3s ease;
+  
+  &:after {
+    content: "";
+    position: absolute;
+    right: -0.9rem;
+    top: 42%;
+    width: 0;
+    height: 0;
+    border-left: 0.625rem solid transparent;
+    border-right: 0.625rem solid transparent;
+    border-top: 0.625rem solid #2A344F;
+    clear: both;
+    transform: rotate(
+-90deg
+);
+  }
+
+  &.header {
+    top: -1rem;
+  }
+
+  &.footer {
+    top: -2.5rem;
+    width: 10rem;
+  }
+
+  &.hide {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

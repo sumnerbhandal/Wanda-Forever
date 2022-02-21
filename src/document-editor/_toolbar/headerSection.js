@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import ToolTip from "../../_notification/tooltip/tooltip";
+import Draggable from "react-draggable";
 
 const HeaderSection = (props) => {
   const withinHeader = (e) => {
@@ -7,6 +8,11 @@ const HeaderSection = (props) => {
     if (e.target.closest(".header-section-container").id === "header-section") {
       props.setFocusedSection("header");
     } else return;
+  };
+
+  const eventLogger = (e: MouseEvent, data: Object) => {
+    console.log("Event: ", e);
+    console.log("Data: ", data);
   };
 
   return props.headerSection ? (
@@ -21,9 +27,22 @@ const HeaderSection = (props) => {
           contentEditable="true"
         >
           {props.headerPageNumber ? (
-            <span contentEditable="false" className="placeholder">
-              Page #
-            </span>
+            <Draggable
+              axis="both"
+              handle=".placeholder"
+              defaultPosition={{ x: 0, y: 0 }}
+              position={null}
+              grid={[1, 1]}
+              scale={1}
+              bounds="parent"
+              // onStart={eventLogger}
+              // onDrag={eventLogger}
+              // onStop={eventLogger}
+            >
+              <span contentEditable="false" className="placeholder">
+                Page #
+              </span>
+            </Draggable>
           ) : null}
           <div className="header-contents">
             This is a header, click here to start editing

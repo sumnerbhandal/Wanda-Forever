@@ -1,5 +1,6 @@
 import React from "react";
 import ToolTip from "../../_notification/tooltip/tooltip";
+import Draggable from "react-draggable";
 
 const FooterSection = (props) => {
   const withinFooter = (e) => {
@@ -22,9 +23,22 @@ const FooterSection = (props) => {
           contentEditable="true"
         >
           {props.footerPageNumber ? (
-            <span contentEditable="false" className="placeholder">
-              Page #
-            </span>
+            <Draggable
+              axis="both"
+              handle=".placeholder"
+              defaultPosition={{ x: 0, y: 0 }}
+              position={null}
+              grid={[1, 1]}
+              scale={1}
+              bounds="parent"
+              // onStart={eventLogger}
+              // onDrag={eventLogger}
+              // onStop={eventLogger}
+            >
+              <span contentEditable="false" className="placeholder">
+                Page #
+              </span>
+            </Draggable>
           ) : null}
           <div className="header-contents">
             This is a footer, click here to start editing

@@ -40,12 +40,50 @@ header {
       flex-shrink: 0;
       text-transform: capitalize;
 
+      &.truncated {
+        max-width: 11.5rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+        padding-top: 1.125rem;
+        transition: 0.3s ease;
+
+        &:after {
+          transition: 0.3s ease;
+          content: "";
+        }
+
+        &:focus-visible {
+          outline: 0;
+        }
+
+        &:focus-within {
+          z-index: 2;
+          height: 100%;
+          position: relative;
+          overflow: visible;
+          &:after {
+            background: rgba(255, 255, 255, 0.9);
+            content: "";
+            height: 100%;
+            position: absolute;
+            width: calc(100vw / 3);
+            left: 0;
+            z-index: -1;
+            top: 0;
+            transition: 0.3s ease;
+          }
+        }
+      }
+
       &.last-edited {
         border-left: 0;
         font-size: 0.875rem;
         color: var(--subtext);
         margin-left: 0;
         font-weight: 500;
+        padding-left: 1rem;
         
         @media (max-width: 1280px) {
           display: none;

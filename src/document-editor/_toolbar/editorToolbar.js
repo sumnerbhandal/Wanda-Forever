@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Button from "../../_input/button/button";
 import HeaderButtonFeature from "./_buttons/headerButton";
 import FooterButtonFeature from "./_buttons/footerButton";
+import HistoryButtonFeature from "./_buttons/seeVersionHistory";
 import InsertButtonFeature from "./_buttons/insertButton";
 import PageButtonFeature from "./_buttons/pageNumber";
 
@@ -44,6 +45,10 @@ const EditorToolbar = (props) => {
               footerSection={props.footerSection}
               setFooterSection={props.setFooterSection}
             />
+            {/* <HistoryButtonFeature
+              headerSection={props.headerSection}
+              setHeaderSection={props.setHeaderSection}
+            /> */}
           </div>
           <div
             className={`modify-toolbar ${

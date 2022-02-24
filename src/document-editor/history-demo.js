@@ -1,4 +1,5 @@
 import Settings from "./_assets/Settings.svg";
+import VersionController from "./_version-controller/version-controller";
 import Button from "../_input/button/button";
 import * as React from "react";
 import Accordion from "@mui/material/Accordion";
@@ -21,7 +22,27 @@ const HistoryDemo = (props) => {
         <h2>Document History</h2>
         <div className="button-container"></div>
       </div>
-      <p>comparisons go here </p>
+      <VersionController
+        user="Sumner Bhandal"
+        version="Latest"
+        date="26/01/21"
+        time="12:20"
+        action="made an edit"
+      />
+      <VersionController
+        user="Sumner Bhandal"
+        version="Version 1"
+        date="26/01/21"
+        time="12:20"
+        action="made an edit"
+      />
+      <VersionController
+        user="Sumner Bhandal"
+        version="Original Version"
+        date="26/01/21"
+        time="12:20"
+        action="uploaded via manual upload"
+      />
     </div>
   );
 };

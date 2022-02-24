@@ -47,7 +47,7 @@
 
         p {
             flex-shrink: 0;
-            margin-right: 0.5rem;
+            // margin-right: 0.5rem;
           }
 
         .document-toolbar {
@@ -88,6 +88,10 @@
           .footer-header-button-container {
             display: flex;
             gap: 0.5rem;
+
+            .error-container .flex-row select {
+              width: 9.5rem;
+            }
           }
 
           .modify-toolbar {

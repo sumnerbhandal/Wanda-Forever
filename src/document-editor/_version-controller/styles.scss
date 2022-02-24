@@ -1,0 +1,49 @@
+.version-controller-container {
+  width: 100%;
+  display: flex;
+  background: rgba(230, 233, 241, 0.4);
+  color: var(--robin-blue);
+  cursor: pointer;
+  border-radius: 0.25rem;
+  margin-bottom: 0.5rem;
+
+  &:hover {
+    background: #E6E9F1;
+  }
+  &:active {
+    background: #D6DEEF;
+  }
+
+  .user {
+    width: 3.5rem;
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem;
+
+    .user-badge {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 5rem;
+      border: 0.125rem solid #fff;
+      background: #E6E9F1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  p {
+    margin-block-start: 0.25rem;
+    margin-block-end: 0.25rem;
+  }
+
+  .details {
+    flex-basis: 100%;
+    padding: 0.5rem;
+  }
+
+  .more-actions {
+    width: 2.5rem;
+  }
+
+}

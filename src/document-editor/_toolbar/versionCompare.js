@@ -34,8 +34,15 @@ const VersionToolbar = (props) => {
           <div className="footer-header-button-container">
             <p>Showing differences between</p>
             <DropDown
+              id="compare1"
               value="Latest"
               option={["Latest", "Version 1", "Original Version"]}
+            />
+            <p>and</p>
+            <DropDown
+              id="compare2"
+              value="Latest"
+              option={["Version 1", "Original Version"]}
             />
           </div>
         </div>

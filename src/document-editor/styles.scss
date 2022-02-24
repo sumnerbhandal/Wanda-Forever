@@ -45,12 +45,21 @@
         z-index: 1;
         transition: 0.3s ease;
 
+        p {
+            flex-shrink: 0;
+            margin-right: 0.5rem;
+          }
+
         .document-toolbar {
           width: 47.5rem;
           padding: 3.75rem;
           flex-wrap: wrap;
           text-align: justify;
           padding-bottom: 0;
+
+          &.history {
+
+          }
 
           hr {
             border: 0;
@@ -147,6 +156,10 @@
         top: 6.3125rem;
         background: #fff;
         z-index: 1;
+
+        &.top {
+          top: 6.8125rem;
+        }
 
         
         &:focus-visible {
@@ -276,69 +289,45 @@
               height: 1.25rem;
               pointer-events: none;
             }
-            
-            // .tooltip {
-            //   list-style: none; 
-            //   padding-left: 0; 
-            // }
-            // .tooltip {
-            //   position: absolute; 
-            //   min-width: 100%;
-            // }
-            // .tooltip {
-            //   -webkit-transition: opacity 250ms ease; 
-            //   transition: opacity 250ms ease;
-            //   opacity: 0;
-            //   top: -99em;
-            //   // width: 15.5rem;
-            //   background: rgba(42, 52, 79, 1);
-            //   color: #fff;
-            //   // padding: 0.75rem;
-            //   border-radius: 0.25rem;
-            //   text-align: center;
-            //   filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.4));
-            //   font-weight: 500;
-
-            //   // &:after {
-            //   //   content: "";
-            //   //   position: absolute;
-            //   //   left: 44%;
-            //   //   top: 100%;
-            //   //   width: 0;
-            //   //   height: 0;
-            //   //   border-left: 14px solid transparent;
-            //   //   border-right: 14px solid transparent;
-            //   //   border-top: 14px solid rgba(42, 52, 79, 1);
-            //   //   clear: both;
-            //   // }
-            // }
-  
-            // &:hover {
-            //   .tooltip {
-            //     -webkit-transition-delay: 500ms; 
-            //     transition-delay: 500ms; 
-            //     opacity: 1;
-            //     top: 0;
-            //   }
-            // }
 
             &.hidden {
               display: none;
             }
           }
+        }
+        .redline, .blueline {
+          position: relative;
+          color:  #BA0000;
+          
+          &:after {
+            position: absolute;
+            right: calc(100% - 640px);
+            background: #BA0000;
+            width: 0.125rem;
+            height: 100%;
+            content: "";
+            bottom: 0;
+            color:  #BA0000;
+            text-decoration: line-through;
+          }
 
-          .redline {
-            position: relative;
+          &.new-content-example {
             &:after {
-              position: absolute;
-              right: calc(100% - 640px);
-              background: #BA0000;
-              width: 0.125rem;
-              height: 100%;
-              content: "";
-              bottom: 0;
+              right: calc(100% - 700px);
             }
           }
+
+          &.deleted-content-example {
+
+            &:after {
+            right: calc(100% - 620px);
+            }
+          }
+        }
+
+        .blueline {
+          color: #005AAF;
+          text-decoration: underline;
         }
 
           .preview-label-menu {
@@ -460,6 +449,7 @@
           .button-container {
             display: flex;
             align-items: center;
+            height: 3rem;
 
             button {
               margin: 0;

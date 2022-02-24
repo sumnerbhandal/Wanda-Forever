@@ -34,7 +34,7 @@ const EditorToolbar = (props) => {
 
   return (
     <div className="document-toolbar-container">
-      <div className="document-toolbar">
+      <div className={`document-toolbar ${props.historyView ? "history" : ""}`}>
         <div className="action-container">
           <div className="footer-header-button-container">
             <HeaderButtonFeature

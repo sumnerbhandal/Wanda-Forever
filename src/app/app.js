@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -14,6 +14,7 @@ const LoginPage = lazy(() => import("../login/login"));
 const NoMatch = lazy(() => import("./no-match"));
 const Canvas = lazy(() => import("../canvas/canvas"));
 const HubHeader = lazy(() => import("../_header/hub-header"));
+const HistoryHeader = lazy(() => import("../_header/version-header"));
 // const FeedbackForm = lazy(() => import("../_forms/feedback-form"));
 import FeedbackForm from "../_forms/feedback-form";
 
@@ -39,6 +40,7 @@ function PrivateRoute({ children, isAuthenticated, ...rest }) {
 
 export default function App() {
   const isAuthenticated = localStorage.getItem("authenticated");
+  const [historyView, setHistoryView] = useState(false);
   const loader = (
     <div className="loading-container">
       <span className="loading"></span>

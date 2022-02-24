@@ -1,12 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import EditorHeader from "../_header/editor-header";
+import HistoryHeader from "../_header/version-header";
 import "./styles.scss";
 import PlaybookContent from "./playbook";
+import HistoryDemo from "./history-demo";
 import DefaultContract from "./_contract-types/default";
+import VersionOne from "./_contract-types/version1";
 import Button from "../_input/button/button";
 import HeaderSection from "./_toolbar/headerSection";
 import FooterSection from "./_toolbar/footerSection";
 import EditorToolbar from "./_toolbar/editorToolbar";
+import VersionToolbar from "./_toolbar/versionCompare";
 
 const LabelPreview = (props) => {
   return (
@@ -94,16 +98,36 @@ const DocumentEditor = (props) => {
       }
     }
   }
+  const [historyView, setHistoryView] = useState(false);
+
+  const versionView = () => {
+    setHistoryView(!historyView);
+    setCleanVersion(true);
+    // setHeaderSection(true);
+    // setFooterSection(true);
+  };
 
   return (
     <>
-      <EditorHeader
-        documentName="Document File Name"
-        lastEdited="Last Edited 2021/10/26"
-        toggleDrawer={() => drawerClose()}
-        drawerState={drawerState}
-        toggleCleanView={() => toggleCleanView()}
-      />
+      {historyView ? (
+        <HistoryHeader
+          documentName="Document File Name"
+          lastEdited="Last Edited 2021/10/26"
+          toggleDrawer={() => drawerClose()}
+          drawerState={drawerState}
+          toggleCleanView={() => toggleCleanView()}
+          setHistoryView={versionView}
+        />
+      ) : (
+        <EditorHeader
+          documentName="Document File Name"
+          lastEdited="Last Edited 2021/10/26"
+          toggleDrawer={() => drawerClose()}
+          drawerState={drawerState}
+          toggleCleanView={() => toggleCleanView()}
+          setHistoryView={versionView}
+        />
+      )}
       <div className="editor">
         <div
           id="article-container"
@@ -113,21 +137,40 @@ const DocumentEditor = (props) => {
               : "article-container"
           }
         >
-          <EditorToolbar
-            headerSection={headerSection}
-            setHeaderSection={setHeaderSection}
-            footerSection={footerSection}
-            setFooterSection={setFooterSection}
-            headerPageNumber={headerPageNumber}
-            setHeaderPageNumber={setHeaderPageNumber}
-            footerPageNumber={footerPageNumber}
-            setFooterPageNumber={setFooterPageNumber}
-            setFocusedSection={setFocusedSection}
-            focusedSection={focusedSection}
-            headerFocused={headerFocused}
-            footerFocused={footerFocused}
-            contractFocused={contractFocused}
-          />
+          {" "}
+          {historyView ? (
+            <VersionToolbar
+              headerSection={headerSection}
+              setHeaderSection={setHeaderSection}
+              footerSection={footerSection}
+              setFooterSection={setFooterSection}
+              headerPageNumber={headerPageNumber}
+              setHeaderPageNumber={setHeaderPageNumber}
+              footerPageNumber={footerPageNumber}
+              setFooterPageNumber={setFooterPageNumber}
+              setFocusedSection={setFocusedSection}
+              focusedSection={focusedSection}
+              headerFocused={headerFocused}
+              footerFocused={footerFocused}
+              contractFocused={contractFocused}
+            />
+          ) : (
+            <EditorToolbar
+              headerSection={headerSection}
+              setHeaderSection={setHeaderSection}
+              footerSection={footerSection}
+              setFooterSection={setFooterSection}
+              headerPageNumber={headerPageNumber}
+              setHeaderPageNumber={setHeaderPageNumber}
+              footerPageNumber={footerPageNumber}
+              setFooterPageNumber={setFooterPageNumber}
+              setFocusedSection={setFocusedSection}
+              focusedSection={focusedSection}
+              headerFocused={headerFocused}
+              footerFocused={footerFocused}
+              contractFocused={contractFocused}
+            />
+          )}
           <HeaderSection
             headerSection={headerSection}
             headerFocused={headerFocused}
@@ -135,6 +178,7 @@ const DocumentEditor = (props) => {
             headerPageNumber={headerPageNumber}
             setHeaderPageNumber={setHeaderPageNumber}
             setFocusedSection={setFocusedSection}
+            historyView={historyView}
           />
           <FooterSection
             footerSection={footerSection}
@@ -143,33 +187,63 @@ const DocumentEditor = (props) => {
             footerPageNumber={footerPageNumber}
             setFooterPageNumber={setFooterPageNumber}
             setFocusedSection={setFocusedSection}
-          />
-          <DefaultContract
-            toggleDrawer={() => setDrawerState(true)}
-            toggleDrawerHighlight={() => {
-              setDrawerState(true);
-              setActiveHover(true);
-            }}
-            setActiveHover={setActiveHover}
-            activeHover={activeHover}
-            suggestedEdit={suggestedEdit}
-            cleanVersion={cleanVersion}
-            showProvision={showProvision}
-            setShowProvision={setShowProvision}
-            footerFocused={footerFocused}
-            setFooterFocused={setFooterFocused}
-            headerFocused={headerFocused}
-            setHeaderFocused={setHeaderFocused}
-            setContractFocused={setContractFocused}
-          />
+          />{" "}
+          {historyView ? (
+            <VersionOne
+              toggleDrawer={() => setDrawerState(true)}
+              toggleDrawerHighlight={() => {
+                setDrawerState(true);
+                setActiveHover(true);
+              }}
+              setActiveHover={setActiveHover}
+              activeHover={activeHover}
+              suggestedEdit={suggestedEdit}
+              cleanVersion={cleanVersion}
+              showProvision={showProvision}
+              setShowProvision={setShowProvision}
+              footerFocused={footerFocused}
+              setFooterFocused={setFooterFocused}
+              headerFocused={headerFocused}
+              setHeaderFocused={setHeaderFocused}
+              setContractFocused={setContractFocused}
+            />
+          ) : (
+            <DefaultContract
+              toggleDrawer={() => setDrawerState(true)}
+              toggleDrawerHighlight={() => {
+                setDrawerState(true);
+                setActiveHover(true);
+              }}
+              setActiveHover={setActiveHover}
+              activeHover={activeHover}
+              suggestedEdit={suggestedEdit}
+              cleanVersion={cleanVersion}
+              showProvision={showProvision}
+              setShowProvision={setShowProvision}
+              footerFocused={footerFocused}
+              setFooterFocused={setFooterFocused}
+              headerFocused={headerFocused}
+              setHeaderFocused={setHeaderFocused}
+              setContractFocused={setContractFocused}
+            />
+          )}
         </div>
         <aside className={drawerState ? "open" : null}>
-          <PlaybookContent
-            setActiveHover={setActiveHover}
-            suggestedEditAfter={suggestedEditAfter}
-            setSuggestedEdit={setSuggestedEdit}
-            setShowProvision={setShowProvision}
-          />
+          {historyView ? (
+            <HistoryDemo
+              setActiveHover={setActiveHover}
+              suggestedEditAfter={suggestedEditAfter}
+              setSuggestedEdit={setSuggestedEdit}
+              setShowProvision={setShowProvision}
+            />
+          ) : (
+            <PlaybookContent
+              setActiveHover={setActiveHover}
+              suggestedEditAfter={suggestedEditAfter}
+              setSuggestedEdit={setSuggestedEdit}
+              setShowProvision={setShowProvision}
+            />
+          )}
         </aside>
       </div>
     </>

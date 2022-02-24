@@ -26,22 +26,7 @@ const SavedIcon = (
   </>
 );
 
-export default function EditorHeader(props) {
-  const [lastEdited, setLastEdited] = React.useState("");
-
-  function getDate() {
-    let today = new Date();
-    let time =
-      today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    let strDate = "Y/m/d"
-      .replace("Y", today.getFullYear())
-      .replace("m", today.getMonth() + 1)
-      .replace("d", today.getDate())
-      .replace("2022", "22");
-    setLastEdited("Last Edited " + strDate);
-    // setLastEdited("Saving...");
-  }
-  React.useEffect(() => getDate());
+export default function ReviewHeader(props) {
   return (
     <header>
       <div className="left">
@@ -52,25 +37,16 @@ export default function EditorHeader(props) {
         <p contentEditable="true" className="truncated">
           {props.documentName}
         </p>
-        <p className="last-edited">{lastEdited}</p>
-        {/* {SavedIcon} */}
         <Button
           variant="text"
           type="button"
-          label="See History"
+          label="Back to Editor Mode"
           onClick={() => {
-            props.setHistoryView(true);
+            props.setHistoryView(false);
           }}
         />
       </div>
       <div className="right">
-        <Toggle
-          label="Clean Version"
-          id="clean-switch"
-          labelClass="clean-version-switch-container"
-          onClick={props.toggleCleanView}
-        />
-        <Button variant="primary" type="button" label={RunAutoEdit} />
         <Button variant="secondary" type="button" label={UploadContract} />
         <div className="user-icon">SB</div>
       </div>

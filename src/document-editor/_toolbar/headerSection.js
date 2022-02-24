@@ -20,7 +20,7 @@ const HeaderSection = (props) => {
       <div
         id="header-section"
         onClick={withinHeader}
-        className="header-section-container"
+        className={`header-section-container ${props.historyView ? "top" : ""}`}
       >
         <div
           className={`header-section ${props.headerFocused ? "" : "scrolled"}`}

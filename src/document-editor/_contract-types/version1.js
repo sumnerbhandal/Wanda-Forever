@@ -56,7 +56,7 @@ const LabelPreview = (props) => {
   );
 };
 
-const DefaultContract = (props) => {
+const VersionOne = (props) => {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [existingText, setExistingText] = useState("");
   const [newText, setNewText] = useState("");
@@ -79,88 +79,27 @@ const DefaultContract = (props) => {
     props.setActiveHover(true);
   };
 
-  useEffect(() => {
-    // const contents = document.querySelectorAll("[contenteditable]");
-
-    // for (let content of contents) {
-    //   content.addEventListener("keydown", function () {
-    //     setExistingText(content.innerHTML);
-    //   });
-    // }
-
-    var elm = document.querySelector("[contenteditable]");
-    // elm.addEventListener("click", printCaretPosition);
-    elm.addEventListener("keydown", printCaretPosition);
-
-    function printCaretPosition(e) {
-      const target = e.target;
-      const placeBeforeText = e.target.innerHTML.slice(0, cursor_position());
-      const placeAfterText = e.target.innerHTML.slice(cursor_position());
-
-      // console.log(placeBeforeText);
-
-      // target.innerHTML =
-      //   placeBeforeText +
-      //   '<span className="placeholder">Heya</span>' +
-      //   placeAfterText;
-
-      console.log(cursor_position(), "length:", this.textContent.trim().length);
-    }
-
-    function trackDelete(e) {
-      // console.log(e.charCode);
-      console.log(e.keyCode);
-      // const eventRef = e;
-      // const t = eventRef.target;
-      // if (eventRef.keyCode === 8) {
-      //   // for backspace key
-      //   console.log(t.value[t.selectionStart - 1]);
-      // } else if (eventRef.keyCode === 46) {
-      //   // for delete key
-      //   console.log(tvalue[t.selectionStart]);
-      // }
-    }
-  });
-
   const setContractFocused = () => {
     props.setHeaderFocused(false);
     props.setFooterFocused(false);
-    // props.setContractFocused(true);
   };
-
-  // const leaveEditableFocus = () => {
-  //   props.setHeaderFocused(false);
-  //   props.setFooterFocused(false);
-  //   props.setContractFocused(false);
-  // };
 
   return (
     <article
       id="contract"
       className="contract"
-      contentEditable="true"
+      contentEditable="false"
       onClick={setContractFocused}
-      // onBlur={leaveEditableFocus}
-
-      // onKeyDown={() => trackDelete()}
     >
       <h1 data-id="text-1" className="xl">
         NON-DISCLOSURE AND CONFIDENTIALITY AGREEMENT
       </h1>
 
-      <p contentEditable="true">
+      <p>
         This Non-Disclosure Agreement (the “Agreement”), is made effective as of{" "}
-        <span
-          className="placeholder"
-          // onKeyDown={(e) => trackDelete(e)}
-          // onChange={() => trackDelete()}
-        >
-          [Day]
-        </span>{" "}
-        <span className="placeholder" contentEditable="true">
-          [Month]
-        </span>{" "}
-        2020 (the “Effective Date”), by and between, on the one hand,{" "}
+        <span className="placeholder">[Day]</span>{" "}
+        <span className="placeholder">[Month]</span> 2020 (the “Effective
+        Date”), by and between, on the one hand,{" "}
         <span className="placeholder">[Investor/Funder]</span> (“Recipient”),
         incorporated by virtue of notarial deed executed on{" "}
         <span className="placeholder">[ ]</span> before the Notary of [ ] with
@@ -183,7 +122,9 @@ const DefaultContract = (props) => {
         Recipient and <span className="placeholder">[X]</span> may be referred
         to herein together as the “Parties” and individually as a “Party”.
       </p>
-      <p>This content wasn't in the previous version of the contract</p>
+      <p className="blueline new-content-example">
+        This content wasn't in the previous version of the contract
+      </p>
 
       <p>
         <span
@@ -226,6 +167,18 @@ const DefaultContract = (props) => {
         <li>
           Confidential Information
           <ol>
+            <li className="labelled redline deleted-content-example">
+              Confidential Information. As used in this Agreement, “Confidential
+              Information” means all information whether of a real estate,
+              technical, business or other nature that is or may be disclosed or
+              imparted by [X] to the Recipient. In particular, Confidential
+              Information includes includes all information concerning the
+              transaction given to the Recipient in any format, including (i)
+              written information such as written documentation or email
+              transmission via electronic media, (ii) visual information and
+              (iii) oral information
+            </li>
+
             <li>
               Definitions. In addition to other terms defined herein, as used in
               this Agreement:
@@ -318,4 +271,4 @@ const DefaultContract = (props) => {
   );
 };
 
-export default DefaultContract;
+export default VersionOne;

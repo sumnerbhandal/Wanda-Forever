@@ -55,7 +55,7 @@ const EditorToolbar = (props) => {
               modTools || regularTools ? "" : "disabled"
             }`}
           >
-            <div className="format-container">
+            {/* <div className="format-container">
               <Button
                 contentEditable="false"
                 variant="secondary bold"
@@ -75,7 +75,7 @@ const EditorToolbar = (props) => {
                 onClick={makeUnderlined}
               />
             </div>
-            <hr />
+            <hr /> */}
 
             {!modTools ? (
               <InsertButtonFeature

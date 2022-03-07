@@ -37,6 +37,11 @@
     width: 10rem;
   }
 
+  &.playbook {
+    right: 22rem;
+    top: 12rem;
+  }
+
   &.hide {
     opacity: 0;
     pointer-events: none;

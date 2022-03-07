@@ -7,6 +7,7 @@ import CommercialContract from "./_contract-types/commercial/commercial";
 import CommercialContractConfig from "./_contract-types/commercial/commercial-config";
 import SupplierContract from "./_contract-types/supplier/supplier";
 import SupplierContractConfig from "./_contract-types/supplier/supplier-config";
+import ToolTip from "../_notification/tooltip/tooltip";
 import useToggle from "../utils/useToggle";
 import { useLocation } from "react-router-dom";
 
@@ -210,6 +211,10 @@ const DocumentEditor = (props) => {
         toggleDrawer={() => drawerClose()}
         drawerState={drawerState}
         toggleCleanView={() => toggleCleanView()}
+      />
+      <ToolTip
+        className="playbook"
+        message="Updating the text in here will update the contract in real time"
       />
       <div className="editor">
         <div

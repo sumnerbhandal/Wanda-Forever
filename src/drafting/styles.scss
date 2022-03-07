@@ -114,6 +114,7 @@
         h1 {
           width: 100%;
           text-align: left;
+          text-transform: uppercase;
 
           span {
             font-size: inherit;
@@ -387,6 +388,7 @@
           justify-content: space-between;
           width: 100%;
           align-items: center;
+          position: relative;
 
           .button-container {
             display: flex;

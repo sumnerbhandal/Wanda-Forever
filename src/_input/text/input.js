@@ -17,6 +17,7 @@ const Input = (props) => {
           required
           value={props.value}
           onClick={props.onClick}
+          onFocus={props.onFocus}
           onBlur={props.onBlur}
           onChange={props.onChange}
           className={props.state}

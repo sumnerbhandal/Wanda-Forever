@@ -58,6 +58,7 @@ function Config(props) {
         value={props.configFields[0].html}
         onChange={updateState}
         onClick={highlightField}
+        onFocus={highlightField}
         onBlur={deactivateHighlight}
       />
       <Input
@@ -67,6 +68,7 @@ function Config(props) {
         value={props.configFields[1].html}
         onChange={updateState}
         onClick={highlightField}
+        onFocus={highlightField}
         onBlur={deactivateHighlight}
       />
 
@@ -77,6 +79,7 @@ function Config(props) {
         value={props.configFields[2].html}
         onChange={updateState}
         onClick={highlightField}
+        onFocus={highlightField}
         onBlur={deactivateHighlight}
       />
 
@@ -86,6 +89,7 @@ function Config(props) {
         value={props.configFields[3].html}
         onChange={updateState}
         onClick={highlightField}
+        onFocus={highlightField}
         onBlur={deactivateHighlight}
       />
       <Input
@@ -94,6 +98,7 @@ function Config(props) {
         value={props.configFields[4].html}
         onChange={updateState}
         onClick={highlightField}
+        onFocus={highlightField}
         onBlur={deactivateHighlight}
       />
       <Input
@@ -102,6 +107,7 @@ function Config(props) {
         value={props.configFields[5].html}
         onChange={updateState}
         onClick={highlightField}
+        onFocus={highlightField}
         onBlur={deactivateHighlight}
       />
       <Input
@@ -110,6 +116,7 @@ function Config(props) {
         value={props.configFields[6].html}
         onChange={updateState}
         onClick={highlightField}
+        onFocus={highlightField}
         onBlur={deactivateHighlight}
       />
       <Input
@@ -118,6 +125,7 @@ function Config(props) {
         value={props.configFields[7].html}
         onChange={updateState}
         onClick={highlightField}
+        onFocus={highlightField}
         onBlur={deactivateHighlight}
       />
       <Input
@@ -136,6 +144,7 @@ function Config(props) {
         value={props.configFields[9].html}
         onChange={updateState}
         onClick={highlightField}
+        onFocus={highlightField}
         onBlur={deactivateHighlight}
       />
       <Input
@@ -145,6 +154,7 @@ function Config(props) {
         value={props.configFields[10].html}
         onChange={updateState}
         onClick={highlightField}
+        onFocus={highlightField}
         onBlur={deactivateHighlight}
       />
       <Input
@@ -153,6 +163,7 @@ function Config(props) {
         value={props.configFields[11].html}
         onChange={updateState}
         onClick={highlightField}
+        onFocus={highlightField}
         onBlur={deactivateHighlight}
       />
       <Input
@@ -161,6 +172,7 @@ function Config(props) {
         value={props.configFields[12].html}
         onChange={updateState}
         onClick={highlightField}
+        onFocus={highlightField}
         onBlur={deactivateHighlight}
       />
       <hr />
@@ -177,6 +189,7 @@ function Config(props) {
         value={props.configFields[13].html}
         onChange={updateState}
         onClick={highlightField}
+        onFocus={highlightField}
         onBlur={deactivateHighlight}
       />
     </>

@@ -59,6 +59,7 @@ function Config(props) {
         value={props.configFields[0].html}
         onChange={updateState}
         onClick={highlightField}
+        onFocus={highlightField}
         onBlur={deactivateHighlight}
       />
       <Input
@@ -67,6 +68,7 @@ function Config(props) {
         value={props.configFields[1].html}
         onChange={updateState}
         onClick={highlightField}
+        onFocus={highlightField}
         onBlur={deactivateHighlight}
       />
       <Input
@@ -75,6 +77,7 @@ function Config(props) {
         value={props.configFields[2].html}
         onChange={updateState}
         onClick={highlightField}
+        onFocus={highlightField}
         onBlur={deactivateHighlight}
       />
       <TextArea
@@ -84,6 +87,7 @@ function Config(props) {
         value={props.configFields[3].html}
         onChange={updateState}
         onClick={highlightField}
+        onFocus={highlightField}
         onBlur={deactivateHighlight}
       />
       <Input
@@ -92,6 +96,7 @@ function Config(props) {
         value={props.configFields[4].html}
         onChange={updateState}
         onClick={highlightField}
+        onFocus={highlightField}
         onBlur={deactivateHighlight}
       />
       <TextArea
@@ -101,6 +106,7 @@ function Config(props) {
         value={props.configFields[5].html}
         onChange={updateState}
         onClick={highlightField}
+        onFocus={highlightField}
         onBlur={deactivateHighlight}
       />
     </>

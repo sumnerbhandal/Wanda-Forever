@@ -27,7 +27,7 @@ const DocumentEditor = (props) => {
   const [employment, setEmployment] = useState([
     {
       id: "0",
-      html: "[Employee Name]",
+      html: "[EMPLOYEE NAME]",
       active: false
     },
     {
@@ -72,8 +72,7 @@ const DocumentEditor = (props) => {
     },
     {
       id: "9",
-      html:
-        "[Your share options will be X% of the Company at the date of this Employment Agreement]",
+      html: "[X%]",
       active: false
     },
     {

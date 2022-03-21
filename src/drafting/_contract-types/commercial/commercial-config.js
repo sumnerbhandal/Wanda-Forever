@@ -117,7 +117,7 @@ const EmploymentContractConfig = (props) => {
   return (
     <div className="playbook-container">
       <div className="playbook-settings">
-        <h2>Configure Supplier Agreement</h2>
+        <h2>Configure Contract</h2>
       </div>
       <hr />
       <Config

@@ -32,7 +32,7 @@ const SupplierContract = (props) => {
     <article id="contract" className="contract">
       <h1>
         <Span id="0" configFields={props.configFields} /> AT{" "}
-        <Span id="1" configFields={props.configFields} /> SERVICES AGREEMENT
+        <Span id="1" configFields={props.configFields} /> SUPPLIER AGREEMENT
       </h1>
 
       <p>
@@ -121,16 +121,15 @@ const SupplierContract = (props) => {
           </li>
           <li>
             <strong>“Services”</strong> means the benchmarking surveys, studies,
-            products, and consulting services to be performed by or on behalf of
+            products, and consulting services to be performed by or on behalf of{" "}
             <Span id="1" configFields={props.configFields} /> as further
             described in a Statement of Work attached to, or entered into
             pursuant to, this Agreement.
           </li>
           <li>
             <strong>“Site”</strong> will mean the website controlled by{" "}
-            <Span id="1" configFields={props.configFields} />
-            through which certain Services may be accessible or Deliverables
-            provided.
+            <Span id="1" configFields={props.configFields} /> through which
+            certain Services may be accessible or Deliverables provided.
           </li>
           <li>
             <strong>“Statement of Work”</strong> shall mean a supplement to this
@@ -149,7 +148,7 @@ const SupplierContract = (props) => {
           prevailing standard hourly rates for each category of staff and unless
           otherwise agreed <Span id="1" configFields={props.configFields} />{" "}
           will bill Client monthly.{" "}
-          <Span id="1" configFields={props.configFields} />n will invoice Client
+          <Span id="1" configFields={props.configFields} /> will invoice Client
           via email, and all payments will be made via electronic payment.
           Client shall pay all reasonable pre-approved travel and related living
           expenses incurred by <Span id="1" configFields={props.configFields} />
@@ -160,7 +159,7 @@ const SupplierContract = (props) => {
           time to time calculated on a daily basis. Client is responsible for
           any and all taxes, however designated, that are levied or based on
           this Agreement, the charges stated in this Agreement, or the Services
-          or their use, excluding taxes based on the net income of
+          or their use, excluding taxes based on the net income of{" "}
           <Span id="1" configFields={props.configFields} />.
         </li>
         <li>
@@ -209,11 +208,11 @@ const SupplierContract = (props) => {
               that <Span id="1" configFields={props.configFields} /> may share
               this Agreement and any applicable Statement of Work with the
               requested Approved Consultant.{" "}
-              <Span id="1" configFields={props.configFields} />
-              reserves the right to deny or terminate access of an Approved
-              Consultant at any time, and Client will cease providing{" "}
-              <Span id="1" configFields={props.configFields} />
-              Confidential Information to such Approved Consultant upon notice.
+              <Span id="1" configFields={props.configFields} /> reserves the
+              right to deny or terminate access of an Approved Consultant at any
+              time, and Client will cease providing{" "}
+              <Span id="1" configFields={props.configFields} /> Confidential
+              Information to such Approved Consultant upon notice.
             </li>
           </ol>
         </li>
@@ -229,10 +228,9 @@ const SupplierContract = (props) => {
               <Span id="1" configFields={props.configFields} /> and its
               Affiliates may use Client Data to produce reports, analysis, or
               results for services and disclose them to:{" "}
-              <Span id="1" configFields={props.configFields} />
-              Affiliates, employees, agents, subcontractors, counsel and
-              auditors; Client; other{" "}
-              <Span id="1" configFields={props.configFields} /> customers,
+              <Span id="1" configFields={props.configFields} /> Affiliates,
+              employees, agents, subcontractors, counsel and auditors; Client;
+              other <Span id="1" configFields={props.configFields} /> customers,
               provided that such Client Data is aggregated and is not
               individually identifiable. Due to the continued use of data in
               active and archival surveys, Client Data will not be returned or
@@ -247,11 +245,10 @@ const SupplierContract = (props) => {
               Information to Affiliates for which Client Data has been
               submitted, Approved Consultants and the employees of such entities
               with a need to know such{" "}
-              <Span id="1" configFields={props.configFields} />
-              Confidential Information. Client and its Approved Users will not
-              disclose or make available{" "}
               <Span id="1" configFields={props.configFields} /> Confidential
-              Information, including
+              Information. Client and its Approved Users will not disclose or
+              make available <Span id="1" configFields={props.configFields} />{" "}
+              Confidential Information, including{" "}
               <Span id="1" configFields={props.configFields} /> Confidential
               Information contained in the Deliverables, to any other Client
               Affiliates, or to any other third party.
@@ -301,9 +298,8 @@ const SupplierContract = (props) => {
               such personal data is necessary to the performance of the Services
               in support of Client’s business purposes as that term is defined
               under applicable law, and (iii) such personal data is not provided
-              to
-              <Span id="1" configFields={props.configFields} /> in exchange for
-              any monetary or other valuable consideration from{" "}
+              to <Span id="1" configFields={props.configFields} /> in exchange
+              for any monetary or other valuable consideration from{" "}
               <Span id="1" configFields={props.configFields} /> to Client.
             </li>
             <li>
@@ -371,12 +367,12 @@ const SupplierContract = (props) => {
               LIKELIHOOD OF SUCH DAMAGES.
             </li>
             <li>
-              <Span id="1" configFields={props.configFields} />N WILL INDEMNIFY
+              <Span id="1" configFields={props.configFields} /> WILL INDEMNIFY
               AND DEFEND CLIENT FROM ANY CLAIMS, DAMAGES, LOSSES, AND EXPENSES
               (INCLUDING REASONABLE ATTORNEYS’ FEES AND EXPENSES) THAT THE SITE
               OR SERVICES INFRINGE A THIRD PARTY’S INTELLECTUAL PROPERTY RIGHTS,
               UNLESS THE CLAIM IS BASED ON THE CLIENT’S ALTERATION OR MISUSE OF
-              THE SITE OR SERVICES. SUBJECT TO
+              THE SITE OR SERVICES. SUBJECT TO{" "}
               <Span id="1" configFields={props.configFields} />
               ’S INFRINGEMENT INDEMNITY OBLIGATION, CLIENT WILL INDEMNIFY AND
               DEFEND <Span id="1" configFields={props.configFields} /> FROM AND

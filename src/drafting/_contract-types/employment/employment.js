@@ -38,7 +38,9 @@ const EmploymentContract = (props) => {
         <p>AND</p>
         <br />
         <p>
-          <Span id="0" configFields={props.configFields} />
+          <strong>
+            <Span id="0" configFields={props.configFields} />
+          </strong>
         </p>
         <hr />
         <p>EMPLOYMENT AGREEMENT</p>
@@ -96,7 +98,7 @@ const EmploymentContract = (props) => {
           <div className="cell two-thirds">
             Email: <Span id="4" configFields={props.configFields} />
             <br />
-            Contract number: <Span id="5" configFields={props.configFields} />
+            Contact number: <Span id="5" configFields={props.configFields} />
           </div>
         </div>
         <div className="row">
@@ -121,7 +123,7 @@ const EmploymentContract = (props) => {
 
         <div className="row">
           <div className="cell third">
-            <strong>Salary:</strong>
+            <strong>Share Options:</strong>
           </div>
           <div className="cell two-thirds">
             You will receive share options of{" "}
@@ -146,8 +148,7 @@ const EmploymentContract = (props) => {
           </div>
           <div className="cell two-thirds">
             Your line manager will be{" "}
-            <Span id="11" configFields={props.configFields} />, with a
-            discretionary three-month extension
+            <Span id="11" configFields={props.configFields} />
           </div>
         </div>
         <div className="row">

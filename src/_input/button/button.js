@@ -11,6 +11,7 @@ const Button = (props) => {
       contentEditable={props.contentEditable}
       onMouseOver={props.onMouseOver}
       onMouseLeave={props.onMouseLeave}
+      disabled={props.disabled}
     >
       {props.label}
     </button>

@@ -7,7 +7,7 @@ import Toggle from "../_input/toggle/toggle";
 import PlatformButton from "./platformButton";
 import { Link } from "react-router-dom/index";
 
-const UploadContract = (
+const DownloadContract = (
   <>
     Download as .docx <img alt="download icon" src={DownloadWhite} />
   </>
@@ -42,7 +42,7 @@ export default function DraftingHeader(props) {
           labelClass="clean-version-switch-container"
           onClick={props.toggleCleanView}
         />
-        <Button variant="primary" type="submit" label={UploadContract} />
+        <Button variant="primary" type="submit" label={DownloadContract} />
         <div className="user-icon">SB</div>
       </div>
     </header>

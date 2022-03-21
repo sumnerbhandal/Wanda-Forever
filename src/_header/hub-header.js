@@ -41,9 +41,15 @@ export default function HubHeader(props) {
         <p>{props.hubType} Contract Hub</p>
       </div>
       <div className="right">
-        <Button variant="secondary" type="submit" label={SeeAllGroups} />
+        <Button
+          variant="secondary"
+          type="submit"
+          disabled
+          label={SeeAllGroups}
+        />
         <Button
           variant="primary"
+          disabled
           type="submit"
           label={eval(props.primaryCTA)}
         />

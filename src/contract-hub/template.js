@@ -24,7 +24,7 @@ const TemplateSelect = (props) => {
           <div className="card">
             <div
               onClick={() =>
-                navigate("./editor/supplier-contract-example_supplier")
+                navigate("./editor/commercial-contract-example_commercial")
               }
               className="thumbnail"
             >
@@ -36,11 +36,11 @@ const TemplateSelect = (props) => {
           <div className="card">
             <div
               onClick={() =>
-                navigate("./editor/commercial-contract-example_commercial")
+                navigate("./editor/service-contract-example_supplier")
               }
               className="thumbnail"
             >
-              Supplier Agreement
+              Service Contract Agreement
               <hr />
             </div>
             <p>Supplier Agreement</p>

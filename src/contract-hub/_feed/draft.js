@@ -18,7 +18,7 @@ const review = [
   ),
   createData(
     "NDA",
-    "Commercial Contract Example",
+    "Non-disclosure Agreement",
     "Bernard Nixon",
     "2021/09/19",
     "commercial"

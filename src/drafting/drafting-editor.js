@@ -7,6 +7,8 @@ import CommercialContract from "./_contract-types/commercial/commercial";
 import CommercialContractConfig from "./_contract-types/commercial/commercial-config";
 import SupplierContract from "./_contract-types/supplier/supplier";
 import SupplierContractConfig from "./_contract-types/supplier/supplier-config";
+import FranchiseContract from "./_contract-types/franchise/franchise";
+import FranchiseContractConfig from "./_contract-types/franchise/franchise-config";
 import ToolTip from "../_notification/tooltip/tooltip";
 import useToggle from "../utils/useToggle";
 import { useLocation } from "react-router-dom";
@@ -158,6 +160,69 @@ const DocumentEditor = (props) => {
     }
   ]);
 
+  const [franchise, setFranchise] = useState([
+    {
+      id: "0",
+      html: "[FRANCHISE AGREEMENT DATE]",
+      active: false
+    },
+    {
+      id: "1",
+      html: "[FRANCHISEE NAME]",
+      active: false
+    },
+    {
+      id: "2",
+      html: "[FRANCHISEE ADDRESS]",
+      active: false
+    },
+    {
+      id: "3",
+      html: "[X]",
+      active: false
+    },
+    {
+      id: "4",
+      html: "[X]",
+      active: false
+    },
+    {
+      id: "5",
+      html: "[EMAIL]",
+      active: false
+    },
+    {
+      id: "6",
+      html: "[EXTENSION FEE]",
+      active: false
+    },
+    {
+      id: "7",
+      html: "[PLEASE SELECT]",
+      active: false
+    },
+    {
+      id: "8",
+      html: "[GURANTORS]",
+      active: false
+    },
+    {
+      id: "9",
+      html: "[INITIAL FEE]",
+      active: false
+    },
+    {
+      id: "10",
+      html: "[OUTLET ADDRESS]",
+      active: false
+    },
+    {
+      id: "11",
+      html: "[RENEWAL FEE]",
+      active: false
+    }
+  ]);
+
   const ChosenContractType = eval(ContractType);
   const setChosenContractType = eval("set" + capitalize(ContractType));
 
@@ -254,6 +319,21 @@ const DocumentEditor = (props) => {
               showHeader={showHeader}
               showConditionalText={showConditionalText}
             />
+          ) : ContractType === "franchise" ? (
+            <FranchiseContract
+              toggleDrawer={() => setDrawerState(true)}
+              toggleDrawerHighlight={() => {
+                setDrawerState(true);
+                setActiveHover(true);
+              }}
+              setActiveHover={setActiveHover}
+              activeHover={activeHover}
+              cleanVersion={cleanVersion}
+              configFields={ChosenContractType}
+              setConfigFields={setChosenContractType}
+              showHeader={showHeader}
+              showConditionalText={showConditionalText}
+            />
           ) : (
             <SupplierContract
               toggleDrawer={() => setDrawerState(true)}
@@ -284,6 +364,15 @@ const DocumentEditor = (props) => {
             />
           ) : ContractType === "commercial" ? (
             <CommercialContractConfig
+              configFields={ChosenContractType}
+              setConfigFields={setChosenContractType}
+              showHeader={showHeader}
+              setShowHeader={setShowHeader}
+              showConditionalText={showConditionalText}
+              setShowConditionalText={setShowConditionalText}
+            />
+          ) : ContractType === "franchise" ? (
+            <FranchiseContractConfig
               configFields={ChosenContractType}
               setConfigFields={setChosenContractType}
               showHeader={showHeader}

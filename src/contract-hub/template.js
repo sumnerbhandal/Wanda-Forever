@@ -19,7 +19,19 @@ const TemplateSelect = (props) => {
               Employment Contract
               <hr />
             </div>
-            <p>Employment</p>
+            {/* <p>Employment Contract</p> */}
+          </div>
+          <div className="card">
+            <div
+              onClick={() =>
+                navigate("./editor/international-franchise-agreement_franchise")
+              }
+              className="thumbnail"
+            >
+              International Franchise Agreement
+              <hr />
+            </div>
+            {/* <p>International Franchise Agreement</p> */}
           </div>
           <div className="card">
             <div
@@ -28,10 +40,10 @@ const TemplateSelect = (props) => {
               }
               className="thumbnail"
             >
-              Commercial NDA
+              Commercial Contract Example
               <hr />
             </div>
-            <p>Commercial NDA</p>
+            {/* <p>Commercial Contract Example</p> */}
           </div>
           <div className="card">
             <div
@@ -40,10 +52,10 @@ const TemplateSelect = (props) => {
               }
               className="thumbnail"
             >
-              Service Contract Agreement
+              Supplier Agreement
               <hr />
             </div>
-            <p>Supplier Agreement</p>
+            {/* <p>Supplier Agreement</p> */}
           </div>
         </div>
       </div>

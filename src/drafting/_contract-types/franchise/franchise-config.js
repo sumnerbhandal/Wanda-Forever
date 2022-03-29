@@ -1,7 +1,17 @@
 import Input from "../../../_input/text/input";
 import TextArea from "../../../_input/text/textArea";
+import DropDown from "../../../_input/dropDown/dropDown";
 import Toggle from "../../../_input/toggle/toggle";
 import React, { useEffect } from "react";
+
+const governingLaws = [
+  "[PLEASE SELECT]",
+  "English",
+  "Welsh",
+  "French",
+  "American",
+  "Swiss"
+];
 
 function Config(props) {
   // useEffect(() => {
@@ -63,7 +73,7 @@ function Config(props) {
         onBlur={deactivateHighlight}
       />
       <Input
-        label="What is the name of the contact*"
+        label="What is the name of the Franchisee?*"
         id="config-1"
         value={props.configFields[1].html}
         onChange={updateState}
@@ -71,8 +81,9 @@ function Config(props) {
         onFocus={highlightField}
         onBlur={deactivateHighlight}
       />
-      <Input
-        label="What is the name of the recipient?*"
+      <TextArea
+        rows="2"
+        label="What is the Franchisee's address*"
         id="config-2"
         value={props.configFields[2].html}
         onChange={updateState}
@@ -80,9 +91,8 @@ function Config(props) {
         onFocus={highlightField}
         onBlur={deactivateHighlight}
       />
-      <TextArea
-        rows="2"
-        label="What is the recipients address*"
+      <Input
+        label="What percentage of the revenue is for advertising contributions?*"
         id="config-3"
         value={props.configFields[3].html}
         onChange={updateState}
@@ -91,7 +101,7 @@ function Config(props) {
         onBlur={deactivateHighlight}
       />
       <Input
-        label="What is the name of the Counterparty?*"
+        label="What percentage of the revenue is for continuing fees?*"
         id="config-4"
         value={props.configFields[4].html}
         onChange={updateState}
@@ -99,11 +109,65 @@ function Config(props) {
         onFocus={highlightField}
         onBlur={deactivateHighlight}
       />
-      <TextArea
-        rows="2"
-        label="What is the recipients address*"
+      <Input
+        label="What is the email address for Notice?*"
         id="config-5"
         value={props.configFields[5].html}
+        onChange={updateState}
+        onClick={highlightField}
+        onFocus={highlightField}
+        onBlur={deactivateHighlight}
+      />
+      <Input
+        label="What is the extension fee?*"
+        id="config-6"
+        value={props.configFields[6].html}
+        onChange={updateState}
+        onClick={highlightField}
+        onFocus={highlightField}
+        onBlur={deactivateHighlight}
+      />
+      <DropDown
+        id="config-7"
+        label="What is the governing law territory?*"
+        onChange={updateState}
+        onClick={highlightField}
+        onFocus={highlightField}
+        onBlur={deactivateHighlight}
+        option={governingLaws}
+      />
+      <Input
+        label="Who are the guarantors?*"
+        id="config-8"
+        value={props.configFields[8].html}
+        onChange={updateState}
+        onClick={highlightField}
+        onFocus={highlightField}
+        onBlur={deactivateHighlight}
+      />
+      <Input
+        label="What is the initial fee?*"
+        id="config-9"
+        value={props.configFields[9].html}
+        onChange={updateState}
+        onClick={highlightField}
+        onFocus={highlightField}
+        onBlur={deactivateHighlight}
+      />
+      <TextArea
+        rows="2"
+        label="What is the address of the outlet*"
+        id="config-10"
+        value={props.configFields[10].html}
+        onChange={updateState}
+        onClick={highlightField}
+        onFocus={highlightField}
+        onBlur={deactivateHighlight}
+      />
+      <Input
+        label="What is the renewal fee?*"
+        id="config-11"
+        value={props.configFields[11].html}
         onChange={updateState}
         onClick={highlightField}
         onFocus={highlightField}
@@ -113,7 +177,7 @@ function Config(props) {
   );
 }
 
-const EmploymentContractConfig = (props) => {
+const FranchiseContractConfig = (props) => {
   return (
     <div className="playbook-container">
       <div className="playbook-settings">
@@ -132,4 +196,4 @@ const EmploymentContractConfig = (props) => {
   );
 };
 
-export default EmploymentContractConfig;
+export default FranchiseContractConfig;

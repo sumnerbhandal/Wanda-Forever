@@ -17,7 +17,7 @@ const review = [
     "employment"
   ),
   createData(
-    "Commercial",
+    "NDA",
     "Commercial Contract Example",
     "Bernard Nixon",
     "2021/09/19",
@@ -29,6 +29,13 @@ const review = [
     "Dianna Allen",
     "2021/08/14",
     "supplier"
+  ),
+  createData(
+    "Franchise",
+    "International Franchise Agreement",
+    "Bernard Nixon",
+    "2021/09/02",
+    "franchise"
   )
 ];
 

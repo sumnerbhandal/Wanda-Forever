@@ -63,7 +63,7 @@ function Config(props) {
   return (
     <>
       <Input
-        label="When is the contract due to start?"
+        label="When is the contract due to start?*"
         id="config-0"
         type="date"
         value={props.configFields[0].html}

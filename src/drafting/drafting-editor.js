@@ -203,7 +203,7 @@ const DocumentEditor = (props) => {
     },
     {
       id: "8",
-      html: "[GURANTORS]",
+      html: "[GUARANTORS]",
       active: false
     },
     {

@@ -76,7 +76,6 @@ const FranchiseContract = (props) => {
         <div className="row">
           <div className="cell half">
             <strong>Franchisee Address:</strong>
-            (Full Name)
           </div>
           <div className="cell half">
             <Span id="2" configFields={props.configFields} />
@@ -278,7 +277,7 @@ const FranchiseContract = (props) => {
             <div className="signature">
               <p style={{ flexWrap: "wrap" }}>
                 <strong>SIGNED FOR AND ON BEHALF OF FRANCHISOR</strong>
-                <hr style={{ marginTop: "2rem" }} />
+                <hr style={{ marginTop: "3rem" }} />
               </p>
             </div>
           </div>
@@ -286,7 +285,7 @@ const FranchiseContract = (props) => {
             <div className="signature">
               <p style={{ flexWrap: "wrap" }}>
                 <strong>Date</strong>
-                <hr style={{ marginTop: "2rem" }} />
+                <hr style={{ marginTop: "3rem" }} />
               </p>
             </div>
           </div>
@@ -297,7 +296,7 @@ const FranchiseContract = (props) => {
             <div className="signature">
               <p style={{ flexWrap: "wrap" }}>
                 <strong>SIGNED FOR AND ON BEHALF OF FRANCHISEE</strong>
-                <hr style={{ marginTop: "2rem" }} />
+                <hr style={{ marginTop: "3rem" }} />
               </p>
             </div>
           </div>
@@ -305,7 +304,7 @@ const FranchiseContract = (props) => {
             <div className="signature">
               <p style={{ flexWrap: "wrap" }}>
                 <strong>Date</strong>
-                <hr style={{ marginTop: "2rem" }} />
+                <hr style={{ marginTop: "3rem" }} />
               </p>
             </div>
           </div>

@@ -40,14 +40,14 @@ const review = [
   createData("NDA", "A Cold Day in July", "Fred Fox", "2021/09/31", "default"),
   createData("NDA", "Jig Is Up", "Mitchell Wall", "2021/08/14", "default"),
   createData(
-    "NDA",
+    "Employment",
     "A Lot on One’s Plate",
     "Bernard Nixon",
     "2021/10/11",
     "default"
   ),
   createData(
-    "NDA",
+    "Supplier Agreement",
     "Down For The Count",
     "Mitchell Wall",
     "2021/10/12",

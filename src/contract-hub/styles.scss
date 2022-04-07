@@ -140,16 +140,18 @@
           
                 .nda-seed {
                   letter-spacing: 0;
-                  background: #F5F6F9;
-                  padding: 0.25rem 0.5rem;
+                  background: #f5f6f9;
+                  padding: 0.375rem 0.5rem;
                   width: 5.75rem;
-                  border-radius: 1rem;
-                  height: 2rem;
+                  border-radius: 4rem;
+                  min-height: 2rem;
                   display: flex;
                   align-items: center;
                   justify-content: center;
                   font-weight: 700;
-                  font-size: 0.75rem;
+                  font-size: .75rem;
+                  text-align: center;
+                  line-height: 1.25;
                 }
 
                 .name-container {

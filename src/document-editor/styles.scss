@@ -264,6 +264,10 @@
           text-align: left;
         }
 
+        p {
+          word-break: break-all;
+        }
+
         span.placeholder {
           background: #E6E9F1;
 

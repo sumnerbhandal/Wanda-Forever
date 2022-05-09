@@ -56,6 +56,8 @@ const LabelPreview = (props) => {
   );
 };
 
+const ClauseIdentity = "Conidential Information";
+
 const DefaultContract = (props) => {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [existingText, setExistingText] = useState("");

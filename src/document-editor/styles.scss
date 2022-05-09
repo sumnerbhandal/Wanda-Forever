@@ -265,7 +265,7 @@
         }
 
         p {
-          word-break: break-all;
+          word-break: break-word;
         }
 
         span.placeholder {
@@ -287,8 +287,8 @@
           button.label {
             position: absolute;
             left: -2.875rem;
-            height: 2.25rem;
-            width: 2.25rem;
+            height: 2rem;
+            width: 2rem;
             bottom: 0.75rem;
             justify-content: center;
 

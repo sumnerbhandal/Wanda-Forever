@@ -259,3 +259,31 @@ header {
     }
   }
 }
+
+.MuiDialog-paper {
+    width: 32.875rem;
+  .modal-header {
+    padding: 1.5rem 2rem ;
+  
+    h2 {
+      margin-block-end: 0;
+      margin-block-start: 0;
+    }
+  }
+  .modal-content-body {
+    padding: 0rem 3.75rem 1.5rem 3.75rem;
+
+    .button-container {
+      margin-top: 1.25rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: end;
+    }
+
+    video {
+      width: 100%;
+    }
+
+  }
+}
+

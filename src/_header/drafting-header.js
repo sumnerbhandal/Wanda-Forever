@@ -31,7 +31,7 @@ export default function DraftingHeader(props) {
         <Link to={{ pathname: "/draft" }}>
           <img alt="logo" src={Robin} />
         </Link>
-        <PlatformButton platform="Draft Contracts" />
+        {/* <PlatformButton platform="Draft Contracts" /> */}
         <p>{props.documentName}</p>
         <p className="last-edited">{lastEdited}</p>
       </div>

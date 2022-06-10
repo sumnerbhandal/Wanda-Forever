@@ -1,0 +1,21 @@
+import React from "react";
+import "./styles.scss";
+
+const Modal = (props) => {
+  return (
+    <button
+      id={props.id}
+      className={`cta ${props.variant}`}
+      type={props.type}
+      onClick={props.onClick}
+      contentEditable={props.contentEditable}
+      onMouseOver={props.onMouseOver}
+      onMouseLeave={props.onMouseLeave}
+      disabled={props.disabled}
+    >
+      {props.label}
+    </button>
+  );
+};
+
+export default Modal;

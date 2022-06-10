@@ -1,6 +1,5 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import Box from "@mui/material/Box";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -17,6 +16,8 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import "./styles.scss";
 import review from "./_feed/review";
 import draft from "./_feed/draft";
+import empty from "./_feed/empty";
+import draftRepligen from "./_feed/draft-repligen";
 import guid from "../utils/guid";
 import DropDown from "../_input/dropDown/dropDown";
 import Input from "../_input/text/input";
@@ -99,9 +100,9 @@ function EnhancedTableHead(props) {
             >
               {headCell.label}
               {orderBy === headCell.id ? (
-                <Box component="span" sx={visuallyHidden}>
-                  {order === "desc" ? "sorted descending" : "sorted ascending"}
-                </Box>
+                <div component="span" sx={visuallyHidden}>
+                  {/* {order === "desc" ? "Contract Name" : "sorted ascending"} */}
+                </div>
               ) : null}
             </TableSortLabel>
           </TableCell>
@@ -277,7 +278,13 @@ export default function EnhancedTable(props) {
   // Avoid a layout jump when reaching the last page with empty rows.
 
   const feed =
-    props.feed === "review" ? review : props.feed === "draft" ? draft : null;
+    props.feed === "review"
+      ? review
+      : props.feed === "draft"
+      ? draft
+      : props.feed === "empty"
+      ? empty
+      : null;
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - feed.length) : 0;
 

@@ -6,6 +6,10 @@
     display: flex;
     align-items: center;
 
+    &.vertical {
+      flex-wrap: wrap;
+    }
+
     label {
       width: 5rem;
       margin-right: 1rem;

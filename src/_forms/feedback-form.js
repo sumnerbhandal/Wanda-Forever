@@ -11,13 +11,13 @@ import Close from "./_assets/close.svg";
 const submitFeedback = (
   <>
     Submit Feedback {"   "}
-    <span style={{ marginLeft: "0.5rem" }} class="material-icons">
+    <span style={{ marginLeft: "0.5rem" }} className="material-icons">
       send
     </span>
   </>
 );
 
-export const FeedbackForm = () => {
+const FeedbackForm = () => {
   const form = useRef();
   const [popupOpen, setPopUpOpen] = useToggle();
   const [formSubmitted, setFormSubmitted] = useState(false);

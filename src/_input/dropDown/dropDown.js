@@ -4,7 +4,7 @@ import "./styles.scss";
 const DropDown = (props) => {
   return (
     <div className={`${props.class} error-container`}>
-      <div className="flex-row">
+      <div className={`flex-row ${props.orientation}`}>
         {props.label !== undefined ? (
           <label htmlFor={props.id}>{props.label}</label>
         ) : null}

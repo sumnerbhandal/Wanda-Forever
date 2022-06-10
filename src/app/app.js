@@ -15,6 +15,7 @@ const NoMatch = lazy(() => import("./no-match"));
 const Canvas = lazy(() => import("../canvas/canvas"));
 const HubHeader = lazy(() => import("../_header/hub-header"));
 const HistoryHeader = lazy(() => import("../_header/version-header"));
+const SalesForm = lazy(() => import("../_modal/salesform.js"));
 // const FeedbackForm = lazy(() => import("../_forms/feedback-form"));
 import FeedbackForm from "../_forms/feedback-form";
 
@@ -71,6 +72,38 @@ export default function App() {
                     <>
                       <TemplateSelect />
                       <EnhancedTable feed="draft" configureContract="false" />
+                    </>
+                  }
+                />
+              </Suspense>
+              <Route path="editor">
+                <Route path=":documentId">
+                  <Suspense fallback={loader}>
+                    <Canvas page={<Drafting />} />
+                  </Suspense>
+                </Route>
+              </Route>
+            </>
+          </PrivateRoute>
+          <PrivateRoute
+            exact
+            path="draft-repligen"
+            isAuthenticated={isAuthenticated}
+          >
+            <>
+              <Suspense fallback={loader}>
+                <HubHeader
+                  platform="Draft Contracts"
+                  homepage="/draft"
+                  hubType="Drafting"
+                  primaryCTA="BrowseTemplates"
+                  content={<SalesForm />}
+                />
+                <Canvas
+                  page={
+                    <>
+                      <TemplateSelect />
+                      <EnhancedTable feed="empty" configureContract="false" />
                     </>
                   }
                 />

@@ -280,10 +280,26 @@ header {
       justify-content: end;
     }
 
+    hr {
+      border: 1px solid #F3F3F3;
+      margin-block-start: 1.5em;
+      margin-block-end: 0;
+    }
+
     video {
       width: 100%;
     }
+    .nda-selected {
+      animation: makeBigger 0.75s forwards;
+      transform: 0.3s ease;
+      overflow-y: hidden;
+    }
 
   }
+}
+
+@keyframes makeBigger {
+  from {height: 0px; opacity: 0;}
+  to {height: 360px; opacity: 1;}
 }
 

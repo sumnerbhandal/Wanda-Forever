@@ -94,7 +94,7 @@ export default function App() {
               <Suspense fallback={loader}>
                 <HubHeader
                   platform="Draft Contracts"
-                  homepage="/draft"
+                  homepage="/draft-repligen"
                   hubType="Drafting"
                   primaryCTA="BrowseTemplates"
                   content={<SalesForm />}

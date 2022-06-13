@@ -43,7 +43,7 @@ export default function DraftingHeader(props) {
           onClick={props.toggleCleanView}
         />
         <Button variant="primary" type="submit" label={DownloadContract} />
-        <div className="user-icon">SB</div>
+        <div className="user-icon">{props.user}</div>
       </div>
     </header>
   );

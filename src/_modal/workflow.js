@@ -73,7 +73,7 @@ const SalesForm = () => {
     <div className="modal-container template-library ">
       <div className="modal-header lined">
         {formSubmitted ? (
-          <h2>Your form has been submitted</h2>
+          <h2>Your Workflow Has Been Assigned</h2>
         ) : (
           <h2> {!templateSelected ? "Assign a New Workflow" : BackStep}</h2>
         )}
@@ -139,7 +139,7 @@ const SalesForm = () => {
                         "Richard Robinson",
                         "James Clough"
                       ]}
-                      name="client_entity"
+                      name="assign_to"
                     />
                     <hr />
                     <Toggle

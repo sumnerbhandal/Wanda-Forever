@@ -79,7 +79,7 @@ export default function WorkflowHeader(props) {
           onClick={handleClickOpen}
         />
         <div className="user-icon" onClick={() => logOut()}>
-          SB
+          {props.user}
         </div>
       </div>
       <SimpleDialog

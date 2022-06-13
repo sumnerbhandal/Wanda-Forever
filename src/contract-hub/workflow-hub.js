@@ -12,6 +12,7 @@ import { visuallyHidden } from "@mui/utils";
 import Collapse from "@mui/material/Collapse";
 import "./styles.scss";
 import workflow from "./_workflow-feed/workflow";
+import workflowKB from "./_workflow-feed/workflowKB";
 import guid from "../utils/guid";
 import DropDown from "../_input/dropDown/dropDown";
 import Input from "../_input/text/input";
@@ -140,6 +141,12 @@ function Row(props) {
     return firstLetters;
   }
 
+  function hyphenate(str) {
+    const string = str.replace(/\s+/g, "-").toLowerCase();
+
+    return string;
+  }
+
   function updateName(e) {
     const event = e.target;
     setContractName(event.value);
@@ -179,7 +186,9 @@ function Row(props) {
           <div className="name-container">{row.dueDate}</div>
         </TableCell>
         <TableCell>
-          <div className="nda-seed to-do">{row.status}</div>
+          <div className={`nda-seed ${hyphenate(row.status)}`}>
+            {row.status}
+          </div>
         </TableCell>
         <TableCell>
           <div className="name-container">
@@ -215,7 +224,14 @@ export default function WorkflowTable(props) {
 
   // Avoid a layout jump when reaching the last page with empty rows.
 
-  const feed = workflow;
+  const feed =
+    props.feed === "workflow"
+      ? workflow
+      : props.feed === "workflow-kb"
+      ? workflowKB
+      : props.feed === "workflow-jf"
+      ? workflowJF
+      : null;
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - feed.length) : 0;
 

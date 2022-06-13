@@ -51,7 +51,7 @@ const SalesForm = () => {
     <div className="modal-container">
       <div className="modal-header">
         {formSubmitted ? (
-          <h2>Your form has been submitted</h2>
+          <h2>Your Form Has Been Submitted</h2>
         ) : (
           <h2>Request Contract Draft</h2>
         )}

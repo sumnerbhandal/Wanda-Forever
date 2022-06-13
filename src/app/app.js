@@ -70,6 +70,7 @@ export default function App() {
                   homepage="/draft"
                   hubType="Drafting"
                   primaryCTA="BrowseTemplates"
+                  user="SB"
                 />
                 <Canvas
                   page={
@@ -103,6 +104,7 @@ export default function App() {
                   primaryCTA="BrowseTemplates"
                   content={<SalesForm />}
                   secondaryOnClick="/draft/workflow"
+                  user="RR"
                 />
                 <Canvas
                   page={
@@ -136,11 +138,51 @@ export default function App() {
                   primaryCTA="NewWorkflow"
                   modalContent={<WorkFlowForm />}
                   classes="template-library"
+                  user="JC"
                 />
                 <Canvas
                   page={
                     <>
-                      <WorkflowTable feed="empty" configureContract="false" />
+                      <WorkflowTable
+                        feed="workflow"
+                        configureContract="false"
+                      />
+                    </>
+                  }
+                />
+              </Suspense>
+              <Route path="editor">
+                <Route path=":documentId">
+                  <Suspense fallback={loader}>
+                    <Canvas page={<Drafting />} />
+                  </Suspense>
+                </Route>
+              </Route>
+            </>
+          </PrivateRoute>
+          <PrivateRoute
+            exact
+            path="draft/workflow/kb"
+            isAuthenticated={isAuthenticated}
+          >
+            <>
+              <Suspense fallback={loader}>
+                <WorkflowHeader
+                  platform="Draft Contracts"
+                  homepage="/draft/workflow/kb"
+                  hubType="Drafting"
+                  primaryCTA="NewWorkflow"
+                  modalContent={<WorkFlowForm />}
+                  classes="template-library"
+                  user="KB"
+                />
+                <Canvas
+                  page={
+                    <>
+                      <WorkflowTable
+                        feed="workflow-kb"
+                        configureContract="false"
+                      />
                     </>
                   }
                 />
@@ -163,6 +205,7 @@ export default function App() {
                     homepage="/review"
                     hubType="Reviewing"
                     primaryCTA="UploadContract"
+                    user="SB"
                   />
                   <Canvas
                     page={

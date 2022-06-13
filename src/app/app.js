@@ -7,6 +7,7 @@ import {
 } from "react-router-dom/index";
 import "./styles.scss";
 const EnhancedTable = lazy(() => import("../contract-hub/contract-hub"));
+const WorkflowTable = lazy(() => import("../contract-hub/workflow-hub"));
 const TemplateSelect = lazy(() => import("../contract-hub/template"));
 const DocumentEditor = lazy(() => import("../document-editor/document-editor"));
 const Drafting = lazy(() => import("../drafting/drafting-editor"));
@@ -14,6 +15,7 @@ const LoginPage = lazy(() => import("../login/login"));
 const NoMatch = lazy(() => import("./no-match"));
 const Canvas = lazy(() => import("../canvas/canvas"));
 const HubHeader = lazy(() => import("../_header/hub-header"));
+const WorkflowHeader = lazy(() => import("../_header/workflow-header"));
 const HistoryHeader = lazy(() => import("../_header/version-header"));
 const SalesForm = lazy(() => import("../_modal/salesform.js"));
 // const FeedbackForm = lazy(() => import("../_forms/feedback-form"));
@@ -87,14 +89,14 @@ export default function App() {
           </PrivateRoute>
           <PrivateRoute
             exact
-            path="draft-repligen"
+            path="draft/repligen"
             isAuthenticated={isAuthenticated}
           >
             <>
               <Suspense fallback={loader}>
                 <HubHeader
                   platform="Draft Contracts"
-                  homepage="/draft-repligen"
+                  homepage="/draft/repligen"
                   hubType="Drafting"
                   primaryCTA="BrowseTemplates"
                   content={<SalesForm />}
@@ -104,6 +106,37 @@ export default function App() {
                     <>
                       <TemplateSelect />
                       <EnhancedTable feed="empty" configureContract="false" />
+                    </>
+                  }
+                />
+              </Suspense>
+              <Route path="editor">
+                <Route path=":documentId">
+                  <Suspense fallback={loader}>
+                    <Canvas page={<Drafting />} />
+                  </Suspense>
+                </Route>
+              </Route>
+            </>
+          </PrivateRoute>
+          <PrivateRoute
+            exact
+            path="draft/workflow"
+            isAuthenticated={isAuthenticated}
+          >
+            <>
+              <Suspense fallback={loader}>
+                <WorkflowHeader
+                  platform="Draft Contracts"
+                  homepage="/draft/repligen"
+                  hubType="Drafting"
+                  primaryCTA="NewWorkflow"
+                  content={<SalesForm />}
+                />
+                <Canvas
+                  page={
+                    <>
+                      <WorkflowTable feed="empty" configureContract="false" />
                     </>
                   }
                 />

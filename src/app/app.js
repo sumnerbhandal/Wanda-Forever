@@ -19,6 +19,7 @@ const HubHeader = lazy(() => import("../_header/hub-header"));
 const WorkflowHeader = lazy(() => import("../_header/workflow-header"));
 const HistoryHeader = lazy(() => import("../_header/version-header"));
 const SalesForm = lazy(() => import("../_modal/salesform.js"));
+const WorkFlowForm = lazy(() => import("../_modal/workflow.js"));
 // const FeedbackForm = lazy(() => import("../_forms/feedback-form"));
 import FeedbackForm from "../_forms/feedback-form";
 
@@ -133,7 +134,8 @@ export default function App() {
                   homepage="/draft/repligen"
                   hubType="Drafting"
                   primaryCTA="NewWorkflow"
-                  content={<SalesForm />}
+                  modalContent={<WorkFlowForm />}
+                  classes="template-library"
                 />
                 <Canvas
                   page={

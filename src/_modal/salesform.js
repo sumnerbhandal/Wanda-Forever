@@ -5,6 +5,7 @@ import Button from "../_input/button/button";
 import DropDown from "../_input/dropDown/dropDown";
 import emailjs from "@emailjs/browser";
 import useToggle from "../utils/useToggle";
+import "./styles.scss";
 
 const sendRequest = (
   <>
@@ -46,7 +47,7 @@ const SalesForm = () => {
   };
 
   return (
-    <>
+    <div className="modal-container">
       <div className="modal-header">
         <h2>Request Contract Draft</h2>
       </div>
@@ -147,7 +148,7 @@ const SalesForm = () => {
           )}
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

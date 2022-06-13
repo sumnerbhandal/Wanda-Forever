@@ -102,6 +102,28 @@
             border-radius: 0.25rem;
             border-bottom: 0.0625rem solid #fff;
 
+
+            &.workflow-hub {
+
+              td {
+                  &:nth-child(1) {
+                    width: 18.25rem;
+                    padding-right: 0.5rem;
+                    padding-left: 0.25rem;
+                  }
+            
+                  &:nth-child(2) {
+                    width: 6.25rem;
+                  }
+                  &:nth-child(3) {
+                    width: 9rem;
+                  }
+                  &:nth-child(4) {
+                    width: 11rem;
+                  }
+                }
+              }
+
               &:hover {
 
                 td {
@@ -152,6 +174,20 @@
                   font-size: .75rem;
                   text-align: center;
                   line-height: 1.25;
+
+                  &.to-do {
+                    background: rgba(255, 179, 179, 0.3);
+                    width: calc(100% - 1rem);
+                  }
+                  &.in-progress {
+                    background: rgba(255, 182, 46, 0.3);
+                    width: calc(100% - 1rem);
+                  }
+                  &.complete {
+                    background: rgba(176, 226, 178, 0.3);
+                    width: calc(100% - 1rem);
+                  }
+                
                 }
 
                 .name-container {

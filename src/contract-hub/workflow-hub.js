@@ -10,7 +10,7 @@ import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import { visuallyHidden } from "@mui/utils";
 import Collapse from "@mui/material/Collapse";
-import "./workflow-styles.scss";
+import "./styles.scss";
 import workflow from "./_workflow-feed/workflow";
 import guid from "../utils/guid";
 import DropDown from "../_input/dropDown/dropDown";
@@ -156,7 +156,9 @@ function Row(props) {
   return (
     <React.Fragment>
       <TableRow
-        className={open ? "default-row" : "default-row closed"}
+        className={
+          open ? "default-row workflow-hub" : "default-row closed workflow-hub"
+        }
         tabIndex={-1}
         key={rowId}
         sx={{ "& > *": { borderBottom: "unset" } }}
@@ -184,54 +186,6 @@ function Row(props) {
             <div className="name-seed">{getFirstLetters(row.assignedBy)}</div>
             {row.assignedBy}
           </div>
-        </TableCell>
-      </TableRow>
-
-      <TableRow className={open ? "settings expanded" : "settings closed"}>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-          <Collapse in={open} timeout="auto" unmountOnExit>
-            <h2>Configure Contract</h2>
-            <Input
-              id={`${rowId}-name`}
-              label="Name"
-              type="text"
-              name="name"
-              placeholder="Contract Name"
-              value={contractName}
-              message={contractMessage}
-              state={contractNameState}
-              onChange={updateName}
-            />
-            <DropDown
-              name="Type"
-              label="Type"
-              id={`${rowId}-type`}
-              option={typeOptions}
-            />
-
-            <DropDown
-              name="Group"
-              label="Group"
-              id={`${rowId}-group`}
-              option={groupOptions}
-            />
-
-            <DropDown
-              name="Playbook"
-              label="Playbook"
-              id={`${rowId}-playbook`}
-              option={playbookOptions}
-            />
-
-            <div className="button-row">
-              <p>Changes are saved automatically</p>
-              <Button
-                variant="secondary"
-                type="submit"
-                label="Open In Editor"
-              />
-            </div>
-          </Collapse>
         </TableCell>
       </TableRow>
     </React.Fragment>

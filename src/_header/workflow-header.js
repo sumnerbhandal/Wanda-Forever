@@ -39,7 +39,7 @@ function SimpleDialog(props: SimpleDialogProps) {
 
   return (
     <Dialog onClose={handleClose} open={open}>
-      {props.content}
+      {props.modalContent}
     </Dialog>
   );
 }
@@ -76,12 +76,17 @@ export default function WorkflowHeader(props) {
           // disabled
           type="submit"
           label={eval(props.primaryCTA)}
+          onClick={handleClickOpen}
         />
         <div className="user-icon" onClick={() => logOut()}>
           SB
         </div>
       </div>
-      <SimpleDialog content={props.content} open={open} onClose={handleClose} />
+      <SimpleDialog
+        modalContent={props.modalContent}
+        open={open}
+        onClose={handleClose}
+      />
     </header>
   );
 }

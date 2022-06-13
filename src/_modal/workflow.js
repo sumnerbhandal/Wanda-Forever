@@ -1,0 +1,202 @@
+import React, { useEffect, useRef, useState } from "react";
+import Input from "../_input/text/input";
+import TextArea from "../_input/text/textArea";
+import Toggle from "../_input/toggle/toggle";
+import Button from "../_input/button/button";
+import DropDown from "../_input/dropDown/dropDown";
+import emailjs from "@emailjs/browser";
+import useToggle from "../utils/useToggle";
+import "./styles.scss";
+
+const templates = [
+  {
+    title: "Draft First Mark Up",
+    description:
+      "A workflow to ensure that a first mark up is drafted correctly."
+  },
+  {
+    title: "Example Second Workflow",
+    description: "This is a description of what the template does."
+  }
+];
+
+const submitFeedback = (
+  <>
+    Assign Workflow {"   "}
+    <span style={{ marginLeft: "0.5rem" }} className="material-icons">
+      send
+    </span>
+  </>
+);
+
+const SalesForm = () => {
+  const form = useRef();
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [workflowConfigure, setWorkflowConfigure] = useState(false);
+  const [appovalExpanded, setApprovalExpanded] = useToggle();
+  const [templateSelected, setTemplateSelected] = useState(false);
+
+  const BackStep = (
+    <span
+      onClick={() => {
+        setTemplateSelected(false);
+      }}
+    >
+      <img src="https://raw.githubusercontent.com/sumnerbhandal/font-repo/d3fd88b7178b3988a58c83111a2fec7d31103d4f/fi_arrow-left-circle.svg" />{" "}
+      Back
+    </span>
+  );
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_masn8rs",
+        "template_51i8kvm",
+        form.current,
+        "user_Wd3WXRB2JdQ6Dvixkn5AH"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          setFormSubmitted(true);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
+
+  return (
+    <div className="modal-container template-library ">
+      <div className="modal-header lined">
+        <h2> {!templateSelected ? "Assign a New Workflow" : BackStep}</h2>
+      </div>
+      {templateSelected ? (
+        <div className="modal-content-body template-library">
+          <form className="feedback-form" ref={form} onSubmit={sendEmail}>
+            {workflowConfigure ? (
+              <>
+                <div style={{ marginTop: "1rem" }}>
+                  Thank you for your feedback!
+                </div>
+                <video loop autoPlay muted>
+                  <source
+                    src="https://cdn.dribbble.com/users/472667/screenshots/15234142/media/cb0e236c6b047295fd672ef10acefba1.mp4"
+                    type="video/mp4"
+                  />
+                </video>
+              </>
+            ) : (
+              <div className="workflow-configure-view">
+                <div className="template-preview">
+                  <img src="https://via.placeholder.com/300x180/CCD3E4/CCD3E4.png" />
+                  <div className="template-preview-details">
+                    <h2>Draft First Mark Up</h2>
+                    <p>
+                      A workflow to ensure that a first mark up is drafted
+                      correctly.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="configure-workflow-settings">
+                  <div className="configure-form-settings">
+                    <h2>Configure Workflow</h2>
+                    <Input
+                      id="task-name"
+                      label="Task Name*"
+                      type="text"
+                      name="task_name"
+                      placeholder="Draft First Mark Up"
+                    />
+                    <Input
+                      label="Due Date*"
+                      name="due_date"
+                      type="date"
+                      id="due-date"
+                    />
+                    <DropDown
+                      label="Assign To*"
+                      id="assign-to"
+                      option={[
+                        "Please Select",
+                        "Sumner Bhandal",
+                        "Jake Foster",
+                        "Richard Robinson",
+                        "James Clough"
+                      ]}
+                      name="client_entity"
+                    />
+                    <hr />
+                    <Toggle
+                      label="Requires approval"
+                      onClick={setApprovalExpanded}
+                    />
+                    <div
+                      className={
+                        appovalExpanded
+                          ? "approval-container expanded"
+                          : "approval-container"
+                      }
+                    >
+                      <DropDown
+                        label="Assign To"
+                        id="approval-assign-to"
+                        option={[
+                          "Please Select",
+                          "Sumner Bhandal",
+                          "Jake Foster",
+                          "Richard Robinson",
+                          "James Clough"
+                        ]}
+                        name="approval_assign_to"
+                      />
+                    </div>
+                  </div>
+                  <div className="assign-button-container">
+                    <Button
+                      variant="primary"
+                      type="submit"
+                      label={submitFeedback}
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+          </form>
+        </div>
+      ) : (
+        <div className="modal-content-body template-library">
+          <div className="select-template">
+            <div className="template-panel">
+              <h2>Previous Work</h2>
+              <p>All Templates</p>
+              <p>Drafting</p>
+            </div>
+            <div className="template-previewer">
+              {templates.map((listItem, index) => (
+                <div
+                  key={index}
+                  className="template-preview"
+                  onClick={() => {
+                    setTemplateSelected(true);
+                  }}
+                >
+                  <img src="https://via.placeholder.com/300x180/CCD3E4/CCD3E4.png" />
+                  <div className="template-preview-details">
+                    <h2>{listItem.title}</h2>
+                    <p>{listItem.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default SalesForm;

@@ -99,6 +99,18 @@ const SalesForm = () => {
                       correctly.
                     </p>
                   </div>
+                  <DropDown
+                    label="Contract Template"
+                    id="contract-template"
+                    option={[
+                      "Please Select",
+                      "NDA Template 1",
+                      "NDA Template 2",
+                      "NDA Template 3"
+                    ]}
+                    orientation="vertical"
+                    name="contract_template"
+                  />
                 </div>
 
                 <div className="configure-workflow-settings">

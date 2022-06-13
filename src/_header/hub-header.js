@@ -94,7 +94,12 @@ export default function HubHeader(props) {
           label={RequestContract}
           onClick={handleClickOpen}
         />
-        <Button variant="secondary" type="submit" label={Workflows} />
+        <Button
+          variant="secondary"
+          type="submit"
+          label={Workflows}
+          onClick={() => history(props.secondaryOnClick)}
+        />
         <Button
           variant="primary"
           // disabled

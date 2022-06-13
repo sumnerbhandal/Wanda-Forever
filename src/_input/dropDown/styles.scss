@@ -24,10 +24,10 @@
       display: flex;
       align-items: center;
       padding: 0 0.75rem;
-      background: url(https://cdn-icons.flaticon.com/png/512/3759/premium/3759325.png?token=exp=1654886323~hmac=5fd19ac463e765e4530ce5ea814dec41) no-repeat right #fff;
+      background: url(https://raw.githubusercontent.com/sumnerbhandal/font-repo/02a2679cbd33ae6e9e91ce033fbf9f58e5d9f693/fi-chevron-down.svg) no-repeat 100% #fff;
       -webkit-appearance: none;
-      background-position-x: 95%;
-      background-size: 0.875rem;
+      background-position-x: calc(100% - 0.5rem);
+      background-size: 1.5rem;
       cursor: pointer;
       max-width: 25rem;
     }

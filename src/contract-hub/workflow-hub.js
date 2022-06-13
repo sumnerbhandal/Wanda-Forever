@@ -10,14 +10,8 @@ import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import { visuallyHidden } from "@mui/utils";
 import Collapse from "@mui/material/Collapse";
-import IconButton from "@mui/material/IconButton";
-import UnfoldLessIcon from "@mui/icons-material/UnfoldLess";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import "./styles.scss";
-import review from "./_feed/review";
-import draft from "./_feed/draft";
-import empty from "./_feed/empty";
-import draftRepligen from "./_feed/draft-repligen";
+import "./workflow-styles.scss";
+import workflow from "./_workflow-feed/workflow";
 import guid from "../utils/guid";
 import DropDown from "../_input/dropDown/dropDown";
 import Input from "../_input/text/input";
@@ -57,24 +51,21 @@ function stableSort(array, comparator) {
 
 const headCells = [
   {
-    id: "type",
-    label: "Type"
-  },
-  {
     id: "name",
-    label: "Contract Name"
+    label: "Name"
   },
   {
-    id: "lastEditedBy",
-    label: "Last Edited By"
+    id: "dueDate",
+    label: "Due Date"
+  },
+
+  {
+    id: "status",
+    label: "Status"
   },
   {
-    id: "lastEdited",
-    label: "Last Edited"
-  },
-  {
-    id: "actions",
-    label: ""
+    id: "assignedBy",
+    label: "Assigned By"
   }
 ];
 
@@ -171,9 +162,6 @@ function Row(props) {
         sx={{ "& > *": { borderBottom: "unset" } }}
       >
         <TableCell>
-          <div className="nda-seed">{row.type}</div>
-        </TableCell>
-        <TableCell>
           <Link
             to={{
               pathname: `./editor/${contractName
@@ -182,24 +170,20 @@ function Row(props) {
               state: { fileName: true }
             }}
           >
-            {contractName}
+            {row.name}
           </Link>
         </TableCell>
         <TableCell>
-          <div className="name-container">
-            <div className="name-seed">{getFirstLetters(row.lastEditedBy)}</div>
-            {row.lastEditedBy}
-          </div>
+          <div className="name-container">{row.dueDate}</div>
         </TableCell>
-        <TableCell>{lastEdited}</TableCell>
         <TableCell>
-          <IconButton
-            aria-label="expand row"
-            size="small"
-            // onClick={() => (props.configureContract ? setOpen(!open) : null)}
-          >
-            {open ? <UnfoldLessIcon /> : <MoreVertIcon />}
-          </IconButton>
+          <div className="nda-seed to-do">{row.status}</div>
+        </TableCell>
+        <TableCell>
+          <div className="name-container">
+            <div className="name-seed">{getFirstLetters(row.assignedBy)}</div>
+            {row.assignedBy}
+          </div>
         </TableCell>
       </TableRow>
 
@@ -277,14 +261,7 @@ export default function WorkflowTable(props) {
 
   // Avoid a layout jump when reaching the last page with empty rows.
 
-  const feed =
-    props.feed === "review"
-      ? review
-      : props.feed === "draft"
-      ? draft
-      : props.feed === "empty"
-      ? empty
-      : null;
+  const feed = workflow;
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - feed.length) : 0;
 

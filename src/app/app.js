@@ -3,7 +3,8 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Navigate
+  Navigate,
+  useNavigate
 } from "react-router-dom/index";
 import "./styles.scss";
 const EnhancedTable = lazy(() => import("../contract-hub/contract-hub"));
@@ -100,6 +101,7 @@ export default function App() {
                   hubType="Drafting"
                   primaryCTA="BrowseTemplates"
                   content={<SalesForm />}
+                  secondaryOnClick="/draft/workflow"
                 />
                 <Canvas
                   page={

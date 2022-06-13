@@ -7,6 +7,7 @@ import DropDown from "../_input/dropDown/dropDown";
 import emailjs from "@emailjs/browser";
 import useToggle from "../utils/useToggle";
 import "./styles.scss";
+import Close from "../_forms/_assets/close.svg";
 
 const templates = [
   {
@@ -71,18 +72,20 @@ const SalesForm = () => {
   return (
     <div className="modal-container template-library ">
       <div className="modal-header lined">
-        <h2> {!templateSelected ? "Assign a New Workflow" : BackStep}</h2>
+        {formSubmitted ? (
+          <h2>Your form has been submitted</h2>
+        ) : (
+          <h2> {!templateSelected ? "Assign a New Workflow" : BackStep}</h2>
+        )}
+        <img src={Close} />
       </div>
       {templateSelected ? (
         <div className="modal-content-body template-library">
           <form className="feedback-form" ref={form} onSubmit={sendEmail}>
             {formSubmitted ? (
               <>
-                <div style={{ marginTop: "1rem" }}>
-                  <p>
-                    Your form has been submitted. You can close this window
-                    down.
-                  </p>
+                <div className="submission-success">
+                  <img src="https://raw.githubusercontent.com/sumnerbhandal/font-repo/5468d70719cccb7c93e170a59a5ccee55e7728ef/Welcome.svg" />
                 </div>
               </>
             ) : (
@@ -168,7 +171,7 @@ const SalesForm = () => {
         <div className="modal-content-body template-library">
           <div className="select-template">
             <div className="template-panel">
-              <h2>Previous Work</h2>
+              <h3>Templates</h3>
               <p>All Templates</p>
               <p>Drafting</p>
             </div>
@@ -183,7 +186,7 @@ const SalesForm = () => {
                 >
                   <img src="https://via.placeholder.com/300x180/CCD3E4/CCD3E4.png" />
                   <div className="template-preview-details">
-                    <h2>{listItem.title}</h2>
+                    <h3>{listItem.title}</h3>
                     <p>{listItem.description}</p>
                   </div>
                 </div>

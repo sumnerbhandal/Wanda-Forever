@@ -6,6 +6,7 @@ import DropDown from "../_input/dropDown/dropDown";
 import emailjs from "@emailjs/browser";
 import useToggle from "../utils/useToggle";
 import "./styles.scss";
+import Close from "../_forms/_assets/close.svg";
 
 const sendRequest = (
   <>
@@ -49,16 +50,19 @@ const SalesForm = () => {
   return (
     <div className="modal-container">
       <div className="modal-header">
-        <h2>Request Contract Draft</h2>
+        {formSubmitted ? (
+          <h2>Your form has been submitted</h2>
+        ) : (
+          <h2>Request Contract Draft</h2>
+        )}
+        <img src={Close} />
       </div>
       <div className="modal-content-body">
         <form ref={form} onSubmit={sendEmail}>
           {formSubmitted ? (
             <>
-              <div style={{ marginTop: "1rem" }}>
-                <p>
-                  Your form has been submitted. You can close this window down.
-                </p>
+              <div className="submission-success">
+                <img src="https://raw.githubusercontent.com/sumnerbhandal/font-repo/5468d70719cccb7c93e170a59a5ccee55e7728ef/Welcome.svg" />
               </div>
             </>
           ) : (

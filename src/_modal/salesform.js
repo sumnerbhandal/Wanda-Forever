@@ -56,14 +56,10 @@ const SalesForm = () => {
           {formSubmitted ? (
             <>
               <div style={{ marginTop: "1rem" }}>
-                Thank you for your feedback!
+                <p>
+                  Your form has been submitted. You can close this window down.
+                </p>
               </div>
-              <video loop autoPlay muted>
-                <source
-                  src="https://cdn.dribbble.com/users/472667/screenshots/15234142/media/cb0e236c6b047295fd672ef10acefba1.mp4"
-                  type="video/mp4"
-                />
-              </video>
             </>
           ) : (
             <>

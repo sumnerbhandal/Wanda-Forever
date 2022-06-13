@@ -53,7 +53,7 @@ const SalesForm = () => {
     emailjs
       .sendForm(
         "service_masn8rs",
-        "template_51i8kvm",
+        "template_stwcekx",
         form.current,
         "user_Wd3WXRB2JdQ6Dvixkn5AH"
       )
@@ -76,17 +76,14 @@ const SalesForm = () => {
       {templateSelected ? (
         <div className="modal-content-body template-library">
           <form className="feedback-form" ref={form} onSubmit={sendEmail}>
-            {workflowConfigure ? (
+            {formSubmitted ? (
               <>
                 <div style={{ marginTop: "1rem" }}>
-                  Thank you for your feedback!
+                  <p>
+                    Your form has been submitted. You can close this window
+                    down.
+                  </p>
                 </div>
-                <video loop autoPlay muted>
-                  <source
-                    src="https://cdn.dribbble.com/users/472667/screenshots/15234142/media/cb0e236c6b047295fd672ef10acefba1.mp4"
-                    type="video/mp4"
-                  />
-                </video>
               </>
             ) : (
               <div className="workflow-configure-view">

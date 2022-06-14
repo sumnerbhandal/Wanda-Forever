@@ -14,7 +14,7 @@ export const workflowStageOne = [
     assignedTo: "Kyra Byrne",
     linkedContract: "File Name",
     linkedContractUrl:
-      "https://wanda-forever.netlify.app/draft/repligen/editor/non-disclosure-agreement_commercial",
+      "https://wanda-forever.netlify.app/draft/repligen/editor/nda-two-way_nda",
     firstDraft: true,
     firstDraftContent: [
       // "Select an appropriate template",
@@ -37,7 +37,7 @@ export const workflowKB = [
     assignedTo: "Kyra Byrne",
     linkedContract: "File Name",
     linkedContractUrl:
-      "https://wanda-forever.netlify.app/draft/repligen/editor/non-disclosure-agreement_commercial",
+      "https://wanda-forever.netlify.app/draft/repligen/editor/nda-two-way_nda",
     firstDraft: true,
     firstDraftContent: [
       // "Select an appropriate template",
@@ -60,7 +60,7 @@ export const workflowJF = [
     assignedTo: "Kyra Byrne",
     linkedContract: "File Name",
     linkedContractUrl:
-      "https://wanda-forever.netlify.app/draft/workflow/jf/editor/non-disclosure-agreement_commercial",
+      "https://wanda-forever.netlify.app/draft/workflow/jf/editor/nda-two-way_nda",
     firstDraft: false,
     firstDraftContent: [
       // "Select an appropriate template",

@@ -100,7 +100,7 @@ const SalesForm = () => {
                     </p>
                   </div>
                   <DropDown
-                    label="Contract Template"
+                    label="Contract Template*"
                     id="contract-template"
                     option={[
                       "Please Select",

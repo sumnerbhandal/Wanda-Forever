@@ -17,7 +17,7 @@ export const workflowStageOne = [
       "https://wanda-forever.netlify.app/draft/repligen/editor/non-disclosure-agreement_commercial",
     firstDraft: true,
     firstDraftContent: [
-      "Select an appropriate template",
+      // "Select an appropriate template",
       "Use contract request form information to draft contract"
     ],
     internalReview: true,
@@ -40,7 +40,7 @@ export const workflowKB = [
       "https://wanda-forever.netlify.app/draft/repligen/editor/non-disclosure-agreement_commercial",
     firstDraft: true,
     firstDraftContent: [
-      "Select an appropriate template",
+      // "Select an appropriate template",
       "Use contract request form information to draft contract"
     ],
     internalReview: true,
@@ -60,10 +60,10 @@ export const workflowJF = [
     assignedTo: "Kyra Byrne",
     linkedContract: "File Name",
     linkedContractUrl:
-      "https://wanda-forever.netlify.app/draft/repligen/editor/non-disclosure-agreement_commercial",
+      "https://wanda-forever.netlify.app/draft/workflow/jf/editor/non-disclosure-agreement_commercial",
     firstDraft: false,
     firstDraftContent: [
-      "Select an appropriate template",
+      // "Select an appropriate template",
       "Use contract request form information to draft contract"
     ],
     internalReview: false,
@@ -106,7 +106,6 @@ export default function WorkflowDrawer(props) {
 
   const firstDraftState = (e) => {
     const target = e.target;
-    console.log(target.checked);
 
     if (target.checked) {
       setFirstDraftCount(firstDraftCount + 1);
@@ -197,27 +196,49 @@ export default function WorkflowDrawer(props) {
             <div className="task-item">
               <div className="task-item-name">
                 <p className="pre-title">First Draft</p>
-                <div
-                  className={`approved-status ${
-                    firstDraftCount === 2 ? "complete" : ""
-                  }`}
-                >
-                  {firstDraftCount}/2 Complete
+                {listItem.reviewApproved ? (
+                  <div className="approved-status complete">1/1 Complete</div>
+                ) : (
+                  <div
+                    className={`approved-status ${
+                      firstDraftCount === 1 ? "complete" : ""
+                    }`}
+                  >
+                    {firstDraftCount}/1 Complete
+                  </div>
+                )}
+              </div>
+
+              {listItem.reviewApproved ? (
+                <div class="task-group">
+                  {listItem.firstDraftContent.map((task, index) => (
+                    <label className="checkbox-group" key={index}>
+                      <input
+                        checked
+                        type="checkbox"
+                        name="packersOff"
+                        value={`firsDraft-${index}`}
+                        onClick={firstDraftState}
+                      />
+                      <span className="strikethrough">{task}</span>
+                    </label>
+                  ))}
                 </div>
-              </div>
-              <div class="task-group">
-                {listItem.firstDraftContent.map((task, index) => (
-                  <label className="checkbox-group" key={index}>
-                    <input
-                      type="checkbox"
-                      name="packersOff"
-                      value={`firsDraft-${index}`}
-                      onClick={firstDraftState}
-                    />
-                    <span className="strikethrough">{task}</span>
-                  </label>
-                ))}
-              </div>
+              ) : (
+                <div class="task-group">
+                  {listItem.firstDraftContent.map((task, index) => (
+                    <label className="checkbox-group" key={index}>
+                      <input
+                        type="checkbox"
+                        name="packersOff"
+                        value={`firsDraft-${index}`}
+                        onClick={firstDraftState}
+                      />
+                      <span className="strikethrough">{task}</span>
+                    </label>
+                  ))}
+                </div>
+              )}
             </div>
           ) : null}
           <div className="task-item">

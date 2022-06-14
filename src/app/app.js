@@ -215,7 +215,7 @@ export default function App() {
                       open={open}
                       setOpen={setOpen}
                     />
-                    <Canvas page={<Drafting />} />
+                    <Canvas page={<Drafting user="KB" />} />
                   </Suspense>
                 </Route>
               </Route>
@@ -291,7 +291,7 @@ export default function App() {
                       open={open}
                       setOpen={setOpen}
                     />
-                    <Canvas page={<Drafting />} />
+                    <Canvas page={<Drafting user="JF" />} />
                   </Suspense>
                 </Route>
               </Route>

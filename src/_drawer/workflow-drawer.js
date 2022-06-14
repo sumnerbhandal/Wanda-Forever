@@ -9,7 +9,7 @@ import "./styles.scss";
 export const workflowStageOne = [
   {
     title: "Draft First Mark Up",
-    dueDate: "2022/06/14",
+    dueDate: "2022/06/16",
     assignedToText: "Assigned To",
     assignedTo: "Kyra Byrne",
     linkedContract: "File Name",
@@ -32,7 +32,7 @@ export const workflowStageOne = [
 export const workflowKB = [
   {
     title: "Draft First Mark Up",
-    dueDate: "2022/06/14",
+    dueDate: "2022/06/16",
     assignedToText: "Assigned To",
     assignedTo: "Kyra Byrne",
     linkedContract: "File Name",
@@ -55,7 +55,7 @@ export const workflowKB = [
 export const workflowJF = [
   {
     title: "[Interal Review] Draft First Mark Up",
-    dueDate: "2022/06/14",
+    dueDate: "2022/06/16",
     assignedToText: "Originally Assigned To",
     assignedTo: "Kyra Byrne",
     linkedContract: "File Name",

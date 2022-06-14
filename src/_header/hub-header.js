@@ -107,7 +107,7 @@ export default function HubHeader(props) {
           label={eval(props.primaryCTA)}
         />
         <div className="user-icon" onClick={() => logOut()}>
-          SB
+          {props.user}
         </div>
       </div>
       <SimpleDialog content={props.content} open={open} onClose={handleClose} />

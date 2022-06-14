@@ -73,7 +73,7 @@ const SalesForm = () => {
     <div className="modal-container template-library ">
       <div className="modal-header lined">
         {formSubmitted ? (
-          <h2>Your Workflow Has Been Assigned</h2>
+          <h2>Your Workflow Has Been Created</h2>
         ) : (
           <h2> {!templateSelected ? "Assign a New Workflow" : BackStep}</h2>
         )}
@@ -134,6 +134,7 @@ const SalesForm = () => {
                       id="assign-to"
                       option={[
                         "Please Select",
+                        "Kyra Byrne",
                         "Sumner Bhandal",
                         "Jake Foster",
                         "Richard Robinson",

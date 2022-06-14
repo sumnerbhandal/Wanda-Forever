@@ -126,7 +126,7 @@ export default function App() {
                       open={open}
                       setOpen={setOpen}
                     />
-                    <Canvas page={<Drafting user="JF" />} />
+                    <Canvas page={<Drafting user="KB" />} />
                   </Suspense>
                 </Route>
               </Route>
@@ -146,7 +146,7 @@ export default function App() {
                   primaryCTA="NewWorkflow"
                   modalContent={<WorkFlowForm />}
                   classes="template-library"
-                  user="JC"
+                  user="KB"
                 />
                 <WorkflowDrawer
                   feed="workflowStageOne"
@@ -218,6 +218,35 @@ export default function App() {
                     <Canvas page={<Drafting />} />
                   </Suspense>
                 </Route>
+              </Route>
+              <Route path="2">
+                <Suspense fallback={loader}>
+                  <WorkflowHeader
+                    platform="Draft Contracts"
+                    homepage="/draft/workflow/kb"
+                    hubType="Drafting"
+                    primaryCTA="NewWorkflow"
+                    modalContent={<WorkFlowForm />}
+                    classes="template-library"
+                    user="KB"
+                  />
+                  <WorkflowDrawer
+                    feed="workflow-kb"
+                    open={open}
+                    setOpen={setOpen}
+                  />
+                  <Canvas
+                    page={
+                      <>
+                        <WorkflowTable
+                          feed="workflow-kb2"
+                          configureContract="false"
+                          setOpen={setOpen}
+                        />
+                      </>
+                    }
+                  />
+                </Suspense>
               </Route>
             </>
           </PrivateRoute>

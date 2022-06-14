@@ -13,6 +13,7 @@ import Collapse from "@mui/material/Collapse";
 import "./styles.scss";
 import workflow from "./_workflow-feed/workflow";
 import workflowKB from "./_workflow-feed/workflowKB";
+import workflowKB2 from "./_workflow-feed/workflowKB2";
 import workflowJF from "./_workflow-feed/workflowJF";
 import guid from "../utils/guid";
 import DropDown from "../_input/dropDown/dropDown";
@@ -231,6 +232,8 @@ export default function WorkflowTable(props) {
       ? workflowKB
       : props.feed === "workflow-jf"
       ? workflowJF
+      : props.feed === "workflow-kb2"
+      ? workflowKB2
       : null;
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - feed.length) : 0;

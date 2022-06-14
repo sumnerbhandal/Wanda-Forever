@@ -37,7 +37,8 @@ const review = [
     "2021/09/02",
     "franchise"
   ),
-  createData("NDA", "NDA Two-Way", "Kyra Byrne", "2022/06/16", "nda")
+  createData("NDA", "NDA Two-Way", "Kyra Byrne", "2022/06/16", "nda"),
+  createData("NDA", "NDA Two-Way", "Kyra Byrne", "2022/06/16", "ndatwo")
 ];
 
 export default review;

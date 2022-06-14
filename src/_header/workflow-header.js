@@ -16,7 +16,11 @@ const RequestContract = (
 );
 const NewWorkflow = (
   <>
-    Create New Workflow <img src={Workflow} />
+    Create New Workflow
+    <img
+      style={{ marginLeft: "0.5rem" }}
+      src="https://raw.githubusercontent.com/sumnerbhandal/font-repo/2fc48d598d525aa7a8fd5d88805a2236fa157caf/fi-workflow-assign.svg"
+    />
   </>
 );
 

@@ -11,9 +11,20 @@ import Close from "../_forms/_assets/close.svg";
 const sendRequest = (
   <>
     Send Request {"   "}
-    <span style={{ marginLeft: "0.5rem" }} className="material-icons">
-      send
-    </span>
+    <img
+      style={{ marginLeft: "0.5rem" }}
+      src="https://raw.githubusercontent.com/sumnerbhandal/font-repo/88386a3fd752574311a7c85af6fc67c1ab0c955a/fi-send.svg"
+    />
+  </>
+);
+
+const discardRequest = (
+  <>
+    Discard Request
+    <img
+      style={{ marginLeft: "0.5rem" }}
+      src="https://raw.githubusercontent.com/sumnerbhandal/font-repo/a30901f545e83e5f3d8b5192e56df9b8b5c0e864/fi-trash.svg"
+    />
   </>
 );
 
@@ -134,7 +145,7 @@ const SalesForm = () => {
               <div className="button-container">
                 <Button
                   id="sales=request-discard"
-                  label="Discard Request"
+                  label={discardRequest}
                   variant="secondary"
                 />
                 <Button

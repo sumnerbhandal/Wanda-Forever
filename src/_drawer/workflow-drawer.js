@@ -60,7 +60,7 @@ export const workflowJF = [
     assignedTo: "Kyra Byrne",
     linkedContract: "File Name",
     linkedContractUrl:
-      "https://wanda-forever.netlify.app/draft/workflow/jf/editor/nda-two-way_nda",
+      "https://wanda-forever.netlify.app/draft/workflow/jf/editor/nda-two-way_ndatwo",
     firstDraft: false,
     firstDraftContent: [
       // "Select an appropriate template",
@@ -86,6 +86,26 @@ const awaitingInternalReview = (
   <>
     Awaiting Internal Review{" "}
     <img src="https://raw.githubusercontent.com/sumnerbhandal/font-repo/05d326d0309d21a616e4fc8fd0295e7f3e37e4e1/fi-user.svg" />
+  </>
+);
+
+const ChangesRequired = (
+  <>
+    Changes Required{" "}
+    <img
+      style={{ marginLeft: "0.5rem" }}
+      src="https://raw.githubusercontent.com/sumnerbhandal/font-repo/8a7ad2ffdae1d096f9e9cf5eb6d0dc3f00c1451b/fi-request-changes.svg"
+    />
+  </>
+);
+
+const ApproveReview = (
+  <>
+    Approve Review{" "}
+    <img
+      style={{ marginLeft: "0.5rem" }}
+      src="https://raw.githubusercontent.com/sumnerbhandal/font-repo/8a7ad2ffdae1d096f9e9cf5eb6d0dc3f00c1451b/fi-approve.svg"
+    />
   </>
 );
 
@@ -378,14 +398,11 @@ export default function WorkflowDrawer(props) {
                         />
                       ) : (
                         <>
-                          <Button
-                            variant="secondary"
-                            label="Changes Required"
-                          />
+                          <Button variant="secondary" label={ChangesRequired} />
                           <Button
                             variant="secondary"
                             type="submit"
-                            label="Approve Review"
+                            label={ApproveReview}
                           />{" "}
                         </>
                       )}

@@ -21,12 +21,13 @@ const templates = [
   }
 ];
 
-const submitFeedback = (
+const AssignWorkflow = (
   <>
-    Assign Workflow {"   "}
-    <span style={{ marginLeft: "0.5rem" }} className="material-icons">
-      send
-    </span>
+    Assign Workflow{" "}
+    <img
+      style={{ marginLeft: "0.5rem" }}
+      src="https://raw.githubusercontent.com/sumnerbhandal/font-repo/2fc48d598d525aa7a8fd5d88805a2236fa157caf/fi-workflow-assign.svg"
+    />
   </>
 );
 
@@ -172,7 +173,7 @@ const SalesForm = () => {
                     <Button
                       variant="primary"
                       type="submit"
-                      label={submitFeedback}
+                      label={AssignWorkflow}
                     />
                   </div>
                 </div>

@@ -177,6 +177,49 @@ const DocumentEditor = (props) => {
     }
   ]);
 
+  const [ndatwo, setNdatwo] = useState([
+    {
+      id: "0",
+      html: "16/06/22",
+      active: false
+    },
+    {
+      id: "1",
+      html: "Real Counterparty",
+      active: false
+    },
+    {
+      id: "2",
+      html: "123456",
+      active: false
+    },
+    {
+      id: "3",
+      html: "1 Example Road, EC2R 8EJ",
+      active: false
+    },
+    {
+      id: "4",
+      html: "123456",
+      active: false
+    },
+    {
+      id: "5",
+      html: "123456",
+      active: false
+    },
+    {
+      id: "6",
+      html: "1 Example Road, EC2R 8EJ",
+      active: false
+    },
+    {
+      id: "7",
+      html: "Robin Project",
+      active: false
+    }
+  ]);
+
   const [supplier, setSupplier] = useState([
     {
       id: "0",
@@ -395,6 +438,21 @@ const DocumentEditor = (props) => {
               showHeader={showHeader}
               showConditionalText={showConditionalText}
             />
+          ) : ContractType === "ndatwo" ? (
+            <NDAContract
+              toggleDrawer={() => setDrawerState(true)}
+              toggleDrawerHighlight={() => {
+                setDrawerState(true);
+                setActiveHover(true);
+              }}
+              setActiveHover={setActiveHover}
+              activeHover={activeHover}
+              cleanVersion={cleanVersion}
+              configFields={ChosenContractType}
+              setConfigFields={setChosenContractType}
+              showHeader={showHeader}
+              showConditionalText={showConditionalText}
+            />
           ) : (
             <SupplierContract
               toggleDrawer={() => setDrawerState(true)}
@@ -433,6 +491,15 @@ const DocumentEditor = (props) => {
               setShowConditionalText={setShowConditionalText}
             />
           ) : ContractType === "nda" ? (
+            <NDAContractConfig
+              configFields={ChosenContractType}
+              setConfigFields={setChosenContractType}
+              showHeader={showHeader}
+              setShowHeader={setShowHeader}
+              showConditionalText={showConditionalText}
+              setShowConditionalText={setShowConditionalText}
+            />
+          ) : ContractType === "ndatwo" ? (
             <NDAContractConfig
               configFields={ChosenContractType}
               setConfigFields={setChosenContractType}

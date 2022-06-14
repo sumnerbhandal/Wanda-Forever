@@ -107,7 +107,7 @@ export default function App() {
                   primaryCTA="BrowseTemplates"
                   content={<SalesForm />}
                   secondaryOnClick="/draft/workflow"
-                  user="RR"
+                  user="JC"
                 />
                 <Canvas
                   page={
@@ -126,7 +126,7 @@ export default function App() {
                       open={open}
                       setOpen={setOpen}
                     />
-                    <Canvas page={<Drafting />} />
+                    <Canvas page={<Drafting user="JF" />} />
                   </Suspense>
                 </Route>
               </Route>
@@ -190,12 +190,18 @@ export default function App() {
                   classes="template-library"
                   user="KB"
                 />
+                <WorkflowDrawer
+                  feed="workflow-kb"
+                  open={open}
+                  setOpen={setOpen}
+                />
                 <Canvas
                   page={
                     <>
                       <WorkflowTable
                         feed="workflow-kb"
                         configureContract="false"
+                        setOpen={setOpen}
                       />
                     </>
                   }
@@ -204,6 +210,11 @@ export default function App() {
               <Route path="editor">
                 <Route path=":documentId">
                   <Suspense fallback={loader}>
+                    <WorkflowDrawer
+                      feed="workflow-kb"
+                      open={open}
+                      setOpen={setOpen}
+                    />
                     <Canvas page={<Drafting />} />
                   </Suspense>
                 </Route>
@@ -227,7 +238,7 @@ export default function App() {
                   user="JF"
                 />
                 <WorkflowDrawer
-                  feed="workflowStageOne"
+                  feed="workflow-jf"
                   open={open}
                   setOpen={setOpen}
                 />
@@ -237,6 +248,7 @@ export default function App() {
                       <WorkflowTable
                         feed="workflow-jf"
                         configureContract="false"
+                        setOpen={setOpen}
                       />
                     </>
                   }
@@ -245,6 +257,11 @@ export default function App() {
               <Route path="editor">
                 <Route path=":documentId">
                   <Suspense fallback={loader}>
+                    <WorkflowDrawer
+                      feed="workflow-jf"
+                      open={open}
+                      setOpen={setOpen}
+                    />
                     <Canvas page={<Drafting />} />
                   </Suspense>
                 </Route>

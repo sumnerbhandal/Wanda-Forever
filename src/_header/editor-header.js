@@ -72,7 +72,7 @@ export default function EditorHeader(props) {
         />
         <Button variant="primary" type="button" label={RunAutoEdit} />
         <Button variant="secondary" type="button" label={UploadContract} />
-        <div className="user-icon">SB</div>
+        <div className="user-icon">{props.user}</div>
       </div>
     </header>
   );

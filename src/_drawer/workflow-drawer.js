@@ -24,7 +24,31 @@ export const workflowStageOne = [
     approver: "Jake Foster",
     approvalTitle: "[Interal Review] Draft First Mark Up",
     comments: "",
-    reviewApproved: false
+    reviewApproved: false,
+    formID: "template_v50uzw8"
+  }
+];
+
+export const workflowKB = [
+  {
+    title: "Draft First Mark Up",
+    dueDate: "2022/06/14",
+    assignedToText: "Assigned To",
+    assignedTo: "Kyra Byrne",
+    linkedContract: "File Name",
+    linkedContractUrl:
+      "https://wanda-forever.netlify.app/draft/repligen/editor/non-disclosure-agreement_commercial",
+    firstDraft: true,
+    firstDraftContent: [
+      "Select an appropriate template",
+      "Use contract request form information to draft contract"
+    ],
+    internalReview: true,
+    approver: "Jake Foster",
+    approvalTitle: "[Interal Review] Draft First Mark Up",
+    comments: "",
+    reviewApproved: true,
+    formID: "template_v50uzw8"
   }
 ];
 
@@ -42,11 +66,12 @@ export const workflowJF = [
       "Select an appropriate template",
       "Use contract request form information to draft contract"
     ],
-    internalReview: true,
+    internalReview: false,
     approver: "Jake Foster",
     approvalTitle: "[Interal Review] Draft First Mark Up",
     comments: "",
-    reviewApproved: false
+    reviewApproved: false,
+    formID: "template_e7m9p0q"
   }
 ];
 
@@ -91,12 +116,15 @@ export default function WorkflowDrawer(props) {
   };
 
   const sendEmail = (e) => {
+    const target = e.target;
     e.preventDefault();
+    const targetID = target.id;
+    console.log(targetID);
 
     emailjs
       .sendForm(
         "service_masn8rs",
-        "template_v50uzw8",
+        targetID,
         form.current,
         "user_Wd3WXRB2JdQ6Dvixkn5AH"
       )
@@ -195,83 +223,156 @@ export default function WorkflowDrawer(props) {
           <div className="task-item">
             <div className="task-item-name">
               <p className="pre-title">Internal Review</p>
-              <div
-                className={`approved-status ${
-                  listItem.reviewApproved ? "complete" : ""
-                }`}
-              >
-                {listItem.reviewApproved ? "Approved" : "Not Approved"}
-              </div>
+              {listItem.internalReview ? (
+                <div
+                  className={`approved-status ${
+                    listItem.reviewApproved ? "complete" : ""
+                  }`}
+                >
+                  {listItem.reviewApproved ? "Approved" : "Not Approved"}
+                </div>
+              ) : null}
             </div>
+            {listItem.reviewApproved ? (
+              <form className="feedback-form">
+                <div className="comments-submitted">
+                  <strong>Approved By {listItem.approver}</strong>
+                </div>
+              </form>
+            ) : (
+              <form
+                id={listItem.formID}
+                ref={form}
+                onSubmit={sendEmail}
+                className="feedback-form"
+              >
+                {feedbackFormSent ? (
+                  <>
+                    <div className="comments-submitted">
+                      <strong>
+                        Approval requested from {listItem.approver}
+                      </strong>
+                      <p>Comments:</p>
+                      <p>{feedbackFormContent}</p>
+                    </div>
+                    <div className="internal-review-container">
+                      <Button
+                        variant="secondary"
+                        type="submit"
+                        label={awaitingInternalReview}
+                        disabled
+                      />
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="hidden-form-elements">
+                      {listItem.internalReview ? (
+                        <>
+                          <Input
+                            type="text"
+                            name="approver"
+                            value={listItem.approver}
+                            orientation="vertical"
+                          />
+                          <Input
+                            type="text"
+                            name="title"
+                            value={listItem.approvalTitle}
+                            orientation="vertical"
+                          />
+                          <Input
+                            type="text"
+                            name="due_date"
+                            value={listItem.dueDate}
+                            orientation="vertical"
+                          />
+                          <Input
+                            type="text"
+                            name="original_assignee"
+                            value={listItem.assignedTo}
+                            orientation="vertical"
+                          />
+                        </>
+                      ) : (
+                        <>
+                          <Input
+                            type="text"
+                            name="assigned_to"
+                            value={listItem.assignedTo}
+                            orientation="vertical"
+                          />
+                          <Input
+                            type="text"
+                            name="title"
+                            value={listItem.approvalTitle}
+                            orientation="vertical"
+                          />
+                          <Input
+                            type="text"
+                            name="due_date"
+                            value={listItem.dueDate}
+                            orientation="vertical"
+                          />
+                          <Input
+                            type="text"
+                            name="original_assignee"
+                            value={listItem.assignedTo}
+                            orientation="vertical"
+                          />
+                        </>
+                      )}
+                    </div>
+                    {listItem.internalReview ? (
+                      <p>
+                        Once you have completed your review, click the button
+                        below to request an internal review from{" "}
+                        <strong>{listItem.approver}</strong>.
+                      </p>
+                    ) : (
+                      <>
+                        <p>
+                          Once you have completed your review, leave your
+                          comments and then select to either{" "}
+                          <strong>request changes</strong> or{" "}
+                          <strong>approve review</strong>.
+                        </p>
+                      </>
+                    )}
 
-            <form ref={form} onSubmit={sendEmail} className="feedback-form">
-              {feedbackFormSent ? (
-                <>
-                  <div className="comments-submitted">
-                    <strong>Approval requested from {listItem.approver}</strong>
-                    <p>Comments:</p>
-                    <p>{feedbackFormContent}</p>
-                  </div>
-                  <div className="internal-review-container">
-                    <Button
-                      variant="secondary"
-                      type="submit"
-                      label={awaitingInternalReview}
-                      disabled
+                    <TextArea
+                      rows="5"
+                      label="Comments"
+                      id="internal-review-tips"
+                      onChange={(e) => {
+                        setFeedbackFormContent(e.target.value);
+                      }}
                     />
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="hidden-form-elements">
-                    <Input
-                      type="text"
-                      name="approver"
-                      value={listItem.approver}
-                      orientation="vertical"
-                    />
-                    <Input
-                      type="text"
-                      name="title"
-                      value={listItem.approvalTitle}
-                      orientation="vertical"
-                    />
-                    <Input
-                      type="text"
-                      name="due_date"
-                      value={listItem.dueDate}
-                      orientation="vertical"
-                    />
-                    <Input
-                      type="text"
-                      name="original_assignee"
-                      value={listItem.assignedTo}
-                      orientation="vertical"
-                    />
-                  </div>
-                  <p>
-                    Once you have completed your review, click the button below
-                    to request an internal review from{" "}
-                    <strong>{listItem.approver}</strong>.
-                  </p>
-                  <TextArea
-                    rows="5"
-                    label="Comments"
-                    id="internal-review-tips"
-                    onChange={(e) => {
-                      setFeedbackFormContent(e.target.value);
-                    }}
-                  />
-                  <div className="internal-review-container">
-                    <Button
-                      variant="secondary"
-                      type="submit"
-                      label={sendForReviewButton}
-                    />
-                  </div>
-                </>
-              )}
-            </form>
+                    <div className="internal-review-container">
+                      {listItem.internalReview ? (
+                        <Button
+                          variant="secondary"
+                          type="submit"
+                          label={sendForReviewButton}
+                        />
+                      ) : (
+                        <>
+                          <Button
+                            variant="secondary"
+                            label="Changes Required"
+                          />
+                          <Button
+                            variant="secondary"
+                            type="submit"
+                            label="Approve Review"
+                          />{" "}
+                        </>
+                      )}
+                    </div>
+                  </>
+                )}
+              </form>
+            )}
           </div>
         </div>
       </aside>

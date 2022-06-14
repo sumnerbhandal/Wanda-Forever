@@ -275,6 +275,7 @@ const DocumentEditor = (props) => {
         toggleDrawer={() => drawerClose()}
         drawerState={drawerState}
         toggleCleanView={() => toggleCleanView()}
+        user={props.user}
       />
       <ToolTip
         className="playbook"

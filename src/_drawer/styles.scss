@@ -1,0 +1,227 @@
+.workflow-container {
+  width: 30rem;
+  border-right: 0.0625rem solid var(--robin-blue);
+  transition: all 0.3s ease-in-out, height 0s;
+  opacity: 1;
+  position: fixed;
+  overflow-y: scroll;
+  height: calc(100vh - 4rem);
+  left: -30rem;
+  background: #fff;
+  z-index: 1;
+  bottom: 0;
+
+  &.open {
+    left: 0;
+  }
+
+  .workflow-container-header {
+    height: 6rem;
+    padding: 1.5rem 1.5rem 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+      margin-block-start: 0;
+      margin-block-end: 0;
+    }
+
+    img {
+      cursor: pointer;
+    }
+  }
+
+  .assigned-to {
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    padding: 1.5rem 1.5rem 1.5rem 2rem;
+    background: #F3F3F3;
+    border-bottom: 0.0625rem solid var(--robin-blue);
+    
+    .name-container {
+      display: flex;
+      align-items: center;
+
+      .name-seed {
+        height: 2rem;
+        width: 2rem;
+        display: flex;
+        align-items: center;
+        background: #E6E9F1;
+        border-radius: 1rem;
+        justify-content: center;
+        margin-right: 0.5rem;
+        margin-left: 1rem;
+        // font-size: 0.75rem;
+      }
+    }
+  }
+  .tasks {
+    display: flex;
+    padding: 1.5rem;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+
+    .task-item {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+
+      .task-item-name {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 2.5rem;
+        width: 100%;
+
+        .approved-status {
+          height: 2.25rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 0.5rem 0.75rem;
+          transition: all 0.3s ease;
+          background: #F3F3F3;
+          border-radius: 50px;
+
+          &.complete {
+            background: #B0E2B2;
+          }
+        }
+      }
+
+      .feedback-form {
+        width: 100%;;
+        .error-container {
+          margin-top: 1rem;
+          align-items: flex-start;
+  
+          .flex-row {
+            align-items: flex-start;
+            label {
+              margin-top: 0.75rem;
+            }
+          }
+        }
+      }
+
+      .internal-review-container {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        margin-top: 1rem;
+
+        button {
+          img {
+            margin-left: 0.5rem;
+          }
+        }
+      }
+
+      .hidden-form-elements {
+        display: none;
+      }
+
+      .comments-submitted {
+        display: flex;
+        flex-wrap: wrap;
+        
+        p {
+          width: 100%;
+          margin-block-end: 0;
+        }
+      }
+
+      p {
+        margin-block-start: 0.5rem;
+        margin-block-end: 0.5rem;
+      }
+
+      .linked-contract {
+        border: 0.0625rem solid var(--robin-blue);
+        display: flex;
+        height: 2.5rem;
+        align-items: center;
+        padding: 0 0.75rem;
+        margin-top: 0.5rem;
+        border-radius: 0.25rem;
+        width: 100%;
+      }
+
+      .task-group {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+
+        .checkbox-group {
+          position: relative;
+          padding-left: 1.75rem;
+          width: 100%;
+          height: 2.5rem;
+          display: flex;
+          align-items: center;
+          border-bottom: 0.0625rem solid #E6E6E6;
+          cursor: pointer;
+
+          input[type=checkbox]:checked + span.strikethrough {
+            text-decoration: line-through;
+          }
+          input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+          }
+
+          span:before {
+            box-sizing: border-box;
+            content: "";
+            position: absolute;
+            top: 0.625rem;
+            left: 0;
+            height: 1.25rem;
+            width: 1.25rem;
+            background-color: #fff;
+            border-radius: 50%;
+            border: 0.0625rem solid var(--robin-blue);
+            transition: all 0.1s ease;
+          }
+
+          input:checked ~ span:before {
+            background-color: var(--robin-blue);
+          }
+
+          span:after {
+            content: "";
+            position: absolute;
+            display: none;
+          }
+          
+          input:checked ~ span:after {
+            display: block;
+            background-image: url(https://raw.githubusercontent.com/sumnerbhandal/font-repo/7eb0acb0879e262049ef904e0b01fb28dafd5d95/check-mark.svg);
+            background-repeat: no-repeat;
+          }
+
+          span:after {
+            left: 5px;
+            top: 16px;
+            width: 16px;
+            height: 12px;
+            transform: scale(1.125);
+          }
+        }
+      }
+    }
+  }
+}
+
+.open-workflow-container {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.5rem;
+}

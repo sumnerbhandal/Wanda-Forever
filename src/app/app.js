@@ -22,6 +22,7 @@ const SalesForm = lazy(() => import("../_modal/salesform.js"));
 const WorkFlowForm = lazy(() => import("../_modal/workflow.js"));
 // const FeedbackForm = lazy(() => import("../_forms/feedback-form"));
 import FeedbackForm from "../_forms/feedback-form";
+import WorkflowDrawer from "../_drawer/workflow-drawer";
 
 function PrivateRoute({ children, isAuthenticated, ...rest }) {
   return (
@@ -46,6 +47,7 @@ function PrivateRoute({ children, isAuthenticated, ...rest }) {
 export default function App() {
   const isAuthenticated = localStorage.getItem("authenticated");
   const [historyView, setHistoryView] = useState(false);
+  const [open, setOpen] = useState(false);
   const loader = (
     <div className="loading-container">
       <span className="loading"></span>
@@ -54,7 +56,7 @@ export default function App() {
 
   return (
     <main>
-      <FeedbackForm />
+      {/* <FeedbackForm /> */}
       <Router>
         <Routes>
           <Route exact path="/">
@@ -70,6 +72,7 @@ export default function App() {
                   homepage="/draft"
                   hubType="Drafting"
                   primaryCTA="BrowseTemplates"
+                  secondaryOnClick=""
                   user="SB"
                 />
                 <Canvas
@@ -84,7 +87,7 @@ export default function App() {
               <Route path="editor">
                 <Route path=":documentId">
                   <Suspense fallback={loader}>
-                    <Canvas page={<Drafting />} />
+                    <Canvas page={<Drafting user="SB" />} />
                   </Suspense>
                 </Route>
               </Route>
@@ -140,12 +143,18 @@ export default function App() {
                   classes="template-library"
                   user="JC"
                 />
+                <WorkflowDrawer
+                  feed="workflowStageOne"
+                  open={open}
+                  setOpen={setOpen}
+                />
                 <Canvas
                   page={
                     <>
                       <WorkflowTable
                         feed="workflow"
                         configureContract="false"
+                        setOpen={setOpen}
                       />
                     </>
                   }

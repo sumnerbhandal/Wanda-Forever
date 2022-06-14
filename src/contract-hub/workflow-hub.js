@@ -13,6 +13,7 @@ import Collapse from "@mui/material/Collapse";
 import "./styles.scss";
 import workflow from "./_workflow-feed/workflow";
 import workflowKB from "./_workflow-feed/workflowKB";
+import workflowJF from "./_workflow-feed/workflowJF";
 import guid from "../utils/guid";
 import DropDown from "../_input/dropDown/dropDown";
 import Input from "../_input/text/input";
@@ -171,16 +172,15 @@ function Row(props) {
         sx={{ "& > *": { borderBottom: "unset" } }}
       >
         <TableCell>
-          <Link
-            to={{
-              pathname: `./editor/${contractName
-                .replace(/\s/g, "-")
-                .toLowerCase()}_${row.contractRef}`,
-              state: { fileName: true }
+          <Button
+            variant="text"
+            // disabled
+            type="submit"
+            label={row.name}
+            onClick={() => {
+              props.setOpen(true);
             }}
-          >
-            {row.name}
-          </Link>
+          />
         </TableCell>
         <TableCell>
           <div className="name-container">{row.dueDate}</div>
@@ -255,6 +255,7 @@ export default function WorkflowTable(props) {
                     key={row.name}
                     row={row}
                     configureContract={props.configureContract}
+                    setOpen={props.setOpen}
                   />
                 );
               })}

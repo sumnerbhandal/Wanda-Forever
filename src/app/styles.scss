@@ -41,6 +41,18 @@ body {
   }
   a {
     color: var(--electric-blue);
+
+    &.disabled {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+  }
+  .pre-title {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 3%;
+    margin-block-start: 0;
+    margin-block-end: 0;
   }
   .redline {
     color: #BA0000;

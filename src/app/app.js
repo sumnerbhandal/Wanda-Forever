@@ -191,7 +191,7 @@ export default function App() {
                   user="KB"
                 />
                 <WorkflowDrawer
-                  feed="workflow-kb"
+                  feed="workflowStageOne"
                   open={open}
                   setOpen={setOpen}
                 />

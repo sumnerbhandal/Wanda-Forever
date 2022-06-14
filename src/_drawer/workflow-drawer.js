@@ -37,7 +37,7 @@ export const workflowKB = [
     assignedTo: "Kyra Byrne",
     linkedContract: "File Name",
     linkedContractUrl:
-      "https://wanda-forever.netlify.app/draft/repligen/editor/nda-two-way_nda",
+      "https://wanda-forever.netlify.app/draft/repligen/editor/nda-two-way_ndatwo",
     firstDraft: true,
     firstDraftContent: [
       // "Select an appropriate template",

@@ -13,7 +13,31 @@ export const workflowStageOne = [
     assignedToText: "Assigned To",
     assignedTo: "Kyra Byrne",
     linkedContract: "File Name",
+    linkedContractUrl:
+      "https://wanda-forever.netlify.app/draft/repligen/editor/non-disclosure-agreement_commercial",
     firstDraft: true,
+    firstDraftContent: [
+      "Select an appropriate template",
+      "Use contract request form information to draft contract"
+    ],
+    internalReview: true,
+    approver: "Jake Foster",
+    approvalTitle: "[Interal Review] Draft First Mark Up",
+    comments: "",
+    reviewApproved: false
+  }
+];
+
+export const workflowJF = [
+  {
+    title: "[Interal Review] Draft First Mark Up",
+    dueDate: "2022/06/14",
+    assignedToText: "Originally Assigned To",
+    assignedTo: "Kyra Byrne",
+    linkedContract: "File Name",
+    linkedContractUrl:
+      "https://wanda-forever.netlify.app/draft/repligen/editor/non-disclosure-agreement_commercial",
+    firstDraft: false,
     firstDraftContent: [
       "Select an appropriate template",
       "Use contract request form information to draft contract"
@@ -136,7 +160,7 @@ export default function WorkflowDrawer(props) {
                   Open Contract
                 </a>
               ) : (
-                <a href="">Open Contract</a>
+                <a href={listItem.linkedContractUrl}>Open Contract</a>
               )}
             </div>
             <div className="linked-contract">{listItem.linkedContract}</div>

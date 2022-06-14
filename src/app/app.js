@@ -121,6 +121,11 @@ export default function App() {
               <Route path="editor">
                 <Route path=":documentId">
                   <Suspense fallback={loader}>
+                    <WorkflowDrawer
+                      feed="workflowStageOne"
+                      open={open}
+                      setOpen={setOpen}
+                    />
                     <Canvas page={<Drafting />} />
                   </Suspense>
                 </Route>
@@ -190,6 +195,47 @@ export default function App() {
                     <>
                       <WorkflowTable
                         feed="workflow-kb"
+                        configureContract="false"
+                      />
+                    </>
+                  }
+                />
+              </Suspense>
+              <Route path="editor">
+                <Route path=":documentId">
+                  <Suspense fallback={loader}>
+                    <Canvas page={<Drafting />} />
+                  </Suspense>
+                </Route>
+              </Route>
+            </>
+          </PrivateRoute>
+          <PrivateRoute
+            exact
+            path="draft/workflow/jf"
+            isAuthenticated={isAuthenticated}
+          >
+            <>
+              <Suspense fallback={loader}>
+                <WorkflowHeader
+                  platform="Draft Contracts"
+                  homepage="/draft/workflow/kb"
+                  hubType="Drafting"
+                  primaryCTA="NewWorkflow"
+                  modalContent={<WorkFlowForm />}
+                  classes="template-library"
+                  user="JF"
+                />
+                <WorkflowDrawer
+                  feed="workflowStageOne"
+                  open={open}
+                  setOpen={setOpen}
+                />
+                <Canvas
+                  page={
+                    <>
+                      <WorkflowTable
+                        feed="workflow-jf"
                         configureContract="false"
                       />
                     </>

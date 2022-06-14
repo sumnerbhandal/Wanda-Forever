@@ -8,7 +8,7 @@
   height: calc(100vh - 4rem);
   left: -30rem;
   background: #fff;
-  z-index: 1;
+  z-index: 10;
   bottom: 0;
 
   &.open {
@@ -224,4 +224,5 @@
   position: fixed;
   bottom: 1.5rem;
   left: 1.5rem;
+  z-index: 9;
 }

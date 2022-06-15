@@ -217,7 +217,7 @@ const DocumentEditor = (props) => {
     },
     {
       id: "7",
-      html: "Robin Project",
+      html: "Project X",
       active: false
     }
   ]);

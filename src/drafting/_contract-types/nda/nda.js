@@ -449,7 +449,10 @@ const SupplierContract = (props) => {
         <div className="row">
           <div className="flex-100">
             <p>
-              <strong>For and on behalf of Company</strong>
+              <strong>
+                For and on behalf of{" "}
+                <Span id="1" configFields={props.configFields} />
+              </strong>
             </p>
           </div>
         </div>
@@ -482,7 +485,10 @@ const SupplierContract = (props) => {
         <div className="row">
           <div className="flex-100">
             <p>
-              <strong>For and on behalf of Client</strong>
+              <strong>
+                For and on behalf of{" "}
+                <Span id="4" configFields={props.configFields} />
+              </strong>
             </p>
           </div>
         </div>

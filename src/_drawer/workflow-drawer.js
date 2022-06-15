@@ -108,6 +108,15 @@ const ApproveReview = (
     />
   </>
 );
+const ReviewApproved = (
+  <>
+    Review Approved{" "}
+    <img
+      style={{ marginLeft: "0.5rem" }}
+      src="https://raw.githubusercontent.com/sumnerbhandal/font-repo/8a7ad2ffdae1d096f9e9cf5eb6d0dc3f00c1451b/fi-approve.svg"
+    />
+  </>
+);
 
 export default function WorkflowDrawer(props) {
   const form = useRef();
@@ -299,12 +308,21 @@ export default function WorkflowDrawer(props) {
                       <p>{feedbackFormContent}</p>
                     </div>
                     <div className="internal-review-container">
-                      <Button
-                        variant="secondary"
-                        type="submit"
-                        label={awaitingInternalReview}
-                        disabled
-                      />
+                      {listItem.internalReview ? (
+                        <Button
+                          variant="secondary"
+                          type="submit"
+                          label={awaitingInternalReview}
+                          disabled
+                        />
+                      ) : (
+                        <Button
+                          variant="secondary"
+                          type="submit"
+                          label={ReviewApproved}
+                          disabled
+                        />
+                      )}
                     </div>
                   </>
                 ) : (

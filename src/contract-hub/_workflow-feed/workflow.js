@@ -9,7 +9,7 @@ function createData(name, dueDate, status, assignedBy, contractRef) {
 }
 
 const workflow = [
-  createData("Draft First Mark Up", "2022/06/08", "Complete", "Sumner Bhandal")
+  createData("High Value Contract", "2022/06/08", "Complete", "Sumner Bhandal")
 ];
 
 export default workflow;

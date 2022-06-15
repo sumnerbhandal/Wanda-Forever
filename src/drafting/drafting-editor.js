@@ -157,17 +157,18 @@ const DocumentEditor = (props) => {
     },
     {
       id: "4",
-      html: "[CLIENT]",
+      html: "Repligen Corporation (USA)",
       active: false
     },
     {
       id: "5",
-      html: "[XXX]",
+      html: "SEC CIK #0000730272",
       active: false
     },
     {
       id: "6",
-      html: "[CLIENT ADDRESS]",
+      html:
+        "41 Seyon Street, Building 1, Suite 100, Waltham, Massachusetts 02453, USA",
       active: false
     },
     {
@@ -185,7 +186,7 @@ const DocumentEditor = (props) => {
     },
     {
       id: "1",
-      html: "Real Counterparty",
+      html: "Robin AI",
       active: false
     },
     {
@@ -195,22 +196,23 @@ const DocumentEditor = (props) => {
     },
     {
       id: "3",
-      html: "1 Example Road, EC2R 8EJ",
+      html: "8 Devonshire Square",
       active: false
     },
     {
       id: "4",
-      html: "123456",
+      html: "Repligen Corporation (USA)",
       active: false
     },
     {
       id: "5",
-      html: "123456",
+      html: "SEC CIK #0000730272",
       active: false
     },
     {
       id: "6",
-      html: "1 Example Road, EC2R 8EJ",
+      html:
+        "41 Seyon Street, Building 1, Suite 100, Waltham, Massachusetts 02453, USA",
       active: false
     },
     {

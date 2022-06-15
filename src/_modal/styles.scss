@@ -26,6 +26,8 @@
 
     &.template-library {
       width: 45rem;
+      overflow-x: hidden;
+      overflow-y: scroll;
 
       .select-template {
         display: flex;

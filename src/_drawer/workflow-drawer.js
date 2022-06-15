@@ -386,6 +386,7 @@ export default function WorkflowDrawer(props) {
                     <TextArea
                       rows="5"
                       label="Comments"
+                      name="comments"
                       id="internal-review-tips"
                       onChange={(e) => {
                         setFeedbackFormContent(e.target.value);

@@ -10,7 +10,7 @@ function createData(name, dueDate, status, assignedBy, contractRef) {
 
 const workflowJF = [
   createData(
-    "[Internal Review] Draft First Mark Up",
+    "[Internal Review] High Value Contract",
     "2022/03/12",
     "Complete",
     "Richard Robinson"

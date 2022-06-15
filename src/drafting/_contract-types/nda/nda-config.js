@@ -63,7 +63,7 @@ function Config(props) {
         onBlur={deactivateHighlight}
       />
       <Input
-        label="Counterparty?*"
+        label="Counterparty*"
         id="config-1"
         value={props.configFields[1].html}
         onChange={updateState}
@@ -72,7 +72,7 @@ function Config(props) {
         onBlur={deactivateHighlight}
       />
       <Input
-        label="Counterparty's registration number?*"
+        label="Counterparty's registration number*"
         id="config-2"
         value={props.configFields[2].html}
         onChange={updateState}
@@ -82,7 +82,7 @@ function Config(props) {
       />
       <TextArea
         rows="2"
-        label="Counterparty's address?*"
+        label="Counterparty's address*"
         id="config-3"
         value={props.configFields[3].html}
         onChange={updateState}
@@ -91,7 +91,7 @@ function Config(props) {
         onBlur={deactivateHighlight}
       />
       <Input
-        label="Client?*"
+        label="Client*"
         id="config-4"
         value={props.configFields[4].html}
         onChange={updateState}
@@ -100,7 +100,7 @@ function Config(props) {
         onBlur={deactivateHighlight}
       />
       <Input
-        label="Client's registration number?*"
+        label="Client's registration number*"
         id="config-5"
         value={props.configFields[5].html}
         onChange={updateState}
@@ -110,7 +110,7 @@ function Config(props) {
       />
       <TextArea
         rows="2"
-        label="Client's address?*"
+        label="Client's address*"
         id="config-6"
         value={props.configFields[6].html}
         onChange={updateState}

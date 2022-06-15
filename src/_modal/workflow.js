@@ -13,11 +13,23 @@ const templates = [
   {
     title: "Draft First Mark Up",
     description:
-      "A workflow to ensure that a first mark up is drafted correctly."
+      "A workflow to ensure that a first mark up is drafted correctly.",
+    img: ""
   },
   {
-    title: "Example Second Workflow",
-    description: "This is a description of what the template does."
+    title: "High Value Contract (Director's Approval)",
+    description: "High value contracts requiring sign off.",
+    img: ""
+  },
+  {
+    title: "Example Workflow 1",
+    description: "Example workflow description.",
+    img: ""
+  },
+  {
+    title: "Example Workflow 2",
+    description: "Example workflow description.",
+    img: ""
   }
 ];
 
@@ -92,7 +104,7 @@ const SalesForm = () => {
             ) : (
               <div className="workflow-configure-view">
                 <div className="template-preview">
-                  <img src="https://via.placeholder.com/300x180/CCD3E4/CCD3E4.png" />
+                  <img src="https://github.com/sumnerbhandal/font-repo/blob/main/Drafting-Thumbnail-3.png?raw=true" />
                   <div className="template-preview-details">
                     <h2>Draft First Mark Up</h2>
                     <p>
@@ -136,8 +148,9 @@ const SalesForm = () => {
                       option={[
                         "Please Select",
                         "Kyra Byrne",
-                        "Sumner Bhandal",
                         "Jake Foster",
+                        "Sumner Bhandal",
+
                         "Richard Robinson",
                         "James Clough"
                       ]}
@@ -160,8 +173,8 @@ const SalesForm = () => {
                         id="approval-assign-to"
                         option={[
                           "Please Select",
-                          "Sumner Bhandal",
                           "Jake Foster",
+                          "Sumner Bhandal",
                           "Richard Robinson",
                           "James Clough"
                         ]}
@@ -198,7 +211,7 @@ const SalesForm = () => {
                     setTemplateSelected(true);
                   }}
                 >
-                  <img src="https://via.placeholder.com/300x180/CCD3E4/CCD3E4.png" />
+                  <img src="https://github.com/sumnerbhandal/font-repo/blob/main/Drafting-Thumbnail-3.png?raw=true" />
                   <div className="template-preview-details">
                     <h3>{listItem.title}</h3>
                     <p>{listItem.description}</p>

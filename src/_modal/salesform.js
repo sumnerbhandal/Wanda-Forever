@@ -129,7 +129,18 @@ const SalesForm = () => {
                     id="sales-client-entity"
                     value="Latest"
                     orientation="vertical"
-                    option={["Please Select", "Client Entity Example"]}
+                    option={[
+                      "Please Select",
+                      "Repligen Corporation (USA)",
+                      "Repligen Europe B.V.",
+                      "Repligen GmbH",
+                      "Repligen Sweden",
+                      "Repligen Corporation (Ireland)",
+                      "Repligen Japan LLC",
+                      "Repligen Korea Co., Ltd.",
+                      "Repligen Singapore Pte. Ltd.",
+                      "Repligen India Pvt. Ltd."
+                    ]}
                     name="client_entity"
                   />
                   <TextArea

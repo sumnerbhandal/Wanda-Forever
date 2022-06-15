@@ -290,9 +290,11 @@ export default function WorkflowDrawer(props) {
                 {feedbackFormSent ? (
                   <>
                     <div className="comments-submitted">
-                      <strong>
-                        Approval requested from {listItem.approver}
-                      </strong>
+                      {listItem.internalReview ? (
+                        <strong>
+                          Approval requested from {listItem.approver}
+                        </strong>
+                      ) : null}
                       <p>Comments:</p>
                       <p>{feedbackFormContent}</p>
                     </div>

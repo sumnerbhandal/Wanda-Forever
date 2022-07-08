@@ -1,0 +1,22 @@
+.text-suggestion {
+  background: orange;
+  cursor: pointer;
+  outline: 4px solid orange;
+  border-radius: 2px;
+
+  &.actioned {
+    background: none;
+    outline: none;
+  }
+  
+  &:hover {
+
+  }
+}
+
+.popper-content {
+  background: white;
+  padding: 0 0.75rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--robin-blue);
+}

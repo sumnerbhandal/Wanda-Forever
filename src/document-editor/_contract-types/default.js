@@ -4,6 +4,7 @@ import Button from "../../_input/button/button";
 import PlaybookWhite from "../_assets/playbook-white.svg";
 import { debounce } from "lodash";
 import SettingsWhite from "../_assets/Settings-White.svg";
+import PopperSuggestion from "../../_popper/popper";
 
 function cursor_position() {
   var sel = document.getSelection();
@@ -233,15 +234,16 @@ const DefaultContract = (props) => {
               this Agreement:
               <ol type="a">
                 <li>
-                  “Representative” means and shall be limited to Recipient’s
-                  employees, officers, directors, attorneys and accountants,
-                  each of whom need to know the Confidential Information to
-                  assist the Recipient, (ii) is informed by the Recipient of the
-                  confidential nature of the Confidential Information and (iii)
-                  agrees to be bound by this Agreement or otherwise is subject
-                  to confidentiality duties or obligations to the Recipient that
-                  are no less restrictive than the terms and conditions of this
-                  Agreement;
+                  “Representative” means and{" "}
+                  <PopperSuggestion suggestedText="must" text="shall" /> be
+                  limited to Recipient’s employees, officers, directors,
+                  attorneys and accountants, each of whom need to know the
+                  Confidential Information to assist the Recipient, (ii) is
+                  informed by the Recipient of the confidential nature of the
+                  Confidential Information and (iii) agrees to be bound by this
+                  Agreement or otherwise is subject to confidentiality duties or
+                  obligations to the Recipient that are no less restrictive than
+                  the terms and conditions of this Agreement;
                 </li>
                 <li>
                   “Person” means any individual, corporation (including any
@@ -268,19 +270,20 @@ const DefaultContract = (props) => {
               Investment or Financing.
             </li>
             <li>
-              Notwithstanding the foregoing sentence, the Recipient shall be
-              permitted to disclose Confidential Information in accordance with
-              judicial or other governmental order or as required by a
-              non-waivable provisions of applicable law, provided that (i) the
-              Recipient gives the Disclosing Party reasonable notice prior to
-              such disclosure and (ii) the Recipient reasonably complies with
-              any applicable protective order or equivalent (iii) the Recipient
-              discloses no more than that portion of the Confidential
-              Information which, on the advice of the Recipient’s legal counsel,
-              is legally required to be disclosed and, (iv) upon the Disclosing
-              Party’s request, shall use commercially reasonable efforts to
-              obtain assurances from the applicable court or agency that such
-              Confidential Information will be afforded confidential treatment.
+              Notwithstanding the foregoing sentence, the Recipient{" "}
+              <span>shall</span> be permitted to disclose Confidential
+              Information in accordance with judicial or other governmental
+              order or as required by a non-waivable provisions of applicable
+              law, provided that (i) the Recipient gives the Disclosing Party
+              reasonable notice prior to such disclosure and (ii) the Recipient
+              reasonably complies with any applicable protective order or
+              equivalent (iii) the Recipient discloses no more than that portion
+              of the Confidential Information which, on the advice of the
+              Recipient’s legal counsel, is legally required to be disclosed
+              and, (iv) upon the Disclosing Party’s request, shall use
+              commercially reasonable efforts to obtain assurances from the
+              applicable court or agency that such Confidential Information will
+              be afforded confidential treatment.
             </li>
             <li>
               The Recipient shall not disclose any Confidential Information to

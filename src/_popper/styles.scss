@@ -1,8 +1,8 @@
 .text-suggestion {
-  background: orange;
+  background: var(--warning);
   cursor: pointer;
-  outline: 4px solid orange;
-  border-radius: 2px;
+  outline: 1px solid var(--warning);
+  border-radius: 1px;
 
   &.actioned {
     background: none;
@@ -14,9 +14,84 @@
   }
 }
 
-.popper-content {
-  background: white;
-  padding: 0 0.75rem;
-  border-radius: 0.25rem;
-  border: 1px solid var(--robin-blue);
+#simple-popper {
+  z-index: 1;
+
+  .popper-content {
+    width: 14rem;
+    color: var(--subtext);
+    transition: 0.5s ease-in-out;
+    transform-style: preserve-3d;
+
+    &.flipped {
+      transform: rotateY(180deg);
+    }
+
+
+    .popper-content-section {
+      background: white;
+      border-radius: 0.25rem;
+      height: fit-content;
+      border: 1px solid var(--robin-blue);
+      transition: 0.3s ease;
+
+      &.flipped {
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.4);
+      }
+
+      &.hidden {
+        pointer-events: none;
+      }
+
+
+
+      &.back {
+        transform: rotateY(180deg);
+        position: absolute;
+        width: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        top: 0;
+  
+        .popper-title, p {
+         justify-content: flex-start;
+         gap: 0.75rem;
+        }
+      }
+  
+      .popper-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 2.5rem;
+        padding: 0 0.75rem;
+  
+        p {
+          padding: 0;
+        }
+  
+        img {
+          cursor: pointer;
+        }
+      }
+
+      p {
+        margin-block-start: 0;
+        margin-block-end: 0;
+        padding: 0.75rem;
+        text-align: left;
+
+      }
+
+    }
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

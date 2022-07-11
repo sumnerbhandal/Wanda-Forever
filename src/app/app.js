@@ -319,7 +319,7 @@ export default function App() {
                 <Route path=":documentId">
                   <Suspense fallback={loader}>
                     <>
-                      <Canvas page={<DocumentEditor />} />
+                      <Canvas page={<DocumentEditor user="SB" />} />
                     </>
                   </Suspense>
                 </Route>

@@ -61,8 +61,6 @@ const ClauseIdentity = "Conidential Information";
 
 const DefaultContract = (props) => {
   const [previewOpen, setPreviewOpen] = useState(false);
-  const [existingText, setExistingText] = useState("");
-  const [newText, setNewText] = useState("");
 
   function ClosePreviewHighlight() {
     if (props.showProvision === false) {
@@ -82,70 +80,16 @@ const DefaultContract = (props) => {
     props.setActiveHover(true);
   };
 
-  useEffect(() => {
-    // const contents = document.querySelectorAll("[contenteditable]");
-
-    // for (let content of contents) {
-    //   content.addEventListener("keydown", function () {
-    //     setExistingText(content.innerHTML);
-    //   });
-    // }
-
-    var elm = document.querySelector("[contenteditable]");
-    // elm.addEventListener("click", printCaretPosition);
-    elm.addEventListener("keydown", printCaretPosition);
-
-    function printCaretPosition(e) {
-      const target = e.target;
-      const placeBeforeText = e.target.innerHTML.slice(0, cursor_position());
-      const placeAfterText = e.target.innerHTML.slice(cursor_position());
-
-      // console.log(placeBeforeText);
-
-      // target.innerHTML =
-      //   placeBeforeText +
-      //   '<span className="placeholder">Heya</span>' +
-      //   placeAfterText;
-
-      console.log(cursor_position(), "length:", this.textContent.trim().length);
-    }
-
-    function trackDelete(e) {
-      // console.log(e.charCode);
-      console.log(e.keyCode);
-      // const eventRef = e;
-      // const t = eventRef.target;
-      // if (eventRef.keyCode === 8) {
-      //   // for backspace key
-      //   console.log(t.value[t.selectionStart - 1]);
-      // } else if (eventRef.keyCode === 46) {
-      //   // for delete key
-      //   console.log(tvalue[t.selectionStart]);
-      // }
-    }
-  });
-
   const setContractFocused = () => {
     props.setHeaderFocused(false);
     props.setFooterFocused(false);
-    // props.setContractFocused(true);
   };
-
-  // const leaveEditableFocus = () => {
-  //   props.setHeaderFocused(false);
-  //   props.setFooterFocused(false);
-  //   props.setContractFocused(false);
-  // };
-
   return (
     <article
       id="contract"
       className="contract"
       contentEditable="true"
       onClick={setContractFocused}
-      // onBlur={leaveEditableFocus}
-
-      // onKeyDown={() => trackDelete()}
     >
       <h1 data-id="text-1" className="xl">
         NON-DISCLOSURE AND CONFIDENTIALITY AGREEMENT
@@ -153,13 +97,7 @@ const DefaultContract = (props) => {
 
       <p contentEditable="true">
         This Non-Disclosure Agreement (the “Agreement”), is made effective as of{" "}
-        <span
-          className="placeholder"
-          // onKeyDown={(e) => trackDelete(e)}
-          // onChange={() => trackDelete()}
-        >
-          [Day]
-        </span>{" "}
+        <span className="placeholder">[Day]</span>{" "}
         <span className="placeholder" contentEditable="true">
           [Month]
         </span>{" "}
@@ -235,8 +173,13 @@ const DefaultContract = (props) => {
               <ol type="a">
                 <li>
                   “Representative” means and{" "}
-                  <PopperSuggestion suggestedText="must" text="shall" /> be
-                  limited to Recipient’s employees, officers, directors,
+                  <PopperSuggestion
+                    suggestedText="must"
+                    text="shall"
+                    title="Position Change:"
+                    explainer="Overly broad clause, choose narrower language."
+                  />{" "}
+                  be limited to Recipient’s employees, officers, directors,
                   attorneys and accountants, each of whom need to know the
                   Confidential Information to assist the Recipient, (ii) is
                   informed by the Recipient of the confidential nature of the

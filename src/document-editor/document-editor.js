@@ -117,6 +117,7 @@ const DocumentEditor = (props) => {
           drawerState={drawerState}
           toggleCleanView={() => toggleCleanView()}
           setHistoryView={versionView}
+          user={props.user}
         />
       ) : (
         <EditorHeader
@@ -126,6 +127,7 @@ const DocumentEditor = (props) => {
           drawerState={drawerState}
           toggleCleanView={() => toggleCleanView()}
           setHistoryView={versionView}
+          user={props.user}
         />
       )}
       <div className="editor">

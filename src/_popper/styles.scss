@@ -4,7 +4,7 @@
   outline: 1px solid var(--warning);
   border-radius: 1px;
 
-  &.actioned {
+  &.actioned, &.hidden {
     background: none;
     outline: none;
     cursor: default;

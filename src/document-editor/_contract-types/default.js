@@ -177,7 +177,7 @@ const DefaultContract = (props) => {
                     suggestedText="must"
                     text="shall"
                     title="Position Change:"
-                    explainer="Overly broad clause, choose narrower language."
+                    explainer="Overly broad, choose narrower language."
                   />{" "}
                   be limited to Recipient’s employees, officers, directors,
                   attorneys and accountants, each of whom need to know the
@@ -211,7 +211,7 @@ const DefaultContract = (props) => {
                 suggestedText="must"
                 text="shall"
                 title="Position Change:"
-                explainer="Overly broad clause, choose narrower language."
+                explainer="Overly broad, choose narrower language."
               />{" "}
               not disclose any Confidential Information to any Person (other
               than to Representatives of Recipient as permitted hereunder) or
@@ -224,7 +224,7 @@ const DefaultContract = (props) => {
                 suggestedText="must"
                 text="shall"
                 title="Position Change:"
-                explainer="Overly broad clause, choose narrower language."
+                explainer="Overly broad, choose narrower language."
               />{" "}
               be permitted to disclose Confidential Information in accordance
               with judicial or other governmental order or as required by a
@@ -240,7 +240,7 @@ const DefaultContract = (props) => {
                 suggestedText="must"
                 text="shall"
                 title="Position Change:"
-                explainer="Overly broad clause, choose narrower language."
+                explainer="Overly broad, choose narrower language."
               />{" "}
               use commercially reasonable efforts to obtain assurances from the
               applicable court or agency that such Confidential Information will
@@ -252,7 +252,7 @@ const DefaultContract = (props) => {
                 suggestedText="must"
                 text="shall"
                 title="Position Change:"
-                explainer="Overly broad clause, choose narrower language."
+                explainer="Overly broad, choose narrower language."
               />{" "}
               not disclose any Confidential Information to third parties.
             </li>
@@ -262,7 +262,7 @@ const DefaultContract = (props) => {
                 suggestedText="must"
                 text="shall"
                 title="Position Change:"
-                explainer="Overly broad clause, choose narrower language."
+                explainer="Overly broad, choose narrower language."
               />{" "}
               expressly restrict the disclosure, possession, knowledge,
               development and use of Confidential Information to its partners,
@@ -277,7 +277,7 @@ const DefaultContract = (props) => {
                 suggestedText="must"
                 text="shall"
                 title="Position Change:"
-                explainer="Overly broad clause, choose narrower language."
+                explainer="Overly broad, choose narrower language."
               />{" "}
               take the best security precautions, at least as great as the
               precautions it takes to protect its own Confidential Information,
@@ -286,7 +286,7 @@ const DefaultContract = (props) => {
                 suggestedText="must"
                 text="shall"
                 title="Position Change:"
-                explainer="Overly broad clause, choose narrower language."
+                explainer="Overly broad, choose narrower language."
               />{" "}
               be permitted to disclose Confidential Information only (i) to the
               Recipient’s Representatives and (ii) in accordance with the
@@ -297,7 +297,7 @@ const DefaultContract = (props) => {
                 suggestedText="must"
                 text="shall"
                 title="Position Change:"
-                explainer="Overly broad clause, choose narrower language."
+                explainer="Overly broad, choose narrower language."
               />{" "}
               give advance notice to the Disclosing Party identifying such
               Person and providing details as to such Person’s creditworthiness
@@ -309,7 +309,7 @@ const DefaultContract = (props) => {
                 suggestedText="must"
                 text="shall"
                 title="Position Change:"
-                explainer="Overly broad clause, choose narrower language."
+                explainer="Overly broad, choose narrower language."
               />{" "}
               be deemed the Recipient for all purposes hereunder, and each of
               such Person’s Representatives{" "}
@@ -317,7 +317,7 @@ const DefaultContract = (props) => {
                 suggestedText="must"
                 text="shall"
                 title="Position Change:"
-                explainer="Overly broad clause, choose narrower language."
+                explainer="Overly broad, choose narrower language."
               />{" "}
               be deemed a Representative for all purposes hereunder.
             </li>

@@ -72,7 +72,7 @@ const PopperSuggestion = (props) => {
   return (
     <>
       <span
-        className={`text-suggestion ${changed ? "actioned" : null}`}
+        className={`text-suggestion ${changed ? "actioned" : ""}`}
         aria-describedby={id}
         onClick={!changed ? handleClick : null}
         onMouseOver={handlOnMouseEnter}

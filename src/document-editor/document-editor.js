@@ -87,6 +87,14 @@ const DocumentEditor = (props) => {
         placeholders[i].classList.add("hidden");
       }
     }
+    let findandreplace = document.getElementsByClassName("text-suggestion");
+    for (var k = 0; k < findandreplace.length; k++) {
+      if (findandreplace[k].classList.contains("hidden")) {
+        findandreplace[k].classList.remove("hidden");
+      } else {
+        findandreplace[k].classList.add("hidden");
+      }
+    }
     let redline = document.getElementsByClassName("redline");
     if (redline !== undefined) {
       for (var j = 0; j < redline.length; j++) {

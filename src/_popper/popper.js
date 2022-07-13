@@ -2,14 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Popper from "@mui/material/Popper";
 import Button from "../_input/button/button";
-import useToggle from "../utils/useToggle";
 import { debounce } from "lodash";
 import "./styles.scss";
 
 const PopperSuggestion = (props) => {
   const [anchorEl, setAnchorEl] = useState();
   const [changed, setChanged] = useState(false);
-  const [reason, showReason] = useToggle();
+  const [reason, showReason] = useState(false);
 
   const oldText = props.text;
   const newText = props.suggestedText;
@@ -21,7 +20,7 @@ const PopperSuggestion = (props) => {
   };
 
   const revealReason = () => {
-    showReason(!false);
+    reason ? showReason(false) : showReason(true);
   };
 
   const open = Boolean(anchorEl);
@@ -52,6 +51,7 @@ const PopperSuggestion = (props) => {
   function handlOnMouseLeave() {
     console.log("left");
     setAnchorEl(false);
+    showReason(false);
   }
   const debouncedHandleMouseLeave = debounce(() => handlOnMouseLeave(), 600);
 

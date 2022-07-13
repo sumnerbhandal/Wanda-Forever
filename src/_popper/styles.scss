@@ -7,21 +7,21 @@
   &.actioned {
     background: none;
     outline: none;
-  }
-  
-  &:hover {
-
+    cursor: default;
   }
 }
 
 #simple-popper {
   z-index: 1;
+  animation: appear 0.4s ease;
 
   .popper-content {
     width: 14rem;
     color: var(--subtext);
     transition: 0.5s ease-in-out;
     transform-style: preserve-3d;
+    // margin-top: -1.25rem;
+    // padding-top: 1.25rem;
 
     &.flipped {
       transform: rotateY(180deg);

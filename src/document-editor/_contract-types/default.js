@@ -206,58 +206,120 @@ const DefaultContract = (props) => {
           Recipient’s Obligations
           <ol>
             <li>
-              The Recipient and its Representatives shall not disclose any
-              Confidential Information to any Person (other than to
-              Representatives of Recipient as permitted hereunder) or use any
-              Confidential Information for any purpose other than evaluating the
-              Investment or Financing.
+              The Recipient and its Representatives{" "}
+              <PopperSuggestion
+                suggestedText="must"
+                text="shall"
+                title="Position Change:"
+                explainer="Overly broad clause, choose narrower language."
+              />{" "}
+              not disclose any Confidential Information to any Person (other
+              than to Representatives of Recipient as permitted hereunder) or
+              use any Confidential Information for any purpose other than
+              evaluating the Investment or Financing.
             </li>
             <li>
               Notwithstanding the foregoing sentence, the Recipient{" "}
-              <span>shall</span> be permitted to disclose Confidential
-              Information in accordance with judicial or other governmental
-              order or as required by a non-waivable provisions of applicable
-              law, provided that (i) the Recipient gives the Disclosing Party
-              reasonable notice prior to such disclosure and (ii) the Recipient
-              reasonably complies with any applicable protective order or
-              equivalent (iii) the Recipient discloses no more than that portion
-              of the Confidential Information which, on the advice of the
-              Recipient’s legal counsel, is legally required to be disclosed
-              and, (iv) upon the Disclosing Party’s request, shall use
-              commercially reasonable efforts to obtain assurances from the
+              <PopperSuggestion
+                suggestedText="must"
+                text="shall"
+                title="Position Change:"
+                explainer="Overly broad clause, choose narrower language."
+              />{" "}
+              be permitted to disclose Confidential Information in accordance
+              with judicial or other governmental order or as required by a
+              non-waivable provisions of applicable law, provided that (i) the
+              Recipient gives the Disclosing Party reasonable notice prior to
+              such disclosure and (ii) the Recipient reasonably complies with
+              any applicable protective order or equivalent (iii) the Recipient
+              discloses no more than that portion of the Confidential
+              Information which, on the advice of the Recipient’s legal counsel,
+              is legally required to be disclosed and, (iv) upon the Disclosing
+              Party’s request,{" "}
+              <PopperSuggestion
+                suggestedText="must"
+                text="shall"
+                title="Position Change:"
+                explainer="Overly broad clause, choose narrower language."
+              />{" "}
+              use commercially reasonable efforts to obtain assurances from the
               applicable court or agency that such Confidential Information will
               be afforded confidential treatment.
             </li>
             <li>
-              The Recipient shall not disclose any Confidential Information to
-              third parties.
+              The Recipient{" "}
+              <PopperSuggestion
+                suggestedText="must"
+                text="shall"
+                title="Position Change:"
+                explainer="Overly broad clause, choose narrower language."
+              />{" "}
+              not disclose any Confidential Information to third parties.
             </li>
             <li>
-              The Recipient shall expressly restrict the disclosure, possession,
-              knowledge, development and use of Confidential Information to its
-              partners, employees, consultants, professional advisors, agents,
+              The Recipient{" "}
+              <PopperSuggestion
+                suggestedText="must"
+                text="shall"
+                title="Position Change:"
+                explainer="Overly broad clause, choose narrower language."
+              />{" "}
+              expressly restrict the disclosure, possession, knowledge,
+              development and use of Confidential Information to its partners,
+              employees, consultants, professional advisors, agents,
               subcontractors and entities controlled by the Recipient or hired
               or engaged by the Recipient who have a legitimate need to know the
               Confidential Information (“Representatives”).
             </li>
             <li>
-              The Recipient and its Representatives shall take the best security
-              precautions, at least as great as the precautions it takes to
-              protect its own Confidential Information, to keep the Confidential
-              Information confidential. The Recipient shall be permitted to
-              disclose Confidential Information only (i) to the Recipient’s
-              Representatives and (ii) in accordance with the foregoing Section
-              2.2 and 2.4. If the Recipient wishes to disclose any Confidential
-              Information to a Person who is not a Representative, then (i) such
-              Recipient shall give advance notice to the Disclosing Party
-              identifying such Person and providing details as to such Person’s
-              creditworthiness and potential involvement in the Investment and
-              (ii) prior to disclosing any Confidential Information, such Person
-              must become a party to, and agree to be bound fully by, this
-              Agreement, in which event, such Person shall be deemed the
-              Recipient for all purposes hereunder, and each of such Person’s
-              Representatives shall be deemed a Representative for all purposes
-              hereunder.
+              The Recipient and its Representatives{" "}
+              <PopperSuggestion
+                suggestedText="must"
+                text="shall"
+                title="Position Change:"
+                explainer="Overly broad clause, choose narrower language."
+              />{" "}
+              take the best security precautions, at least as great as the
+              precautions it takes to protect its own Confidential Information,
+              to keep the Confidential Information confidential. The Recipient{" "}
+              <PopperSuggestion
+                suggestedText="must"
+                text="shall"
+                title="Position Change:"
+                explainer="Overly broad clause, choose narrower language."
+              />{" "}
+              be permitted to disclose Confidential Information only (i) to the
+              Recipient’s Representatives and (ii) in accordance with the
+              foregoing Section 2.2 and 2.4. If the Recipient wishes to disclose
+              any Confidential Information to a Person who is not a
+              Representative, then (i) such Recipient{" "}
+              <PopperSuggestion
+                suggestedText="must"
+                text="shall"
+                title="Position Change:"
+                explainer="Overly broad clause, choose narrower language."
+              />{" "}
+              give advance notice to the Disclosing Party identifying such
+              Person and providing details as to such Person’s creditworthiness
+              and potential involvement in the Investment and (ii) prior to
+              disclosing any Confidential Information, such Person must become a
+              party to, and agree to be bound fully by, this Agreement, in which
+              event, such Person{" "}
+              <PopperSuggestion
+                suggestedText="must"
+                text="shall"
+                title="Position Change:"
+                explainer="Overly broad clause, choose narrower language."
+              />{" "}
+              be deemed the Recipient for all purposes hereunder, and each of
+              such Person’s Representatives{" "}
+              <PopperSuggestion
+                suggestedText="must"
+                text="shall"
+                title="Position Change:"
+                explainer="Overly broad clause, choose narrower language."
+              />{" "}
+              be deemed a Representative for all purposes hereunder.
             </li>
           </ol>
         </li>

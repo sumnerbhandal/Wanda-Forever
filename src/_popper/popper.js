@@ -3,6 +3,7 @@ import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Popper from "@mui/material/Popper";
 import Button from "../_input/button/button";
 import useToggle from "../utils/useToggle";
+import { debounce } from "lodash";
 import "./styles.scss";
 
 const PopperSuggestion = (props) => {
@@ -27,8 +28,7 @@ const PopperSuggestion = (props) => {
   const id = open ? "simple-popper" : undefined;
 
   const closePopper = (event) => {
-    console.log(event.target);
-
+    console.log("left");
     if (event.target.classList.contains("text-suggestion")) {
       return;
     } else {
@@ -49,12 +49,34 @@ const PopperSuggestion = (props) => {
     setAnchorEl(false);
   };
 
+  function handlOnMouseLeave() {
+    console.log("left");
+    setAnchorEl(false);
+  }
+  const debouncedHandleMouseLeave = debounce(() => handlOnMouseLeave(), 600);
+
+  const handlOnMouseEnter = (event) => {
+    if (!changed) {
+      debouncedHandleMouseLeave.cancel();
+      console.log("entered");
+      if (anchorEl === undefined || anchorEl === false) {
+        handleClick(event);
+      } else {
+        return;
+      }
+    } else {
+      return;
+    }
+  };
+
   return (
     <>
       <span
         className={`text-suggestion ${changed ? "actioned" : null}`}
         aria-describedby={id}
-        onClick={handleClick}
+        onClick={!changed ? handleClick : null}
+        onMouseOver={handlOnMouseEnter}
+        onMouseLeave={() => debouncedHandleMouseLeave()}
       >
         {text}
       </span>
@@ -87,11 +109,13 @@ const PopperSuggestion = (props) => {
               }
             }
           ]}
+          onMouseOver={handlOnMouseEnter}
+          onMouseLeave={() => debouncedHandleMouseLeave()}
         >
-          {/* <div className="popper-content" wrapperRef={wrapperRef}> */}
           <div
             id="popper-content"
             className={`popper-content ${reason ? "flipped" : ""}`}
+            contentEditable="false"
           >
             <div
               className={`popper-content-section ${

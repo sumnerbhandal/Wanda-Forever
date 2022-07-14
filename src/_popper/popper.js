@@ -11,7 +11,6 @@ const PopperSuggestion = (props) => {
   const [reason, showReason] = useState(false);
 
   const oldText = props.text;
-  const newText = props.suggestedText;
 
   const [text, setText] = useState(oldText);
 
@@ -35,21 +34,18 @@ const PopperSuggestion = (props) => {
     }
   };
 
-  const updatedText = (
-    <>
-      <span className="redline">{oldText}</span>
-      <span className="blueline">{newText}</span>
-    </>
-  );
-
-  const updateText = (props) => {
-    setText(updatedText);
+  const updateText = (event) => {
+    setText(
+      <>
+        <span className="redline">{oldText}</span>
+        <span className="blueline">{event.target.innerHTML}</span>
+      </>
+    );
     setChanged(true);
     setAnchorEl(false);
   };
 
   function handlOnMouseLeave() {
-    console.log("left");
     setAnchorEl(false);
     showReason(false);
   }
@@ -58,7 +54,6 @@ const PopperSuggestion = (props) => {
   const handlOnMouseEnter = (event) => {
     if (!changed) {
       debouncedHandleMouseLeave.cancel();
-      console.log("entered");
       if (anchorEl === undefined || anchorEl === false) {
         handleClick(event);
       } else {
@@ -130,12 +125,26 @@ const PopperSuggestion = (props) => {
                   onClick={revealReason}
                 />
               </div>
-              <Button
-                contentEditable="false"
-                variant="text menu-item"
-                label={props.suggestedText}
-                onClick={updateText}
-              />
+              {typeof props.suggestedText == "string" ? (
+                <Button
+                  contentEditable="false"
+                  variant="text menu-item"
+                  label={props.suggestedText}
+                  onClick={updateText}
+                />
+              ) : (
+                <>
+                  {props.suggestedText.map((item, key) => (
+                    <Button
+                      key={key}
+                      contentEditable="false"
+                      variant="text menu-item"
+                      label={item}
+                      onClick={updateText}
+                    />
+                  ))}
+                </>
+              )}
             </div>
             <div
               className={`popper-content-section back ${

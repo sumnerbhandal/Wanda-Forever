@@ -54,6 +54,7 @@
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
         top: 0;
+        min-height: 100%;
   
         .popper-title, p {
          justify-content: flex-start;

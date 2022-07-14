@@ -102,8 +102,17 @@ const DefaultContract = (props) => {
           [Month]
         </span>{" "}
         2020 (the “Effective Date”), by and between, on the one hand,{" "}
-        <span className="placeholder">[Investor/Funder]</span> (“Recipient”),
-        incorporated by virtue of notarial deed executed on{" "}
+        <PopperSuggestion
+          suggestedText={[
+            "An Investor Name",
+            "Another Investor Name",
+            "3rd Investor Name"
+          ]}
+          text="[Investor/Funder]"
+          title="Client Location:"
+          explainer="Choose from a list of existing investors."
+        />{" "}
+        (“Recipient”), incorporated by virtue of notarial deed executed on{" "}
         <span className="placeholder">[ ]</span> before the Notary of [ ] with
         protocol number <span className="placeholder">[ ]</span>, with Tax
         Identification Number [ ] and having its registered office at{" "}

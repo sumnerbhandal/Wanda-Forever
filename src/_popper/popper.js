@@ -136,18 +136,6 @@ const PopperSuggestion = (props) => {
                 label={props.suggestedText}
                 onClick={updateText}
               />
-              <Button
-                contentEditable="false"
-                variant="text menu-item"
-                label={props.suggestedText}
-                onClick={updateText}
-              />
-              <Button
-                contentEditable="false"
-                variant="text menu-item"
-                label={props.suggestedText}
-                onClick={updateText}
-              />
             </div>
             <div
               className={`popper-content-section back ${

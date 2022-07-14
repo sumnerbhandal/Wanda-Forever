@@ -64,6 +64,11 @@ const PopperSuggestion = (props) => {
     }
   };
 
+  const dismissSuggestion = () => {
+    setChanged(true);
+    setAnchorEl(false);
+  };
+
   return (
     <>
       <span
@@ -119,11 +124,18 @@ const PopperSuggestion = (props) => {
             >
               <div className="popper-title">
                 <p>{props.title}</p>
-                <img
-                  alt="info"
-                  src="https://raw.githubusercontent.com/sumnerbhandal/font-repo/d20d2a5982a590f604cddd654f00376303401cab/fi_info.svg"
-                  onClick={revealReason}
-                />
+                <div className="actions">
+                  <img
+                    alt="info"
+                    src="https://raw.githubusercontent.com/sumnerbhandal/font-repo/d20d2a5982a590f604cddd654f00376303401cab/fi_info.svg"
+                    onClick={revealReason}
+                  />
+                  <img
+                    alt="dismiss"
+                    src="https://raw.githubusercontent.com/sumnerbhandal/font-repo/48771af2cdcdecd7e7e295f4dd9d1757215ec00c/fi_slash.svg"
+                    onClick={dismissSuggestion}
+                  />
+                </div>
               </div>
               {typeof props.suggestedText == "string" ? (
                 <Button

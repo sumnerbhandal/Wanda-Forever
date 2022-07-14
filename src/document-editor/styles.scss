@@ -336,6 +336,15 @@
         .blueline {
           color: #005AAF;
           text-decoration: underline;
+
+          &.hidden {
+            color: var(--robin-blue);
+            text-decoration: none;
+
+            &:after {
+              display: none;
+            }
+          }
         }
 
           .preview-label-menu {

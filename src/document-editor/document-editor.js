@@ -105,6 +105,16 @@ const DocumentEditor = (props) => {
         }
       }
     }
+    let blueline = document.getElementsByClassName("blueline");
+    if (blueline !== undefined) {
+      for (var l = 0; l < blueline.length; l++) {
+        if (blueline[l].classList.contains("hidden")) {
+          blueline[l].classList.remove("hidden");
+        } else {
+          blueline[l].classList.add("hidden");
+        }
+      }
+    }
   }
   const [historyView, setHistoryView] = useState(false);
 

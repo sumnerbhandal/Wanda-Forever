@@ -46,8 +46,8 @@ const PopperSuggestion = (props) => {
   };
 
   function handlOnMouseLeave() {
-    // setAnchorEl(false);
-    // showReason(false);
+    setAnchorEl(false);
+    showReason(false);
   }
   const debouncedHandleMouseLeave = debounce(() => handlOnMouseLeave(), 600);
 

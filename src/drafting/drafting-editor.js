@@ -157,7 +157,7 @@ const DocumentEditor = (props) => {
     },
     {
       id: "4",
-      html: "Repligen Corporation (USA)",
+      html: "Robin Corporation (USA)",
       active: false
     },
     {
@@ -201,7 +201,7 @@ const DocumentEditor = (props) => {
     },
     {
       id: "4",
-      html: "Repligen Corporation (USA)",
+      html: "Robin Corporation (USA)",
       active: false
     },
     {

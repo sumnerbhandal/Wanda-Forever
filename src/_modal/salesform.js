@@ -131,15 +131,15 @@ const SalesForm = () => {
                     orientation="vertical"
                     option={[
                       "Please Select",
-                      "Repligen Corporation (USA)",
-                      "Repligen Europe B.V.",
-                      "Repligen GmbH",
-                      "Repligen Sweden",
-                      "Repligen Corporation (Ireland)",
-                      "Repligen Japan LLC",
-                      "Repligen Korea Co., Ltd.",
-                      "Repligen Singapore Pte. Ltd.",
-                      "Repligen India Pvt. Ltd."
+                      "Robin Corporation (USA)",
+                      "Robin Europe B.V.",
+                      "Robin GmbH",
+                      "Robin Sweden",
+                      "Robin Corporation (Ireland)",
+                      "Robin Japan LLC",
+                      "Robin Korea Co., Ltd.",
+                      "Robin Singapore Pte. Ltd.",
+                      "Robin India Pvt. Ltd."
                     ]}
                     name="client_entity"
                   />

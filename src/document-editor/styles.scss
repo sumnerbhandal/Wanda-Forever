@@ -308,15 +308,15 @@
           color:  #BA0000;
           
           &:after {
-            position: absolute;
-            right: calc(100% - 640px);
-            background: #BA0000;
-            width: 0.125rem;
-            height: 100%;
-            content: "";
-            bottom: 0;
-            color:  #BA0000;
-            text-decoration: line-through;
+            // position: absolute;
+            // right: calc(100% - 640px);
+            // background: #BA0000;
+            // width: 0.125rem;
+            // height: 100%;
+            // content: "";
+            // bottom: 0;
+            // color:  #BA0000;
+            // text-decoration: line-through;
           }
 
           &.new-content-example {

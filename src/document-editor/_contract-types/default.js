@@ -128,7 +128,9 @@ const DefaultContract = (props) => {
         Number <span className="placeholder">[•]</span>; represented by{" "}
         <span className="placeholder">[•]</span>.
       </p>
-
+      <span style={{ width: "100%" }} className="redline">
+        <br />¶<br />
+      </span>
       <p>
         Recipient and <span className="placeholder">[X]</span> may be referred
         to herein together as the “Parties” and individually as a “Party”.

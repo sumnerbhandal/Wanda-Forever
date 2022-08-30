@@ -250,15 +250,15 @@
 
           .redline {
             position: relative;
-            &:after {
-              position: absolute;
-              left: -6.5rem;
-              background: #BA0000;
-              width: 0.125rem;
-              height: 100%;
-              content: "";
-              bottom: 0;
-            }
+            // &:after {
+            //   position: absolute;
+            //   left: -6.5rem;
+            //   background: #BA0000;
+            //   width: 0.125rem;
+            //   height: 100%;
+            //   content: "";
+            //   bottom: 0;
+            // }
           }
         }
 

@@ -68,7 +68,7 @@ export default function Tags() {
         options={provisions.map((option) => option.title)}
         // defaultValue={[provisions[12].title, provisions[13].title]}
         freeSolo
-        renderTags={(value: readonly string[], getTagProps) => (
+        renderTags={(value: string[], getTagProps) => (
           <div className="tag-container">
             {value.map((option: string, index: number) => (
               <CustomChip

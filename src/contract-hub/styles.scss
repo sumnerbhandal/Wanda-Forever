@@ -7,16 +7,27 @@
   .results-container {
     display: flex;
     min-width: 400px;
+    height: 100%;
+    width: calc(100% - 2rem);
 
     .results {
       width: 30%;
+      flex-grow: 1;
       border-right: 0.0625rem solid var(--robin-blue);
 
+      h1, p {
+        padding: 0 20px;
+      }
     }
 
     .contract-view {
       width: 60%;
       padding: 60px;
+      max-width: 888px;
+
+      article {
+        max-width: 768px;
+      }
 
     }
 

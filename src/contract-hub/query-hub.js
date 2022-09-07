@@ -291,9 +291,8 @@ export default function QueryTable(props) {
       ) : (
         <div className="results-container">
           <div className="results">
-            <h1>
-              {activeTags.length} -{activeTags}
-            </h1>
+            <h1>{activeTags.length} Label(s) Selected</h1>
+            <p>({activeTags})</p>
           </div>
           <div className="contract-view">
             <DefaultContract />

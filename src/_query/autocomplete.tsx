@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Chip from "@mui/material/Chip";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
@@ -24,9 +24,20 @@ const provisions = [
   { title: "Company Obligations", type: "select" }
 ];
 
+const closeIcon = <img alt="close-button" src={Close} />;
+
+// const CloseIcon = (props) => {
+//   return <img alt="close-button" src={Close} />;
+// };
+
 const CustomChip = (props) => {
+  function LastChip() {
+    props.valueTotal === 1
+      ? console.log("last one")
+      : console.log("loads more");
+  }
   return (
-    <div className="custom-tag">
+    <div className="custom-tag" onClick={LastChip}>
       {provisions.find((record) => record.title === props.value) ===
       undefined ? (
         <>
@@ -40,7 +51,12 @@ const CustomChip = (props) => {
             label={`${props.label}:`}
             {...props.getTagProps}
           />
-          <select name="date">
+          <select
+            name="date"
+            onMouseDown={(event) => {
+              event.stopPropagation();
+            }}
+          >
             <option value="any">any</option>
             {/* <option value="is">is</option>
             <option value="is before">is before</option>
@@ -57,9 +73,7 @@ const CustomChip = (props) => {
   );
 };
 
-const closeIcon = <img alt="close-button" src={Close} />;
-
-export default function Tags() {
+export default function Tags(props) {
   return (
     <Stack spacing={3} sx={{ width: "47.5rem" }}>
       <Autocomplete
@@ -70,19 +84,29 @@ export default function Tags() {
         freeSolo
         renderTags={(value: string[], getTagProps) => (
           <div className="tag-container">
+            {value.length > 0
+              ? props.setActiveTags(value)
+              : props.setActiveTags(null)}
+            {console.log(value)}
             {value.map((option: string, index: number) => (
               <CustomChip
                 value={option}
                 getTagProps={getTagProps({ index })}
                 label={option}
+                valueTotal={value.length}
               />
             ))}
           </div>
         )}
+        onClose={console.log(props.activeTags)}
         renderInput={(params) => (
           <TextField {...params} placeholder="Start a Query" />
         )}
+        // onChange={(value: string[]) => setTagValues(value)}
       />
+      {/* {tagValues !== undefined
+        ? tagValues.map((item, index) => <h1>{item}</h1>)
+        : null} */}
     </Stack>
   );
 }

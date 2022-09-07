@@ -4,6 +4,25 @@
   display: flex;
   flex-wrap: wrap;
 
+  .results-container {
+    display: flex;
+    min-width: 400px;
+
+    .results {
+      width: 30%;
+      border-right: 0.0625rem solid var(--robin-blue);
+
+    }
+
+    .contract-view {
+      width: 60%;
+      padding: 60px;
+
+    }
+
+
+  }
+
 
   .query-bar {
     width: 100%;

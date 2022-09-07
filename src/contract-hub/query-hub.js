@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -22,6 +22,7 @@ import Button from "../_input/button/button";
 import decorativeAngle from "./_assets/Decoration.svg";
 import { Link } from "react-router-dom/index";
 import Tags from "../_query/autocomplete";
+import DefaultContract from "../_query/_contracts/default";
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -213,6 +214,7 @@ export default function QueryTable(props) {
   const [orderBy, setOrderBy] = React.useState("name");
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [activeTags, setActiveTags] = useState();
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
@@ -238,52 +240,66 @@ export default function QueryTable(props) {
   return (
     <>
       <div className="query-bar">
-        <Tags />
+        <Tags activeTags={activeTags} setActiveTags={setActiveTags} />
       </div>
-      <div className="contract-hub query">
-        <h1>Uploaded Documents ({feed.length})</h1>
-        <TableContainer>
-          <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
-            <EnhancedTableHead
-              order={order}
-              orderBy={orderBy}
-              onRequestSort={handleRequestSort}
-              rowCount={feed.length}
-            />
-            <TableBody>
-              {stableSort(feed, getComparator(order, orderBy))
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row, index) => {
-                  return (
-                    <Row
-                      key={row.name}
-                      row={row}
-                      configureContract={props.configureContract}
-                    />
-                  );
-                })}
-              {emptyRows > 0 && (
-                <TableRow
-                  style={{
-                    height: 53 * emptyRows
-                  }}
-                >
-                  <TableCell colSpan={6} />
-                </TableRow>
-              )}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <TablePagination
-          rowsPerPageOptions={[10, 25, 50]}
-          component="div"
-          count={feed.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
-      </div>
+      {console.log(activeTags)}
+      {activeTags === undefined || activeTags.length === 0 ? (
+        <div className="contract-hub query">
+          <h1>Uploaded Documents ({feed.length})</h1>
+          <TableContainer>
+            <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
+              <EnhancedTableHead
+                order={order}
+                orderBy={orderBy}
+                onRequestSort={handleRequestSort}
+                rowCount={feed.length}
+              />
+              <TableBody>
+                {stableSort(feed, getComparator(order, orderBy))
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((row, index) => {
+                    return (
+                      <Row
+                        key={row.name}
+                        row={row}
+                        configureContract={props.configureContract}
+                      />
+                    );
+                  })}
+                {emptyRows > 0 && (
+                  <TableRow
+                    style={{
+                      height: 53 * emptyRows
+                    }}
+                  >
+                    <TableCell colSpan={6} />
+                  </TableRow>
+                )}
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <TablePagination
+            rowsPerPageOptions={[10, 25, 50]}
+            component="div"
+            count={feed.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+        </div>
+      ) : (
+        <div className="results-container">
+          <div className="results">
+            <h1>
+              {activeTags.length} -{activeTags}
+            </h1>
+          </div>
+          <div className="contract-view">
+            <DefaultContract />
+          </div>
+        </div>
+      )}
     </>
   );
 }

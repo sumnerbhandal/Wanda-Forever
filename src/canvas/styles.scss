@@ -4,6 +4,11 @@
   justify-content: flex-end;
   margin-top: 4rem;
 
+  &.query {
+    width: calc(100vw - 184px);
+    margin-left: auto;
+  }
+
   .page {
     width: calc(100%);
 

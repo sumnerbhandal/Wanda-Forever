@@ -5,7 +5,7 @@ const Canvas = (props) => {
   // const [drawerState, setDrawerState] = useState(false);
 
   return (
-    <div className="canvas">
+    <div className={`canvas ${props.className}`}>
       <div className="page">{props.page}</div>
     </div>
   );

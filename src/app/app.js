@@ -9,6 +9,7 @@ import {
 import "./styles.scss";
 const EnhancedTable = lazy(() => import("../contract-hub/contract-hub"));
 const WorkflowTable = lazy(() => import("../contract-hub/workflow-hub"));
+const QueryTable = lazy(() => import("../contract-hub/query-hub"));
 const TemplateSelect = lazy(() => import("../contract-hub/template"));
 const DocumentEditor = lazy(() => import("../document-editor/document-editor"));
 const Drafting = lazy(() => import("../drafting/drafting-editor"));
@@ -16,7 +17,9 @@ const LoginPage = lazy(() => import("../login/login"));
 const NoMatch = lazy(() => import("./no-match"));
 const Canvas = lazy(() => import("../canvas/canvas"));
 const HubHeader = lazy(() => import("../_header/hub-header"));
+const QueryHubHeader = lazy(() => import("../_header/query-hub-header"));
 const WorkflowHeader = lazy(() => import("../_header/workflow-header"));
+const SideBarNav = lazy(() => import("../_sidebar/query-sidenav"));
 const HistoryHeader = lazy(() => import("../_header/version-header"));
 const SalesForm = lazy(() => import("../_modal/salesform.js"));
 const WorkFlowForm = lazy(() => import("../_modal/workflow.js"));
@@ -68,7 +71,7 @@ export default function App() {
             <>
               <Suspense fallback={loader}>
                 <HubHeader
-                  platform="Draft Contracts"
+                  platform="Draft"
                   homepage="/draft"
                   hubType="Drafting"
                   primaryCTA="BrowseTemplates"
@@ -101,7 +104,7 @@ export default function App() {
             <>
               <Suspense fallback={loader}>
                 <HubHeader
-                  platform="Draft Contracts"
+                  platform="Draft"
                   homepage="/draft/repligen"
                   hubType="Drafting"
                   primaryCTA="BrowseTemplates"
@@ -140,7 +143,7 @@ export default function App() {
             <>
               <Suspense fallback={loader}>
                 <WorkflowHeader
-                  platform="Draft Contracts"
+                  platform="Draft"
                   homepage="/draft/repligen"
                   hubType="Drafting"
                   primaryCTA="NewWorkflow"
@@ -182,7 +185,7 @@ export default function App() {
             <>
               <Suspense fallback={loader}>
                 <WorkflowHeader
-                  platform="Draft Contracts"
+                  platform="Draft"
                   homepage="/draft/workflow/kb"
                   hubType="Drafting"
                   primaryCTA="NewWorkflow"
@@ -222,7 +225,7 @@ export default function App() {
               <Route path="2">
                 <Suspense fallback={loader}>
                   <WorkflowHeader
-                    platform="Draft Contracts"
+                    platform="Draft"
                     homepage="/draft/workflow/kb"
                     hubType="Drafting"
                     primaryCTA="NewWorkflow"
@@ -258,7 +261,7 @@ export default function App() {
             <>
               <Suspense fallback={loader}>
                 <WorkflowHeader
-                  platform="Draft Contracts"
+                  platform="Draft"
                   homepage="/draft/workflow/kb"
                   hubType="Drafting"
                   primaryCTA="NewWorkflow"
@@ -302,7 +305,7 @@ export default function App() {
               <Suspense fallback={loader}>
                 <>
                   <HubHeader
-                    platform="Review Contracts"
+                    platform="Review"
                     homepage="/review"
                     hubType="Reviewing"
                     primaryCTA="UploadContract"
@@ -323,6 +326,79 @@ export default function App() {
                     </>
                   </Suspense>
                 </Route>
+              </Route>
+            </>
+          </PrivateRoute>
+          <PrivateRoute exact path="query" isAuthenticated={isAuthenticated}>
+            <>
+              element={<Navigate to="/query/search" replace />}
+              <Route path="search">
+                <Suspense fallback={loader}>
+                  <>
+                    <QueryHubHeader
+                      platform="Query"
+                      homepage="/query"
+                      hubType="Query Contracts"
+                      secondaryCTA="UploadContract"
+                      user="SB"
+                    />
+                    <SideBarNav />
+                    <Canvas
+                      className="query"
+                      page={
+                        <QueryTable feed="query" configureContract="true" />
+                      }
+                    />
+                  </>
+                </Suspense>
+              </Route>
+              <Route path="users">
+                <Suspense fallback={loader}>
+                  <QueryHubHeader
+                    platform="Query"
+                    homepage="/query"
+                    hubType="Query Contracts"
+                    secondaryCTA="UploadContract"
+                    user="SB"
+                  />
+                  <SideBarNav />
+                  <>Here are the users</>
+                </Suspense>
+              </Route>
+              <Route path="label">
+                <Route path=":documentId">
+                  <Suspense fallback={loader}>
+                    <>
+                      <Canvas page={<DocumentEditor user="SB" />} />
+                    </>
+                  </Suspense>
+                </Route>
+              </Route>
+              <Route path="groups">
+                <Suspense fallback={loader}>
+                  <QueryHubHeader
+                    platform="Query"
+                    homepage="/query"
+                    hubType="Query Contracts"
+                    secondaryCTA="UploadContract"
+                    user="SB"
+                  />
+                  <SideBarNav />
+                  <>Here are the users</>
+                </Suspense>
+              </Route>
+              <Route path="reminders">
+                <Suspense fallback={loader}>
+                  <QueryHubHeader
+                    platform="Query"
+                    homepage="/query"
+                    hubType="Query Contracts"
+                    secondaryCTA="UploadContract"
+                    user="SB"
+                  />
+                  <SideBarNav />
+                  <>Here are the users</>
+                </Suspense>
               </Route>
             </>
           </PrivateRoute>

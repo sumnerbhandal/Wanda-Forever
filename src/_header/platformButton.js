@@ -5,6 +5,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom/index";
 import Draft from "./_assets/Draft.svg";
 import Review from "./_assets/Review.svg";
+import Query from "./_assets/Query.svg";
 
 export default function PositionedMenu(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -53,13 +54,16 @@ export default function PositionedMenu(props) {
       >
         <MenuItem onClick={openDraft}>
           <img alt="download icon" src={Draft} />
-          Draft Contracts
+          Draft
         </MenuItem>
         <MenuItem onClick={openReview}>
           <img alt="download icon" src={Review} />
-          Review Contracts
+          Review
         </MenuItem>
-        {/* <MenuItem onClick={() => navigate("/query")}>Queryable Contracts (QC)</MenuItem> */}
+        <MenuItem onClick={() => navigate("/query")}>
+          <img alt="download icon" src={Query} />
+          Query
+        </MenuItem>
       </Menu>
     </div>
   );

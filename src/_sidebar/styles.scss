@@ -1,0 +1,41 @@
+nav {
+  width: 184px;
+  height: calc(100vh - 4rem);
+  position: fixed;
+  top: 4rem;
+  left: 0;
+  z-index: 1;
+  border-right: 0.0625rem solid var(--robin-blue);
+  background: white;
+  padding: 2rem 0;
+  gap: 0.25rem;
+
+  a {
+    &.side-link {
+      height: 2.5rem;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      padding: 0 2rem;
+      color: var(--robin-blue);
+      font-weight: bold;
+      background: white;
+      transition: 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      &:hover {
+        background: rgba(230, 233, 241, 1);
+      }
+      &:active, &.selected {
+        background: rgba(204, 211, 228, 1);
+      }
+      &:disabled {
+        opacity: 0.4;
+      }
+      img {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+
+}

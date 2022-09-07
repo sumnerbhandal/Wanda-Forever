@@ -200,8 +200,9 @@ header {
   
   .MuiPopover-paper {
     border: 0.0625rem solid #2A344F;
-    transform: translate(0, 2.75rem) !important;
+    transform: translate(-1.5rem, 2.75rem) !important;
     overflow: visible;
+    width: 120px;
 
     ul {
       padding: 0;
@@ -247,6 +248,14 @@ header {
         font-weight: 700;
         box-sizing: border-box;
         font-family: "Lato", sans-serif;
+
+        &:hover {
+          background: #e6e9f1;
+        }
+
+        &:active {
+          background: #ccd3e4;
+        }
 
 
         img {

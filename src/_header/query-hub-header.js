@@ -2,39 +2,15 @@ import * as React from "react";
 import "./styles.scss";
 import Button from "../_input/button/button";
 import Robin from "./_assets/Robin-Logo-Bird.svg";
-import Folder from "./_assets/Folder.svg";
-import Upload from "./_assets/Upload.svg";
-import File from "./_assets/File.svg";
-import Workflow from "./_assets/Workflow.svg";
+import UploadDark from "./_assets/Upload-Dark.svg";
 import PlatformButton from "./platformButton";
-import Templates from "./_assets/Templates.svg";
 import { Link } from "react-router-dom/index";
 import { useNavigate } from "react-router-dom/index";
 import Dialog from "@mui/material/Dialog";
 
-const SeeAllGroups = (
+const UploadContractDark = (
   <>
-    See All Groups <img src={Folder} />
-  </>
-);
-const RequestContract = (
-  <>
-    Request Contract <img src={File} />
-  </>
-);
-const Workflows = (
-  <>
-    Workflows <img src={Workflow} />
-  </>
-);
-const UploadContract = (
-  <>
-    Upload Contract <img src={Upload} />
-  </>
-);
-const BrowseTemplates = (
-  <>
-    Browse Templates <img src={Templates} />
+    Upload Contract <img src={UploadDark} />
   </>
 );
 
@@ -62,7 +38,7 @@ function SimpleDialog(props: SimpleDialogProps) {
   );
 }
 
-export default function HubHeader(props) {
+export default function QueryHubHeader(props) {
   const history = useNavigate();
   function logOut() {
     localStorage.setItem("authenticated", false);
@@ -85,27 +61,27 @@ export default function HubHeader(props) {
           <img alt="logo" src={Robin} />
         </Link>
         <PlatformButton platform={props.platform} />
-        <p>{props.hubType} Contract Hub</p>
+        <p>{props.hubType}</p>
       </div>
       <div className="right">
-        <Button
+        {/* <Button
           variant="tertiary"
           type="submit"
           label={RequestContract}
           onClick={handleClickOpen}
-        />
+        /> */}
         <Button
           variant="secondary"
           type="submit"
-          label={Workflows}
-          onClick={() => history(props.secondaryOnClick)}
+          label={UploadContractDark}
+          // onClick={() => history(props.secondaryOnClick)}
         />
-        <Button
+        {/* <Button
           variant="primary"
           // disabled
           type="submit"
           label={eval(props.primaryCTA)}
-        />
+        /> */}
         <div className="user-icon" onClick={() => logOut()}>
           {props.user}
         </div>

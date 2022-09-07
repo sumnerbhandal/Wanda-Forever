@@ -2,7 +2,19 @@
   display: flex;
   justify-content: center;
   display: flex;
-    flex-wrap: wrap;
+  flex-wrap: wrap;
+
+
+  .query-bar {
+    width: 100%;
+    min-height: 8rem;
+    background: rgba(230, 233, 241, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 32px 0 32px 0;
+    border-bottom: 0.0625rem solid var(--robin-blue);
+  }
 
   .contract-hub {
     width: 50rem;
@@ -10,6 +22,24 @@
     background: #fff;
     padding: 1.25rem;
     border-radius: 0.25rem;
+
+    &.query {
+      table {
+        &.MuiTable-root {
+  
+          thead {
+            tr {
+              th {
+ 
+                &:nth-child(4) {
+                  width: 10rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 
     table {
       &.MuiTable-root {
@@ -187,12 +217,21 @@
                     background: rgba(176, 226, 178, 0.3);
                     width: calc(100% - 1rem);
                   }
+                  &.Complete {
+                    background: rgba(176, 226, 178, 0.6);
+                  }
                 
                 }
 
                 .name-container {
                   display: flex;
                   align-items: center;
+
+                  width: 12rem;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  display: block;
 
                   .name-seed {
                     height: 2rem;

@@ -42,7 +42,7 @@ const DefaultContract = (props) => {
     <article
       id="contract"
       className="contract"
-      contentEditable="true"
+      contentEditable="false"
       onClick={setContractFocused}
     >
       <h1 data-id="text-1" className="xl">

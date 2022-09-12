@@ -7,10 +7,17 @@
   &.query {
     width: calc(100vw - 184px);
     margin-left: auto;
+    height: calc(100% - 4rem);
+
+    // .page {
+    //   padding: 2rem;
+    // }
   }
 
   .page {
     width: calc(100%);
+    display: flex;
+    align-content: flex-start;
 
     @media  (min-width: 768px) {
       width: calc(100%);

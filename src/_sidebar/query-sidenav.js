@@ -23,7 +23,7 @@ export default function SideBarNav(props) {
         to="/query/users"
         activeClassName="selected"
       >
-        <img alt="Query Icon" src={User} />
+        <img alt="User Icon" src={User} />
         Users
       </NavLink>
       <NavLink
@@ -31,7 +31,7 @@ export default function SideBarNav(props) {
         to="/query/groups"
         activeClassName="selected"
       >
-        <img alt="Query Icon" src={Group} />
+        <img alt="Group Icon" src={Group} />
         Groups
       </NavLink>
       <NavLink
@@ -39,8 +39,24 @@ export default function SideBarNav(props) {
         to="/query/reminders"
         activeClassName="selected"
       >
-        <img alt="Query Icon" src={Reminders} />
+        <img alt="Reminders Icon" src={Reminders} />
         Reminders
+      </NavLink>
+      <NavLink
+        className="side-link"
+        to="/query/obligations"
+        activeClassName="selected"
+      >
+        <img alt="Obligations Icon" src={Reminders} />
+        Obligations
+      </NavLink>
+      <NavLink
+        className="side-link"
+        to="/query/upload"
+        activeClassName="selected"
+      >
+        <img alt="Upload Icon" src={Reminders} />
+        Upload Queue
       </NavLink>
     </nav>
   );

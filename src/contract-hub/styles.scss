@@ -7,13 +7,14 @@
   .results-container {
     display: flex;
     min-width: 400px;
-    height: 100%;
+    height: calc(100% - 8rem);
     width: calc(100% - 2rem);
 
     .results {
       width: 30%;
       flex-grow: 1;
       border-right: 0.0625rem solid var(--robin-blue);
+      overflow: scroll;
 
       h1, p {
         padding: 0 20px;
@@ -24,6 +25,7 @@
       width: 60%;
       padding: 60px;
       max-width: 888px;
+      overflow: scroll;
 
       article {
         max-width: 768px;
@@ -258,10 +260,13 @@
                   align-items: center;
 
                   width: 12rem;
-                  white-space: nowrap;
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                  display: block;
+
+                  &.query {
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: block;
+                  }
 
                   .name-seed {
                     height: 2rem;

@@ -189,7 +189,7 @@ function Row(props) {
           </Link>
         </TableCell>
         <TableCell>
-          <div className="name-container">{row.group}</div>
+          <div className="name-container query">{row.group}</div>
         </TableCell>
         <TableCell>{row.lastEdited}</TableCell>
         {/* <TableCell>

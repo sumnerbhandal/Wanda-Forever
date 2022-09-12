@@ -357,12 +357,12 @@ export default function App() {
                   <QueryHubHeader
                     platform="Query"
                     homepage="/query"
-                    hubType="Query Contracts"
+                    hubType="Users"
                     secondaryCTA="UploadContract"
                     user="SB"
                   />
                   <SideBarNav />
-                  <>Here are the users</>
+                  <Canvas className="query" page={"User Page"} />
                 </Suspense>
               </Route>
               <Route path="label">
@@ -379,12 +379,12 @@ export default function App() {
                   <QueryHubHeader
                     platform="Query"
                     homepage="/query"
-                    hubType="Query Contracts"
+                    hubType="Groups"
                     secondaryCTA="UploadContract"
                     user="SB"
                   />
                   <SideBarNav />
-                  <>Here are the users</>
+                  <Canvas className="query" page={"Group Page"} />
                 </Suspense>
               </Route>
               <Route path="reminders">
@@ -392,12 +392,38 @@ export default function App() {
                   <QueryHubHeader
                     platform="Query"
                     homepage="/query"
-                    hubType="Query Contracts"
+                    hubType="Reminders"
                     secondaryCTA="UploadContract"
                     user="SB"
                   />
                   <SideBarNav />
-                  <>Here are the users</>
+                  <Canvas className="query" page={"Reminders Page"} />
+                </Suspense>
+              </Route>
+              <Route path="obligations">
+                <Suspense fallback={loader}>
+                  <QueryHubHeader
+                    platform="Query"
+                    homepage="/query"
+                    hubType="Obligations"
+                    secondaryCTA="UploadContract"
+                    user="SB"
+                  />
+                  <SideBarNav />
+                  <Canvas className="query" page={"Obligations Page"} />
+                </Suspense>
+              </Route>
+              <Route path="upload">
+                <Suspense fallback={loader}>
+                  <QueryHubHeader
+                    platform="Query"
+                    homepage="/query"
+                    hubType="Upload"
+                    secondaryCTA="UploadContract"
+                    user="SB"
+                  />
+                  <SideBarNav />
+                  <Canvas className="query" page={"Upload Page"} />
                 </Suspense>
               </Route>
             </>

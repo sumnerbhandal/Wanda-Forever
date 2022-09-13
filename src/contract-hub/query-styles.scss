@@ -1,0 +1,53 @@
+.results-container {
+  display: flex;
+  min-width: 400px;
+  height: calc(100% - 8rem);
+  width: calc(100% - 2rem);
+
+  .results {
+    width: 30%;
+    flex-grow: 1;
+    border-right: 0.0625rem solid var(--robin-blue);
+    overflow: scroll;
+
+    h1, p {
+      padding: 0 20px;
+    }
+  }
+
+  .contract-view {
+    width: 60%;
+    padding: 60px;
+    max-width: 888px;
+    overflow: scroll;
+
+    article {
+      max-width: 768px;
+
+      ol {
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+
+        li {
+          margin-block-end: 1em;
+        }
+      }
+
+      #confidential_information_span {
+        display: none;
+      }
+    }
+  }
+}
+
+
+.query-bar {
+  width: 100%;
+  min-height: 8rem;
+  background: rgba(230, 233, 241, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 32px 0 32px 0;
+  border-bottom: 0.0625rem solid var(--robin-blue);
+}

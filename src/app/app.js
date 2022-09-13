@@ -12,6 +12,7 @@ const WorkflowTable = lazy(() => import("../contract-hub/workflow-hub"));
 const QueryTable = lazy(() => import("../contract-hub/query-hub"));
 const TemplateSelect = lazy(() => import("../contract-hub/template"));
 const DocumentEditor = lazy(() => import("../document-editor/document-editor"));
+const QueryEditor = lazy(() => import("../query-editor/query-editor"));
 const Drafting = lazy(() => import("../drafting/drafting-editor"));
 const LoginPage = lazy(() => import("../login/login"));
 const NoMatch = lazy(() => import("./no-match"));
@@ -369,7 +370,15 @@ export default function App() {
                 <Route path=":documentId">
                   <Suspense fallback={loader}>
                     <>
-                      <Canvas page={<DocumentEditor user="SB" />} />
+                      <SideBarNav />
+                      <QueryHubHeader
+                        platform="Query"
+                        homepage="/query"
+                        hubType="Users"
+                        secondaryCTA="UploadContract"
+                        user="SB"
+                      />
+                      <Canvas page={<QueryEditor user="SB" />} />
                     </>
                   </Suspense>
                 </Route>

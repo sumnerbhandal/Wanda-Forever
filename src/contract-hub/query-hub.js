@@ -14,6 +14,7 @@ import IconButton from "@mui/material/IconButton";
 import UnfoldLessIcon from "@mui/icons-material/UnfoldLess";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import "./styles.scss";
+import "./query-styles.scss";
 import query from "./_feed/query";
 import guid from "../utils/guid";
 import DropDown from "../_input/dropDown/dropDown";
@@ -23,6 +24,7 @@ import decorativeAngle from "./_assets/Decoration.svg";
 import { Link } from "react-router-dom/index";
 import Tags from "../_query/autocomplete";
 import DefaultContract from "../_query/_contracts/default";
+import EmploymentContract from "../query-editor/_contract-types/employment-query";
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -179,7 +181,7 @@ function Row(props) {
         <TableCell>
           <Link
             to={{
-              pathname: `./label/${contractName
+              pathname: `/query/label/${contractName
                 .replace(/\s/g, "-")
                 .toLowerCase()}_${row.contractRef}`,
               state: { fileName: true }
@@ -295,7 +297,7 @@ export default function QueryTable(props) {
             <p>({activeTags})</p>
           </div>
           <div className="contract-view">
-            <DefaultContract />
+            <EmploymentContract />
           </div>
         </div>
       )}

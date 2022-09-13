@@ -26,7 +26,7 @@ const query = [
     "Production Test Group",
     "2022/10/01",
     "Complete",
-    "employment"
+    "commercial"
   ),
   createData(
     "NDA",
@@ -34,7 +34,7 @@ const query = [
     "Example Test Group",
     "2021/10/01",
     "Incomplete",
-    "employment"
+    "franchise"
   ),
   createData(
     "NDA",
@@ -42,7 +42,7 @@ const query = [
     "Production Test Group",
     "2022/10/01",
     "Complete",
-    "employment"
+    "supplier"
   )
 ];
 

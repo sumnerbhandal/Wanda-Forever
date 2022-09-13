@@ -9,9 +9,15 @@
     margin-left: auto;
     height: calc(100% - 4rem);
 
-    // .page {
-    //   padding: 2rem;
-    // }
+    transition: 0.3s ease;
+
+    @media (max-width: 1280px) {
+      width: calc(100% - 3.5rem);
+    }
+
+    .page {
+
+    }
   }
 
   .page {

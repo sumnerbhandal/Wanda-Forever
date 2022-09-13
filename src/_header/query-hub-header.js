@@ -1,12 +1,12 @@
-import * as React from "react";
+import React, { useCallback, createRef, useState } from "react";
+import Dropzone, { useDropzone } from "react-dropzone";
 import "./styles.scss";
 import Button from "../_input/button/button";
 import Robin from "./_assets/Robin-Logo-Bird.svg";
 import UploadDark from "./_assets/Upload-Dark.svg";
 import PlatformButton from "./platformButton";
 import { Link } from "react-router-dom/index";
-import { useNavigate } from "react-router-dom/index";
-import Dialog from "@mui/material/Dialog";
+import "./dropzone.scss";
 
 const UploadContractDark = (
   <>
@@ -14,79 +14,84 @@ const UploadContractDark = (
   </>
 );
 
-interface SimpleDialogProps {
-  open: boolean;
-  selectedValue: string;
-  // onClose: void;
-}
-
-function SimpleDialog(props: SimpleDialogProps) {
-  const { onClose, open } = props;
-
-  const handleClose = () => {
-    onClose();
-  };
-
-  const handleListItemClick = (value: string) => {
-    onClose(value);
-  };
-
-  return (
-    <Dialog onClose={handleClose} open={open}>
-      {props.content}
-    </Dialog>
-  );
-}
-
 export default function QueryHubHeader(props) {
-  const history = useNavigate();
-  function logOut() {
-    localStorage.setItem("authenticated", false);
-    history("/");
-  }
-
-  const [open, setOpen] = React.useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
+  const [focus, setFocus] = useState(false);
+  const dropzoneRef = createRef();
+  const openDialog = () => {
+    console.log(dropzoneRef.current);
+    // Note that the ref is set async,
+    // so it might be null at some point
+    if (dropzoneRef.current) {
+      dropzoneRef.current.open();
+    }
   };
 
-  const handleClose = (value: string) => {
-    setOpen(false);
+  const detectDrag = () => {
+    console.log("dragged");
+    setFocus(true);
   };
-  return (
-    <header>
-      <div className="left">
-        <Link to={{ pathname: props.homepage }}>
-          <img alt="logo" src={Robin} />
-        </Link>
-        <PlatformButton platform={props.platform} />
-        <p>{props.hubType}</p>
-      </div>
-      <div className="right">
-        {/* <Button
-          variant="tertiary"
-          type="submit"
-          label={RequestContract}
-          onClick={handleClickOpen}
-        /> */}
+
+  const detectDragLeave = () => {
+    console.log("drag leave");
+    setFocus(false);
+  };
+
+  function InnerDropzone(props) {
+    const { getRootProps } = useDropzone({ noDragEventsBubbling: true });
+    return (
+      <div {...getRootProps}>
         <Button
           variant="secondary"
-          type="submit"
+          type="button"
           label={UploadContractDark}
-          // onClick={() => history(props.secondaryOnClick)}
+          onClick={openDialog}
+          //this bubbles up so is not working, need to add inner dropzone no drag events
         />
-        {/* <Button
-          variant="primary"
-          // disabled
-          type="submit"
-          label={eval(props.primaryCTA)}
-        /> */}
-        <div className="user-icon" onClick={() => logOut()}>
-          {props.user}
-        </div>
       </div>
-      <SimpleDialog content={props.content} open={open} onClose={handleClose} />
-    </header>
+    );
+  }
+
+  return (
+    <Dropzone
+      ref={dropzoneRef}
+      // noClick
+      noKeyboard
+      onDragOver={detectDrag}
+      onDragLeave={detectDragLeave}
+      onDrop={detectDragLeave}
+    >
+      {({ getRootProps, getInputProps, acceptedFiles }) => {
+        return (
+          <div
+            className={
+              focus ? "dropzone-container active" : "dropzone-container"
+            }
+          >
+            <div {...getRootProps({ className: "dropzone" })}>
+              <header>
+                <div className="left">
+                  <Link to={{ pathname: props.homepage }}>
+                    <img alt="logo" src={Robin} />
+                  </Link>
+                  <PlatformButton platform={props.platform} />
+                  <p>{props.hubType}</p>
+                </div>
+                <div className="right">
+                  <Button
+                    variant="secondary"
+                    type="button"
+                    label={UploadContractDark}
+                    onClick={openDialog}
+                    //this bubbles up so is not working, need to add inner dropzone no drag events
+                  />
+                  {/* <InnerDropzone /> */}
+                  <div className="user-icon">{props.user}</div>
+                </div>
+              </header>
+            </div>
+          </div>
+        );
+      }}
+    </Dropzone>
   );
 }

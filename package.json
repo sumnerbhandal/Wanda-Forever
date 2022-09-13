@@ -21,6 +21,7 @@
     "jwt-decode": "3.1.2",
     "lodash": "4.17.5",
     "match-sorter": "6.3.0",
+    "material-ui-dropzone": "3.5.0",
     "material-ui-search-bar": "1.0.0",
     "prop-types": "latest",
     "react": "latest",

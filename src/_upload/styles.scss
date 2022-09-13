@@ -1,0 +1,14 @@
+.container {
+  width: 100%;
+  background: red;
+  &.active {
+    background: white;
+  }
+
+  .dropzone {
+    width: 100%;
+    height: 40%;
+    position: fixed;
+  }
+}
+

@@ -27,6 +27,7 @@ const WorkFlowForm = lazy(() => import("../_modal/workflow.js"));
 // const FeedbackForm = lazy(() => import("../_forms/feedback-form"));
 import FeedbackForm from "../_forms/feedback-form";
 import WorkflowDrawer from "../_drawer/workflow-drawer";
+// import Upload from "../_upload/upload";
 
 function PrivateRoute({ children, isAuthenticated, ...rest }) {
   return (
@@ -336,6 +337,7 @@ export default function App() {
               <Route path="search">
                 <Suspense fallback={loader}>
                   <>
+                    {/* <Upload /> */}
                     <QueryHubHeader
                       platform="Query"
                       homepage="/query"
@@ -344,6 +346,7 @@ export default function App() {
                       user="SB"
                     />
                     <SideBarNav />
+
                     <Canvas
                       className="query"
                       page={
@@ -432,7 +435,8 @@ export default function App() {
                     user="SB"
                   />
                   <SideBarNav />
-                  <Canvas className="query" page={"Upload Page"} />
+                  {/* <Canvas className="query" page={<Upload />} /> */}
+                  <Canvas className="query" page={"Obligations Page"} />
                 </Suspense>
               </Route>
             </>

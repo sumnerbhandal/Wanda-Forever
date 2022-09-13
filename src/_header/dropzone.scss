@@ -1,0 +1,25 @@
+main {
+  .dropzone-container {
+    width: 100vw;
+    height: 4rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    background: rgba(255, 255, 255, 0);
+    transition: 0.3s ease, height 0s;
+    filter: blur(0);
+
+    &.active {
+      background: rgba(0, 0, 0, 0.2);
+      filter: blur(1);
+      z-index: 100;
+      height: 100vh
+    }
+
+    .dropzone {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

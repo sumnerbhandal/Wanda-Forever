@@ -17,6 +17,7 @@ import Button from "../_input/button/button";
 import Incomplete from "./_assets/incomplete.svg";
 import Delete from "./_assets/delete.svg";
 import Bulk from "./_assets/bulk.svg";
+import Clock from "./_assets/incomplete-icon.svg";
 
 const BulkAssign = (
   <>
@@ -202,7 +203,13 @@ export default function QueryTable(props) {
   return (
     <>
       <div className="contract-hub query upload">
-        <h1>Items in Queue ({feed.length})</h1>
+        <div className="header-count">
+          <h1>Items in Queue ({feed.length})</h1>
+          <div>
+            <img alt="clock" src={Clock} />
+            {feed.length} incomplete documents
+          </div>
+        </div>
         <TableContainer>
           <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
             <EnhancedTableHead

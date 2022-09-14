@@ -55,7 +55,7 @@ export default function App() {
   const [historyView, setHistoryView] = useState(false);
   const [open, setOpen] = useState(false);
   const [uploadPresent, setUploadPresent] = useState(true);
-  const [uploadedFiles, setUploadedFiles] = useState();
+  const [uploadedFiles, setUploadedFiles] = useState([]);
   const loader = (
     <div className="loading-container">
       <span className="loading"></span>

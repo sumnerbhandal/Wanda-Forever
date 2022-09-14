@@ -12,3 +12,38 @@
   }
 }
 
+.bulk-banner {
+  width: calc(100% - 194px);
+  height: 5.5rem;
+  border-top: 0.0625rem solid var(--robin-blue);
+  position: fixed;
+  bottom: 0%;
+  z-index: 3;
+  background: white;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .bulk-banner-content {
+    width: 47.5rem;
+    display: flex;
+    justify-content: space-between;
+
+    .bulk-options {
+      display: flex;
+      width: 500px;
+      gap: 1rem;
+
+      label {
+        flex-shrink: 0;
+      }
+      select {
+        width: 200px;
+      }
+    }
+  }
+
+
+}
+

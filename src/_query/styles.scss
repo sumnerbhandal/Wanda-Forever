@@ -1,106 +1,116 @@
-.query-bar {
-  * {
-    font-family: "Lato", sans-serif;
-    font-size: 14px;
-  }
+.canvas {
 
-  .MuiAutocomplete-inputRoot {
-    height: 40px;
-
-    .tag-container {
-      // position: absolute;
-      transform: translateY(44px);
-      width: 100%;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-left: -8px;
+  &.query {
+    .page {
+      .query-bar {
+        * {
+          font-family: "Lato", sans-serif;
+          font-size: 14px;
+        }
       
-      .custom-tag {
-        background: #d6deef;
-        border-radius: 4px;
-        padding: 0 8px;
-        display: flex;
-        align-items: center;
-
-        .MuiAutocomplete-tag {
-          margin: 0;
-          display: flex;
-          flex-direction: row-reverse;
-          border-radius: 4px;
-          min-height: 36px;
-          background: none;
-          flex-shrink: 0;
-          flex-grow: 1;
-          gap: 6px;
-          max-width: unset;
-  
-          span {
-            padding: 0;
-            font-weight: bold;
-            flex-shrink: 0;
+        .MuiAutocomplete-inputRoot {
+          height: 40px;
+      
+          .tag-container {
+            // position: absolute;
+            transform: translateY(44px);
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-left: -8px;
+            
+            .custom-tag {
+              background: #d6deef;
+              border-radius: 4px;
+              padding: 0 8px;
+              display: flex;
+              align-items: center;
+      
+              .MuiAutocomplete-tag {
+                margin: 0;
+                display: flex;
+                flex-direction: row-reverse;
+                border-radius: 4px;
+                min-height: 36px;
+                background: none;
+                flex-shrink: 0;
+                flex-grow: 1;
+                gap: 6px;
+                max-width: unset;
+        
+                span {
+                  padding: 0;
+                  font-weight: bold;
+                  flex-shrink: 0;
+                }
+        
+                img {
+                  width: 16px;
+                  height: 16px;
+                  margin: 0;
+                }
+              }
+      
+              span {
+                &.text-search {
+                  font-weight: bold;
+                  margin-left: 4px;
+                  padding: 6px 0px 6px 2px;
+                }
+              }
+      
+              select {
+                background-color: none;
+                border: none;
+                color: var(--electric-blue);
+                font-weight: bold;
+                padding: 0px 24px 0 6px;
+                background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjIiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyMiAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYuNzA3MTEgOS43OTI4OUM2LjMxNjU4IDkuNDAyMzcgNS42ODM0MiA5LjQwMjM3IDUuMjkyODkgOS43OTI4OUM0LjkwMjM3IDEwLjE4MzQgNC45MDIzNyAxMC44MTY2IDUuMjkyODkgMTEuMjA3MUw2LjcwNzExIDkuNzkyODlaTTExIDE1LjVMMTAuMjkyOSAxNi4yMDcxTDExIDE2LjkxNDJMMTEuNzA3MSAxNi4yMDcxTDExIDE1LjVaTTE2LjcwNzEgMTEuMjA3MUMxNy4wOTc2IDEwLjgxNjYgMTcuMDk3NiAxMC4xODM0IDE2LjcwNzEgOS43OTI4OUMxNi4zMTY2IDkuNDAyMzcgMTUuNjgzNCA5LjQwMjM3IDE1LjI5MjkgOS43OTI4OUwxNi43MDcxIDExLjIwNzFaTTUuMjkyODkgMTEuMjA3MUwxMC4yOTI5IDE2LjIwNzFMMTEuNzA3MSAxNC43OTI5TDYuNzA3MTEgOS43OTI4OUw1LjI5Mjg5IDExLjIwNzFaTTExLjcwNzEgMTYuMjA3MUwxNi43MDcxIDExLjIwNzFMMTUuMjkyOSA5Ljc5Mjg5TDEwLjI5MjkgMTQuNzkyOUwxMS43MDcxIDE2LjIwNzFaIiBmaWxsPSIjMkEzNDRGIi8+Cjwvc3ZnPgo=) no-repeat;
+          background-position: right;
+              -moz-appearance:none !important;
+          -webkit-appearance: none !important; 
+          appearance: none !important;
+              }
+            }
           }
-  
-          img {
-            width: 16px;
-            height: 16px;
+      
+          input {
+            height: 40px;
+            width: calc(100% - 4rem) !important;
+            padding: 0 !important;
             margin: 0;
+            position: absolute;
+            top: 0;
+            left: 0.75rem;
+            z-index: 3;
+      
+            &::placeholder {
+              color: var(--subtext)
+            }
+          }
+      
+          .MuiAutocomplete-endAdornment {
+            z-index: 2;
           }
         }
-
-        span {
-          &.text-search {
-            font-weight: bold;
-            margin-left: 4px;
-            padding: 6px 0px 6px 2px;
-          }
-        }
-
-        select {
-          background-color: none;
-          border: none;
-          color: var(--electric-blue);
-          font-weight: bold;
-          padding: 0px 24px 0 6px;
-          background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjIiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyMiAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYuNzA3MTEgOS43OTI4OUM2LjMxNjU4IDkuNDAyMzcgNS42ODM0MiA5LjQwMjM3IDUuMjkyODkgOS43OTI4OUM0LjkwMjM3IDEwLjE4MzQgNC45MDIzNyAxMC44MTY2IDUuMjkyODkgMTEuMjA3MUw2LjcwNzExIDkuNzkyODlaTTExIDE1LjVMMTAuMjkyOSAxNi4yMDcxTDExIDE2LjkxNDJMMTEuNzA3MSAxNi4yMDcxTDExIDE1LjVaTTE2LjcwNzEgMTEuMjA3MUMxNy4wOTc2IDEwLjgxNjYgMTcuMDk3NiAxMC4xODM0IDE2LjcwNzEgOS43OTI4OUMxNi4zMTY2IDkuNDAyMzcgMTUuNjgzNCA5LjQwMjM3IDE1LjI5MjkgOS43OTI4OUwxNi43MDcxIDExLjIwNzFaTTUuMjkyODkgMTEuMjA3MUwxMC4yOTI5IDE2LjIwNzFMMTEuNzA3MSAxNC43OTI5TDYuNzA3MTEgOS43OTI4OUw1LjI5Mjg5IDExLjIwNzFaTTExLjcwNzEgMTYuMjA3MUwxNi43MDcxIDExLjIwNzFMMTUuMjkyOSA5Ljc5Mjg5TDEwLjI5MjkgMTQuNzkyOUwxMS43MDcxIDE2LjIwNzFaIiBmaWxsPSIjMkEzNDRGIi8+Cjwvc3ZnPgo=) no-repeat;
-    background-position: right;
-        -moz-appearance:none !important;
-    -webkit-appearance: none !important; 
-    appearance: none !important;
-        }
+      
+            fieldset {
+              top: -10px;
+              height: 50px;
+              background: white;
+              border-color: var(--robin-blue);
+            }
+      
+            button {
+              margin-right: 8px;
+              transform: scale(1.125);
+            }
+      
       }
-    }
 
-    input {
-      height: 40px;
-      width: calc(100% - 4rem) !important;
-      padding: 0 !important;
-      margin: 0;
-      position: absolute;
-      top: 0;
-      left: 0.75rem;
-      z-index: 1;
 
-      &::placeholder {
-        color: var(--subtext)
-      }
-    }
-
-    .MuiAutocomplete-endAdornment {
-      z-index: 2;
     }
   }
-
-      fieldset {
-        top: -10px;
-        height: 50px;
-        background: white;
-        border-color: var(--robin-blue);
-      }
-
-      button {
-        margin-right: 8px;
-        transform: scale(1.125);
-      }
-
 }
+

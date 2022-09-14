@@ -53,8 +53,8 @@ export default function SideBarNav(props) {
         <span>Obligations</span>
       </NavLink>
       <NavLink
-        disabled
-        className="side-link"
+        disabled={props.uploadPresent}
+        className={!props.uploadPresent ? "side-link active" : "side-link"}
         to="/query/upload"
         activeClassName="selected"
       >

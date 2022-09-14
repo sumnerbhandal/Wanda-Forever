@@ -1,5 +1,39 @@
+// import React, { useCallback, createRef, useState } from "react";
+// import Dropzone, { useDropzone } from "react-dropzone";
+// import "./styles.scss";
+// import Button from "../_input/button/button";
+// import Robin from "./_assets/Robin-Logo-Bird.svg";
+// import UploadDark from "./_assets/Upload-Dark.svg";
+// import PlatformButton from "./platformButton";
+// import { Link } from "react-router-dom/index";
+// import "./dropzone.scss";
+
+// const UploadContractDark = (
+//   <>
+//     Upload Contract <img src={UploadDark} />
+//   </>
+// );
+
+// export default function QueryHubHeader(props) {
+//   return (
+//     <header>
+//       <div className="left">
+//         <Link to={{ pathname: props.homepage }}>
+//           <img alt="logo" src={Robin} />
+//         </Link>
+//         <PlatformButton platform={props.platform} />
+//         <p>{props.hubType}</p>
+//       </div>
+//       <div className="right">
+//         <Button variant="secondary" type="button" label={UploadContractDark} />
+//         {/* <InnerDropzone /> */}
+//         <div className="user-icon">{props.user}</div>
+//       </div>
+//     </header>
+//   );
+// }
+
 import React, { useCallback, createRef, useState } from "react";
-import { useNavigate } from "react-router-dom/index";
 import Dropzone, { useDropzone } from "react-dropzone";
 import "./styles.scss";
 import Button from "../_input/button/button";
@@ -7,7 +41,6 @@ import Robin from "./_assets/Robin-Logo-Bird.svg";
 import UploadDark from "./_assets/Upload-Dark.svg";
 import PlatformButton from "./platformButton";
 import { Link } from "react-router-dom/index";
-import GiantUpload from "./_assets/giant-upload-icon.svg";
 import "./dropzone.scss";
 
 const UploadContractDark = (
@@ -17,7 +50,6 @@ const UploadContractDark = (
 );
 
 export default function QueryHubHeader(props) {
-  const navigate = useNavigate();
   const [focus, setFocus] = useState(false);
   const dropzoneRef = createRef();
   const openDialog = () => {
@@ -30,17 +62,13 @@ export default function QueryHubHeader(props) {
   };
 
   const detectDrag = () => {
+    console.log("dragged");
     setFocus(true);
   };
 
   const detectDragLeave = () => {
+    console.log("drag leave");
     setFocus(false);
-  };
-
-  const detectDragDrop = () => {
-    setFocus(false);
-    props.setUploadPresent(false);
-    navigate("/query/upload");
   };
 
   function InnerDropzone(props) {
@@ -58,26 +86,27 @@ export default function QueryHubHeader(props) {
     );
   }
 
+  const sendFiles = (acceptedFiles) => {
+    console.log(acceptedFiles);
+  };
+
   return (
     <Dropzone
       ref={dropzoneRef}
-      noClick
+      // noClick
       noKeyboard
       onDragOver={detectDrag}
       onDragLeave={detectDragLeave}
-      onDrop={detectDragDrop}
+      onDrop={detectDragLeave}
+      onDropAccepted={sendFiles({ acceptedFiles })}
     >
       {({ getRootProps, getInputProps, acceptedFiles }) => {
-        props.setUploadedFiles(acceptedFiles);
         return (
           <div
             className={
               focus ? "dropzone-container active" : "dropzone-container"
             }
           >
-            {focus ? (
-              <img className="giant-upload-icon" src={GiantUpload} />
-            ) : null}
             <div {...getRootProps({ className: "dropzone" })}>
               <input {...getInputProps()} />
               {console.log(acceptedFiles)}

@@ -28,6 +28,7 @@ const WorkFlowForm = lazy(() => import("../_modal/workflow.js"));
 import FeedbackForm from "../_forms/feedback-form";
 import WorkflowDrawer from "../_drawer/workflow-drawer";
 // import Upload from "../_upload/upload";
+import QueryUploadPage from "../_upload/query-upload-page";
 
 function PrivateRoute({ children, isAuthenticated, ...rest }) {
   return (
@@ -53,6 +54,8 @@ export default function App() {
   const isAuthenticated = localStorage.getItem("authenticated");
   const [historyView, setHistoryView] = useState(false);
   const [open, setOpen] = useState(false);
+  const [uploadPresent, setUploadPresent] = useState(true);
+  const [uploadedFiles, setUploadedFiles] = useState();
   const loader = (
     <div className="loading-container">
       <span className="loading"></span>
@@ -344,8 +347,10 @@ export default function App() {
                       hubType="Query Contracts"
                       secondaryCTA="UploadContract"
                       user="SB"
+                      setUploadPresent={setUploadPresent}
+                      setUploadedFiles={setUploadedFiles}
                     />
-                    <SideBarNav />
+                    <SideBarNav uploadPresent={uploadPresent} />
 
                     <Canvas
                       className="query"
@@ -364,8 +369,10 @@ export default function App() {
                     hubType="Users"
                     secondaryCTA="UploadContract"
                     user="SB"
+                    setUploadPresent={setUploadPresent}
+                    setUploadedFiles={setUploadedFiles}
                   />
-                  <SideBarNav />
+                  <SideBarNav uploadPresent={uploadPresent} />
                   <Canvas className="query" page={"User Page"} />
                 </Suspense>
               </Route>
@@ -373,13 +380,15 @@ export default function App() {
                 <Route path=":documentId">
                   <Suspense fallback={loader}>
                     <>
-                      <SideBarNav />
+                      <SideBarNav uploadPresent={uploadPresent} />
                       <QueryHubHeader
                         platform="Query"
                         homepage="/query"
                         hubType="Users"
                         secondaryCTA="UploadContract"
                         user="SB"
+                        setUploadPresent={setUploadPresent}
+                        setUploadedFiles={setUploadedFiles}
                       />
                       <Canvas page={<QueryEditor user="SB" />} />
                     </>
@@ -394,8 +403,10 @@ export default function App() {
                     hubType="Groups"
                     secondaryCTA="UploadContract"
                     user="SB"
+                    setUploadPresent={setUploadPresent}
+                    setUploadedFiles={setUploadedFiles}
                   />
-                  <SideBarNav />
+                  <SideBarNav uploadPresent={uploadPresent} />
                   <Canvas className="query" page={"Group Page"} />
                 </Suspense>
               </Route>
@@ -407,8 +418,10 @@ export default function App() {
                     hubType="Reminders"
                     secondaryCTA="UploadContract"
                     user="SB"
+                    setUploadPresent={setUploadPresent}
+                    setUploadedFiles={setUploadedFiles}
                   />
-                  <SideBarNav />
+                  <SideBarNav uploadPresent={uploadPresent} />
                   <Canvas className="query" page={"Reminders Page"} />
                 </Suspense>
               </Route>
@@ -420,8 +433,10 @@ export default function App() {
                     hubType="Obligations"
                     secondaryCTA="UploadContract"
                     user="SB"
+                    setUploadPresent={setUploadPresent}
+                    setUploadedFiles={setUploadedFiles}
                   />
-                  <SideBarNav />
+                  <SideBarNav uploadPresent={uploadPresent} />
                   <Canvas className="query" page={"Obligations Page"} />
                 </Suspense>
               </Route>
@@ -430,13 +445,18 @@ export default function App() {
                   <QueryHubHeader
                     platform="Query"
                     homepage="/query"
-                    hubType="Upload"
+                    hubType="Upload Queue"
                     secondaryCTA="UploadContract"
                     user="SB"
+                    setUploadPresent={setUploadPresent}
+                    setUploadedFiles={setUploadedFiles}
                   />
-                  <SideBarNav />
+                  <SideBarNav uploadPresent={uploadPresent} />
                   {/* <Canvas className="query" page={<Upload />} /> */}
-                  <Canvas className="query" page={"Obligations Page"} />
+                  <Canvas
+                    className="query"
+                    page={<QueryUploadPage uploadedFiles={uploadedFiles} />}
+                  />
                 </Suspense>
               </Route>
             </>

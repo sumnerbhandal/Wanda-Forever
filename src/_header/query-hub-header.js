@@ -9,6 +9,7 @@ import PlatformButton from "./platformButton";
 import { Link } from "react-router-dom/index";
 import GiantUpload from "./_assets/giant-upload-icon.svg";
 import "./dropzone.scss";
+// import ToolTip from "../../_notification/tooltip/tooltip";
 
 const UploadContractDark = (
   <>
@@ -97,6 +98,10 @@ export default function QueryHubHeader(props) {
                     onClick={openDialog}
                     //this bubbles up so is not working, need to add inner dropzone no drag events
                   />
+                  {/* <ToolTip
+                    className="footer"
+                    message="When downloaded this will appear as a footer on each page"
+                  /> */}
                   {/* <InnerDropzone /> */}
                   <div className="user-icon">{props.user}</div>
                 </div>

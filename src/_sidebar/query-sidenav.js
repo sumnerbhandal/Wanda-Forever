@@ -20,14 +20,16 @@ export default function SideBarNav(props) {
         <img alt="Query Icon" src={Query} />
         <span>Query</span>
       </NavLink>
-      <NavLink
-        className="side-link"
-        to="/query/users"
-        activeClassName="selected"
-      >
-        <img alt="User Icon" src={User} />
-        <span>Users</span>
-      </NavLink>
+      {props.userType === "Admin" || props.userType === "Owner" ? (
+        <NavLink
+          className="side-link"
+          to="/query/users"
+          activeClassName="selected"
+        >
+          <img alt="User Icon" src={User} />
+          <span>Users</span>
+        </NavLink>
+      ) : null}
       <NavLink
         className="side-link"
         to="/query/groups"
@@ -52,15 +54,19 @@ export default function SideBarNav(props) {
         <img alt="Obligations Icon" src={Obligation} />
         <span>Obligations</span>
       </NavLink>
-      <NavLink
-        disabled={props.uploadPresent}
-        className={!props.uploadPresent ? "side-link active" : "side-link"}
-        to="/query/upload"
-        activeClassName="selected"
-      >
-        <img alt="Upload Icon" src={Upload} />
-        <span>Upload Queue</span>
-      </NavLink>
+      {props.userType === "Admin" ||
+      props.userType === "Owner" ||
+      props.userType === "User" ? (
+        <NavLink
+          disabled={props.uploadPresent}
+          className={!props.uploadPresent ? "side-link active" : "side-link"}
+          to="/query/upload"
+          activeClassName="selected"
+        >
+          <img alt="Upload Icon" src={Upload} />
+          <span>Upload Queue</span>
+        </NavLink>
+      ) : null}
     </nav>
   );
 }

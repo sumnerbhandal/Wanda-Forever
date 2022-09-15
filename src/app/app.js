@@ -56,6 +56,7 @@ export default function App() {
   const [open, setOpen] = useState(false);
   const [uploadPresent, setUploadPresent] = useState(true);
   const [uploadedFiles, setUploadedFiles] = useState([]);
+  const [userType, setUserType] = useState("Admin");
   const loader = (
     <div className="loading-container">
       <span className="loading"></span>
@@ -343,14 +344,19 @@ export default function App() {
                     {/* <Upload /> */}
                     <QueryHubHeader
                       platform="Query"
-                      homepage="/query"
+                      homepage="/query/search"
                       hubType="Query Contracts"
                       secondaryCTA="UploadContract"
                       user="SB"
                       setUploadPresent={setUploadPresent}
                       setUploadedFiles={setUploadedFiles}
+                      setUserType={setUserType}
+                      userType={userType}
                     />
-                    <SideBarNav uploadPresent={uploadPresent} />
+                    <SideBarNav
+                      uploadPresent={uploadPresent}
+                      userType={userType}
+                    />
 
                     <Canvas
                       className="query"
@@ -365,14 +371,19 @@ export default function App() {
                 <Suspense fallback={loader}>
                   <QueryHubHeader
                     platform="Query"
-                    homepage="/query"
+                    homepage="/query/search"
                     hubType="Users"
                     secondaryCTA="UploadContract"
                     user="SB"
                     setUploadPresent={setUploadPresent}
                     setUploadedFiles={setUploadedFiles}
+                    setUserType={setUserType}
+                    userType={userType}
                   />
-                  <SideBarNav uploadPresent={uploadPresent} />
+                  <SideBarNav
+                    uploadPresent={uploadPresent}
+                    userType={userType}
+                  />
                   <Canvas className="query" page={"User Page"} />
                 </Suspense>
               </Route>
@@ -380,15 +391,20 @@ export default function App() {
                 <Route path=":documentId">
                   <Suspense fallback={loader}>
                     <>
-                      <SideBarNav uploadPresent={uploadPresent} />
+                      <SideBarNav
+                        uploadPresent={uploadPresent}
+                        userType={userType}
+                      />
                       <QueryHubHeader
                         platform="Query"
-                        homepage="/query"
+                        homepage="/query/search"
                         hubType="Users"
                         secondaryCTA="UploadContract"
                         user="SB"
                         setUploadPresent={setUploadPresent}
                         setUploadedFiles={setUploadedFiles}
+                        setUserType={setUserType}
+                        userType={userType}
                       />
                       <Canvas page={<QueryEditor user="SB" />} />
                     </>
@@ -399,14 +415,19 @@ export default function App() {
                 <Suspense fallback={loader}>
                   <QueryHubHeader
                     platform="Query"
-                    homepage="/query"
+                    homepage="/query/search"
                     hubType="Groups"
                     secondaryCTA="UploadContract"
                     user="SB"
                     setUploadPresent={setUploadPresent}
                     setUploadedFiles={setUploadedFiles}
+                    setUserType={setUserType}
+                    userType={userType}
                   />
-                  <SideBarNav uploadPresent={uploadPresent} />
+                  <SideBarNav
+                    uploadPresent={uploadPresent}
+                    userType={userType}
+                  />
                   <Canvas className="query" page={"Group Page"} />
                 </Suspense>
               </Route>
@@ -414,14 +435,19 @@ export default function App() {
                 <Suspense fallback={loader}>
                   <QueryHubHeader
                     platform="Query"
-                    homepage="/query"
+                    homepage="/query/search"
                     hubType="Reminders"
                     secondaryCTA="UploadContract"
                     user="SB"
                     setUploadPresent={setUploadPresent}
                     setUploadedFiles={setUploadedFiles}
+                    setUserType={setUserType}
+                    userType={userType}
                   />
-                  <SideBarNav uploadPresent={uploadPresent} />
+                  <SideBarNav
+                    uploadPresent={uploadPresent}
+                    userType={userType}
+                  />
                   <Canvas className="query" page={"Reminders Page"} />
                 </Suspense>
               </Route>
@@ -429,14 +455,19 @@ export default function App() {
                 <Suspense fallback={loader}>
                   <QueryHubHeader
                     platform="Query"
-                    homepage="/query"
+                    homepage="/query/search"
                     hubType="Obligations"
                     secondaryCTA="UploadContract"
                     user="SB"
                     setUploadPresent={setUploadPresent}
                     setUploadedFiles={setUploadedFiles}
+                    setUserType={setUserType}
+                    userType={userType}
                   />
-                  <SideBarNav uploadPresent={uploadPresent} />
+                  <SideBarNav
+                    uploadPresent={uploadPresent}
+                    userType={userType}
+                  />
                   <Canvas className="query" page={"Obligations Page"} />
                 </Suspense>
               </Route>
@@ -444,14 +475,19 @@ export default function App() {
                 <Suspense fallback={loader}>
                   <QueryHubHeader
                     platform="Query"
-                    homepage="/query"
+                    homepage="/query/search"
                     hubType="Upload Queue"
                     secondaryCTA="UploadContract"
                     user="SB"
                     setUploadPresent={setUploadPresent}
                     setUploadedFiles={setUploadedFiles}
+                    setUserType={setUserType}
+                    userType={userType}
                   />
-                  <SideBarNav uploadPresent={uploadPresent} />
+                  <SideBarNav
+                    uploadPresent={uploadPresent}
+                    userType={userType}
+                  />
                   {/* <Canvas className="query" page={<Upload />} /> */}
                   <Canvas
                     className="query"

@@ -50,6 +50,46 @@ main {
           left: 0;
           transition: 0.3s ease, height 0s;
         }
+
+        .user-switcher {
+          margin-right: 1rem;
+          label {
+            color: var(--robin-blue);
+            pointer-events: none;
+            flex-shrink: 0;
+            width: auto;
+          }
+          select {
+            width: 12.5rem;
+          }
+        }
+
+        .upload-button-container {
+          position: relative;
+          
+          .tooltip {
+            position: absolute;
+            right: 0.875rem;
+            top: 3rem;
+            z-index: 100000;
+            opacity: 1;
+            width: 172px;
+
+            &:after {
+              content: "";
+              position: absolute;
+              right: 43%;
+              top: -0.5rem;
+              width: 0;
+              height: 0;
+              border-left: 0.625rem solid transparent;
+              border-right: 0.625rem solid transparent;
+              border-top: 0.625rem solid #2A344F;
+              clear: both;
+              transform: rotate(180deg);  
+            }      
+          }
+        }
       }
     }
   }

@@ -134,7 +134,11 @@ function Row(props) {
         sx={{ "& > *": { borderBottom: "unset" } }}
       >
         <TableCell>
-          <img alt="Incomplete icon" src={Incomplete} />
+          <img
+            alt="Incomplete icon"
+            style={{ marginTop: "0.25rem" }}
+            src={Incomplete}
+          />
           <span style={{ display: "none" }}>Incomplete</span>
         </TableCell>
         <TableCell>{row.name}</TableCell>

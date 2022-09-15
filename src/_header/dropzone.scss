@@ -22,74 +22,70 @@ main {
       justify-content: center;
       align-items: center;
 
-      .dropzone {
-          header {
-            &:after {
-              height: 100%;
-              z-index: 4;
-              background: rgba(28, 38, 36, 0.8);
-            }
-          }
-        }
+      // .dropzone {
+      //     header {
+      //       &:after {
+      //         height: 100%;
+      //         z-index: 4;
+      //         background: rgba(28, 38, 36, 0.8);
+      //       }
+      //     }
+      //   }
 
     }
 
     .dropzone {
       width: 100%;
       height: 100%;
+    }
+  }
 
+  header {
+    z-index: 4;
+    &:after {
+      position: absolute;
+      height: 0;
+      width: 100%;
+      z-index: -1;
+      content: "";
+      background: rgba(255, 255, 255, 0);
+      left: 0;
+      transition: 0.3s ease, height 0s;
+    }
 
-      header {
-        &:after {
-          position: absolute;
-          height: 0;
-          width: 100%;
-          z-index: -1;
-          content: "";
-          background: rgba(255, 255, 255, 0);
-          left: 0;
-          transition: 0.3s ease, height 0s;
-        }
-
-        .user-switcher {
-          margin-right: 1rem;
-          label {
-            color: var(--robin-blue);
-            pointer-events: none;
-            flex-shrink: 0;
-            width: auto;
-          }
+    .user-switcher {
+        .error-container {
+          .flex-row {
+            margin-right: 1rem;
+            label {
+              color: var(--robin-blue);
+              pointer-events: none;
+              flex-shrink: 0;
+              width: auto;
+            }
           select {
             width: 12.5rem;
           }
         }
+      }
+    }
 
-        .upload-button-container {
-          position: relative;
-          
-          .tooltip {
-            position: absolute;
-            right: 0.875rem;
-            top: 3rem;
-            z-index: 100000;
-            opacity: 1;
-            width: 172px;
+    .upload-button-container {
+      position: relative;
+      
+      .tooltip {
+        position: absolute;
+        right: 3rem;
+        top: 3rem;
+        z-index: 100000;
+        opacity: 1;
+        width: 172px;
 
-            &:after {
-              content: "";
-              position: absolute;
-              right: 43%;
-              top: -0.5rem;
-              width: 0;
-              height: 0;
-              border-left: 0.625rem solid transparent;
-              border-right: 0.625rem solid transparent;
-              border-top: 0.625rem solid #2A344F;
-              clear: both;
-              transform: rotate(180deg);  
-            }      
-          }
-        }
+        &:after {
+          right: 43%;
+          top: -0.5rem;
+          transform: rotate(180deg);  
+        }      
       }
     }
   }

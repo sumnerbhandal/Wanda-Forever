@@ -176,7 +176,9 @@ function Row(props) {
         sx={{ "& > *": { borderBottom: "unset" } }}
       >
         <TableCell>
-          <div className="nda-seed">{row.type}</div>
+          <div className="nda-seed">
+            <span>{row.type}</span>
+          </div>
         </TableCell>
         <TableCell>
           <Link
@@ -215,7 +217,7 @@ export default function QueryTable(props) {
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("name");
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [rowsPerPage, setRowsPerPage] = React.useState(50);
   const [activeTags, setActiveTags] = useState();
 
   const handleRequestSort = (event, property) => {
@@ -281,7 +283,7 @@ export default function QueryTable(props) {
             </Table>
           </TableContainer>
           <TablePagination
-            rowsPerPageOptions={[10, 25, 50]}
+            rowsPerPageOptions={[50, 100]}
             component="div"
             count={feed.length}
             rowsPerPage={rowsPerPage}

@@ -406,7 +406,10 @@ export default function App() {
                         setUserType={setUserType}
                         userType={userType}
                       />
-                      <Canvas page={<QueryEditor user="SB" />} />
+                      <Canvas
+                        className="query"
+                        page={<QueryEditor user="SB" />}
+                      />
                     </>
                   </Suspense>
                 </Route>

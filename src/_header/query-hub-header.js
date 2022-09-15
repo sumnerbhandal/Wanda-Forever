@@ -14,7 +14,7 @@ import ToolTip from "../_notification/tooltip/tooltip";
 
 const UploadContractDark = (
   <>
-    Upload Contract <img src={UploadDark} />
+    Upload Executed Contract <img src={UploadDark} />
   </>
 );
 
@@ -75,73 +75,74 @@ export default function QueryHubHeader(props) {
   }
 
   return (
-    <Dropzone
-      ref={dropzoneRef}
-      noClick
-      noKeyboard
-      onDragOver={detectDrag}
-      onDragLeave={detectDragLeave}
-      onDrop={detectDragDrop}
-      disabled={props.userType === "Read Only" ? true : false}
-    >
-      {({ getRootProps, getInputProps, acceptedFiles }) => {
-        props.setUploadedFiles(acceptedFiles);
-        return (
-          <div
-            className={
-              focus ? "dropzone-container active" : "dropzone-container"
-            }
-          >
-            {focus ? (
-              <img className="giant-upload-icon" src={GiantUpload} />
-            ) : null}
-            <div {...getRootProps({ className: "dropzone" })}>
-              <input {...getInputProps()} />
-
-              <header>
-                <div className="left">
-                  <Link to={{ pathname: props.homepage }}>
-                    <img alt="logo" src={Robin} />
-                  </Link>
-                  <PlatformButton platform={props.platform} />
-                  <p>{props.hubType}</p>
-                </div>
-                <div className="right">
-                  <div className="user-switcher">
-                    <DropDown
-                      id="Select Type"
-                      name="Select Contract Type"
-                      label="User Type"
-                      option={["Owner", "Admin", "User", "Read Only"]}
-                      onChange={changeUserType}
-                    />
-                  </div>
-                  {props.userType === "Read Only" ? null : (
-                    <div className="upload-button-container">
-                      <Button
-                        variant="secondary"
-                        type="button"
-                        label={UploadContractDark}
-                        onClick={openDialog}
-                        onMouseOver={showTooltip}
-                        onMouseLeave={hideTooltip}
-                        //this bubbles up so is not working, need to add inner dropzone no drag events
-                      />
-                      {tooltip ? (
-                        <ToolTip
-                          className="contract-prompt"
-                          message="Only .pdf and .docx files are supported."
-                        />
-                      ) : null}
-                    </div>
-                  )}
-                  <div className="user-icon">{props.user}</div>
-                </div>
-              </header>
+    <>
+      <Dropzone
+        ref={dropzoneRef}
+        noClick
+        noKeyboard
+        onDragOver={detectDrag}
+        onDragLeave={detectDragLeave}
+        onDrop={detectDragDrop}
+        disabled={props.userType === "Read Only" ? true : false}
+      >
+        {({ getRootProps, getInputProps, acceptedFiles }) => {
+          props.setUploadedFiles(acceptedFiles);
+          return (
+            <div
+              className={
+                focus ? "dropzone-container active" : "dropzone-container"
+              }
+            >
+              {focus ? (
+                <img className="giant-upload-icon" src={GiantUpload} />
+              ) : null}
+              <div {...getRootProps({ className: "dropzone" })}>
+                <input {...getInputProps()} />
+              </div>
             </div>
+          );
+        }}
+      </Dropzone>
+      <header>
+        <div className="left">
+          <Link to={{ pathname: props.homepage }}>
+            <img alt="logo" src={Robin} />
+          </Link>
+          <PlatformButton platform={props.platform} />
+          <p>{props.hubType}</p>
+        </div>
+        <div className="right">
+          <div className="user-switcher">
+            <DropDown
+              id="Select Type"
+              name="Select Contract Type"
+              label="User Type"
+              option={["Owner", "Admin", "User", "Read Only"]}
+              onChange={changeUserType}
+            />
           </div>
-        );
-      }}
-    </Dropzone>
+          {props.userType === "Read Only" ? null : (
+            <div className="upload-button-container">
+              <Button
+                variant="secondary"
+                type="button"
+                label={UploadContractDark}
+                onClick={openDialog}
+                onMouseOver={showTooltip}
+                onMouseLeave={hideTooltip}
+                //this bubbles up so is not working, need to add inner dropzone no drag events
+              />
+              {tooltip ? (
+                <ToolTip
+                  className="contract-prompt"
+                  message="Only .pdf and .docx files are supported."
+                />
+              ) : null}
+            </div>
+          )}
+          <div className="user-icon">{props.user}</div>
+        </div>
+      </header>
+    </>
   );
 }

@@ -19,6 +19,14 @@
       * {
         z-index: 2;
       }
+      .editor {
+        z-index: unset;
+        .query {
+          .article-container, aside {
+            z-index: 2;
+          }
+        }
+      }
     }
   }
 
@@ -29,6 +37,7 @@
 
     @media  (min-width: 768px) {
       width: calc(100%);
+      // flex-shrink: 0;
     }
   }
 }

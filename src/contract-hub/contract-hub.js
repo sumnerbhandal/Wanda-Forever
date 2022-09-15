@@ -171,7 +171,9 @@ function Row(props) {
         sx={{ "& > *": { borderBottom: "unset" } }}
       >
         <TableCell>
-          <div className="nda-seed">{row.type}</div>
+          <div className="nda-seed">
+            <span>{row.type}</span>
+          </div>
         </TableCell>
         <TableCell>
           <Link

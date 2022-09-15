@@ -10,6 +10,8 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import { visuallyHidden } from "@mui/utils";
+import "../contract-hub/styles.scss";
+import "../contract-hub/query-styles.scss";
 import "./styles.scss";
 import guid from "../utils/guid";
 import DropDown from "../_input/dropDown/dropDown";
@@ -132,6 +134,7 @@ function Row(props) {
         tabIndex={-1}
         key={rowId}
         sx={{ "& > *": { borderBottom: "unset" } }}
+        id={props.id}
       >
         <TableCell>
           <img
@@ -174,7 +177,7 @@ export default function QueryTable(props) {
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("name");
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [rowsPerPage, setRowsPerPage] = React.useState(20);
 
   // const navigate = useNavigate();
   // useEffect(() => {
@@ -228,9 +231,9 @@ export default function QueryTable(props) {
                 .map((row, index) => {
                   return (
                     <Row
-                      key={row.name}
+                      key={index}
                       row={row}
-                      id={row.name}
+                      id={index}
                       configureContract={props.configureContract}
                     />
                   );
@@ -247,15 +250,15 @@ export default function QueryTable(props) {
             </TableBody>
           </Table>
         </TableContainer>
-        {/* <TablePagination
-          rowsPerPageOptions={[10, 25, 50]}
+        <TablePagination
+          rowsPerPageOptions={[20, 50]}
           component="div"
           count={feed.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
-        /> */}
+        />
         <div className="bulk-banner">
           <div className="bulk-banner-content">
             {" "}

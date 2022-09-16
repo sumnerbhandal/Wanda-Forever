@@ -41,7 +41,7 @@ function createData(type, name, group, lastEdited, status, contractRef) {
 const query = [
   createData(
     "Consulting Agreement Company",
-    "REDACTED CONTRACT 1234",
+    "REDACTED CONTRACT 12345",
     "Example Test Group",
     "2021/10/01",
     "Incomplete",

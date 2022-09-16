@@ -1,40 +1,46 @@
-.results-container {
-  display: flex;
-  min-width: 400px;
-  height: calc(100% - 8rem);
-  width: calc(100% - 2rem);
+.query-action-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-height: 100%;
+  .results-container {
+    display: flex;
+    min-width: 400px;
+    width: 100%;
 
-  .results {
-    width: 30%;
-    flex-grow: 1;
-    border-right: 0.0625rem solid var(--robin-blue);
-    overflow: scroll;
+    .results {
+      width: 30%;
+      flex-grow: 1;
+      border-right: 0.0625rem solid var(--robin-blue);
+      overflow: scroll;
 
-    h1, p {
-      padding: 0 20px;
-    }
-  }
-
-  .contract-view {
-    width: 60%;
-    padding: 60px;
-    max-width: 888px;
-    overflow: scroll;
-
-    article {
-      max-width: 768px;
-
-      ol {
-        margin-block-start: 1em;
-        margin-block-end: 1em;
-
-        li {
-          margin-block-end: 1em;
-        }
+      h1, p {
+        padding: 0 20px;
       }
+    }
 
-      #confidential_information_span {
-        display: none;
+    .contract-view {
+      width: 60%;
+      padding: 60px;
+      max-width: 888px;
+      overflow: scroll;
+
+      article {
+        max-width: 768px;
+
+        ol {
+          margin-block-start: 1em;
+          margin-block-end: 1em;
+
+          li {
+            margin-block-end: 1em;
+          }
+        }
+
+        #confidential_information_span {
+          display: none;
+        }
       }
     }
   }

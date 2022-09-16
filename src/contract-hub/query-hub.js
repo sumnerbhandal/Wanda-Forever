@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -9,7 +9,6 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import { visuallyHidden } from "@mui/utils";
-import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import UnfoldLessIcon from "@mui/icons-material/UnfoldLess";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
@@ -24,7 +23,7 @@ import decorativeAngle from "./_assets/Decoration.svg";
 import { Link } from "react-router-dom/index";
 import Tags from "../_query/autocomplete";
 import DefaultContract from "../_query/_contracts/default";
-import EmploymentContract from "../query-editor/_contract-types/employment-query";
+import QueryResults from "../_query/query-results";
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -214,11 +213,17 @@ function Row(props) {
 }
 
 export default function QueryTable(props) {
+  const heightRef = useRef();
+  const [queryBarHeight, setQueryBarHeight] = useState();
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("name");
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(50);
   const [activeTags, setActiveTags] = useState();
+
+  useEffect(() => {
+    setQueryBarHeight(heightRef?.current?.clientHeight);
+  }, [heightRef?.current?.clientHeight]);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
@@ -242,11 +247,10 @@ export default function QueryTable(props) {
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - feed.length) : 0;
 
   return (
-    <>
-      <div className="query-bar">
+    <div className="query-action-container">
+      <div ref={heightRef} className="query-bar">
         <Tags activeTags={activeTags} setActiveTags={setActiveTags} />
       </div>
-      {console.log(activeTags)}
       {activeTags === undefined || activeTags.length === 0 ? (
         <div className="contract-hub query">
           <h1>Uploaded Documents ({feed.length})</h1>
@@ -264,7 +268,7 @@ export default function QueryTable(props) {
                   .map((row, index) => {
                     return (
                       <Row
-                        key={row.name}
+                        key={row.name + index}
                         row={row}
                         configureContract={props.configureContract}
                       />
@@ -293,16 +297,13 @@ export default function QueryTable(props) {
           />
         </div>
       ) : (
-        <div className="results-container">
-          <div className="results">
-            <h1>{activeTags.length} Label(s) Selected</h1>
-            <p>({activeTags})</p>
-          </div>
-          <div className="contract-view">
-            <EmploymentContract />
-          </div>
+        <div
+          style={{ height: `calc(100% - ${queryBarHeight + 1}px` }}
+          className="results-container"
+        >
+          <QueryResults activeTags={activeTags} />
         </div>
       )}
-    </>
+    </div>
   );
 }

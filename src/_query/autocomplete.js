@@ -23,7 +23,8 @@ const provisions = [
   { title: "Company Details", type: "select" },
   { title: "Company Liability", type: "select" },
   { title: "Company Name", type: "select" },
-  { title: "Company Obligations", type: "select" }
+  { title: "Company Obligations", type: "select" },
+  { title: "Counterparty", type: "select" }
 ];
 
 const closeIcon = <img alt="close-button" src={Close} />;
@@ -106,7 +107,7 @@ export default function Tags(props) {
             {value.length > 0
               ? props.setActiveTags(value)
               : props.setActiveTags(null)}
-            {console.log(value)}
+            {/* {console.log(value)} */}
             {value.map((option: string, index: number) => (
               <CustomChip
                 value={option}
@@ -117,8 +118,9 @@ export default function Tags(props) {
             ))}
           </div>
         )}
+        onChange={props.commitSearch}
         // onOpen={getTarget}
-        onClose={console.log(props.activeTags)}
+        // onClose={console.log(props.activeTags)}
         renderInput={(params) => (
           <TextField {...params} placeholder="Start a Query" />
         )}

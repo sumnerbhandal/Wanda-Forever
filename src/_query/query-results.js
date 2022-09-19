@@ -18,10 +18,8 @@ export default function QueryResults(props) {
   const [textMatch, setTextMatch] = useState([]);
   const [textMatchResults, setTextMatchResults] = useState([]);
   const [labelViewFilter, setLabelViewFilter] = useState([]);
-  const [contractPreview, setContractPreview] = useState(
-    <EmploymentContract />
-  );
-  const [active, setActive] = useState(1);
+  const [contractPreview, setContractPreview] = useState();
+  const [active, setActive] = useState(false);
 
   useEffect(() => {
     if (props.activeTags.length > 0) {
@@ -50,12 +48,14 @@ export default function QueryResults(props) {
             }
           }
 
-          setTextMatch(props.activeTags);
-
           //loop through contract to see if this text exists
 
-          if (ContractText.includes(tagInstance)) {
+          if (ContractText.toLowerCase().includes(tagInstance.toLowerCase())) {
             const contractWithText = data.contracts[i];
+            const existingTextMatches = textMatch;
+            existingTextMatches.push(tagInstance);
+
+            setTextMatch(removeDuplicates(existingTextMatches));
 
             //contract where this text matches
             const textMatchResultsExisting = textMatchResults;
@@ -75,10 +75,14 @@ export default function QueryResults(props) {
       setLabelViewFilter([]);
       setContractPreview(null);
     }
-    console.log(textMatchResults);
   }, [props.activeTags]);
 
-  useEffect(() => {}, [props.activeTags]);
+  const selectContract = (labelResult) => {
+    setActive(labelResult.id);
+    if (labelResult.contract === "EmploymentContract") {
+      setContractPreview(<EmploymentContract />);
+    }
+  };
 
   return (
     <>
@@ -101,11 +105,11 @@ export default function QueryResults(props) {
                 <div
                   key={index}
                   id={labelResult.id}
-                  className="live-result-container"
-                  onClick={() => setActive(labelResult.id)}
-                  style={{
-                    background: active === labelResult.id ? "#F5F6F9" : "white"
-                  }}
+                  dataContract={labelResult.contract}
+                  className={`live-result-container ${
+                    active === labelResult.id ? "active" : ""
+                  }`}
+                  onClick={() => selectContract(labelResult)}
                 >
                   <div className="contract-icon-container">
                     <div className="contract-icon">
@@ -149,12 +153,45 @@ export default function QueryResults(props) {
                     : "your searches"}
                 </h3>
               </div>
+              {textMatchResults.map((textResult, index) => (
+                <div
+                  key={index}
+                  id={textResult.id + "text"}
+                  className="live-result-container"
+                  className={`live-result-container ${
+                    active === textResult.id + "text" ? "active" : ""
+                  }`}
+                  onClick={() => setActive(textResult.id + "text")}
+                >
+                  <div className="contract-icon-container">
+                    <div className="contract-icon">
+                      <p className="letter">{textResult.name.slice(0, 1)}</p>
+                    </div>
+                  </div>
+                  <div className="contract-details">
+                    <div className="contract-name">
+                      <p>
+                        <strong>{textResult.name}</strong>
+                      </p>
+                    </div>
+                    {/* <h3>{labelResult.type}</h3> */}
+
+                    {textMatch.map((textStored, index) => (
+                      <div key={index} className="label-instance">
+                        <div className="icon"></div>
+                        <p>Text</p>
+                        <p>{textStored}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </>
           ) : null
           // <p>Sorry no results for {props.activeTags}</p>
         }
       </div>
-      <div className="contract-view">{/* {contractPreview} */}</div>
+      <div className="contract-view">{contractPreview}</div>
     </>
   );
 }

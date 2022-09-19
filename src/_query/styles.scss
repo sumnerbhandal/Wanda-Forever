@@ -2,14 +2,18 @@
 
   &.query {
     .page {
+
+      .query-action-container {
+        overflow-y: hidden;
+
       .query-bar {
         width: 100%;
-        min-height: 8rem;
+        // min-height: 8rem;
         background: rgba(230, 233, 241, 0.4);
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 2.5rem 0 2.5rem 0;
+        padding: 2.5rem 0 3.25rem 0;
         border-bottom: 0.0625rem solid var(--robin-blue);
         * {
           font-family: "Lato", sans-serif;
@@ -133,6 +137,7 @@
                 background: none;
               }
             }
+          }
       }
 
       .results {
@@ -154,6 +159,10 @@
           display: flex;
           align-items: center;
           padding: 1rem;
+
+          &:first-of-type {
+            border-top: 0;
+          }
         }
 
         .live-result-container {
@@ -161,8 +170,24 @@
           display: flex;
           flex-wrap: wrap;
           border-bottom: 0.0625rem solid rgba(204, 211, 228, 1);
-          transition: 0.3s ease;
+          // transition: 0.3s ease;
           cursor: pointer;
+          
+          &:hover {
+            background: #F5F6F9;
+          }
+
+          &.active {
+            background: rgba(230, 233, 241, 1);
+
+            .contract-icon-container {
+
+              .contract-icon {
+                background: rgba(204, 211, 228, 1);
+              }
+            }
+
+          }
 
           .contract-icon-container {
             width: 36px;

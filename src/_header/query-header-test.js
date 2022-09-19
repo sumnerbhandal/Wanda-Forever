@@ -53,7 +53,6 @@ export default function QueryHubHeader(props) {
   const [focus, setFocus] = useState(false);
   const dropzoneRef = createRef();
   const openDialog = () => {
-    console.log(dropzoneRef.current);
     // Note that the ref is set async,
     // so it might be null at some point
     if (dropzoneRef.current) {
@@ -62,12 +61,10 @@ export default function QueryHubHeader(props) {
   };
 
   const detectDrag = () => {
-    console.log("dragged");
     setFocus(true);
   };
 
   const detectDragLeave = () => {
-    console.log("drag leave");
     setFocus(false);
   };
 

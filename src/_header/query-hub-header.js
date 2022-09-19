@@ -47,7 +47,6 @@ export default function QueryHubHeader(props) {
 
   const changeUserType = (e) => {
     const type = e.target.options[e.target.selectedIndex].value;
-    console.log(type);
     props.setUserType(type);
   };
 

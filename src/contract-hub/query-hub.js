@@ -220,6 +220,7 @@ export default function QueryTable(props) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(50);
   const [activeTags, setActiveTags] = useState();
+  const [labelsExist, setLabelsExist] = useState(false);
 
   useEffect(() => {
     setQueryBarHeight(heightRef?.current?.clientHeight);
@@ -249,7 +250,12 @@ export default function QueryTable(props) {
   return (
     <div className="query-action-container">
       <div ref={heightRef} className="query-bar">
-        <Tags activeTags={activeTags} setActiveTags={setActiveTags} />
+        <Tags
+          activeTags={activeTags}
+          setActiveTags={setActiveTags}
+          labelsExist={labelsExist}
+          setLabelsExist={setLabelsExist}
+        />
       </div>
       {activeTags === undefined || activeTags.length === 0 ? (
         <div className="contract-hub query">
@@ -301,7 +307,11 @@ export default function QueryTable(props) {
           style={{ height: `calc(100% - ${queryBarHeight + 1}px` }}
           className="results-container"
         >
-          <QueryResults activeTags={activeTags} />
+          <QueryResults
+            labelsExist={labelsExist}
+            setLabelsExist={setLabelsExist}
+            activeTags={activeTags}
+          />
         </div>
       )}
     </div>

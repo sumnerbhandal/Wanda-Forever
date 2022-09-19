@@ -161,6 +161,8 @@
           display: flex;
           flex-wrap: wrap;
           border-bottom: 0.0625rem solid rgba(204, 211, 228, 1);
+          transition: 0.3s ease;
+          cursor: pointer;
 
           .contract-icon-container {
             width: 36px;
@@ -182,7 +184,6 @@
               .letter {
                 font-size: 18px;
                 font-weight: 700;
-                margin-left: -1px;
                 text-transform: uppercase;
               }
 

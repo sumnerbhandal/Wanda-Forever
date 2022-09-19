@@ -84,6 +84,13 @@ export default function QueryResults(props) {
     }
   };
 
+  const selectContractText = (textResult) => {
+    setActive(textResult.id + "text");
+    if (textResult.contract === "EmploymentContract") {
+      setContractPreview(<EmploymentContract />);
+    }
+  };
+
   return (
     <>
       <div className="results">
@@ -161,7 +168,7 @@ export default function QueryResults(props) {
                   className={`live-result-container ${
                     active === textResult.id + "text" ? "active" : ""
                   }`}
-                  onClick={() => setActive(textResult.id + "text")}
+                  onClick={() => selectContractText(textResult)}
                 >
                   <div className="contract-icon-container">
                     <div className="contract-icon">

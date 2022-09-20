@@ -259,7 +259,7 @@ export default function QueryTable(props) {
       </div>
       {activeTags === undefined || activeTags.length === 0 ? (
         <div className="contract-hub query">
-          <h1>Uploaded Documents ({feed.length})</h1>
+          <h1>Recently Uploaded Documents ({feed.length})</h1>
           <TableContainer>
             <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
               <EnhancedTableHead

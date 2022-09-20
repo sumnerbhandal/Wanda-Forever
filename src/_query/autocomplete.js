@@ -24,6 +24,7 @@ const provisions = [
   { title: "Company Liability", type: "select" },
   { title: "Company Name", type: "select" },
   { title: "Company Obligations", type: "select" },
+  { title: "Contract Type", type: "select" },
   { title: "Counterparty", type: "select" }
 ];
 
@@ -32,6 +33,7 @@ const clearAll = (
 );
 
 const CustomChip = (props) => {
+  const [selectLength, setSelectLength] = useState(3);
   // const [tempTag, setTempTag] = useState();
 
   // const realTagTotal = () => {
@@ -42,7 +44,12 @@ const CustomChip = (props) => {
   const closeIcon = <img alt="close-button" src={Close} />;
   //close icon
   return (
-    <div className="custom-tag">
+    <div
+      className="custom-tag"
+      onClick={(event) => {
+        event.stopPropagation();
+      }}
+    >
       {provisions.find((record) => record.title === props.value) ===
       undefined ? (
         <>
@@ -64,11 +71,21 @@ const CustomChip = (props) => {
             onMouseUp={(event) => {
               event.stopPropagation();
             }}
+            onChange={(e) => {
+              setSelectLength(e.target.value.length);
+            }}
+            style={{ width: `${(selectLength / 3) * 20 + 40}px` }}
           >
-            <option value="any">any</option>
-            {/* <option value="is">is</option>
-            <option value="is before">is before</option>
-            <option value="is after">is after</option> */}
+            {[
+              "Any",
+              "Amendment",
+              "Distribution Agreement",
+              "NDA Two-Way",
+              "Procurement Agreement",
+              "Side Letter"
+            ].map((option, index) => (
+              <option value={option}>{option}</option>
+            ))}
           </select>
           {/* <input
             type={

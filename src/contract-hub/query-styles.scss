@@ -7,14 +7,17 @@
     height: 100%;
     align-items: flex-start;
     align-content: flex-start;
+    pointer-events: none;
 
   .results-container {
     display: flex;
     min-width: 400px;
     width: 100%;
+    pointer-events: visible;
 
     .results {
       width: 30%;
+      max-width: 488px;
       flex-grow: 1;
       border-right: 0.0625rem solid var(--robin-blue);
       overflow: scroll;
@@ -27,11 +30,12 @@
     .contract-view {
       width: 60%;
       padding: 60px;
-      max-width: 888px;
       overflow: scroll;
+      flex-grow: 1;
 
       article {
         max-width: 768px;
+        margin: 0 auto;
 
         ol {
           margin-block-start: 1em;

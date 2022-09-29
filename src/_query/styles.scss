@@ -179,7 +179,7 @@
           }
 
           &.active {
-            background: rgba(230, 233, 241, 1);
+            background: #E6E9F1;
 
             .contract-icon-container {
 
@@ -225,20 +225,32 @@
             .contract-name {
               width: 100%;
             }
+
+            hr {
+              width: 100%;
+              border: 0;
+              border-top: 0.0625rem solid rgba(204, 211, 228, 1);
+              margin-block-start: 0.75rem;
+              margin-block-end: 0.75rem;
+            }
   
             .label-instance {
               display: flex;
               justify-content: space-between;
               width: 100%;
               gap: 8px;
-              padding-top: 12px;
-              margin-top: 12px;
-              border-top: 0.0625rem solid #e6e9f1;
+              padding: 3px 6px;
+              align-items: center;
+              border-radius: 0.25rem;
+
+              &.active {
+                background: rgba(204, 211, 228, 1);
+              }
   
               .icon {
                 width: 20px;
                 height: 20px;
-                background-color: #f7f7f7;
+                // background-color: #f7f7f7;
   
               }
   

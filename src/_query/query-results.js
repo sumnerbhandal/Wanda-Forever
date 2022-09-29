@@ -2,6 +2,8 @@ import { lte } from "lodash";
 import { useEffect, useState, useReducer } from "react";
 import EmploymentContract from "../query-editor/_contract-types/employment-query";
 import "./styles.scss";
+import ML from "./_assets/ml.svg";
+import Text from "./_assets/text.svg";
 import data from "./_query-api/query.json";
 
 function getUniqueListBy(arr, key) {
@@ -44,7 +46,6 @@ export default function QueryResults(props) {
               const labelView = labelViewFilter;
               labelView.push(tagInstance);
               setLabelViewFilter(removeDuplicates(labelView));
-              // console.log(labelViewFilter);
             }
           }
 
@@ -91,20 +92,33 @@ export default function QueryResults(props) {
     }
   };
 
+  useEffect(() => {
+    // const results = document.getElementById("Results-Container");
+
+    setTimeout(() => {
+      const secondChild = document.getElementsByClassName(
+        "live-result-container"
+      )[0];
+      // console.log(secondChild);
+      secondChild.click();
+    }, "100");
+  }, [props.activeTags]);
+
   return (
     <>
-      <div className="results">
+      <div className="results" id="Results-Container">
         {
           labelMatch.length > 0 ? (
             <>
               {/* <h2>{labelMatch.length} Result(s)</h2> */}
               <div className="top-results">
                 <h3>
-                  {labelMatch.length} contract{labelMatch.length > 0 ? "s" : ""}{" "}
-                  containing{" "}
                   {props.activeTags.length < 2
-                    ? `"${props.activeTags}"`
-                    : "selected labels"}
+                    ? `${labelMatch.length} contract${
+                        labelMatch.length > 0 ? "s" : ""
+                      } 
+                  containing "${props.activeTags}"`
+                    : `${props.activeTags.length} results`}
                 </h3>
               </div>
 
@@ -129,12 +143,13 @@ export default function QueryResults(props) {
                         <strong>{labelResult.name}</strong>
                       </p>
                     </div>
+                    <hr />
                     {/* <h3>{labelResult.type}</h3> */}
 
                     {labelResult.labels.map((labels, index) =>
                       labelViewFilter.includes(labels.name) ? (
                         <div key={index} className="label-instance">
-                          <div className="icon"></div>
+                          <img src={ML} className="icon" />
                           <p>{labels.name}</p>
                           <p>{labels.value}</p>
                         </div>
@@ -164,7 +179,6 @@ export default function QueryResults(props) {
                 <div
                   key={index}
                   id={textResult.id + "text"}
-                  className="live-result-container"
                   className={`live-result-container ${
                     active === textResult.id + "text" ? "active" : ""
                   }`}
@@ -185,7 +199,7 @@ export default function QueryResults(props) {
 
                     {textMatch.map((textStored, index) => (
                       <div key={index} className="label-instance">
-                        <div className="icon"></div>
+                        <img src={Text} alt="text" className="icon" />
                         <p>Text</p>
                         <p>{textStored}</p>
                       </div>

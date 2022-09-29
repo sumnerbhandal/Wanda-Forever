@@ -101,7 +101,7 @@ export default function QueryResults(props) {
       )[0];
       // console.log(secondChild);
       secondChild.click();
-    }, "100");
+    }, "0");
   }, [props.activeTags]);
 
   return (

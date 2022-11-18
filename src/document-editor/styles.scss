@@ -55,7 +55,8 @@
       padding-bottom: 5rem;
 
       &.playbook-open {
-        width: calc(100% - 23rem);
+        width: 100% !important;
+        flex-grow: 1;
 
         @media (max-width: 1280px) {
           width: 100%;
@@ -460,28 +461,37 @@
         }
       }
     }
+
     aside {
       width: 23rem;
       border-left: 0.0625rem solid var(--robin-blue);
       transition: all 0.3s ease-in-out, height 0s;
       opacity: 0;
       padding: 0.75rem;
-      position: fixed;
+      // position: fixed;
       overflow-y: scroll;
       height: calc(100vh - 4rem);
-      right: -23rem;
+      margin-right: -100%;
       background: #fff;
       padding-bottom: 4rem;
 
       &.open {
         opacity: 1;
-        right: 0;
+        margin-right: 0;
 
-        @media (max-width: 1280px) {
-          right: -23rem;
-          opacity: 0;
-        }
+        // @media (max-width: 1280px) {
+        //   right: -23rem;
+        //   opacity: 0;
+        // }
       }
+
+    //   #Resizable{
+    //     border: 1px solid black; 
+    //     height: 100%;
+    //     width: 200px;
+    //     position: absolute;
+    //     left: 0;
+    // }
 
 
 
@@ -721,3 +731,28 @@
   }
 }
 
+
+
+.box {
+  
+  /* Use box-sizing so that element's outerwidth will match width property */
+  box-sizing: border-box;
+  
+  /* Allow box to grow and shrink, and ensure they are all equally sized */
+  flex: 1 1 auto;
+  position: relative;
+}
+
+.handler {
+  width: 0.5rem;
+  padding: 0;
+  cursor: ew-resize;
+  flex: 0 0 auto;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  height: 100%;
+  background: transparent;
+}

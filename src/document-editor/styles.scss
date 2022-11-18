@@ -57,6 +57,7 @@
       &.playbook-open {
         width: 100% !important;
         flex-grow: 1;
+        flex-shrink: 0;
 
         @media (max-width: 1280px) {
           width: 100%;
@@ -471,13 +472,14 @@
       // position: fixed;
       overflow-y: scroll;
       height: calc(100vh - 4rem);
-      margin-right: -100%;
+      // margin-right: -100%;
       background: #fff;
       padding-bottom: 4rem;
 
       &.open {
         opacity: 1;
-        margin-right: 0;
+        // margin-right: 0;
+        flex-shrink: 0;
 
         // @media (max-width: 1280px) {
         //   right: -23rem;

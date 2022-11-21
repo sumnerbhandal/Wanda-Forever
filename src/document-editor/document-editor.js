@@ -11,6 +11,7 @@ import HeaderSection from "./_toolbar/headerSection";
 import FooterSection from "./_toolbar/footerSection";
 import EditorToolbar from "./_toolbar/editorToolbar";
 import VersionToolbar from "./_toolbar/versionCompare";
+import ToolTip from "../_notification/tooltip/tooltip";
 
 const LabelPreview = (props) => {
   return (
@@ -42,6 +43,7 @@ const DocumentEditor = (props) => {
   const [headerPageNumber, setHeaderPageNumber] = useState(false);
   const [footerPageNumber, setFooterPageNumber] = useState(false);
   const [focusedSection, setFocusedSection] = useState();
+  const [dragToExpand, setDragToExpand] = useState(false);
 
   let suggestedEditBefore = (
     <>
@@ -269,10 +271,24 @@ const DocumentEditor = (props) => {
               setContractFocused={setContractFocused}
             />
           )}
+          <ToolTip
+            className={dragToExpand ? "review show" : "review hide"}
+            message="Drag to resize"
+          />
         </div>
 
         <aside id="Resizable" className={drawerState ? "open box" : "box"}>
-          <div className="handler" draggable="true" onDrag={newDrag}></div>
+          <div
+            className="handler"
+            draggable="true"
+            onDrag={newDrag}
+            onMouseEnter={() => {
+              setDragToExpand(true);
+            }}
+            onMouseLeave={() => {
+              setDragToExpand(false);
+            }}
+          ></div>
           {historyView ? (
             <HistoryDemo
               setActiveHover={setActiveHover}

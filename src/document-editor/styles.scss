@@ -9,6 +9,18 @@
     justify-content: flex-start;
     height: calc(100vh - 4rem);
 
+    .tooltip {
+
+      &.review {
+        right: 10px;
+        top: 50%;
+        position: absolute;
+        &.show {
+          opacity: 1;
+        }
+      }
+    }
+
     &.query {
       
       width: calc(100% - 194px);
@@ -21,7 +33,7 @@
       aside {
         width: 23rem;
         border-left: 0.0625rem solid var(--robin-blue);
-        transition: all 0.3s ease-in-out, height 0s;
+        transition: all 0.3s ease-in-out;
         opacity: 1;
         padding: 0.75rem;
         position: relative;
@@ -35,6 +47,7 @@
         &.open {
           opacity: 1;
           right: 0;
+          transition: all 0.3s ease-in-out, height 0s;
   
           @media (max-width: 1280px) {
             right: 0;
@@ -48,16 +61,18 @@
     .article-container {
       display: flex;
       width: calc(100%);
-      transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out, width 0s;
       overflow: auto;
       justify-content: center;
       flex-wrap: wrap;
       padding-bottom: 5rem;
+      min-width: 30rem;
 
       &.playbook-open {
         width: 100% !important;
         flex-grow: 1;
         flex-shrink: 0;
+        transition: all 0.3s ease-in-out;
 
         @media (max-width: 1280px) {
           width: 100%;
@@ -289,6 +304,7 @@
         flex-wrap: wrap;
         text-align: justify;
         text-justify: inter-word;
+        
 
         &:focus-visible {
           outline: 0;
@@ -466,7 +482,7 @@
     aside {
       width: 23rem;
       border-left: 0.0625rem solid var(--robin-blue);
-      transition: all 0.3s ease-in-out, height 0s;
+      transition: all 0.3s ease-in-out, height 0s, width 0s;
       opacity: 0;
       padding: 0.75rem;
       // position: fixed;
@@ -480,12 +496,15 @@
         opacity: 1;
         // margin-right: 0;
         flex-shrink: 0;
+        transition: all 0.3s ease-in-out, height 0s;
 
         // @media (max-width: 1280px) {
         //   right: -23rem;
         //   opacity: 0;
         // }
       }
+
+
 
     //   #Resizable{
     //     border: 1px solid black; 
@@ -758,3 +777,4 @@
   height: 100%;
   background: transparent;
 }
+

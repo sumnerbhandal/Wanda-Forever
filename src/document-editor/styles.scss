@@ -484,7 +484,7 @@
       border-left: 0.0625rem solid var(--robin-blue);
       transition: all 0.3s ease-in-out, height 0s, width 0s;
       opacity: 0;
-      padding: 0.75rem;
+      // padding: 0.75rem;
       // position: fixed;
       overflow-y: scroll;
       height: calc(100vh - 4rem);
@@ -506,50 +506,56 @@
 
 
 
-    //   #Resizable{
-    //     border: 1px solid black; 
-    //     height: 100%;
-    //     width: 200px;
-    //     position: absolute;
-    //     left: 0;
-    // }
-
-
-
 
       .playbook-container {
         display: flex;
         width: 100%;
-        padding: 0 0.75rem;
+        padding: 0 1.5rem;
         flex-wrap: wrap;
+        max-width: 64rem;
+        margin: auto;
         
-        .playbook-settings {
+        .search-and-title {
           display: flex;
           justify-content: space-between;
           width: 100%;
           align-items: center;
+          flex-wrap: wrap;
+          position: sticky;
+          top: 0;
+          z-index: 100;
+          background: white;
+          padding-top: 0.75rem;
 
-          .button-container {
+          .playbook-settings {
             display: flex;
+            width: 100%;
+            justify-content: space-between;
             align-items: center;
-            height: 3rem;
+            flex-wrap: wrap;
 
-            button {
-              margin: 0;
+
+            .button-container {
+              display: flex;
+              align-items: center;
+              height: 3rem;
   
-              img {
-                margin-left: 0.5rem;
-              }
-  
-              &.text {
-                margin-left: 1rem;
-  
+              button {
+                margin: 0;
+    
                 img {
-                  margin-left: 0;
+                  margin-left: 0.5rem;
+                }
+    
+                &.text {
+                  margin-left: 1rem;
+    
+                  img {
+                    margin-left: 0;
+                  }
                 }
               }
             }
-
           }
         }
 
@@ -624,6 +630,20 @@
 
               .MuiAccordionDetails-root {
                 padding: 0;
+
+                &.two-column {
+                  display: flex;
+                  width: 100%;
+                  justify-content: space-between;
+                  margin-bottom: 1rem;
+
+                  .recommendation, .issue {
+                    width: calc(50% - 0.25rem)
+                  }
+                  .recommendation {
+                    margin-bottom: auto;
+                  }
+                }
 
                 .recommendation, .issue {
                   padding: 0.75rem 1rem;

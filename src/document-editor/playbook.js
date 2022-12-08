@@ -58,7 +58,7 @@ function SimpleAccordion(props) {
             <div className="count">{listItem.count}</div>
             <p className="accordion-label">{listItem.provision}</p>
           </AccordionSummary>
-          <AccordionDetails>
+          <AccordionDetails className={props.goResponsive ? "two-column" : ""}>
             {listItem.tag === "ul" ? (
               <div className="recommendation">
                 <p className="title">Recommendation</p>
@@ -100,12 +100,12 @@ function SimpleAccordion(props) {
               <p className="title">Issue</p>
               <p>{listItem.issue}</p>
             </div>
-            {typeof listItem.advisory === "undefined" ? null : (
+            {/* {typeof listItem.advisory === "undefined" ? null : (
               <div className="advisory">
                 <div className={`advisory-circle ${listItem.advisory}`} />
                 <p className="title">{listItem.advisory} Advisory</p>
               </div>
-            )}
+            )} */}
           </AccordionDetails>
         </Accordion>
       ))}
@@ -116,14 +116,17 @@ function SimpleAccordion(props) {
 const PlaybookContent = (props) => {
   return (
     <div className="playbook-container">
-      <div className="playbook-settings">
-        <h2>Playbook 1</h2>
-        <div className="button-container">
-          <Button variant="tertiary" label={RunAutoEdit} />
+      <div className="search-and-title">
+        <div className="playbook-settings">
+          <h2>Playbook 1</h2>
+          <div className="button-container">
+            <Button variant="tertiary" label={RunAutoEdit} />
+          </div>
         </div>
+        <input placeholder="Search" />
       </div>
-      <input placeholder="Search" />
       <SimpleAccordion
+        goResponsive={props.goResponsive}
         setActiveHover={props.setActiveHover}
         suggestedEditAfter={props.suggestedEditAfter}
         setSuggestedEdit={props.setSuggestedEdit}

@@ -127,6 +127,8 @@ const DocumentEditor = (props) => {
     // setFooterSection(true);
   };
 
+  const [goResponsive, setGoResponsive] = useState(false);
+
   const newDrag = (e) => {
     let wrapper = document.getElementById("editor");
 
@@ -140,13 +142,19 @@ const DocumentEditor = (props) => {
 
     // Arbitrary minimum width set on box A, otherwise its inner content will collapse to width of 0
     var boxAminWidth = 60;
-    console.log(pointerRelativeXpos);
+    setGoResponsive(pointerRelativeXpos);
 
     // Resize box A
     // * 8px is the left/right spacing between .handler and its inner pseudo-element
     // * Set flex-grow to 0 to prevent it from growing
     boxA.style.width = pointerRelativeXpos - 8 + "px";
     boxA.style.flexGrow = 0;
+
+    if (window.innerWidth - pointerRelativeXpos > 720) {
+      setGoResponsive(true);
+    } else {
+      setGoResponsive(false);
+    }
   };
 
   return (
@@ -298,6 +306,7 @@ const DocumentEditor = (props) => {
             />
           ) : (
             <PlaybookContent
+              goResponsive={goResponsive}
               setActiveHover={setActiveHover}
               suggestedEditAfter={suggestedEditAfter}
               setSuggestedEdit={setSuggestedEdit}

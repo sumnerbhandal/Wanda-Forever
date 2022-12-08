@@ -157,6 +157,17 @@ const DocumentEditor = (props) => {
     }
   };
 
+  const onDragEnd = (e) => {
+    const playbook = document.getElementById("Resizable");
+    const playbookWidth = playbook.offsetWidth;
+
+    if (playbookWidth > 720) {
+      setGoResponsive(true);
+    } else {
+      setGoResponsive(false);
+    }
+  };
+
   return (
     <>
       {historyView ? (
@@ -290,6 +301,7 @@ const DocumentEditor = (props) => {
             className="handler"
             draggable="true"
             onDrag={newDrag}
+            onDragEnd={onDragEnd}
             onMouseEnter={() => {
               setDragToExpand(true);
             }}

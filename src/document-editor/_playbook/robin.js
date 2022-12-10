@@ -4,9 +4,26 @@ const Playbook = [
     provision: "Arbitration clause",
     issue:
       "CLIENT needs to be able to disclose Confidential Information to its Representatives because CLIENT is set up as a global platform with different teams (with employees or advisors – the Representatives) working on NDAs who are employed / instructed by different CLIENT Group entities (which are Affiliates of the contracting CLIENT Group entity). The inclusion of ‘investors’ is necessary in order to capture investors in the investing Partners Group funds or companies, who may have the legal right to receive investment information and/or a veto right over investments (but who are still subject to confidentiality obligations with CLIENT). CLIENT’s unique set-up is not typical of other LPs, which only invest via flagship funds. CLIENT have mandate clients to whom they have a legal and contractual obligation to share investment memos with, in order to obtain their consent before an investment can be authorized. Excluding mandate clients from the definition of ‘[Representative]’ could therefore hinder CLIENT’s ability to fulfil its fiduciary and/or contractual obligations to such mandate clients. The added compromise wording is meant to provide added and sufficient comfort that these are bona fide legal and contractual requirements limited to mandate clients.",
-    tag: "ul",
+    tag: "tab",
     recommendation: [
-      "The [Recipient] is permitted to disclose [Confidential Information] to the [Recipient's] [affiliates] (“excluding the direct or indirect portfolio companies of funds managed and/or advised by [the Recipient] or its affiliates) as well as [its and their respective] employees, officers, directors, investors under duties of confidentiality, financing sources and professional advisers ('Representatives / Permitted Recipients')."
+      {
+        tab: "Clause Library",
+        regular:
+          "Three WHEREAS, the Recipient desires that [X] (“Disclosing Party”) shares certain information that is non-public, ",
+        redline: "confidential or proprietary in nature"
+      },
+      {
+        tab: "Targetted Edit",
+        regular:
+          "Two WHEREAS, the Recipient desires that [X] (“Disclosing Party”) shares certain information that is non-public, ",
+        redline: "confidential or proprietary in nature"
+      },
+      {
+        tab: "AI Plus",
+        regular:
+          " One WHEREAS, the Recipient desires that [X] (“Disclosing Party”) shares certain information that is non-public, ",
+        redline: "confidential or proprietary in nature"
+      }
     ],
     recommendationLabelPresent:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",

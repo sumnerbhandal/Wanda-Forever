@@ -142,7 +142,7 @@ const DocumentEditor = (props) => {
 
     // Arbitrary minimum width set on box A, otherwise its inner content will collapse to width of 0
     var boxAminWidth = 60;
-    setGoResponsive(pointerRelativeXpos);
+    // setGoResponsive(pointerRelativeXpos);
 
     // Resize box A
     // * 8px is the left/right spacing between .handler and its inner pseudo-element
@@ -150,23 +150,23 @@ const DocumentEditor = (props) => {
     boxA.style.width = pointerRelativeXpos - 8 + "px";
     boxA.style.flexGrow = 0;
 
-    if (window.innerWidth - pointerRelativeXpos > 720) {
-      setGoResponsive(true);
-    } else {
-      setGoResponsive(false);
-    }
+    // if (window.innerWidth - pointerRelativeXpos > 720) {
+    //   setGoResponsive(true);
+    // } else {
+    //   setGoResponsive(false);
+    // }
   };
 
-  const onDragEnd = (e) => {
-    const playbook = document.getElementById("Resizable");
-    const playbookWidth = playbook.offsetWidth;
+  // const onDragEnd = (e) => {
+  //   const playbook = document.getElementById("Resizable");
+  //   const playbookWidth = playbook.offsetWidth;
 
-    if (playbookWidth > 720) {
-      setGoResponsive(true);
-    } else {
-      setGoResponsive(false);
-    }
-  };
+  //   if (playbookWidth > 720) {
+  //     setGoResponsive(true);
+  //   } else {
+  //     setGoResponsive(false);
+  //   }
+  // };
 
   return (
     <>
@@ -301,7 +301,7 @@ const DocumentEditor = (props) => {
             className="handler"
             draggable="true"
             onDrag={newDrag}
-            onDragEnd={onDragEnd}
+            // onDragEnd={onDragEnd}
             onMouseEnter={() => {
               setDragToExpand(true);
             }}

@@ -7,19 +7,19 @@ const Playbook = [
     tag: "tab",
     recommendation: [
       {
-        tab: "Clause Library",
+        tab: "Change 3",
         regular:
           "Three WHEREAS, the Recipient desires that [X] (“Disclosing Party”) shares certain information that is non-public, ",
         redline: "confidential or proprietary in nature"
       },
       {
-        tab: "Targetted Edit",
+        tab: "Change 2",
         regular:
           "Two WHEREAS, the Recipient desires that [X] (“Disclosing Party”) shares certain information that is non-public, ",
         redline: "confidential or proprietary in nature"
       },
       {
-        tab: "AI Plus",
+        tab: "Change 1",
         regular:
           " One WHEREAS, the Recipient desires that [X] (“Disclosing Party”) shares certain information that is non-public, ",
         redline: "confidential or proprietary in nature"

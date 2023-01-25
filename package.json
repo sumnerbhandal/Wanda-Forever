@@ -33,7 +33,8 @@
     "react-router-dom": "6.0.0-beta.0",
     "react-scripts": "4.0.3",
     "sass": "1.35.1",
-    "typescript": "4.8.2"
+    "typescript": "4.8.2",
+    "userpilot": "1.2.8"
   },
   "keywords": [],
   "name": "wanda-forever",

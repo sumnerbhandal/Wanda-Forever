@@ -69,29 +69,21 @@ export default function App() {
   );
 
   React.useEffect(() => {
-    console.info("[Userpilot] Userpilot.identify()");
-    console.warn(
-      "[Userpilot] Replace {userId} with the logged in user identifier"
-    );
+    // console.info("[Userpilot] Userpilot.identify()");
+    // console.warn(
+    //   "[Userpilot] Replace {userId} with the logged in user identifier"
+    // );
 
     Userpilot.identify("456987", {
-      name: "John Doe",
-      email: "john@site-domain.com",
-      created_at: "2018-07-11"
+      name: "Sumner Bhandal",
+      email: "sumner@robinai.co.uk",
+      created_at: "2023-01-25"
     });
   }, []);
 
-  // const location = useNavigate();
-
-  // React.useEffect(() => {
-  //   if (isAuthenticated) {
-  //     console.info("[Userpilot] Call Userpilot.reload() on page changes");
-  //     console.warn(
-  //       "[Userpilot] If you want to trigger experiences on anonymous users, call `Userpilot.reload()` on every page change"
-  //     );
-  //     Userpilot.reload();
-  //   }
-  // }, [location]);
+  React.useEffect(() => {
+    Userpilot.reload();
+  }, []);
 
   return (
     <main>

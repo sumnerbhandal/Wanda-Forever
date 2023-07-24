@@ -48,7 +48,7 @@ export default function EditorHeader(props) {
         <Link to={{ pathname: "/review" }}>
           <img alt="logo" src={Robin} />
         </Link>
-        <PlatformButton platform="Review Contracts" />
+        <PlatformButton platform="Review" />
         <p contentEditable="true" className="truncated">
           {props.documentName}
         </p>

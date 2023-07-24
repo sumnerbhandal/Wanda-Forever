@@ -69,15 +69,12 @@ export default function App() {
   );
 
   React.useEffect(() => {
-    // console.info("[Userpilot] Userpilot.identify()");
-    // console.warn(
-    //   "[Userpilot] Replace {userId} with the logged in user identifier"
-    // );
-
     Userpilot.identify("456987", {
-      name: "Sumner Bhandal",
-      email: "sumner@robinai.co.uk",
-      created_at: "2023-01-25"
+      internal: true,
+      company: {
+        id: "0001", // Required, used to identify the company
+        name: "Robin AI"
+      }
     });
   }, []);
 

@@ -69,8 +69,10 @@ export default function App() {
   );
 
   React.useEffect(() => {
-    Userpilot.identify("456987", {
+    Userpilot.identify("production-Sumner", {
+      role: "admin",
       internal: true,
+      plan: "paid",
       company: {
         id: "0001", // Required, used to identify the company
         name: "Robin AI"

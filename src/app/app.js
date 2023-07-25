@@ -70,6 +70,8 @@ export default function App() {
 
   React.useEffect(() => {
     Userpilot.identify("production-Sumner", {
+      name: "Sumner",
+      email: "sumner@robinai.com",
       role: "admin",
       internal: true,
       plan: "paid",

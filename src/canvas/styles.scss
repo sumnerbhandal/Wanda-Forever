@@ -5,15 +5,39 @@
   margin-top: 4rem;
 
   &.query {
-    width: calc(100vw - 184px);
+    width: calc(100vw - 194px);
     margin-left: auto;
+    height: calc(100% - 4rem);
+
+    transition: 0.3s ease;
+
+    @media (max-width: 1280px) {
+      width: calc(100% - 3.5rem);
+    }
+
+    .page {
+      * {
+        z-index: 2;
+      }
+      .editor {
+        z-index: unset;
+        .query {
+          .article-container, aside {
+            z-index: 2;
+          }
+        }
+      }
+    }
   }
 
   .page {
     width: calc(100%);
+    display: flex;
+    align-content: flex-start;
 
     @media  (min-width: 768px) {
       width: calc(100%);
+      // flex-shrink: 0;
     }
   }
 }

@@ -1,0 +1,55 @@
+.query-action-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-height: 100%;
+    height: 100%;
+    align-items: flex-start;
+    align-content: flex-start;
+    pointer-events: none;
+
+  .results-container {
+    display: flex;
+    min-width: 400px;
+    width: 100%;
+    pointer-events: visible;
+
+    .results {
+      width: 30%;
+      max-width: 488px;
+      flex-grow: 1;
+      border-right: 0.0625rem solid var(--robin-blue);
+      overflow: scroll;
+
+      h1, p {
+        padding: 0 20px;
+      }
+    }
+
+    .contract-view {
+      width: 60%;
+      padding: 60px;
+      overflow: scroll;
+      flex-grow: 1;
+
+      article {
+        max-width: 640px;
+        margin: 0 auto;
+
+        ol {
+          margin-block-start: 1em;
+          margin-block-end: 1em;
+
+          li {
+            margin-block-end: 1em;
+          }
+        }
+
+        #confidential_information_span {
+          display: none;
+        }
+      }
+    }
+  }
+}

@@ -8,19 +8,71 @@
     display: flex;
     justify-content: flex-start;
     height: calc(100vh - 4rem);
+
+    .tooltip {
+
+      &.review {
+        right: 10px;
+        top: 50%;
+        position: absolute;
+        &.show {
+          opacity: 1;
+        }
+      }
+    }
+
+    &.query {
+      
+      width: calc(100% - 194px);
+      margin-left: auto;
+
+      @media (max-width: 1280px) {
+        width: calc(100% - 3.5rem);
+      }
+
+      aside {
+        width: 23rem;
+        border-left: 0.0625rem solid var(--robin-blue);
+        transition: all 0.3s ease-in-out;
+        opacity: 1;
+        padding: 0.75rem;
+        position: relative;
+        overflow-y: scroll;
+        height: calc(100vh - 4rem);
+        right: 0;
+        background: #fff;
+        padding-bottom: 4rem;
+        flex-shrink: 0;
+  
+        &.open {
+          opacity: 1;
+          right: 0;
+          transition: all 0.3s ease-in-out, height 0s;
+  
+          @media (max-width: 1280px) {
+            right: 0;
+            opacity: 1;
+          }
+        }
+      }
+    }
     
 
     .article-container {
       display: flex;
       width: calc(100%);
-      transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out, width 0s;
       overflow: auto;
       justify-content: center;
       flex-wrap: wrap;
       padding-bottom: 5rem;
+      min-width: 30rem;
 
       &.playbook-open {
-        width: calc(100% - 23rem);
+        width: 100% !important;
+        flex-grow: 1;
+        flex-shrink: 0;
+        transition: all 0.3s ease-in-out;
 
         @media (max-width: 1280px) {
           width: 100%;
@@ -252,6 +304,7 @@
         flex-wrap: wrap;
         text-align: justify;
         text-justify: inter-word;
+        
 
         &:focus-visible {
           outline: 0;
@@ -425,27 +478,30 @@
         }
       }
     }
+
     aside {
       width: 23rem;
       border-left: 0.0625rem solid var(--robin-blue);
-      transition: all 0.3s ease-in-out, height 0s;
+      transition: all 0.3s ease-in-out, height 0s, width 0s;
       opacity: 0;
-      padding: 0.75rem;
-      position: fixed;
+      // padding: 0.75rem;
+      // position: fixed;
       overflow-y: scroll;
       height: calc(100vh - 4rem);
-      right: -23rem;
+      // margin-right: -100%;
       background: #fff;
       padding-bottom: 4rem;
 
       &.open {
         opacity: 1;
-        right: 0;
+        // margin-right: 0;
+        flex-shrink: 0;
+        transition: all 0.3s ease-in-out, height 0s;
 
-        @media (max-width: 1280px) {
-          right: -23rem;
-          opacity: 0;
-        }
+        // @media (max-width: 1280px) {
+        //   right: -23rem;
+        //   opacity: 0;
+        // }
       }
 
 
@@ -454,36 +510,52 @@
       .playbook-container {
         display: flex;
         width: 100%;
-        padding: 0 0.75rem;
+        padding: 0 1.5rem;
         flex-wrap: wrap;
+        max-width: 45rem;
+        margin: auto;
         
-        .playbook-settings {
+        .search-and-title {
           display: flex;
           justify-content: space-between;
           width: 100%;
           align-items: center;
+          flex-wrap: wrap;
+          position: sticky;
+          top: 0;
+          z-index: 100;
+          background: white;
+          padding-top: 0.75rem;
 
-          .button-container {
+          .playbook-settings {
             display: flex;
+            width: 100%;
+            justify-content: space-between;
             align-items: center;
-            height: 3rem;
+            flex-wrap: wrap;
 
-            button {
-              margin: 0;
+
+            .button-container {
+              display: flex;
+              align-items: center;
+              height: 3rem;
   
-              img {
-                margin-left: 0.5rem;
-              }
-  
-              &.text {
-                margin-left: 1rem;
-  
+              button {
+                margin: 0;
+    
                 img {
-                  margin-left: 0;
+                  margin-left: 0.5rem;
+                }
+    
+                &.text {
+                  margin-left: 1rem;
+    
+                  img {
+                    margin-left: 0;
+                  }
                 }
               }
             }
-
           }
         }
 
@@ -558,6 +630,20 @@
 
               .MuiAccordionDetails-root {
                 padding: 0;
+
+                &.two-column {
+                  display: flex;
+                  width: 100%;
+                  justify-content: space-between;
+                  margin-bottom: 1rem;
+
+                  .recommendation, .issue {
+                    width: calc(50% - 0.25rem)
+                  }
+                  .recommendation {
+                    margin-bottom: auto;
+                  }
+                }
 
                 .recommendation, .issue {
                   padding: 0.75rem 1rem;
@@ -686,3 +772,85 @@
   }
 }
 
+
+
+.box {
+  
+  /* Use box-sizing so that element's outerwidth will match width property */
+  box-sizing: border-box;
+  
+  /* Allow box to grow and shrink, and ensure they are all equally sized */
+  flex: 1 1 auto;
+  position: relative;
+}
+
+.handler {
+  width: 0.5rem;
+  padding: 0;
+  cursor: ew-resize;
+  flex: 0 0 auto;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  height: 100%;
+  background: transparent;
+}
+
+
+.tabs {
+  width: 100%;
+  list-style: none;
+  position: relative;
+  display: flex;
+  margin-block-start: 0.75rem;
+  margin-block-end: 0.75rem;
+  padding-inline-start: 0;
+  flex-wrap: wrap;
+  li {
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(100% / 3);
+  }
+  input[type="radio"] {
+    position: absolute;
+    top: 0;
+    left: -9999px;
+  }
+  label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    height: 2.5rem;
+    width: 100%;
+    padding: 0;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    background: rgba(245, 246, 249, 1);
+    border: 1px solid transparent;
+    border-bottom: 1px solid #2a344f;
+    // &:hover {
+    //   background: darkblue;
+    // }
+  }
+  .tab-content{
+    z-index: 2;
+    display: none;
+    flex-wrap: wrap;
+    margin-top: 0.75rem !important;
+  }
+  //The Magic
+  [id^="tab"]:checked + label { 
+    top: 0;
+    background: white;
+    border: 1px solid #2a344f;
+    border-bottom: 1px solid transparent;
+  }
+  [id^="tab"]:checked ~ [id^="tab-content"] {
+    display: flex;
+  }
+}

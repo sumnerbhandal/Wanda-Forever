@@ -94,6 +94,10 @@ button {
     background: none;
     border-radius: 0;
 
+    &:hover {
+      background: none;
+    }
+
     &.menu-item {
       color: var(--robin-blue);
       width: 100%;

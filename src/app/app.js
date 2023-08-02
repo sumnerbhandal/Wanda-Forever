@@ -12,6 +12,7 @@ const WorkflowTable = lazy(() => import("../contract-hub/workflow-hub"));
 const QueryTable = lazy(() => import("../contract-hub/query-hub"));
 const TemplateSelect = lazy(() => import("../contract-hub/template"));
 const DocumentEditor = lazy(() => import("../document-editor/document-editor"));
+const QueryEditor = lazy(() => import("../query-editor/query-editor"));
 const Drafting = lazy(() => import("../drafting/drafting-editor"));
 const LoginPage = lazy(() => import("../login/login"));
 const NoMatch = lazy(() => import("./no-match"));
@@ -26,6 +27,13 @@ const WorkFlowForm = lazy(() => import("../_modal/workflow.js"));
 // const FeedbackForm = lazy(() => import("../_forms/feedback-form"));
 import FeedbackForm from "../_forms/feedback-form";
 import WorkflowDrawer from "../_drawer/workflow-drawer";
+// import Upload from "../_upload/upload";
+import QueryUploadPage from "../_upload/query-upload-page";
+
+import { Userpilot } from "userpilot";
+
+// Initialize Userpilot
+Userpilot.initialize("NX-a565de97");
 
 function PrivateRoute({ children, isAuthenticated, ...rest }) {
   return (
@@ -51,11 +59,33 @@ export default function App() {
   const isAuthenticated = localStorage.getItem("authenticated");
   const [historyView, setHistoryView] = useState(false);
   const [open, setOpen] = useState(false);
+  const [uploadPresent, setUploadPresent] = useState(true);
+  const [uploadedFiles, setUploadedFiles] = useState([]);
+  const [userType, setUserType] = useState("Admin");
   const loader = (
     <div className="loading-container">
       <span className="loading"></span>
     </div>
   );
+
+  React.useEffect(() => {
+    Userpilot.identify("production-Sumner", {
+      firstName: "Sumner",
+      lastName: "Bhandal",
+      email: "sumner@robinai.com",
+      role: "admin",
+      internal: true,
+      plan: "paid",
+      company: {
+        id: "0001", // Required, used to identify the company
+        name: "Robin AI"
+      }
+    });
+  }, []);
+
+  React.useEffect(() => {
+    Userpilot.reload();
+  }, []);
 
   return (
     <main>
@@ -335,14 +365,23 @@ export default function App() {
               <Route path="search">
                 <Suspense fallback={loader}>
                   <>
+                    {/* <Upload /> */}
                     <QueryHubHeader
                       platform="Query"
-                      homepage="/query"
+                      homepage="/query/search"
                       hubType="Query Contracts"
                       secondaryCTA="UploadContract"
                       user="SB"
+                      setUploadPresent={setUploadPresent}
+                      setUploadedFiles={setUploadedFiles}
+                      setUserType={setUserType}
+                      userType={userType}
                     />
-                    <SideBarNav />
+                    <SideBarNav
+                      uploadPresent={uploadPresent}
+                      userType={userType}
+                    />
+
                     <Canvas
                       className="query"
                       page={
@@ -356,20 +395,45 @@ export default function App() {
                 <Suspense fallback={loader}>
                   <QueryHubHeader
                     platform="Query"
-                    homepage="/query"
-                    hubType="Query Contracts"
+                    homepage="/query/search"
+                    hubType="Users"
                     secondaryCTA="UploadContract"
                     user="SB"
+                    setUploadPresent={setUploadPresent}
+                    setUploadedFiles={setUploadedFiles}
+                    setUserType={setUserType}
+                    userType={userType}
                   />
-                  <SideBarNav />
-                  <>Here are the users</>
+                  <SideBarNav
+                    uploadPresent={uploadPresent}
+                    userType={userType}
+                  />
+                  <Canvas className="query" page={"User Page"} />
                 </Suspense>
               </Route>
               <Route path="label">
                 <Route path=":documentId">
                   <Suspense fallback={loader}>
                     <>
-                      <Canvas page={<DocumentEditor user="SB" />} />
+                      <SideBarNav
+                        uploadPresent={uploadPresent}
+                        userType={userType}
+                      />
+                      <QueryHubHeader
+                        platform="Query"
+                        homepage="/query/search"
+                        hubType="Users"
+                        secondaryCTA="UploadContract"
+                        user="SB"
+                        setUploadPresent={setUploadPresent}
+                        setUploadedFiles={setUploadedFiles}
+                        setUserType={setUserType}
+                        userType={userType}
+                      />
+                      <Canvas
+                        className="query"
+                        page={<QueryEditor user="SB" />}
+                      />
                     </>
                   </Suspense>
                 </Route>
@@ -378,26 +442,84 @@ export default function App() {
                 <Suspense fallback={loader}>
                   <QueryHubHeader
                     platform="Query"
-                    homepage="/query"
-                    hubType="Query Contracts"
+                    homepage="/query/search"
+                    hubType="Groups"
                     secondaryCTA="UploadContract"
                     user="SB"
+                    setUploadPresent={setUploadPresent}
+                    setUploadedFiles={setUploadedFiles}
+                    setUserType={setUserType}
+                    userType={userType}
                   />
-                  <SideBarNav />
-                  <>Here are the users</>
+                  <SideBarNav
+                    uploadPresent={uploadPresent}
+                    userType={userType}
+                  />
+                  <Canvas className="query" page={"Group Page"} />
                 </Suspense>
               </Route>
               <Route path="reminders">
                 <Suspense fallback={loader}>
                   <QueryHubHeader
                     platform="Query"
-                    homepage="/query"
-                    hubType="Query Contracts"
+                    homepage="/query/search"
+                    hubType="Reminders"
                     secondaryCTA="UploadContract"
                     user="SB"
+                    setUploadPresent={setUploadPresent}
+                    setUploadedFiles={setUploadedFiles}
+                    setUserType={setUserType}
+                    userType={userType}
                   />
-                  <SideBarNav />
-                  <>Here are the users</>
+                  <SideBarNav
+                    uploadPresent={uploadPresent}
+                    userType={userType}
+                  />
+                  <Canvas className="query" page={"Reminders Page"} />
+                </Suspense>
+              </Route>
+              <Route path="obligations">
+                <Suspense fallback={loader}>
+                  <QueryHubHeader
+                    platform="Query"
+                    homepage="/query/search"
+                    hubType="Obligations"
+                    secondaryCTA="UploadContract"
+                    user="SB"
+                    setUploadPresent={setUploadPresent}
+                    setUploadedFiles={setUploadedFiles}
+                    setUserType={setUserType}
+                    userType={userType}
+                  />
+                  <SideBarNav
+                    uploadPresent={uploadPresent}
+                    userType={userType}
+                  />
+                  <Canvas className="query" page={"Obligations Page"} />
+                </Suspense>
+              </Route>
+              <Route path="upload">
+                <Suspense fallback={loader}>
+                  <QueryHubHeader
+                    platform="Query"
+                    homepage="/query/search"
+                    hubType="Upload Queue"
+                    secondaryCTA="UploadContract"
+                    user="SB"
+                    setUploadPresent={setUploadPresent}
+                    setUploadedFiles={setUploadedFiles}
+                    setUserType={setUserType}
+                    userType={userType}
+                  />
+                  <SideBarNav
+                    uploadPresent={uploadPresent}
+                    userType={userType}
+                  />
+                  {/* <Canvas className="query" page={<Upload />} /> */}
+                  <Canvas
+                    className="query"
+                    page={<QueryUploadPage uploadedFiles={uploadedFiles} />}
+                  />
                 </Suspense>
               </Route>
             </>

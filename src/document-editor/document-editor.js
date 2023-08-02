@@ -11,6 +11,7 @@ import HeaderSection from "./_toolbar/headerSection";
 import FooterSection from "./_toolbar/footerSection";
 import EditorToolbar from "./_toolbar/editorToolbar";
 import VersionToolbar from "./_toolbar/versionCompare";
+import ToolTip from "../_notification/tooltip/tooltip";
 
 const LabelPreview = (props) => {
   return (
@@ -42,6 +43,7 @@ const DocumentEditor = (props) => {
   const [headerPageNumber, setHeaderPageNumber] = useState(false);
   const [footerPageNumber, setFooterPageNumber] = useState(false);
   const [focusedSection, setFocusedSection] = useState();
+  const [dragToExpand, setDragToExpand] = useState(false);
 
   let suggestedEditBefore = (
     <>
@@ -125,6 +127,47 @@ const DocumentEditor = (props) => {
     // setFooterSection(true);
   };
 
+  const [goResponsive, setGoResponsive] = useState(false);
+
+  const newDrag = (e) => {
+    let wrapper = document.getElementById("editor");
+
+    var boxA = wrapper.querySelector(".box");
+
+    // Get offset
+    var containerOffsetLeft = wrapper.offsetLeft;
+
+    // Get x-coordinate of pointer relative to container
+    var pointerRelativeXpos = e.clientX - containerOffsetLeft;
+
+    // Arbitrary minimum width set on box A, otherwise its inner content will collapse to width of 0
+    var boxAminWidth = 60;
+    // setGoResponsive(pointerRelativeXpos);
+
+    // Resize box A
+    // * 8px is the left/right spacing between .handler and its inner pseudo-element
+    // * Set flex-grow to 0 to prevent it from growing
+    boxA.style.width = pointerRelativeXpos - 8 + "px";
+    boxA.style.flexGrow = 0;
+
+    // if (window.innerWidth - pointerRelativeXpos > 720) {
+    //   setGoResponsive(true);
+    // } else {
+    //   setGoResponsive(false);
+    // }
+  };
+
+  // const onDragEnd = (e) => {
+  //   const playbook = document.getElementById("Resizable");
+  //   const playbookWidth = playbook.offsetWidth;
+
+  //   if (playbookWidth > 720) {
+  //     setGoResponsive(true);
+  //   } else {
+  //     setGoResponsive(false);
+  //   }
+  // };
+
   return (
     <>
       {historyView ? (
@@ -148,13 +191,13 @@ const DocumentEditor = (props) => {
           user={props.user}
         />
       )}
-      <div className="editor">
+      <div id="editor" className="editor">
         <div
           id="article-container"
           className={
-            drawerState
-              ? "article-container playbook-open"
-              : "article-container"
+            !drawerState
+              ? "article-container playbook-open box"
+              : "article-container box"
           }
         >
           {" "}
@@ -247,8 +290,25 @@ const DocumentEditor = (props) => {
               setContractFocused={setContractFocused}
             />
           )}
+          <ToolTip
+            className={dragToExpand ? "review show" : "review hide"}
+            message="Drag to resize"
+          />
         </div>
-        <aside className={drawerState ? "open" : null}>
+
+        <aside id="Resizable" className={drawerState ? "open box" : "box"}>
+          <div
+            className="handler"
+            draggable="true"
+            onDrag={newDrag}
+            // onDragEnd={onDragEnd}
+            onMouseEnter={() => {
+              setDragToExpand(true);
+            }}
+            onMouseLeave={() => {
+              setDragToExpand(false);
+            }}
+          ></div>
           {historyView ? (
             <HistoryDemo
               setActiveHover={setActiveHover}
@@ -258,6 +318,7 @@ const DocumentEditor = (props) => {
             />
           ) : (
             <PlaybookContent
+              goResponsive={goResponsive}
               setActiveHover={setActiveHover}
               suggestedEditAfter={suggestedEditAfter}
               setSuggestedEdit={setSuggestedEdit}

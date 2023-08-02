@@ -21,6 +21,7 @@
     "jwt-decode": "3.1.2",
     "lodash": "4.17.5",
     "match-sorter": "6.3.0",
+    "material-ui-dropzone": "3.5.0",
     "material-ui-search-bar": "1.0.0",
     "prop-types": "latest",
     "react": "latest",
@@ -28,10 +29,12 @@
     "react-contenteditable": "3.3.5",
     "react-dom": "latest",
     "react-draggable": "4.4.4",
+    "react-resize-panel": "0.3.5",
     "react-router-dom": "6.0.0-beta.0",
     "react-scripts": "4.0.3",
     "sass": "1.35.1",
-    "typescript": "4.8.2"
+    "typescript": "4.8.2",
+    "userpilot": "1.2.8"
   },
   "keywords": [],
   "name": "wanda-forever",

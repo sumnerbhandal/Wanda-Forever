@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -9,11 +9,11 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import { visuallyHidden } from "@mui/utils";
-import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import UnfoldLessIcon from "@mui/icons-material/UnfoldLess";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import "./styles.scss";
+import "./query-styles.scss";
 import query from "./_feed/query";
 import guid from "../utils/guid";
 import DropDown from "../_input/dropDown/dropDown";
@@ -23,6 +23,7 @@ import decorativeAngle from "./_assets/Decoration.svg";
 import { Link } from "react-router-dom/index";
 import Tags from "../_query/autocomplete";
 import DefaultContract from "../_query/_contracts/default";
+import QueryResults from "../_query/query-results";
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -174,12 +175,14 @@ function Row(props) {
         sx={{ "& > *": { borderBottom: "unset" } }}
       >
         <TableCell>
-          <div className="nda-seed">{row.type}</div>
+          <div className="nda-seed">
+            <span>{row.type}</span>
+          </div>
         </TableCell>
         <TableCell>
           <Link
             to={{
-              pathname: `./label/${contractName
+              pathname: `/query/label/${contractName
                 .replace(/\s/g, "-")
                 .toLowerCase()}_${row.contractRef}`,
               state: { fileName: true }
@@ -189,7 +192,7 @@ function Row(props) {
           </Link>
         </TableCell>
         <TableCell>
-          <div className="name-container">{row.group}</div>
+          <div className="name-container query">{row.group}</div>
         </TableCell>
         <TableCell>{row.lastEdited}</TableCell>
         {/* <TableCell>
@@ -210,11 +213,18 @@ function Row(props) {
 }
 
 export default function QueryTable(props) {
+  const heightRef = useRef();
+  const [queryBarHeight, setQueryBarHeight] = useState();
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("name");
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [rowsPerPage, setRowsPerPage] = React.useState(50);
   const [activeTags, setActiveTags] = useState();
+  const [labelsExist, setLabelsExist] = useState(false);
+
+  useEffect(() => {
+    setQueryBarHeight(heightRef?.current?.clientHeight);
+  }, [heightRef?.current?.clientHeight]);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
@@ -238,14 +248,18 @@ export default function QueryTable(props) {
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - feed.length) : 0;
 
   return (
-    <>
-      <div className="query-bar">
-        <Tags activeTags={activeTags} setActiveTags={setActiveTags} />
+    <div className="query-action-container">
+      <div ref={heightRef} className="query-bar">
+        <Tags
+          activeTags={activeTags}
+          setActiveTags={setActiveTags}
+          labelsExist={labelsExist}
+          setLabelsExist={setLabelsExist}
+        />
       </div>
-      {console.log(activeTags)}
       {activeTags === undefined || activeTags.length === 0 ? (
         <div className="contract-hub query">
-          <h1>Uploaded Documents ({feed.length})</h1>
+          <h1>Recently Uploaded Documents ({feed.length})</h1>
           <TableContainer>
             <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
               <EnhancedTableHead
@@ -260,7 +274,7 @@ export default function QueryTable(props) {
                   .map((row, index) => {
                     return (
                       <Row
-                        key={row.name}
+                        key={row.name + index}
                         row={row}
                         configureContract={props.configureContract}
                       />
@@ -279,7 +293,7 @@ export default function QueryTable(props) {
             </Table>
           </TableContainer>
           <TablePagination
-            rowsPerPageOptions={[10, 25, 50]}
+            rowsPerPageOptions={[50, 100]}
             component="div"
             count={feed.length}
             rowsPerPage={rowsPerPage}
@@ -289,16 +303,17 @@ export default function QueryTable(props) {
           />
         </div>
       ) : (
-        <div className="results-container">
-          <div className="results">
-            <h1>{activeTags.length} Label(s) Selected</h1>
-            <p>({activeTags})</p>
-          </div>
-          <div className="contract-view">
-            <DefaultContract />
-          </div>
+        <div
+          style={{ height: `calc(100% - ${queryBarHeight + 1}px` }}
+          className="results-container"
+        >
+          <QueryResults
+            labelsExist={labelsExist}
+            setLabelsExist={setLabelsExist}
+            activeTags={activeTags}
+          />
         </div>
       )}
-    </>
+    </div>
   );
 }

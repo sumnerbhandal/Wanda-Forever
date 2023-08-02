@@ -1,14 +1,20 @@
 nav {
-  width: 184px;
+  width: 194px;
   height: calc(100vh - 4rem);
   position: fixed;
   top: 4rem;
   left: 0;
-  z-index: 1;
+  z-index: 5;
   border-right: 0.0625rem solid var(--robin-blue);
   background: white;
-  padding: 2rem 0;
+  padding: 1rem 0;
   gap: 0.25rem;
+  transition: all 0.3s;
+
+  @media (max-width: 1280px) {
+    width: 3.5rem;
+    overflow: hidden;
+  }
 
   a {
     &.side-link {
@@ -29,11 +35,47 @@ nav {
       &:active, &.selected {
         background: rgba(204, 211, 228, 1);
       }
-      &:disabled {
+      &[disabled] {
         opacity: 0.4;
+        pointer-events: none;
+      }
+
+      &.active {
+        
+        position: relative;
+        &::after {
+          content: "";
+          position: absolute;
+          background: red;
+          height: 6px;
+          width: 6px;
+          border-radius: 50%;
+          top: 0.5rem;
+          left: 3rem;
+
+          @media (max-width: 1280px) {
+            left: 2.125rem;
+          }
+        }
+      }
+
+      @media (max-width: 1280px) {
+        justify-content: center;
+        padding: 0 0.5rem;
+      }
+
+      span {
+        flex-shrink: 0;
+        @media (max-width: 1280px) {
+          display: none;
+        }
       }
       img {
         margin-right: 0.5rem;
+
+        @media (max-width: 1280px) {
+          margin-right: 0;
+        }
       }
     }
   }

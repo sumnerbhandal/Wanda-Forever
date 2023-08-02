@@ -1,15 +1,51 @@
 import React, { useState, useEffect } from "react";
-import { debounce } from "lodash";
 import ML from "../_assets/ml.svg";
+import Button from "../../_input/button/button";
+import Delete from "../_assets/Delete.svg";
+import { debounce } from "lodash";
+import SettingsWhite from "../_assets/Settings-White.svg";
 
-function cursor_position() {
-  var sel = document.getSelection();
-  sel.modify("extend", "backward", "paragraphboundary");
-  var pos = sel.toString().length;
-  if (sel.anchorNode != undefined) sel.collapseToEnd();
+const ProvisionExample = (
+  <>
+    <img src={SettingsWhite} /> Confidential information
+  </>
+);
+const DeleteIcon = (
+  <>
+    <img style={{ marginRight: "0.25rem" }} src={Delete} />
+  </>
+);
 
-  return pos;
-}
+const LabelPreview = (props) => {
+  function test() {
+    props.setPreviewOpen(true);
+
+    setTimeout(function () {
+      const selectedAccordion = document.getElementById(
+        "confidential_information"
+      ).childNodes[0];
+      selectedAccordion.click();
+    }, 400);
+  }
+
+  return (
+    <div className="preview-label-menu">
+      <div className="label-button-group">
+        <Button
+          contentEditable="false"
+          variant="primary"
+          label={ProvisionExample}
+        />
+        <Button
+          contentEditable="false"
+          variant="primary"
+          label={DeleteIcon}
+          onClick={() => test()}
+        />
+      </div>
+    </div>
+  );
+};
 
 const ClauseIdentity = "Conidential Information";
 
@@ -34,60 +70,58 @@ const DefaultContract = (props) => {
     props.setActiveHover(true);
   };
 
-  const setContractFocused = () => {
-    props.setHeaderFocused(false);
-    props.setFooterFocused(false);
-  };
   return (
-    <article
-      id="contract"
-      className="contract"
-      contentEditable="false"
-      onClick={setContractFocused}
-    >
+    <article id="contract" className="contract" contentEditable="false">
       <h1 data-id="text-1" className="xl">
         NON-DISCLOSURE AND CONFIDENTIALITY AGREEMENT
       </h1>
 
-      <p contentEditable="true">
-        This Non-Disclosure Agreement (the “Agreement”), is made effective as of{" "}
-        <span className="placeholder">[Day]</span>{" "}
-        <span className="placeholder" contentEditable="true">
-          [Month]
-        </span>{" "}
-        2020 (the “Effective Date”), by and between, on the one hand,{" "}
-        (“Recipient”), incorporated by virtue of notarial deed executed on{" "}
-        <span className="placeholder">[ ]</span> before the Notary of [ ] with
-        protocol number <span className="placeholder">[ ]</span>, with Tax
-        Identification Number [ ] and having its registered office at{" "}
-        <span className="placeholder">[ ]</span>, represented by{" "}
-        <span className="placeholder">[ ]</span>, as its{" "}
-        <span className="placeholder">[ ]</span>; and on the other{" "}
-        <span className="placeholder">[X]</span>
-        (“
-        <span className="placeholder">[X]</span>
-        ”), a <span className="placeholder">[•]</span> temporary union of
-        companies having its registered office at{" "}
-        <span className="placeholder">[•]</span>, and with Tax Identification
-        Number <span className="placeholder">[•]</span>; represented by{" "}
-        <span className="placeholder">[•]</span>.
-      </p>
-      <span style={{ width: "100%" }} className="redline">
-        <br />¶<br />
-      </span>
       <p>
-        Recipient and <span className="placeholder">[X]</span> may be referred
-        to herein together as the “Parties” and individually as a “Party”.
+        This Non-Disclosure Agreement (the “Agreement”), is made effective as of{" "}
+        [Day] [Month] 2020 (the “Effective Date”), by and between, on the one
+        hand, [Investor/Funder] (“Recipient”), incorporated by virtue of
+        notarial deed executed on [ ] before the Notary of [ ] with protocol
+        number [ ], with Tax Identification Number [ ] and having its registered
+        office at [ ], represented by [ ], as its [ ]; and on the other [X] (“
+        [X] ”), a [•] temporary union of companies having its registered office
+        at [•], and with Tax Identification Number [•]; represented by [•].
+      </p>
+
+      <p>
+        Recipient and [X] may be referred to herein together as the “Parties”
+        and individually as a “Party”.
       </p>
       <p>This content wasn't in the previous version of the contract</p>
 
       <p>
-        <span id="confidential_information_span">
+        <span
+          id="confidential_information_span"
+          className={previewOpen ? "labelled active" : "labelled"}
+        >
           <div
             onMouseOver={() => handlOnMouseEnter()}
             onMouseLeave={() => debouncedHandleMouseLeave()}
             onClick={() => props.setShowProvision(true)}
-          ></div>
+            // this should trigger scrolling to this corresponding element in the label sidebar
+            // this will need to set the appropriate tab as active and scroll to that event
+          >
+            <Button
+              contentEditable="false"
+              variant={
+                props.cleanVersion ? "tertiary label hidden" : "tertiary label"
+              }
+              label={<img src={ML} />}
+            />
+            {previewOpen ? (
+              <LabelPreview
+                setPreviewOpen={setPreviewOpen}
+                previewOpen={previewOpen}
+              />
+            ) : null}
+          </div>
+          WHEREAS, the Recipient desires that [X] (“Disclosing Party”) shares
+          certain information that is non-public, confidential or proprietary in
+          nature,
         </span>{" "}
         in connection with a potential financing transaction, either in equity
         or debt format, for the acquisition and subsequent promotion of a site
@@ -109,7 +143,7 @@ const DefaultContract = (props) => {
               this Agreement:
               <ol type="a">
                 <li>
-                  “Representative” means and be limited to Recipient’s
+                  “Representative” means and shall be limited to Recipient’s
                   employees, officers, directors, attorneys and accountants,
                   each of whom need to know the Confidential Information to
                   assist the Recipient, (ii) is informed by the Recipient of the
@@ -137,33 +171,33 @@ const DefaultContract = (props) => {
           Recipient’s Obligations
           <ol>
             <li>
-              The Recipient and its Representatives not disclose any
+              The Recipient and its Representatives shall not disclose any
               Confidential Information to any Person (other than to
               Representatives of Recipient as permitted hereunder) or use any
               Confidential Information for any purpose other than evaluating the
               Investment or Financing.
             </li>
             <li>
-              Notwithstanding the foregoing sentence, the Recipient be permitted
-              to disclose Confidential Information in accordance with judicial
-              or other governmental order or as required by a non-waivable
-              provisions of applicable law, provided that (i) the Recipient
-              gives the Disclosing Party reasonable notice prior to such
-              disclosure and (ii) the Recipient reasonably complies with any
-              applicable protective order or equivalent (iii) the Recipient
+              Notwithstanding the foregoing sentence, the Recipient shall be
+              permitted to disclose Confidential Information in accordance with
+              judicial or other governmental order or as required by a
+              non-waivable provisions of applicable law, provided that (i) the
+              Recipient gives the Disclosing Party reasonable notice prior to
+              such disclosure and (ii) the Recipient reasonably complies with
+              any applicable protective order or equivalent (iii) the Recipient
               discloses no more than that portion of the Confidential
               Information which, on the advice of the Recipient’s legal counsel,
               is legally required to be disclosed and, (iv) upon the Disclosing
-              Party’s request, use commercially reasonable efforts to obtain
-              assurances from the applicable court or agency that such
+              Party’s request, shall use commercially reasonable efforts to
+              obtain assurances from the applicable court or agency that such
               Confidential Information will be afforded confidential treatment.
             </li>
             <li>
-              The Recipient not disclose any Confidential Information to third
-              parties.
+              The Recipient shall not disclose any Confidential Information to
+              third parties.
             </li>
             <li>
-              The Recipient expressly restrict the disclosure, possession,
+              The Recipient shall expressly restrict the disclosure, possession,
               knowledge, development and use of Confidential Information to its
               partners, employees, consultants, professional advisors, agents,
               subcontractors and entities controlled by the Recipient or hired
@@ -171,22 +205,23 @@ const DefaultContract = (props) => {
               Confidential Information (“Representatives”).
             </li>
             <li>
-              The Recipient and its Representatives take the best security
+              The Recipient and its Representatives shall take the best security
               precautions, at least as great as the precautions it takes to
               protect its own Confidential Information, to keep the Confidential
-              Information confidential. The Recipient be permitted to disclose
-              Confidential Information only (i) to the Recipient’s
+              Information confidential. The Recipient shall be permitted to
+              disclose Confidential Information only (i) to the Recipient’s
               Representatives and (ii) in accordance with the foregoing Section
               2.2 and 2.4. If the Recipient wishes to disclose any Confidential
               Information to a Person who is not a Representative, then (i) such
-              Recipient give advance notice to the Disclosing Party identifying
-              such Person and providing details as to such Person’s
+              Recipient shall give advance notice to the Disclosing Party
+              identifying such Person and providing details as to such Person’s
               creditworthiness and potential involvement in the Investment and
               (ii) prior to disclosing any Confidential Information, such Person
               must become a party to, and agree to be bound fully by, this
-              Agreement, in which event, such Person be deemed the Recipient for
-              all purposes hereunder, and each of such Person’s Representatives{" "}
-              be deemed a Representative for all purposes hereunder.
+              Agreement, in which event, such Person shall be deemed the
+              Recipient for all purposes hereunder, and each of such Person’s
+              Representatives shall be deemed a Representative for all purposes
+              hereunder.
             </li>
           </ol>
         </li>

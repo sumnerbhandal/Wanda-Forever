@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Chip from "@mui/material/Chip";
 import Autocomplete from "@mui/material/Autocomplete";
+import Popper from "@mui/material/Popper";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Close from "./_assets/close-circle.svg";
+import Button from "../_input/button/button";
 import "./styles.scss";
 
 // Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
@@ -21,23 +23,33 @@ const provisions = [
   { title: "Company Details", type: "select" },
   { title: "Company Liability", type: "select" },
   { title: "Company Name", type: "select" },
-  { title: "Company Obligations", type: "select" }
+  { title: "Company Obligations", type: "select" },
+  { title: "Contract Type", type: "select" },
+  { title: "Counterparty", type: "select" }
 ];
 
-const closeIcon = <img alt="close-button" src={Close} />;
-
-// const CloseIcon = (props) => {
-//   return <img alt="close-button" src={Close} />;
-// };
+const clearAll = (
+  <Button contentEditable="false" variant="text" label="Clear All" />
+);
 
 const CustomChip = (props) => {
-  function LastChip() {
-    props.valueTotal === 1
-      ? console.log("last one")
-      : console.log("loads more");
-  }
+  const [selectLength, setSelectLength] = useState(3);
+  // const [tempTag, setTempTag] = useState();
+
+  // const realTagTotal = () => {
+  //   const valueTotal = props.valueTotal;
+  //   valueTotal.length === 1 ? props.setActiveTags([]) : null;
+  // };
+
+  const closeIcon = <img alt="close-button" src={Close} />;
+  //close icon
   return (
-    <div className="custom-tag" onClick={LastChip}>
+    <div
+      className="custom-tag"
+      onClick={(event) => {
+        event.stopPropagation();
+      }}
+    >
       {provisions.find((record) => record.title === props.value) ===
       undefined ? (
         <>
@@ -56,11 +68,24 @@ const CustomChip = (props) => {
             onMouseDown={(event) => {
               event.stopPropagation();
             }}
+            onMouseUp={(event) => {
+              event.stopPropagation();
+            }}
+            onChange={(e) => {
+              setSelectLength(e.target.value.length);
+            }}
+            style={{ width: `${(selectLength / 3) * 20 + 40}px` }}
           >
-            <option value="any">any</option>
-            {/* <option value="is">is</option>
-            <option value="is before">is before</option>
-            <option value="is after">is after</option> */}
+            {[
+              "Any",
+              "Amendment",
+              "Distribution Agreement",
+              "NDA Two-Way",
+              "Procurement Agreement",
+              "Side Letter"
+            ].map((option, index) => (
+              <option value={option}>{option}</option>
+            ))}
           </select>
           {/* <input
             type={
@@ -74,39 +99,50 @@ const CustomChip = (props) => {
 };
 
 export default function Tags(props) {
+  const PopperMy = React.useCallback((props) => {
+    const anchorEl = document.getElementById("tags"); // Or any other element
+
+    return (
+      <Popper
+        {...props}
+        anchorEl={anchorEl}
+        style={{ width: "692px" }}
+        placement="bottom-end"
+      />
+    );
+  }, []);
+
   return (
     <Stack spacing={3} sx={{ width: "47.5rem" }}>
       <Autocomplete
+        clearIcon={clearAll}
         multiple
         id="tags"
+        autoComplete={true}
         options={provisions.map((option) => option.title)}
         // defaultValue={[provisions[12].title, provisions[13].title]}
+        onChange={(event, value) => props.setActiveTags(value)}
         freeSolo
         renderTags={(value: string[], getTagProps) => (
           <div className="tag-container">
-            {value.length > 0
-              ? props.setActiveTags(value)
-              : props.setActiveTags(null)}
-            {console.log(value)}
             {value.map((option: string, index: number) => (
-              <CustomChip
-                value={option}
-                getTagProps={getTagProps({ index })}
-                label={option}
-                valueTotal={value.length}
-              />
+              <>
+                <CustomChip
+                  value={option}
+                  getTagProps={getTagProps({ index })}
+                  label={option}
+                  valueTotal={value}
+                />
+              </>
             ))}
           </div>
         )}
-        onClose={console.log(props.activeTags)}
         renderInput={(params) => (
           <TextField {...params} placeholder="Start a Query" />
         )}
+        PopperComponent={PopperMy}
         // onChange={(value: string[]) => setTagValues(value)}
       />
-      {/* {tagValues !== undefined
-        ? tagValues.map((item, index) => <h1>{item}</h1>)
-        : null} */}
     </Stack>
   );
 }
